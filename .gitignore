@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.env
+.env
+
+# Django
+db.sqlite3
+/media
+/staticfiles
+
+# Virtual environments
+venv/
+
+# VSCode or other editor settings (optional)
+.vscode/
+.idea/
+
+# Node / React (for frontend)
+node_modules/
+build/
+dist/
+.env.local
+.env.development
+.env.production
+
+# Mac/Linux system files
+.DS_Store
+
+frontend/
