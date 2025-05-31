@@ -124,7 +124,7 @@ class EmailLoginView(LoginView):
         logger.info(f"User {user.email} logged in successfully.")
 
         # ✅ Simplified redirection — just go to homepage
-        return redirect('homepage')
+        return redirect('home')
 
     def form_invalid(self, form):
         logger.warning("Login failed.")
