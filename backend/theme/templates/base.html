@@ -1,19 +1,31 @@
-{% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-    <title>Django Tailwind</title>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		{% tailwind_css %}
-	</head>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}My Marketplace{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<body class="bg-gray-50 font-serif leading-normal tracking-normal">
-		<div class="container mx-auto">
-			<section class="flex items-center justify-center h-screen">
-				<h1 class="text-5xl">Django + Tailwind = ❤️</h1>
-			</section>
-		</div>
-	</body>
+    {% load static tailwind_tags %}
+    
+    <!-- If you're using django-tailwind: -->
+    <link href="{% static 'css/dist/styles.css' %}" rel="stylesheet">
+
+    <!-- If you're manually building Tailwind (not django-tailwind), you'd use: -->
+    <!-- <link href="{% static 'css/output.css' %}" rel="stylesheet"> -->
+</head>
+
+<body x-data="{ desktopMenuOpen: false, mobileMenuOpen: false }">
+
+
+    {% include 'header.html' %}
+
+     <main class="flex flex-col h-screen justify-between">
+        {% block content %}
+        <!-- Page content will go here -->
+        {% endblock %}
+    </main>
+
+    {% include 'footer.html' %}
+
+</body>
 </html>
