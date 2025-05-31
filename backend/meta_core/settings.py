@@ -1,6 +1,7 @@
 from pathlib import Path
 import environ
 import os
+import dj_database_url
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -59,13 +60,13 @@ WSGI_APPLICATION = 'meta_core.wsgi.application'
 
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default=os.getenv('DATABASE_URL')
+    )
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
