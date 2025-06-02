@@ -2,59 +2,60 @@
 {% block title %}Login page{% endblock %}
 
 {% block content %}
+<section class="mx-auto flex-grow w-full mt-10 mb-10 max-w-[1200px] px-5">
+  <div class="container mx-auto border px-5 py-5 shadow-sm md:w-1/2">
+    <div class="">
+      <p class="text-4xl font-bold">LOGIN</p>
+      <p>Welcome back, customer!</p>
+    </div>
 
-      <!-- Login card  -->
-      <section class="mx-auto flex-grow w-full mt-10 mb-10 max-w-[1200px] px-5">
-        <div class="container mx-auto border px-5 py-5 shadow-sm md:w-1/2">
-          <div class="">
-            <p class="text-4xl font-bold">LOGIN</p>
-            <p>Welcome back, customer!</p>
-          </div>
+    <form method="POST" class="mt-6 flex flex-col">
+      {% csrf_token %}
+      
+      <label for="email">Email Address</label>
+      <input
+        id="email"
+        name="email"
+        class="mb-3 mt-3 border px-4 py-2"
+        type="email"
+        placeholder="youremail@domain.com"
+        required
+      />
 
-          <form class="mt-6 flex flex-col">
-            <label for="email">Email Address</label>
-            <input
-              class="mb-3 mt-3 border px-4 py-2"
-              type="email"
-              placeholder="youremail@domain.com"
-            />
+      <label for="password">Password</label>
+      <input
+        id="password"
+        name="password"
+        class="mt-3 border px-4 py-2"
+        type="password"
+        placeholder="your password"
+        required
+      />
 
-            <label for="email">Password</label>
-            <input
-              class="mt-3 border px-4 py-2"
-              type="password"
-              placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;"
-            />
-          </form>
-
-          <div class="mt-4 flex justify-between">
-            <form method = "POST" class="flex gap-2">
-              <input type="checkbox" />
-              <label for="checkbox">Remember me</label>
-            </form>
-            <a href="#" class="text-violet-900">Forgot password</a>
-          </div>
-          
-          <form method = "POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button class="my-5 w-full bg-violet-900 py-2 text-white">
-                LOGIN
-            </button>
-          </form>
-
-          <p class="text-center text-gray-500">OR LOGIN WITH</p>
-
-          <div class="my-5 flex gap-2">
-            <button class="w-1/2 bg-blue-800 py-2 text-white">FACEBOOK</button>
-            <button class="w-1/2 bg-orange-500 py-2 text-white">GOOGLE</button>
-          </div>
-
-          <p class="text-center">
-            Don`t have account?
-            <a href="{% url 'signup' %}" class="text-violet-900">Register now</a>
-          </p>
+      <div class="mt-4 flex justify-between">
+        <div class="flex gap-2">
+          <input type="checkbox" name="remember_me" id="remember_me" />
+          <label for="remember_me">Remember me</label>
         </div>
-      </section>
-      <!-- /Login Card  -->
+        <a href="#" class="text-violet-900">Forgot password</a>
+      </div>
+
+      <button type="submit" class="my-5 w-full bg-violet-900 py-2 text-white">
+        LOGIN
+      </button>
+    </form>
+
+    <p class="text-center text-gray-500">OR LOGIN WITH</p>
+
+    <div class="my-5 flex gap-2">
+      <button class="w-1/2 bg-blue-800 py-2 text-white">FACEBOOK</button>
+      <button class="w-1/2 bg-orange-500 py-2 text-white">GOOGLE</button>
+    </div>
+
+    <p class="text-center">
+      Don’t have account?
+      <a href="{% url 'signup' %}" class="text-violet-900">Register now</a>
+    </p>
+  </div>
+</section>
 {% endblock %}

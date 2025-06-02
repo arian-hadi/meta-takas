@@ -26,7 +26,7 @@ def send_code_to_user(email):
 
     OneTimePassword.objects.create(user=user, code=otp_code)
 
-    current_site = "20TF.com"
+    current_site = "Metatakas.com.tr"
     email_body = (
         f"Hi {user.username},\n\n"
         f"Thanks for signing up on {current_site}. Please verify your email with the OTP passcode:\n\n"
