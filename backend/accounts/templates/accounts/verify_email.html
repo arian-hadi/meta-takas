@@ -1,22 +1,44 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Verify Email</title>
-    <style>
-        body { font-family: Arial; background-color: #f5f5f5; }
-        .container { margin: 50px auto; width: 400px; padding: 20px; background: #fff; border-radius: 8px; }
-        input { width: 100%; padding: 10px; margin: 8px 0; }
-        button { padding: 10px 20px; background: #4CAF50; color: white; border: none; border-radius: 5px; }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h2>Verify Email</h2>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Verify</button>
-        </form>
+{% extends 'base.html' %}
+{% block title %}OTP Verification{% endblock %}
+
+{% block content %}
+<section class="mx-auto mt-10 w-full flex-grow mb-10 max-w-[1200px] px-5">
+  <div class="container mx-auto border px-5 py-5 shadow-sm md:w-1/2">
+    <div>
+      <p class="text-4xl font-bold">VERIFY EMAIL</p>
+      <p>Please enter the 6-digit code we sent to your email.</p>
     </div>
-</body>
-</html>
+
+    <form method="POST" class="mt-6 flex flex-col">
+    {% csrf_token %}
+
+    {% if form.non_field_errors %}
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+        {% for error in form.non_field_errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+        </div>
+    {% endif %}
+
+    <label for="id_otp_code">OTP Code</label>
+    <input
+        id="id_otp_code"
+        name="otp_code"
+        class="mb-3 mt-3 border px-4 py-2"
+        type="text"
+        placeholder="Enter 6-digit code"
+        value="{{ form.otp_code.value|default_if_none:'' }}"
+    />
+    {% if form.otp_code.errors %}
+        <div class="text-red-600 text-sm mt-1">{{ form.otp_code.errors.0 }}</div>
+    {% endif %}
+
+    <!-- Added margin-top here -->
+    <button type="submit" class="mt-5 w-full bg-violet-900 py-2 text-white rounded">
+        Verify
+    </button>
+    </form>
+
+  </div>
+</section>
+{% endblock %}
