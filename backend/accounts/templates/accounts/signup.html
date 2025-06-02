@@ -4,79 +4,102 @@
 {% block content %}
 <section class="mx-auto mt-10 w-full flex-grow mb-10 max-w-[1200px] px-5">
   <div class="container mx-auto border px-5 py-5 shadow-sm md:w-1/2">
-    <div class="">
+    <div>
       <p class="text-4xl font-bold">CREATE AN ACCOUNT</p>
       <p>Register for new customer</p>
     </div>
 
     <form method="POST" class="mt-6 flex flex-col">
       {% csrf_token %}
-      
+
+      <!-- Show non-field errors -->
+      {% if form.non_field_errors %}
+        <div class="text-red-600 mb-3">
+          {{ form.non_field_errors }}
+        </div>
+      {% endif %}
+
       <!-- Username -->
-      <label for="username">Username</label>
+      <label for="id_username">Username</label>
       <input
-        id="username"
+        id="id_username"
         name="username"
-        class="mb-3 mt-3 border px-4 py-2"
+        class="mb-1 mt-3 border px-4 py-2"
         type="text"
         placeholder="Choose a username"
-        required
+        value="{{ form.username.value|default_if_none:'' }}"
       />
+      {% if form.username.errors %}
+        <div class="text-red-600 text-sm">{{ form.username.errors.0 }}</div>
+      {% endif %}
 
       <!-- Email -->
-      <label for="email">Email Address</label>
+      <label for="id_email">Email Address</label>
       <input
-        id="email"
+        id="id_email"
         name="email"
-        class="mb-3 mt-3 border px-4 py-2"
+        class="mb-1 mt-3 border px-4 py-2"
         type="email"
         placeholder="user@mail.com"
-        required
+        value="{{ form.email.value|default_if_none:'' }}"
       />
+      {% if form.email.errors %}
+        <div class="text-red-600 text-sm">{{ form.email.errors.0 }}</div>
+      {% endif %}
 
       <!-- First Name -->
-      <label for="first_name">First Name</label>
+      <label for="id_first_name">First Name</label>
       <input
-        id="first_name"
+        id="id_first_name"
         name="first_name"
-        class="mb-3 mt-3 border px-4 py-2"
+        class="mb-1 mt-3 border px-4 py-2"
         type="text"
         placeholder="John"
-        required
+        value="{{ form.first_name.value|default_if_none:'' }}"
       />
+      {% if form.first_name.errors %}
+        <div class="text-red-600 text-sm">{{ form.first_name.errors.0 }}</div>
+      {% endif %}
 
       <!-- Last Name -->
-      <label for="last_name">Last Name</label>
+      <label for="id_last_name">Last Name</label>
       <input
-        id="last_name"
+        id="id_last_name"
         name="last_name"
-        class="mb-3 mt-3 border px-4 py-2"
+        class="mb-1 mt-3 border px-4 py-2"
         type="text"
         placeholder="Doe"
-        required
+        value="{{ form.last_name.value|default_if_none:'' }}"
       />
+      {% if form.last_name.errors %}
+        <div class="text-red-600 text-sm">{{ form.last_name.errors.0 }}</div>
+      {% endif %}
 
       <!-- Password -->
-      <label for="password1">Password</label>
+      <label for="id_password1">Password</label>
       <input
-        id="password1"
+        id="id_password1"
         name="password1"
-        class="mb-3 mt-3 border px-4 py-2"
+        class="mb-1 mt-3 border px-4 py-2"
         type="password"
         placeholder="********"
-        required
       />
+      {% if form.password1.errors %}
+        <div class="text-red-600 text-sm">{{ form.password1.errors.0 }}</div>
+      {% endif %}
 
       <!-- Confirm Password -->
-      <label for="password2">Confirm Password</label>
+      <label for="id_password2">Confirm Password</label>
       <input
-        id="password2"
+        id="id_password2"
         name="password2"
-        class="mb-3 mt-3 border px-4 py-2"
+        class="mb-1 mt-3 border px-4 py-2"
         type="password"
         placeholder="********"
-        required
       />
+      {% if form.password2.errors %}
+        <div class="text-red-600 text-sm">{{ form.password2.errors.0 }}</div>
+      {% endif %}
 
       <!-- Terms -->
       <div class="mt-4 flex gap-2">

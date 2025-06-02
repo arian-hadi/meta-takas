@@ -21,10 +21,6 @@ class RegisterUserView(CreateView):
 
     def form_valid(self, form):
         user = form.save(commit=False)
-        user.username = form.cleaned_data["username"]
-        user.email = form.cleaned_data["email"]
-        user.first_name = form.cleaned_data["first_name"]
-        user.last_name = form.cleaned_data["last_name"]
         user.is_active = False
         user.save()
 
@@ -39,6 +35,7 @@ class RegisterUserView(CreateView):
         messages.success(self.request, "OTP sent! Please check your email.")
 
         return redirect('verify_email')
+
 
 
 class VerifyUserEmail(View):
