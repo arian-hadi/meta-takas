@@ -1,23 +1,109 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Sign Up</title>
-    <style>
-        body { font-family: Arial; background-color: #f5f5f5; }
-        .container { margin: 50px auto; width: 400px; padding: 20px; background: #fff; border-radius: 8px; }
-        input { width: 100%; padding: 10px; margin: 8px 0; }
-        button { padding: 10px 20px; background: #4CAF50; color: white; border: none; border-radius: 5px; }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h2>Sign Up</h2>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Register</button>
-        </form>
-        <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+{% extends 'base.html' %}
+{% block title %}Sign Up Page{% endblock %}
+
+{% block content %}
+<section class="mx-auto mt-10 w-full flex-grow mb-10 max-w-[1200px] px-5">
+  <div class="container mx-auto border px-5 py-5 shadow-sm md:w-1/2">
+    <div class="">
+      <p class="text-4xl font-bold">CREATE AN ACCOUNT</p>
+      <p>Register for new customer</p>
     </div>
-</body>
-</html>
+
+    <form method="POST" class="mt-6 flex flex-col">
+      {% csrf_token %}
+      
+      <!-- Username -->
+      <label for="username">Username</label>
+      <input
+        id="username"
+        name="username"
+        class="mb-3 mt-3 border px-4 py-2"
+        type="text"
+        placeholder="Choose a username"
+        required
+      />
+
+      <!-- Email -->
+      <label for="email">Email Address</label>
+      <input
+        id="email"
+        name="email"
+        class="mb-3 mt-3 border px-4 py-2"
+        type="email"
+        placeholder="user@mail.com"
+        required
+      />
+
+      <!-- First Name -->
+      <label for="first_name">First Name</label>
+      <input
+        id="first_name"
+        name="first_name"
+        class="mb-3 mt-3 border px-4 py-2"
+        type="text"
+        placeholder="John"
+        required
+      />
+
+      <!-- Last Name -->
+      <label for="last_name">Last Name</label>
+      <input
+        id="last_name"
+        name="last_name"
+        class="mb-3 mt-3 border px-4 py-2"
+        type="text"
+        placeholder="Doe"
+        required
+      />
+
+      <!-- Password -->
+      <label for="password1">Password</label>
+      <input
+        id="password1"
+        name="password1"
+        class="mb-3 mt-3 border px-4 py-2"
+        type="password"
+        placeholder="********"
+        required
+      />
+
+      <!-- Confirm Password -->
+      <label for="password2">Confirm Password</label>
+      <input
+        id="password2"
+        name="password2"
+        class="mb-3 mt-3 border px-4 py-2"
+        type="password"
+        placeholder="********"
+        required
+      />
+
+      <!-- Terms -->
+      <div class="mt-4 flex gap-2">
+        <input type="checkbox" id="terms" name="terms" required />
+        <label for="terms">
+          I have read and agree with
+          <a href="#" class="text-violet-900">terms &amp; conditions</a>
+        </label>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="my-5 w-full bg-violet-900 py-2 text-white">
+        CREATE ACCOUNT
+      </button>
+    </form>
+
+    <p class="text-center text-gray-500">OR SIGN UP WITH</p>
+
+    <div class="my-5 flex gap-2">
+      <button class="w-1/2 bg-blue-800 py-2 text-white">FACEBOOK</button>
+      <button class="w-1/2 bg-orange-500 py-2 text-white">GOOGLE</button>
+    </div>
+
+    <p class="text-center">
+      Already have an account?
+      <a href="{% url 'login' %}" class="text-violet-900">Login now</a>
+    </p>
+  </div>
+</section>
+{% endblock %}
