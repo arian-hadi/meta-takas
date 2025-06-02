@@ -10,6 +10,15 @@
       <p>Welcome back, customer!</p>
     </div>
 
+    {# Display non-field errors (like "invalid credentials") #}
+    {% if form.non_field_errors %}
+      <div class="my-4 rounded border border-red-400 bg-red-100 px-4 py-3 text-red-700">
+        {% for error in form.non_field_errors %}
+          <p>{{ error }}</p>
+        {% endfor %}
+      </div>
+    {% endif %}
+
     <form method="POST" class="mt-6 flex flex-col">
       {% csrf_token %}
       
@@ -22,6 +31,15 @@
         placeholder="youremail@domain.com"
         required
       />
+      
+      {# Field-level errors for username #}
+      {% if form.username.errors %}
+        <div class="mb-2 text-red-600 text-sm">
+          {% for error in form.username.errors %}
+            <p>{{ error }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
 
       <label for="password">Password</label>
       <input
@@ -32,6 +50,15 @@
         placeholder="your password"
         required
       />
+
+      {# Field-level errors for password #}
+      {% if form.password.errors %}
+        <div class="mb-2 text-red-600 text-sm">
+          {% for error in form.password.errors %}
+            <p>{{ error }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
 
       <div class="mt-4 flex justify-between">
         <div class="flex gap-2">
