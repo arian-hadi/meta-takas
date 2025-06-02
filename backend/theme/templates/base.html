@@ -11,12 +11,12 @@
 
 </head>
 
-<body x-data="{ desktopMenuOpen: false, mobileMenuOpen: false }">
+<body class="flex flex-col min-h-screen" x-data="{ desktopMenuOpen: false, mobileMenuOpen: false }">
 
 
     {% include 'header.html' %}
 
-     <main class="flex flex-col h-screen justify-between">
+     <main class="flex-grow">
         {% block content %}
         <!-- Page content will go here -->
         {% endblock %}
