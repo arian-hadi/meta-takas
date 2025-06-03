@@ -11,4 +11,7 @@ class ManageAddressView(TemplateView):
 
 class ChangePasswordView(TemplateView):
     template_name = "info/change_password.html"
-    
+
+
+class WishListView(TemplateView):
+    template_name = "info/wishlist.html"
