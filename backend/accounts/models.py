@@ -11,12 +11,15 @@ class CustomUser(AbstractUser):
     username = models.CharField(max_length=150, unique=True)  
     is_verified = models.BooleanField(default=False)
     avatar = models.ImageField(upload_to='avatars/', blank=True, null=True)
-    
+
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
 
 
     objects = UserManager()
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.email

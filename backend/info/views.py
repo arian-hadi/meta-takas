@@ -17,6 +17,19 @@ class ProfileView(LoginRequiredMixin, UpdateView):
     def get_object(self, queryset=None):
         return self.request.user
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs.update({
+            'files': self.request.FILES
+        })
+        return kwargs
+
+    def form_valid(self, form):
+        # Explicit save call ensures all fields get saved correctly
+        form.save()
+        return super().form_valid(form)
+
+
 class ManageAddressView(TemplateView):
     template_name = "info/manage_address.html"
 

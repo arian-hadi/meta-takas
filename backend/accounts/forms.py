@@ -7,6 +7,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth import authenticate
 import logging
 from django.core.exceptions import ValidationError
+from PIL import Image
 
 logger = logging.getLogger(__name__)
 User = get_user_model()
@@ -42,6 +43,33 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = CustomUser
         fields = ['avatar', 'first_name', 'last_name']
+        widgets = {
+            'avatar': forms.ClearableFileInput(attrs={
+                'accept': 'image/*',
+                'class': 'w-full border px-4 py-2 lg:w-1/2'
+            }),
+            'first_name': forms.TextInput(attrs={'class': 'w-full border px-4 py-2 lg:w-1/2'}),
+            'last_name': forms.TextInput(attrs={'class': 'w-full border px-4 py-2 lg:w-1/2'}),
+        }
+
+    def clean_avatar(self):
+        avatar = self.cleaned_data.get('avatar')
+        if avatar:
+            try:
+                img = Image.open(avatar)
+                width, height = img.size
+
+                if width != height:
+                    raise forms.ValidationError("Avatar must have a 1:1 aspect ratio (square).")
+
+                max_resolution = 500
+                if width > max_resolution or height > max_resolution:
+                    raise forms.ValidationError(f"Maximum allowed resolution is {max_resolution}x{max_resolution} pixels.")
+
+            except Exception:
+                raise forms.ValidationError("Invalid image file.")
+
+        return avatar
 
     
 class EmailAuthenticationForm(AuthenticationForm):
