@@ -4,7 +4,7 @@
         <header
           class="mx-auto flex w-full h-16 max-w-[1200px] items-center justify-between px-5"
         >
-          <a href="index.html">
+          <a href="{% url 'homepage' %}">
             <img
               class="cursor-pointer sm:h-auto sm:w-auto"
               src="{% static 'images/company-logo.svg' %}"
@@ -62,7 +62,7 @@
 
           <div class="hidden gap-3 md:!flex">
             <a
-              href="wishlist.html"
+              href="{% url 'wishlist' %}"
               class="flex cursor-pointer flex-col items-center justify-center"
             >
               <svg
@@ -147,7 +147,7 @@
           <div class="mx-auto">
             <div class="mx-auto flex w-full justify-center gap-3 py-4">
               <a
-                href="wishlist.html"
+                href="{% url 'wishlist' %}"
                 class="flex cursor-pointer flex-col items-center justify-center"
               >
                 <svg
@@ -189,7 +189,7 @@
               </a>
 
               <a
-                href="account-page.html"
+                href="{% url 'profile_information' %}"
                 class="relative flex cursor-pointer flex-col items-center justify-center"
               >
                 <span class="absolute bottom-[33px] right-1 flex h-2 w-2">

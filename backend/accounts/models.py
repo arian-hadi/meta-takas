@@ -18,9 +18,6 @@ class CustomUser(AbstractUser):
 
     objects = UserManager()
 
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-
     def __str__(self):
         return self.email
 
