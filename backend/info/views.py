@@ -15,3 +15,7 @@ class ChangePasswordView(TemplateView):
 
 class WishListView(TemplateView):
     template_name = "info/wishlist.html"
+
+
+class ManageAccountView(TemplateView):
+    template_name = "info/manage_account.html"
