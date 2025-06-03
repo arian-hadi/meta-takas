@@ -4,6 +4,8 @@ from django.views.generic.edit import UpdateView
 from accounts.models import CustomUser
 from accounts.forms import ProfileForm
 from django.views.generic import TemplateView
+from django.contrib.auth.views import PasswordChangeView
+from .forms import CustomPasswordChangeForm
 
 # Create your views here.
 class ProfileView(LoginRequiredMixin, UpdateView):
@@ -19,8 +21,10 @@ class ManageAddressView(TemplateView):
     template_name = "info/manage_address.html"
 
 
-class ChangePasswordView(TemplateView):
+class ChangePasswordView(LoginRequiredMixin, PasswordChangeView):
+    form_class = CustomPasswordChangeForm
     template_name = "info/change_password.html"
+    success_url = reverse_lazy('profile_information')
 
 
 class WishListView(TemplateView):
