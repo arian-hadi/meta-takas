@@ -46,3 +46,11 @@ class WishListView(TemplateView):
 
 class ManageAccountView(TemplateView):
     template_name = "info/manage_account.html"
+
+
+class LogoutView(TemplateView):
+
+    def get(self, request, *args, **kwargs):
+        from django.contrib.auth import logout
+        logout(request)
+        return super().get(request, *args, **kwargs)
