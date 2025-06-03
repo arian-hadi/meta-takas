@@ -7,3 +7,8 @@ class ProfileView(TemplateView):
 
 class ManageAddressView(TemplateView):
     template_name = "info/manage_address.html"
+
+
+class ChangePasswordView(TemplateView):
+    template_name = "info/change_password.html"
+    
