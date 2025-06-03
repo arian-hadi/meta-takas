@@ -4,82 +4,55 @@
 {% block content %}
 {% include 'info/breadcrumbs.html' %}
       <!-- form  -->
-      <section
-        class="grid w-full max-w-[1200px] grid-cols-1 gap-3 px-5 pb-10"
-      >
-        <div class="py-5">
-          <div class="w-full">
-            <h2>Avatar image</h2>
-            <div
-              class="mx-auto mb-5 flex flex-row items-center bg-neutral-100 py-5 lg:mx-0 lg:w-1/2"
-            >
-              <img
-                class="ml-5 h-20 w-20 rounded-full"
-                src = "{% static 'images/avatar-photo.png' %}"
-                alt="Sarah Johnson image"
-              />
+<section class="grid w-full max-w-[1200px] grid-cols-1 gap-3 px-5 pb-10">
+  <div class="py-5">
+    <div class="w-full">
+      <h2>Avatar image</h2>
+      <div class="mx-auto mb-5 flex flex-row items-center bg-neutral-100 py-5 lg:mx-0 lg:w-1/2">
+        <img class="ml-5 h-20 w-20 rounded-full"
+             src="{% if user.avatar %}{{ user.avatar.url }}{% else %}{% static 'images/avatar-photo.png' %}{% endif %}"
+             alt="User avatar" />
 
-              <form>
-                <div>
-                  <label class="block">
-                    <span class="sr-only">Choose profile photo</span>
-                    <input
-                      type="file"
-                      class="mx-auto ml-5 flex w-full justify-center border-yellow-400 text-sm outline-none file:mr-4 file:bg-amber-400 file:py-2 file:px-4 file:text-sm file:font-semibold"
-                    />
-                  </label>
-                </div>
-              </form>
-            </div>
-          </div>
+        <!-- This form will be handled in the main form -->
+      </div>
+    </div>
 
-          <form class="flex w-full flex-col gap-3" action="">
-            <div class="flex w-full flex-col">
-              <label class="flex" for="name"
-                >First Name<span
-                  class="block text-sm font-medium text-slate-700 after:ml-0.5 after:text-red-500 after:content-['*']"
-                ></span
-              ></label>
-              <input
-                class="w-full border px-4 py-2 lg:w-1/2"
-                type="text"
-                placeholder="Sarah"
-              />
-            </div>
+    <!-- Main profile form -->
+    <form method="post" enctype="multipart/form-data" class="flex w-full flex-col gap-3">
+      {% csrf_token %}
+      
+      <div class="flex w-full flex-col">
+        <label class="flex" for="id_avatar">
+          Avatar image
+        </label>
+        {{ form.avatar }}
+      </div>
 
-            <div class="flex w-full flex-col">
-              <label class="flex" for="name"
-                >Last Name<span
-                  class="block text-sm font-medium text-slate-700 after:ml-0.5 after:text-red-500 after:content-['*']"
-                ></span
-              ></label>
-              <input
-                class="w-full border px-4 py-2 lg:w-1/2"
-                type="text"
-                placeholder="Johnson"
-              />
-            </div>
+      <div class="flex w-full flex-col">
+        <label class="flex" for="id_first_name">
+          First Name<span class="block text-sm font-medium text-slate-700 after:ml-0.5 after:text-red-500 after:content-['*']"></span>
+        </label>
+        {{ form.first_name }}
+      </div>
 
-            <div class="flex flex-col">
-              <label for="">Bio</label>
-              <textarea
-                class="w-full border px-4 py-2 text-gray-500 outline-none lg:w-1/2"
-                name=""
-                id=""
-                cols="30"
-                rows="10"
-              >
-CEO, MayBell Inc.</textarea
-              >
+      <div class="flex w-full flex-col">
+        <label class="flex" for="id_last_name">
+          Last Name<span class="block text-sm font-medium text-slate-700 after:ml-0.5 after:text-red-500 after:content-['*']"></span>
+        </label>
+        {{ form.last_name }}
+      </div>
 
-              <button class="mt-4 w-40 bg-violet-900 px-4 py-2 text-white">
-                Save changes
-              </button>
-            </div>
-          </form>
-        </div>
-      </section>
-      <!-- /form  -->
-    </section>
+      <div class="flex flex-col">
+        <label for="id_bio">Bio</label>
+        {{ form.bio }}
+      </div>
+
+      <button type="submit" class="mt-4 w-40 bg-violet-900 px-4 py-2 text-white">
+        Save changes
+      </button>
+    </form>
+  </div>
+</section>
+
 
 {% endblock %}

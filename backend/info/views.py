@@ -1,9 +1,19 @@
-from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.edit import UpdateView
+from accounts.models import CustomUser
+from accounts.forms import ProfileForm
 from django.views.generic import TemplateView
 
 # Create your views here.
-class ProfileView(TemplateView):
+class ProfileView(LoginRequiredMixin, UpdateView):
+    model = CustomUser
+    form_class = ProfileForm
     template_name = "info/profile_information.html"
+    success_url = reverse_lazy('profile_information')
+
+    def get_object(self, queryset=None):
+        return self.request.user
 
 class ManageAddressView(TemplateView):
     template_name = "info/manage_address.html"

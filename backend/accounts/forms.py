@@ -18,8 +18,8 @@ class CustomUserCreationForm(UserCreationForm):
     password2 = forms.CharField(label="Confirm Password", widget=forms.PasswordInput)
 
     class Meta:
-        model = User
-        fields = ['email', 'username', 'first_name', 'last_name']  # Updated to only include email and username (since 'display_username' was removed)
+        model = CustomUser  # <-- important correction here!
+        fields = ['email', 'username', 'first_name', 'last_name']
 
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
@@ -34,6 +34,15 @@ class CustomUserCreationForm(UserCreationForm):
         if commit:
             user.save()
         return user
+    
+from django import forms
+from .models import CustomUser
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = CustomUser
+        fields = ['avatar', 'first_name', 'last_name']
+
     
 class EmailAuthenticationForm(AuthenticationForm):
     username = forms.EmailField(  # Keep this as username but change the field name in template
