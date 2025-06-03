@@ -1,10 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}Profile information{% endblock %}
-
 {% block content %}
-     <!-- breadcrumbs  -->
-
         <nav class="mx-auto w-full mt-4 max-w-[1200px] px-5">
           <ul class="flex items-center">
             <li class="cursor-pointer">
@@ -28,7 +25,7 @@
               <span class="mx-2 text-gray-500">&gt;</span>
             </li>
 
-            <li class="text-gray-500">Account</li>
+            <li class="text-gray-500">Manage Addresses</li>
           </ul>
         </nav>
         <!-- /breadcrumbs  -->
@@ -45,7 +42,7 @@
                 width="40px"
                 height="40px"
                 class="rounded-full object-cover"
-                src="{% static 'images/avatar-photo.png' %}"
+                src="./assets/images/avatar-photo.png"
                 alt="Red woman portrait"
               />
               <div class="ml-5">
@@ -81,12 +78,12 @@
                   >
                   <a
                     href="profile-information.html"
-                    class="text-violet-900 duration-100"
+                    class="text-gray-500 duration-100 hover:text-yellow-400"
                     >Profile information</a
                   >
                   <a
-                    href="{% url 'manage_address' %}"
-                    class="text-gray-500 duration-100 hover:text-yellow-400"
+                    href="manage-address.html"
+                    class="text-violet-900 duration-100"
                     >Manage Addresses</a
                   >
                   <a
@@ -219,78 +216,49 @@
           class="grid w-full max-w-[1200px] grid-cols-1 gap-3 px-5 pb-10"
         >
           <div class="py-5">
-            <div class="w-full">
-              <h2>Avatar image</h2>
-              <div
-                class="mx-auto mb-5 flex flex-row items-center bg-neutral-100 py-5 lg:mx-0 lg:w-1/2"
-              >
-                <img
-                  class="ml-5 h-20 w-20 rounded-full"
-                  src = "{% static 'images/avatar-photo.png' %}"
-                  alt="Sarah Johnson image"
-                />
-
-                <form>
-                  <div>
-                    <label class="block">
-                      <span class="sr-only">Choose profile photo</span>
-                      <input
-                        type="file"
-                        class="mx-auto ml-5 flex w-full justify-center border-yellow-400 text-sm outline-none file:mr-4 file:bg-amber-400 file:py-2 file:px-4 file:text-sm file:font-semibold"
-                      />
-                    </label>
-                  </div>
-                </form>
-              </div>
-            </div>
-
+            <div class="w-full"></div>
             <form class="flex w-full flex-col gap-3" action="">
               <div class="flex w-full flex-col">
                 <label class="flex" for="name"
-                  >First Name<span
+                  >Country<span
                     class="block text-sm font-medium text-slate-700 after:ml-0.5 after:text-red-500 after:content-['*']"
                   ></span
                 ></label>
                 <input
                   class="w-full border px-4 py-2 lg:w-1/2"
                   type="text"
-                  placeholder="Sarah"
+                  placeholder="Serbia"
                 />
               </div>
 
               <div class="flex w-full flex-col">
                 <label class="flex" for="name"
-                  >Last Name<span
+                  >City<span
                     class="block text-sm font-medium text-slate-700 after:ml-0.5 after:text-red-500 after:content-['*']"
                   ></span
                 ></label>
                 <input
                   class="w-full border px-4 py-2 lg:w-1/2"
                   type="text"
-                  placeholder="Johnson"
+                  placeholder="Belgrade"
                 />
               </div>
 
               <div class="flex flex-col">
-                <label for="">Bio</label>
-                <textarea
-                  class="w-full border px-4 py-2 text-gray-500 outline-none lg:w-1/2"
-                  name=""
-                  id=""
-                  cols="30"
-                  rows="10"
-                >
-  CEO, MayBell Inc.</textarea
-                >
-
-                <button class="mt-4 w-40 bg-violet-900 px-4 py-2 text-white">
-                  Save changes
-                </button>
+                <label for="">Zip Code</label>
+                <input
+                  x-mask="999999"
+                  class="w-full border px-4 py-2 lg:w-1/2"
+                  placeholder="240116"
+                />
               </div>
+
+              <button class="mt-4 w-40 bg-violet-900 px-4 py-2 text-white">
+                Save changes
+              </button>
             </form>
           </div>
         </section>
         <!-- /form  -->
       </section>
-
 {% endblock %}

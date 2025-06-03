@@ -4,3 +4,6 @@ from django.views.generic import TemplateView
 # Create your views here.
 class ProfileView(TemplateView):
     template_name = "info/profile_information.html"
+
+class ManageAddressView(TemplateView):
+    template_name = "info/manage_address.html"
