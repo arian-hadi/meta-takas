@@ -43,22 +43,23 @@
             <form method="get" action="{% url 'product_list' %}">
                 <div class="flex border-b pb-5">
                     <div class="w-full">
-                    <p class="mb-3 font-medium">CATEGORIES</p>
+                        <p class="mb-3 font-medium">CATEGORIES</p>
 
-                    {% for category in categories %}
-                    <div class="flex w-full justify-between">
-                        <div class="flex justify-center items-center">
-                        <input type="checkbox" name="category" value="{{ category.slug }}" id="cat_{{ category.id }}"
-                        {% if category.slug in selected_categories %}checked{% endif %}>
-                        <label for="cat_{{ category.id }}" class="ml-4 hover:underline">{{ category.name }}</label>
-                        </div>
-                        <div>
-                        <p class="text-gray-500">({{ category.products.count }})</p>
-                        </div>
-                    </div>
-                    {% empty %}
-                    <p class="text-gray-500">No categories found.</p>
-                    {% endfor %}
+                        {% for category in categories %}]
+                            <div class="flex w-full justify-between {% if category.slug == current_category_slug %}bg-violet-100{% endif %}">
+                                <div class="flex items-center">
+                                    <a href="{% url 'product_list_by_category' category.slug %}" class="ml-4 hover:underline text-gray-800">
+                                        {{ category.name }}
+                                    </a>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500">({{ category.products.count }})</p>
+                                </div>
+                            </div>
+
+                        {% endfor %}
+ 
+                    
                     </div>
                 </div>
 
