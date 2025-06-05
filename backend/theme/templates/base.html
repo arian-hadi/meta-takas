@@ -28,5 +28,18 @@
 
     {% include 'footer.html' %}
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Splide('#product-slider', {
+                type: 'loop',
+                perPage: 1,
+                heightRatio: 0.5,
+                autoplay: true,
+            }).mount();
+        });
+    </script>
+    
+
 </body>
+
 </html>
