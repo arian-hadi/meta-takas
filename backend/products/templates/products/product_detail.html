@@ -26,22 +26,40 @@
     <!-- Product Images Gallery -->
     <div class="container mx-auto px-4">
         <div class="flex flex-col items-center">
-            <!-- Main Image -->
-            <img id="main-product-image" class="w-full max-h-96 object-contain rounded border" 
-                src="{{ product.image.url }}" alt="{{ product.name }}" />
-
-            <!-- Thumbnails -->
-            <div class="mt-4 flex gap-2 justify-center">
+            <!-- Main Swiper (big image, swipeable) -->
+            <div class="swiper main-swiper w-full max-h-96 rounded border mb-4">
+            <div class="swiper-wrapper">
                 {% if product.image %}
-                <img class="thumbnail w-20 h-20 object-cover rounded border cursor-pointer {% if not product.images.all %}ring-2 ring-violet-500{% endif %}" 
-                    src="{{ product.image.url }}" alt="Thumbnail" data-src="{{ product.image.url }}">
+                <div class="swiper-slide">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="object-contain w-full max-h-96"/>
+                </div>
                 {% endif %}
                 {% for image in product.images.all %}
-                    {% if not product.image or image.image.url != product.image.url %}
-                    <img class="thumbnail w-20 h-20 object-cover rounded border cursor-pointer" 
-                        src="{{ image.image.url }}" alt="Thumbnail" data-src="{{ image.image.url }}">
-                    {% endif %}
+                {% if not product.image or image.image.url != product.image.url %}
+                <div class="swiper-slide">
+                    <img src="{{ image.image.url }}" alt="Product Image" class="object-contain w-full max-h-96"/>
+                </div>
+                {% endif %}
                 {% endfor %}
+            </div>
+            <!-- Optional navigation buttons -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            </div>
+            <!-- Thumbnails (static row, always visible) -->
+            <div class="flex gap-2 mt-4 flex-wrap justify-center">
+            {% if product.image %}
+            <img src="{{ product.image.url }}" alt="Thumbnail"
+                class="thumbnail w-20 h-20 object-cover rounded border cursor-pointer"
+                data-index="0"/>
+            {% endif %}
+            {% for image in product.images.all %}
+                {% if not product.image or image.image.url != product.image.url %}
+                <img src="{{ image.image.url }}" alt="Thumbnail"
+                    class="thumbnail w-20 h-20 object-cover rounded border cursor-pointer"
+                    data-index="{{ forloop.counter }}"/>
+                {% endif %}
+            {% endfor %}
             </div>
         </div>
     </div>
@@ -163,29 +181,41 @@
     </table>
 </section>
 
+<!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        new Splide('#product-slider', {
-            type: 'loop',
-            perPage: 1,
-            heightRatio: 0.6,
-            autoplay: true,
-            pagination: true,
-            arrows: true,
-        }).mount();
-    });
+document.addEventListener('DOMContentLoaded', function () {
+  var mainSwiper = new Swiper('.main-swiper', {
+    spaceBetween: 10,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
 
-    document.addEventListener('DOMContentLoaded', function () {
-        const mainImage = document.getElementById('main-product-image');
-        const thumbnails = document.querySelectorAll('.thumbnail');
-        thumbnails.forEach(thumb => {
-            thumb.addEventListener('click', function () {
-                mainImage.src = this.dataset.src;
-                thumbnails.forEach(t => t.classList.remove('ring-2', 'ring-violet-500'));
-                this.classList.add('ring-2', 'ring-violet-500');
-            });
-        });
+  // Thumbnail click handler
+  document.querySelectorAll('.thumbnail').forEach(function(thumb, idx) {
+    thumb.addEventListener('click', function() {
+      mainSwiper.slideTo(idx);
+      document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('ring-2', 'ring-violet-500'));
+      this.classList.add('ring-2', 'ring-violet-500');
     });
+  });
+
+  // Highlight the active thumbnail on slide change
+  mainSwiper.on('slideChange', function() {
+    document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('ring-2', 'ring-violet-500'));
+    var activeThumb = document.querySelector('.thumbnail[data-index="' + mainSwiper.activeIndex + '"]');
+    if (activeThumb) {
+      activeThumb.classList.add('ring-2', 'ring-violet-500');
+    }
+  });
+
+  // Initial highlight
+  var firstThumb = document.querySelector('.thumbnail[data-index="0"]');
+  if (firstThumb) {
+    firstThumb.classList.add('ring-2', 'ring-violet-500');
+  }
+});
 </script>
 
 {% endblock %}
