@@ -23,23 +23,25 @@
 <section class="container flex-grow mx-auto max-w-[1200px] border-b py-5 lg:grid lg:grid-cols-2 lg:py-10">
 
     <!-- Product Images Carousel -->
+    <!-- Product Images Gallery -->
     <div class="container mx-auto px-4">
-        <div class="splide" id="product-slider">
-            <div class="splide__track">
-                <ul class="splide__list">
-                    {% if product.image %}
-                    <li class="splide__slide">
-                        <img class="w-full object-contain" src="{{ product.image.url }}" alt="{{ product.name }}" />
-                    </li>
+        <div class="flex flex-col items-center">
+            <!-- Main Image -->
+            <img id="main-product-image" class="w-full max-h-96 object-contain rounded border" 
+                src="{{ product.image.url }}" alt="{{ product.name }}" />
+
+            <!-- Thumbnails -->
+            <div class="mt-4 flex gap-2 justify-center">
+                {% if product.image %}
+                <img class="thumbnail w-20 h-20 object-cover rounded border cursor-pointer {% if not product.images.all %}ring-2 ring-violet-500{% endif %}" 
+                    src="{{ product.image.url }}" alt="Thumbnail" data-src="{{ product.image.url }}">
+                {% endif %}
+                {% for image in product.images.all %}
+                    {% if not product.image or image.image.url != product.image.url %}
+                    <img class="thumbnail w-20 h-20 object-cover rounded border cursor-pointer" 
+                        src="{{ image.image.url }}" alt="Thumbnail" data-src="{{ image.image.url }}">
                     {% endif %}
-                    {% for image in product.images.all %}
-                        {% if not product.image or image.image.url != product.image.url %}
-                        <li class="splide__slide">
-                            <img class="w-full object-contain" src="{{ image.image.url }}" alt="{{ product.name }}">
-                        </li>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -171,6 +173,18 @@
             pagination: true,
             arrows: true,
         }).mount();
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const mainImage = document.getElementById('main-product-image');
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        thumbnails.forEach(thumb => {
+            thumb.addEventListener('click', function () {
+                mainImage.src = this.dataset.src;
+                thumbnails.forEach(t => t.classList.remove('ring-2', 'ring-violet-500'));
+                this.classList.add('ring-2', 'ring-violet-500');
+            });
+        });
     });
 </script>
 
