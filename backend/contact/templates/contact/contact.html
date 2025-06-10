@@ -265,31 +265,54 @@
         <!-- Form -->
         <form method="post" class="mx-auto my-5 max-w-[600px] px-5 pb-10">
             {% csrf_token %}
+            <div class="mx-auto">
+              <div class="my-3 flex w-full gap-2">
+              
+              {{ form.email.errors }}
+                <input
+                  class="w-1/2 border px-4 py-2"
+                  type="email"
+                  name="email"
+                  id="id_email"
+                  placeholder="E-mail"
+                  value="{{ form.email.value|default_if_none:'' }}"
+                  required
+                />
 
-            <div class="my-3 flex w-full gap-2">
-                <div class="w-1/2">
-                    <p>mail address</p>
-                    {{ form.email.errors }}
-                    {{ form.email }}
-                </div>
-                <div class="w-1/2">
-                    <p>name</p>
-                    {{ form.name.errors }}
-                    {{ form.name }}
-                </div>
+                {{ form.name.errors }}
+                <input
+                  class="w-1/2 border px-4 py-2"
+                  type="text"
+                  name="name"
+                  id="id_name"
+                  placeholder="Full Name"
+                  value="{{ form.name.value|default_if_none:'' }}"
+                  required
+                />
+              </div>
             </div>
+            
 
-            <div class="mb-3">
-                <p>subject</p>
-                {{ form.subject.errors }}
-                {{ form.subject }}
-            </div>
+            {{ form.subject.errors }}
+            <select
+              class="mb-3 w-full border px-4 py-2"
+              name="subject"
+              id="id_subject"
+              required
+            >
+              {% for value, label in form.fields.subject.choices %}
+                <option value="{{ value }}" {% if form.subject.value == value %}selected{% endif %}>{{ label }}</option>
+              {% endfor %}
+            </select>
 
-            <div class="mb-3">
-                <p>message</p>
-                {{ form.message.errors }}
-                {{ form.message }}
-            </div>
+            {{ form.message.errors }}
+            <textarea
+              class="w-full border px-4 py-2"
+              placeholder="Write a commentary..."
+              name="message"
+              id="id_message"
+              required
+            >{{ form.message.value|default_if_none:'' }}</textarea>
 
             <div class="mt-4 flex flex-col justify-between lg:flex-row lg:items-center">
                 <div class="flex items-center">
@@ -304,6 +327,7 @@
                 </button>
             </div>
         </form>
+        
 
 
 
