@@ -8,6 +8,19 @@ class Category(models.Model):
         return self.name
 
 class Product(models.Model):
+    SALE = 'sale'
+    EXCHANGE = 'exchange'
+    TYPE_CHOICES = [
+        (SALE, 'Sale'),
+        (EXCHANGE, 'Exchange'),
+    ]
+
+    listing_type = models.CharField(
+        max_length=10,
+        choices=TYPE_CHOICES,
+        default=SALE,
+    )
+
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)

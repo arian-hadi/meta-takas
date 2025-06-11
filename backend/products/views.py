@@ -8,12 +8,17 @@ class ProductListView(ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        category_slug = self.kwargs.get('category_slug')
-        self.category_slug = category_slug  # store for later
-        if category_slug:
-            queryset = queryset.filter(category__slug=category_slug)
-        return queryset
+        self.category_slug = self.kwargs.get('category_slug')  # ← this line is added
 
+        listing_type = self.request.GET.get('type')  # 'sale' or 'exchange'
+        
+        if self.category_slug:
+            queryset = queryset.filter(category__slug=self.category_slug)
+        if listing_type in ['sale', 'exchange']:
+            queryset = queryset.filter(listing_type=listing_type)
+        
+        return queryset
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['categories'] = Category.objects.all()
