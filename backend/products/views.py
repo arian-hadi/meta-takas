@@ -6,16 +6,36 @@ class ProductListView(ListView):
     template_name = 'products/product_list.html'  # you can also name it 'products/product_list.html'
     context_object_name = 'products'
 
+    types = [
+    {'slug': 'sale', 'label': 'Satılık'},
+    {'slug': 'exchange', 'label': 'Takas'},
+    ]
+
     def get_queryset(self):
         queryset = super().get_queryset()
         self.category_slug = self.kwargs.get('category_slug')  # ← this line is added
-
         listing_type = self.request.GET.get('type')  # 'sale' or 'exchange'
-        
+        self.sort_by = self.request.GET.get('sort')
+
+
         if self.category_slug:
             queryset = queryset.filter(category__slug=self.category_slug)
+        
         if listing_type in ['sale', 'exchange']:
             queryset = queryset.filter(listing_type=listing_type)
+
+        if self.sort_by == 'price_asc':
+            # Only apply price sorting to 'sale' products
+            if self.listing_type == 'sale':
+                queryset = queryset.order_by('price')
+        elif self.sort_by == 'price_desc':
+            if self.listing_type == 'sale':
+                queryset = queryset.order_by('-price')
+        elif self.sort_by == 'name_asc':
+            queryset = queryset.order_by('name')
+        else:
+            queryset = queryset.order_by('-created_at')  # Default: newest
+            
         
         return queryset
     
@@ -23,6 +43,14 @@ class ProductListView(ListView):
         context = super().get_context_data(**kwargs)
         context['categories'] = Category.objects.all()
         context['current_category_slug'] = self.category_slug
+        context['current_listing_type'] = self.request.GET.get('type')
+        context['current_sort'] = self.request.GET.get('sort')
+
+        context['types'] = [
+        {'slug': 'sale', 'label': 'Satılık'},
+        {'slug': 'exchange', 'label': 'Takas'},
+        ]
+
         return context
 
 class ProductDetailView(DetailView):
