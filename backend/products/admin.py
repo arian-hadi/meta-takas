@@ -18,9 +18,9 @@ class ProductImageInline(admin.TabularInline):
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
-    list_display = ['name', 'category', 'price', 'city', 'created_at']
+    list_display = ['name', 'category', 'listing_type', 'price', 'city', 'created_at']
     search_fields = ['name', 'description', 'city']
-    list_filter = ['category', 'city']
+    list_filter = ['category', 'city', 'listing_type']
     inlines = [ProductImageInline]
 
     def has_add_permission(self, request):

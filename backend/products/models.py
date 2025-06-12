@@ -28,6 +28,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     image = models.ImageField(upload_to='products/')
     created_at = models.DateTimeField(auto_now_add=True)
+    exchange_for = models.CharField(max_length=200, blank=True, null=True)
 
     # Contact and address fields
     city = models.CharField(max_length=100)

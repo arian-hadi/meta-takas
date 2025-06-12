@@ -73,7 +73,7 @@
             </form>
 
 
-            <!-- <div class="flex border-b py-5">
+            <div class="flex border-b py-5">
                 <div class="w-full">
                 <p class="mb-3 font-medium">PRICE</p>
 
@@ -97,10 +97,10 @@
                     </div>
                 </div>
                 </div>
-            </div> -->
+            </div>
 
 
-<!-- 
+
             <div class="flex py-5">
                 <div class="w-full">
                 <p class="mb-3 font-medium">COLOR</p>
@@ -117,7 +117,7 @@
                     ></div>
                 </div>
                 </div>
-            </div> -->
+            </div>
         </section>
         <!-- /sidebar  -->
 
@@ -203,66 +203,63 @@
         <section class="mx-auto grid max-w-[1200px] grid-cols-2 gap-3 px-5 pb-10 lg:grid-cols-3">
             {% for product in products %}
               <div class="flex flex-col">
-                  <div class="relative flex">
-                      <div class="w-72 h-52 bg-gray-100 overflow-hidden flex items-center justify-center">
-                          <img 
-                              src="{{ product.image.url }}" 
-                              alt="{{ product.name }}" 
-                              class="object-contain bg-white"
-                              
-                          >
-                      </div>
-
-                      <div class="absolute flex h-full w-full items-center justify-center gap-3 opacity-0 duration-150 hover:opacity-100 bg-black bg-opacity-30">
-                          <a href="{% url 'product_detail' product.slug %}" class="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-amber-400">
-                              <!-- search icon -->
-                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
-                                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
-                              </svg>
-                          </a>
-                      </div>
-
-                      <div class="absolute top-2 right-2 rounded-full px-3 py-1 text-[0.7rem] font-bold text-white uppercase tracking-wide shadow 
-                          {% if product.listing_type == 'exchange' %}
-                              bg-amber-500
-                          {% else %}
-                              bg-green-500
-                          {% endif %}">
-                          {% if product.listing_type == 'sale' %}
-                              Satılık
-                          {% else %}
-                              Takas
-                          {% endif %}
-                      </div>
-
+                <!-- Image and overlay -->
+                <div class="relative flex">
+                  <div class="w-72 h-52 bg-gray-100 overflow-hidden flex items-center justify-center">
+                    <img 
+                      src="{{ product.image.url }}" 
+                      alt="{{ product.name }}" 
+                      class="object-contain bg-white"
+                    >
                   </div>
 
-                  <div>
-                      <p class="mt-2">{{ product.name }}</p>
-                      <p class="font-medium text-violet-900">
-                          ${{ product.price }}
-                          {# Optional old price logic if you ever have discounts #}
-                          {# <span class="text-sm text-gray-500 line-through">${{ product.old_price }}</span> #}
+                  <!-- Hover overlay -->
+                  <div class="absolute flex h-full w-full items-center justify-center gap-3 opacity-0 duration-150 hover:opacity-100 bg-black bg-opacity-30">
+                    <a href="{% url 'product_detail' product.slug %}" class="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-amber-400">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
+                      </svg>
+                    </a>
+                  </div>
+
+                  <!-- Badge -->
+                  <div class="absolute top-2 right-2 rounded-full px-3 py-1 text-[0.7rem] font-bold text-white uppercase tracking-wide shadow 
+                    {% if product.listing_type == 'exchange' %}
+                      bg-amber-500
+                    {% else %}
+                      bg-green-500
+                    {% endif %}">
+                    {% if product.listing_type == 'sale' %}
+                      Satılık
+                    {% else %}
+                      Takas
+                    {% endif %}
+                  </div>
+                </div>
+
+                <!-- Product content -->
+                <div>
+                  <p class="mt-2 font-semibold text-gray-800">{{ product.name }}</p>
+
+                  {% if product.listing_type == 'sale' %}
+                    <p class="font-medium text-violet-900">${{ product.price }}</p>
+                  {% elif product.listing_type == 'exchange' %}
+                    {% if product.exchange_for %}
+                      <p class="text-sm text-gray-600 italic">
+                        Takas istenen: <span class="font-semibold text-black">{{ product.exchange_for }}</span>
                       </p>
+                    {% endif %}
+                  {% endif %}
 
-                      <div class="flex items-center">
-                          <!-- (Static rating display, can be dynamic later if you add ratings) -->
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4 text-yellow-400">
-                              <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd"/>
-                          </svg>
-
-                          <p class="text-sm text-gray-400">(38)</p>
-                      </div>
-
-                      <div class="my-5">
-                          <a href="{% url 'product_detail' product.slug %}">
-                              <button class="h-10 w-full bg-violet-900 text-white">View Details</button>
-                          </a>
-                      </div>
+                  <div class="my-5">
+                    <a href="{% url 'product_detail' product.slug %}">
+                      <button class="h-10 w-full bg-violet-900 text-white hover:bg-violet-800 transition">View Details</button>
+                    </a>
                   </div>
+                </div>
               </div>
             {% empty %}
-                <p class="col-span-3 text-center text-gray-500">No products available.</p>
+              <p class="col-span-3 text-center text-gray-500">No products available.</p>
             {% endfor %}
         </section>
         </div>
