@@ -90,20 +90,6 @@
                       </div>
                     {% endfor %}
                     
-                    <!-- Show "All" option -->
-                    <div class="flex w-full justify-between items-center">
-                      <div class="flex items-center">
-                        <div class="h-4 w-4 border rounded mr-2 bg-white flex justify-center items-center">
-                          {% if not current_listing_type %}
-                            <div class="w-2 h-2 bg-violet-600 rounded-full"></div>
-                          {% endif %}
-                        </div>
-                        <a href="?{% if current_sort %}sort={{ current_sort }}{% endif %}" class="hover:underline text-gray-800">
-                          Hepsi
-                        </a>
-                      </div>
-                    </div>
-
                   </div>
                 </div>
 
@@ -112,7 +98,9 @@
                   <input type="hidden" name="sort" value="{{ current_sort }}">
                 {% endif %}
 
-                <button type="submit" class="mt-4 bg-violet-900 text-white px-4 py-2 rounded">Refresh</button>
+                <a href="{% url 'product_list' %}" class="block mt-4 bg-violet-900 text-white px-4 py-2 rounded text-center">
+  Refresh
+                </a>
             </form>
 
 
