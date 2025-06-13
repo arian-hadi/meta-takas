@@ -174,7 +174,7 @@
 
         <section class="mx-auto grid max-w-[1200px] grid-cols-2 gap-3 px-5 pb-10 lg:grid-cols-3">
             {% for product in products %}
-              <div class="flex flex-col">
+              <div class="flex flex-col h-full">
                 <!-- Image and overlay -->
                 <div class="relative flex">
                   <div class="w-72 h-52 bg-gray-100 overflow-hidden flex items-center justify-center">
@@ -210,14 +210,14 @@
                 </div>
 
                 <!-- Product content -->
-                <div>
+                <div class="flex flex-col justify-between min-h-[180px]">
                   <p class="mt-2 font-semibold text-gray-800">{{ product.name }}</p>
 
                   {% if product.listing_type == 'sale' %}
-                    <p class="font-medium text-violet-900">${{ product.price }}</p>
+                    <p class="font-medium text-violet-900">{{ product.price }} TL </p>
                   {% elif product.listing_type == 'exchange' %}
                     <p class="text-sm text-gray-500 italic">Değer biçilen fiyat:</p>
-                    <p class="font-medium text-violet-900">~ ${{ product.price }}</p>
+                    <p class="font-medium text-violet-900">~ {{ product.price }} TL </p>
 
                     {% if product.exchange_for %}
                       <p class="text-sm text-gray-600 italic mt-1">
