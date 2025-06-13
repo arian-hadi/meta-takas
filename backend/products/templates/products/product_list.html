@@ -99,36 +99,44 @@
                 {% endif %}
 
                 <a href="{% url 'product_list' %}" class="block mt-4 bg-violet-900 text-white px-4 py-2 rounded text-center">
-  Refresh
+                  Refresh
                 </a>
+                
+                <div class="flex border-b py-5">
+                  <div class="w-full">
+                    <p class="mb-3 font-medium">PRICE</p>
+
+                    <div class="flex w-full">
+                      <div class="flex justify-between">
+                        <input
+                          type="number"
+                          name="price_min"
+                          min="0"
+                          value="{{ request.GET.price_min }}"
+                          class="h-8 w-[90px] border pl-2"
+                          placeholder="Min"
+                        />
+                        <span class="px-3">-</span>
+                        <input
+                          type="number"
+                          name="price_max"
+                          min="0"
+                          value="{{ request.GET.price_max }}"
+                          class="h-8 w-[90px] border pl-2"
+                          placeholder="Max"
+                        />
+                      </div>
+                    </div>
+                    <button type="submit" class="mt-4 bg-violet-900 text-white px-4 py-2 rounded w-full">
+                      Filter Results
+                    </button>
+
+                  </div>
+                </div>
+
             </form>
 
 
-            <div class="flex border-b py-5">
-                <div class="w-full">
-                <p class="mb-3 font-medium">PRICE</p>
-
-                <div class="flex w-full">
-                    <div class="flex justify-between">
-                    <input
-                        x-mask="99999"
-                        min="50"
-                        type="number"
-                        class="h-8 w-[90px] border pl-2"
-                        placeholder="50"
-                    />
-                    <span class="px-3">-</span>
-                    <input
-                        x-mask="999999"
-                        type="number"
-                        max="999999"
-                        class="h-8 w-[90px] border pl-2"
-                        placeholder="99999"
-                    />
-                    </div>
-                </div>
-                </div>
-            </div>
 
 
 

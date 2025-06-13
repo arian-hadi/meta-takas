@@ -26,6 +26,8 @@ class ProductListView(ListView):
         self.category_slug = self.kwargs.get('category_slug')  # ← this line is added
         listing_type = self.request.GET.get('type')  # 'sale' or 'exchange'
         self.sort_by = self.request.GET.get('sort')
+        price_min = self.request.GET.get('price_min')
+        price_max = self.request.GET.get('price_max')
 
 
         if self.category_slug:
@@ -33,6 +35,13 @@ class ProductListView(ListView):
         
         if listing_type in ['sale', 'exchange']:
             queryset = queryset.filter(listing_type=listing_type)
+
+        if price_min:
+            queryset = queryset.filter(price__gte=price_min)
+
+        if price_max:
+            queryset = queryset.filter(price__lte=price_max)
+
 
         if self.sort_by == 'price_asc':
             # Only apply price sorting to 'sale' products
