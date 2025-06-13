@@ -66,12 +66,20 @@
 
     <!-- Product Info -->
     <div class="mx-auto px-5 lg:px-5">
+    <p class="mt-5 font-bold">
+    Durum: 
+    {% if product.listing_type == 'sale' %}
+        <span class="text-green-600">Satılık</span>
+    {% elif product.listing_type == 'exchange' %}
+        <span class="text-amber-500">Takaslık</span>
+    {% endif %}
+    </p>
         <h1 class="pt-3 text-2xl font-bold lg:pt-0">{{product.name}}</h2>
 
         <p class="mt-5 font-bold">Category: <span class="font-normal">{{ product.category.name }}</span></p>
-        <!-- <p class="font-bold">Price: <span class="text-violet-900 font-bold text-2xl">${{ product.price }}</span></p> -->
+    
         <p class="mt-4 text-4xl font-bold text-violet-900">
-           ${{ product.price }} 
+           {{ product.price }} TL
         </p>
 
         <p class="pt-5 text-sm leading-5 text-gray-500">{{ product.description }}</p>
