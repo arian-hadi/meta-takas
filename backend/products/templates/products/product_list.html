@@ -216,8 +216,11 @@
                   {% if product.listing_type == 'sale' %}
                     <p class="font-medium text-violet-900">${{ product.price }}</p>
                   {% elif product.listing_type == 'exchange' %}
+                    <p class="text-sm text-gray-500 italic">Değer biçilen fiyat:</p>
+                    <p class="font-medium text-violet-900">~ ${{ product.price }}</p>
+
                     {% if product.exchange_for %}
-                      <p class="text-sm text-gray-600 italic">
+                      <p class="text-sm text-gray-600 italic mt-1">
                         Takas istenen: <span class="font-semibold text-black">{{ product.exchange_for }}</span>
                       </p>
                     {% endif %}
