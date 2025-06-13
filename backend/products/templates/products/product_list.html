@@ -40,107 +40,82 @@
         <!-- sidebar  -->
         <section class="hidden w-[300px] flex-shrink-0 px-4 lg:block">
 
-            <form method="get" action="{% url 'product_list' %}">
-                <div class="flex border-b pb-5">
-                    <div class="w-full">
-                        <p class="mb-3 font-medium">CATEGORIES</p>
+          <form method="get" action="{% url 'product_list' %}" class="space-y-6">
 
-                        {% for category in categories %}
-                            <div class="flex w-full justify-between items-center">
-                                <div class="flex items-center">
-                                    <div class="h-4 w-4 border rounded mr-2 bg-white flex justify-center items-center">
-                                        {% if category.slug == current_category_slug %}
-                                            <div class="w-2 h-2 bg-violet-600 rounded-full"></div>
-                                        {% endif %}
-                                    </div>
-                                    <a href="{% url 'product_list_by_category' category.slug %}" class="hover:underline text-gray-800">
-                                        {{ category.name }}
-                                    </a>
-                                </div>
-                                <div>
-                                    <p class="text-gray-500">({{ category.products.count }})</p>
-                                </div>
-                            </div>
-
-
-                        {% endfor %}
- 
-                    
-                    </div>
-                </div>
-                
-                <!-- Listing Type Filter -->
-                <div class="flex border-b py-5">
-                  <div class="w-full">
-                    <p class="mb-3 font-medium">Listing Type</p>
-                    
-
-                    {% for type in types %}
-                      <div class="flex w-full justify-between items-center mb-2">
-                        <div class="flex items-center">
-                          <div class="h-4 w-4 border rounded mr-2 bg-white flex justify-center items-center">
-                            {% if current_listing_type == type.slug %}
-                              <div class="w-2 h-2 bg-violet-600 rounded-full"></div>
-                            {% endif %}
-                          </div>
-                          <a href="?type={{ type.slug }}{% if current_sort %}&sort={{ current_sort }}{% endif %}" class="hover:underline text-gray-800">
-                            {{ type.label }}
-                          </a>
-                        </div>
-                      </div>
-                    {% endfor %}
-                    
+            <!-- CATEGORIES -->
+            <div class="border-b pb-5">
+              <p class="mb-3 font-medium">CATEGORIES</p>
+              {% for category in categories %}
+                <div class="flex w-full justify-between items-center">
+                  <div class="flex items-center">
+                    <input
+                      type="checkbox"
+                      name="category"
+                      value="{{ category.slug }}"
+                      class="accent-violet-600"
+                      {% if category.slug in selected_categories %}checked{% endif %}
+                    />
+                    <p class="ml-4 text-gray-800">{{ category.name }}</p>
                   </div>
+                  <div><p class="text-gray-500">({{ category.products.count }})</p></div>
                 </div>
+              {% endfor %}
+            </div>
 
-                <!-- SORT (hidden field so it's preserved) -->
-                {% if current_sort %}
-                  <input type="hidden" name="sort" value="{{ current_sort }}">
-                {% endif %}
-
-                <a href="{% url 'product_list' %}" class="block mt-4 bg-violet-900 text-white px-4 py-2 rounded text-center">
-                  Refresh
-                </a>
-                
-                <div class="flex border-b py-5">
-                  <div class="w-full">
-                    <p class="mb-3 font-medium">PRICE</p>
-
-                    <div class="flex w-full">
-                      <div class="flex justify-between">
-                        <input
-                          type="number"
-                          name="price_min"
-                          min="0"
-                          value="{{ request.GET.price_min }}"
-                          class="h-8 w-[90px] border pl-2"
-                          placeholder="Min"
-                        />
-                        <span class="px-3">-</span>
-                        <input
-                          type="number"
-                          name="price_max"
-                          min="0"
-                          value="{{ request.GET.price_max }}"
-                          class="h-8 w-[90px] border pl-2"
-                          placeholder="Max"
-                        />
-                      </div>
-                    </div>
-                    <button type="submit" class="mt-4 bg-violet-900 text-white px-4 py-2 rounded w-full">
-                      Filter Results
-                    </button>
-
+            <!-- LISTING TYPE -->
+            <div class="border-b py-5">
+              <p class="mb-3 font-medium">LISTING TYPE</p>
+              {% for type in types %}
+                <div class="flex w-full justify-between items-center">
+                  <div class="flex items-center">
+                    <input
+                      type="checkbox"
+                      name="type"
+                      value="{{ type.slug }}"
+                      class="accent-violet-600"
+                      {% if type.slug in selected_types %}checked{% endif %}
+                    />
+                    <p class="ml-4 text-gray-800">{{ type.label }}</p>
                   </div>
+                  <div><p class="text-gray-500">({{ type.count }})</p></div>
                 </div>
+              {% endfor %}
+            </div>
 
-            </form>
+            <!-- PRICE -->
+            <div class="border-b py-5">
+              <div class = "w-full">
+                <p class="mb-3 font-medium">PRICE</p>
+                <div class="flex justify-between">
+                  <input
+                    type="number"
+                    name="min_price"
+                    class="h-8 w-[90px] border pl-2"
+                    placeholder="Min"
+                    value="{{ min_price }}"
+                  />
+                  <span class="px-3">-</span>
+                  <input
+                    type="number"
+                    name="max_price"
+                    class="h-8 w-[90px] border pl-2"
+                    placeholder="Max"
+                    value="{{ max_price }}"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- SUBMIT BUTTON -->
+            <div class="pt-5">
+              <button type="submit" class="px-4 py-2 bg-violet-600 text-white rounded">Apply Filters</button>
+            </div>
+
+          </form>
 
 
 
-
-
-            <div class="flex py-5">
+            <!-- <div class="flex py-5">
                 <div class="w-full">
                 <p class="mb-3 font-medium">COLOR</p>
 
@@ -156,7 +131,7 @@
                     ></div>
                 </div>
                 </div>
-            </div>
+            </div> -->
         </section>
         <!-- /sidebar  -->
 
