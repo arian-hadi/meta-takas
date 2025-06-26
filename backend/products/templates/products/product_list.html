@@ -155,71 +155,102 @@
           </div>
         </div> -->
 
-        <section class="mx-auto grid max-w-[1200px] grid-cols-2 gap-3 px-5 pb-10 lg:grid-cols-3">
-            {% for product in products %}
-              <div class="flex flex-col h-full">
-                <!-- Image and overlay -->
-                <div class="relative flex">
-                  <div class="w-72 h-52 bg-gray-100 overflow-hidden flex items-center justify-center">
-                    <img 
-                      src="{{ product.image.url }}" 
-                      alt="{{ product.name }}" 
-                      class="object-contain bg-white"
-                    >
+        <!--PRODUCT-LIST-START-->
+        <div id = "results-container">
+          <section class="mx-auto grid max-w-[1200px] grid-cols-2 gap-3 px-5 pb-10 lg:grid-cols-3">
+              {% for product in products %}
+                <div class="flex flex-col h-full">
+                  <!-- Image and overlay -->
+                  <div class="relative flex">
+                    <div class="w-72 h-52 bg-gray-100 overflow-hidden flex items-center justify-center">
+                      <img 
+                        src="{{ product.image.url }}" 
+                        alt="{{ product.name }}" 
+                        class="object-contain bg-white"
+                      >
+                    </div>
+
+                    <!-- Hover overlay -->
+                    <div class="absolute flex h-full w-full items-center justify-center gap-3 opacity-0 duration-150 hover:opacity-100 bg-black bg-opacity-30">
+                      <a href="{% url 'product_detail' product.slug %}" class="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-amber-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
+                        </svg>
+                      </a>
+                    </div>
+
+                    <!-- Badge -->
+                    <div class="absolute top-2 right-2 rounded-full px-3 py-1 text-[0.7rem] font-bold text-white uppercase tracking-wide shadow 
+                      {% if product.listing_type == 'exchange' %}
+                        bg-amber-500
+                      {% else %}
+                        bg-green-500
+                      {% endif %}">
+                      {% if product.listing_type == 'sale' %}
+                        Satılık
+                      {% else %}
+                        Takas
+                      {% endif %}
+                    </div>
                   </div>
 
-                  <!-- Hover overlay -->
-                  <div class="absolute flex h-full w-full items-center justify-center gap-3 opacity-0 duration-150 hover:opacity-100 bg-black bg-opacity-30">
-                    <a href="{% url 'product_detail' product.slug %}" class="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-amber-400">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
-                      </svg>
-                    </a>
-                  </div>
+                  <!-- Product content -->
+                  <div class="flex flex-col justify-between min-h-[180px]">
+                    <p class="mt-2 font-semibold text-gray-800">{{ product.name }}</p>
 
-                  <!-- Badge -->
-                  <div class="absolute top-2 right-2 rounded-full px-3 py-1 text-[0.7rem] font-bold text-white uppercase tracking-wide shadow 
-                    {% if product.listing_type == 'exchange' %}
-                      bg-amber-500
-                    {% else %}
-                      bg-green-500
-                    {% endif %}">
                     {% if product.listing_type == 'sale' %}
-                      Satılık
-                    {% else %}
-                      Takas
+                      <p class="font-medium text-violet-900">{{ product.price }} TL </p>
+                    {% elif product.listing_type == 'exchange' %}
+                      <p class="text-sm text-gray-500 italic">Değer biçilen fiyat:</p>
+                      <p class="font-medium text-violet-900">~ {{ product.price }} TL </p>
+
+                      {% if product.exchange_for %}
+                        <p class="text-sm text-gray-600 italic mt-1">
+                          Takas istenen: <span class="font-semibold text-black">{{ product.exchange_for }}</span>
+                        </p>
+                      {% endif %}
                     {% endif %}
+
+                    <div class="my-5">
+                      <a href="{% url 'product_detail' product.slug %}">
+                        <button class="h-10 w-full bg-violet-900 text-white hover:bg-violet-800 transition">View Details</button>
+                      </a>
+                    </div>
                   </div>
                 </div>
+              {% empty %}
+                <p class="col-span-3 text-center text-gray-500">No products available.</p>
+              {% endfor %}
+          </section>
+        </div>
+        <!--PRODUCT-LIST-END-->
 
-                <!-- Product content -->
-                <div class="flex flex-col justify-between min-h-[180px]">
-                  <p class="mt-2 font-semibold text-gray-800">{{ product.name }}</p>
-
-                  {% if product.listing_type == 'sale' %}
-                    <p class="font-medium text-violet-900">{{ product.price }} TL </p>
-                  {% elif product.listing_type == 'exchange' %}
-                    <p class="text-sm text-gray-500 italic">Değer biçilen fiyat:</p>
-                    <p class="font-medium text-violet-900">~ {{ product.price }} TL </p>
-
-                    {% if product.exchange_for %}
-                      <p class="text-sm text-gray-600 italic mt-1">
-                        Takas istenen: <span class="font-semibold text-black">{{ product.exchange_for }}</span>
-                      </p>
-                    {% endif %}
-                  {% endif %}
-
-                  <div class="my-5">
-                    <a href="{% url 'product_detail' product.slug %}">
-                      <button class="h-10 w-full bg-violet-900 text-white hover:bg-violet-800 transition">View Details</button>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            {% empty %}
-              <p class="col-span-3 text-center text-gray-500">No products available.</p>
-            {% endfor %}
-        </section>
         </div>
       </section>
 {% endblock %}
+
+
+<script>
+  const searchInput = document.getElementById('default-search');
+  const resultsContainer = document.getElementById('results-container');
+
+  let timeout = null;
+
+  searchInput.addEventListener('input', function () {
+    clearTimeout(timeout);
+
+    timeout = setTimeout(() => {
+      const query = searchInput.value;
+
+      fetch(`?q=${encodeURIComponent(query)}`, {
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        resultsContainer.innerHTML = data.products_html;
+      });
+    }, 300); // debounce delay in ms
+  });
+</script>

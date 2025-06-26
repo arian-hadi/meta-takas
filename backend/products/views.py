@@ -1,6 +1,8 @@
 from django.views.generic import ListView, DetailView
 from .models import Product, Category
 from django.db.models import Q, Count
+from django.http import JsonResponse
+from django.template.loader import render_to_string
 
 
 class ProductListView(ListView):
@@ -60,6 +62,22 @@ class ProductListView(ListView):
             queryset = queryset.order_by('-created_at')  # Default
 
         return queryset
+    
+
+    def render_to_response(self, context, **response_kwargs):
+        if self.request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            products_html = render_to_string(
+                'products/product_list.html',
+                context,
+                request=self.request
+            )
+            # Extract just the product list section using a unique div ID
+            start = products_html.find('<!--PRODUCT-LIST-START-->')
+            end = products_html.find('<!--PRODUCT-LIST-END-->')
+            only_products = products_html[start + 26:end].strip()
+            return JsonResponse({'products_html': only_products})
+        
+        return super().render_to_response(context, **response_kwargs)
 
     def get_context_data(self, **kwargs):   
         context = super().get_context_data(**kwargs)
