@@ -206,7 +206,14 @@
 
                       {% if product.exchange_for %}
                         <p class="text-sm text-gray-600 italic mt-1">
-                          Takas istenen: <span class="font-semibold text-black">{{ product.exchange_for }}</span>
+                          Takas istenen: 
+                          <span class="font-semibold text-black">
+                            {% for category in product.exchange_for.all %}
+                                {{ category.name }}{% if not forloop.last %}, {% endif %}
+                            {% empty %}
+                                <span class="text-gray-400">Belirtilmemiş</span>
+                            {% endfor %}
+                          </span>
                         </p>
                       {% endif %}
                     {% endif %}
