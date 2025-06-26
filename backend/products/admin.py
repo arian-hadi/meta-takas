@@ -22,6 +22,7 @@ class ProductAdmin(admin.ModelAdmin):
     search_fields = ['name', 'description', 'city']
     list_filter = ['category', 'city', 'listing_type']
     inlines = [ProductImageInline]
+    filter_horizontal = ('exchange_for',)
 
     def has_add_permission(self, request):
         return request.user.is_superuser

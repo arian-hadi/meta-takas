@@ -51,6 +51,10 @@ class ProductListView(ListView):
         if price_max:
             queryset = queryset.filter(price__lte=price_max)
 
+        exchange_for_slugs = self.request.GET.getlist('exchange_for')
+        if exchange_for_slugs:
+            queryset = queryset.filter(exchange_for__slug__in=exchange_for_slugs).distinct()
+
         # Apply sorting
         if self.sort_by == 'price_asc':
             queryset = queryset.order_by('price')
@@ -109,6 +113,8 @@ class ProductListView(ListView):
         context['listing_types'] = self.types
         context['listing_type_counts'] = count_map
 
+        selected_exchange_for = self.request.GET.getlist('exchange_for')
+        context['selected_exchange_for'] = selected_exchange_for
 
         return context
 
