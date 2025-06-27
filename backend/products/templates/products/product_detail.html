@@ -71,10 +71,17 @@
             {% endfor %}
             {# Add video thumbnails #}
             {% for video in product.videos.all %}
-              <div class="thumbnail w-20 h-20 flex items-center justify-center bg-gray-200 rounded border cursor-pointer" data-index="{{ forloop.counter0|add:product.images.count }}">
-                <svg class="w-8 h-8 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M4 4v12l12-6-12-6z"/>
-                </svg>
+              <div class="relative thumbnail w-20 h-20 rounded border cursor-pointer group bg-gray-200 overflow-hidden" data-index="{{ forloop.counter0|add:product.images.count }}">
+                {% if video.thumbnail %}
+                  <img src="{{ video.thumbnail.url }}" alt="Video Thumbnail"
+                       class="object-cover w-full h-full rounded" />
+                {% endif %}
+                <span class="mt-5 inset-0 flex items-center justify-center pointer-events-none">
+                  <svg class="w-8 h-8 text-white drop-shadow-lg opacity-90 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                    <circle cx="10" cy="10" r="10" fill="rgba(0,0,0,0.5)"/>
+                    <polygon points="7,5 15,10 7,15" fill="white"/>
+                  </svg>
+                </span>
               </div>
             {% endfor %}
             </div>

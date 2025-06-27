@@ -54,6 +54,7 @@ class ProductImage(models.Model):
 class ProductVideo(models.Model):
     product = models.ForeignKey(Product, related_name='videos', on_delete=models.CASCADE)
     video = models.FileField(upload_to='product_videos/')
+    thumbnail = models.ImageField(upload_to='product_videos/thumbnails/', blank=True, null=True)
 
     def __str__(self):
         return f"{self.product.name} - Video"
