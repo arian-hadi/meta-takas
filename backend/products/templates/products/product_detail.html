@@ -41,6 +41,15 @@
                 </div>
                 {% endif %}
                 {% endfor %}
+                {# Add video slides #}
+                {% for video in product.videos.all %}
+                <div class="swiper-slide">
+                  <video controls class="object-contain w-full max-h-96" style="max-width:100%; max-height:24rem;">
+                    <source src="{{ video.video.url }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+                {% endfor %}
             </div>
             <!-- Optional navigation buttons -->
             <div class="swiper-button-next"></div>
@@ -59,6 +68,14 @@
                     class="thumbnail w-20 h-20 object-cover rounded border cursor-pointer"
                     data-index="{{ forloop.counter }}"/>
                 {% endif %}
+            {% endfor %}
+            {# Add video thumbnails #}
+            {% for video in product.videos.all %}
+              <div class="thumbnail w-20 h-20 flex items-center justify-center bg-gray-200 rounded border cursor-pointer" data-index="{{ forloop.counter0|add:product.images.count }}">
+                <svg class="w-8 h-8 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M4 4v12l12-6-12-6z"/>
+                </svg>
+              </div>
             {% endfor %}
             </div>
         </div>

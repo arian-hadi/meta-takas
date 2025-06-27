@@ -25,8 +25,9 @@ class ProductListView(ListView):
             queryset = queryset.filter(
                 Q(name__icontains=search_query) |
                 Q(description__icontains=search_query) |
-                Q(exchange_for__icontains=search_query)
-            )
+                Q(exchange_for__name__icontains=search_query) |
+                Q(exchange_for__slug__icontains=search_query)
+            ).distinct()
 
         self.category_slug = self.kwargs.get('category_slug')
 
