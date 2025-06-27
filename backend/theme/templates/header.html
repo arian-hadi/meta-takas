@@ -6,8 +6,8 @@
         >
           <a href="{% url 'homepage' %}">
             <img
-              class="cursor-pointer sm:h-auto sm:w-auto"
-              src="{% static 'images/company-logo.svg' %}"
+            class="h-10 w-auto object-contain cursor-pointer"
+              src="{% static 'images/metatakas.png' %}"
               alt="company logo"
             />
           </a>
@@ -51,7 +51,7 @@
               <input type="hidden" name="sort" value="{{ current_sort }}">
             {% endif %}
 
-            <button class="ml-auto h-full bg-amber-400 px-4 hover:bg-yellow-300">
+            <button class="ml-auto h-full bg-amber-400 px-4 hover:bg-blue-300">
               Search
             </button>
           </form> -->
@@ -70,10 +70,10 @@
                     id="default-search"
                     name="q"
                     value="{{ request.GET.q }}"
-                    class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-yellow-500 focus:border-yellow-500 dark:bg-white-700 dark:border-gray-600  dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
+                    class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-white-700 dark:border-gray-600  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Search products..."
                   />
-                  <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-6 py-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">Search</button>
+                  <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
                   {% if current_listing_type %}
                     <input type="search" value="{{ current_listing_type }}">
                   {% endif %}      
@@ -269,7 +269,7 @@
 
               <button
                 type="submit"
-                class="ml-auto h-full bg-amber-400 px-4 hover:bg-yellow-300"
+                class="ml-auto h-full bg-amber-400 px-4 hover:bg-blue-300"
               >
                 Search
               </button>
@@ -287,9 +287,9 @@
         <!-- Nav bar -->
         <!-- hidden on small devices -->
 
-        <nav class="relative bg-violet-900">
+        <nav class="relative bg-blue-800">
           <div class="mx-auto hidden h-12 w-full max-w-[1200px] items-center md:flex">
-            <button @click="desktopMenuOpen = ! desktopMenuOpen" class="ml-5 flex h-full w-40 cursor-pointer items-center justify-center bg-amber-400">
+            <button @click="desktopMenuOpen = ! desktopMenuOpen" class="ml-5 flex h-full w-40 cursor-pointer items-center justify-center bg-blue-300">
               <div class="flex justify-around" href="#">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-1 h-6 w-6">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
@@ -299,10 +299,10 @@
             </button>
 
             <div class="mx-7 flex gap-8">
-              <a class="font-light text-white duration-100 hover:text-yellow-400 hover:underline" href="{% url 'homepage' %}">Home</a>
-              <a class="font-light text-white duration-100 hover:text-yellow-400 hover:underline" href="{% url 'product_list' %}">Catalog</a>
-              <a class="font-light text-white duration-100 hover:text-yellow-400 hover:underline" href="{% url 'aboutus' %}">About Us</a>
-              <a class="font-light text-white duration-100 hover:text-yellow-400 hover:underline" href="{% url 'contact' %}">Contact Us</a>
+              <a class="font-light text-white duration-100 hover:text-blue-400 hover:underline" href="{% url 'homepage' %}">Home</a>
+              <a class="font-light text-white duration-100 hover:text-blue-400 hover:underline" href="{% url 'product_list' %}">Catalog</a>
+              <a class="font-light text-white duration-100 hover:text-blue-400 hover:underline" href="{% url 'aboutus' %}">About Us</a>
+              <a class="font-light text-white duration-100 hover:text-blue-400 hover:underline" href="{% url 'contact' %}">Contact Us</a>
             </div>
 
             <div class="ml-auto flex gap-4 px-5">
@@ -310,9 +310,9 @@
               {% if user.is_authenticated %}
                 <span class="font-light text-white">Welcome, {{ user.first_name }}</span>
               {% else %}
-                <a class="font-light text-white duration-100 hover:text-yellow-400 hover:underline" href="{% url 'login' %}">Login</a>
+                <a class="font-light text-white duration-100 hover:text-blue-400 hover:underline" href="{% url 'login' %}">Login</a>
                 <span class="text-white">&#124;</span>
-                <a class="font-light text-white duration-100 hover:text-yellow-400 hover:underline" href="{% url 'signup' %}">Sign Up</a>
+                <a class="font-light text-white duration-100 hover:text-blue-400 hover:underline" href="{% url 'signup' %}">Sign Up</a>
               {% endif %}
 
             </div>
