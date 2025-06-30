@@ -68,8 +68,10 @@ class ProductListView(ListView):
             queryset = queryset.order_by('-price')
         elif self.sort_by == 'name_asc':
             queryset = queryset.order_by('name')
+        elif self.sort_by == 'oldest':
+            queryset = queryset.order_by('created_at')
         else:
-            queryset = queryset.order_by('-created_at')  # Default
+            queryset = queryset.order_by('-created_at')  # Default: newest first
 
         return queryset
     
