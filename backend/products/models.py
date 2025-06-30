@@ -1,4 +1,5 @@
 from django.db import models
+from .utils.cities import TURKISH_CITIES
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -6,6 +7,7 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class Product(models.Model):
     SALE = 'sale'
@@ -32,7 +34,7 @@ class Product(models.Model):
     exchange_details = models.TextField(blank=True, null=True)
 
     # Contact and address fields
-    city = models.CharField(max_length=100)
+    city = models.CharField(max_length=100, choices=TURKISH_CITIES)
     district = models.CharField(max_length=100)
     neighborhood = models.CharField(max_length=100)
     street = models.CharField(max_length=100)

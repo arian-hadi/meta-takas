@@ -1,5 +1,5 @@
 from django.views.generic import ListView, DetailView
-from .models import Product, Category
+from .models import Product, Category, TURKISH_CITIES
 from django.db.models import Q, Count
 from django.http import JsonResponse
 from django.template.loader import render_to_string
@@ -37,6 +37,7 @@ class ProductListView(ListView):
         price_min = self.request.GET.get('min_price')
         price_max = self.request.GET.get('max_price')
         self.sort_by = self.request.GET.get('sort')
+        city = self.request.GET.get('city')
 
         if self.category_slug:
             queryset = queryset.filter(category__slug=self.category_slug)
@@ -56,6 +57,9 @@ class ProductListView(ListView):
         exchange_for_slugs = self.request.GET.getlist('exchange_for')
         if exchange_for_slugs:
             queryset = queryset.filter(exchange_for__slug__in=exchange_for_slugs).distinct()
+
+        if city:
+            queryset = queryset.filter(city=city)
 
         # Apply sorting
         if self.sort_by == 'price_asc':
@@ -118,6 +122,9 @@ class ProductListView(ListView):
         selected_exchange_for = self.request.GET.getlist('exchange_for')
         context['selected_exchange_for'] = selected_exchange_for
 
+        context['cities'] = [city for city, _ in TURKISH_CITIES]
+        context['selected_city'] = self.request.GET.get('city', '')
+
         return context
 
 class ProductDetailView(DetailView):
@@ -125,7 +132,7 @@ class ProductDetailView(DetailView):
     template_name = 'products/product_detail.html'
     context_object_name = 'product'
     slug_field = 'slug'
-    slug_url_kwarg = 'slug'
+    slug_url_arg = 'slug'
 
 def product_detail(request, slug):
     product = get_object_or_404(Product, slug=slug)
