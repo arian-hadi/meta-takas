@@ -13,21 +13,21 @@
           </a>
 
           <div class="md:hidden">
-            <button @click="mobileMenuOpen = ! mobileMenuOpen">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="h-8 w-8"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                />
-              </svg>
+            <button @click="mobileMenuOpen = ! mobileMenuOpen" class="relative w-10 h-10 focus:outline-none">
+              <div class="absolute w-6 transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
+                <span 
+                  class="absolute h-0.5 w-6 bg-black transform transition duration-300 ease-in-out"
+                  :class="{'rotate-45': mobileMenuOpen, ' -translate-y-1.5': !mobileMenuOpen}">
+                </span>
+                <span 
+                  class="absolute h-0.5 w-6 bg-black transform transition-all duration-200"
+                  :class="{'opacity-0': mobileMenuOpen}">
+                </span>
+                <span 
+                  class="absolute h-0.5 w-6 bg-black transform transition duration-300 ease-in-out"
+                  :class="{'-rotate-45': mobileMenuOpen, ' translate-y-1.5': !mobileMenuOpen}">
+                </span>
+              </div>
             </button>
           </div>
 
@@ -165,8 +165,14 @@
         <!-- Burger menu  -->
         <section
           x-show="mobileMenuOpen"
+          x-transition:enter="transition ease-out duration-300"
+          x-transition:enter-start="-translate-x-full"
+          x-transition:enter-end="translate-x-0"
+          x-transition:leave="transition ease-in duration-300"
+          x-transition:leave-start="translate-x-0"
+          x-transition:leave-end="-translate-x-full"
           @click.outside="mobileMenuOpen = false"
-          class="absolute left-0 right-0 z-50 h-screen w-full bg-white"
+          class="absolute left-0 right-0 z-50 h-screen w-full bg-white transform"
           style="display: none"
         >
           <div class="mx-auto">
@@ -289,9 +295,12 @@
 
         <nav class="relative bg-blue-800">
           <div class="mx-auto hidden h-12 w-full max-w-[1200px] items-center md:flex">
-            <button @click="desktopMenuOpen = ! desktopMenuOpen" class="ml-5 flex h-full w-40 cursor-pointer items-center justify-center bg-blue-300">
+            <button 
+              @click="desktopMenuOpen = ! desktopMenuOpen" 
+              class="ml-5 flex h-full w-40 cursor-pointer items-center justify-center bg-blue-300 transition-colors duration-200 hover:bg-blue-400"
+            >
               <div class="flex justify-around" href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-1 h-6 w-6">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-1 h-6 w-6 transition-transform duration-200" :class="{'rotate-90': desktopMenuOpen}">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>
                 All categories
@@ -299,10 +308,10 @@
             </button>
 
             <div class="mx-7 flex gap-8">
-              <a class="font-light text-white duration-100 hover:text-blue-400 hover:underline" href="{% url 'homepage' %}">Home</a>
-              <a class="font-light text-white duration-100 hover:text-blue-400 hover:underline" href="{% url 'product_list' %}">Catalog</a>
-              <a class="font-light text-white duration-100 hover:text-blue-400 hover:underline" href="{% url 'aboutus' %}">About Us</a>
-              <a class="font-light text-white duration-100 hover:text-blue-400 hover:underline" href="{% url 'contact' %}">Contact Us</a>
+              <a class="font-light text-white duration-200 hover:text-blue-400 hover:underline relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-blue-400 after:transition-all after:duration-200 hover:after:w-full" href="{% url 'homepage' %}">Home</a>
+              <a class="font-light text-white duration-200 hover:text-blue-400 hover:underline relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-blue-400 after:transition-all after:duration-200 hover:after:w-full" href="{% url 'product_list' %}">Catalog</a>
+              <a class="font-light text-white duration-200 hover:text-blue-400 hover:underline relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-blue-400 after:transition-all after:duration-200 hover:after:w-full" href="{% url 'aboutus' %}">About Us</a>
+              <a class="font-light text-white duration-200 hover:text-blue-400 hover:underline relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-blue-400 after:transition-all after:duration-200 hover:after:w-full" href="{% url 'contact' %}">Contact Us</a>
             </div>
 
             <div class="ml-auto flex gap-4 px-5">
@@ -325,6 +334,12 @@
         <!-- Menu  -->
         <section
           x-show="desktopMenuOpen"
+          x-transition:enter="transition ease-out duration-200"
+          x-transition:enter-start="opacity-0 transform -translate-y-2"
+          x-transition:enter-end="opacity-100 transform translate-y-0"
+          x-transition:leave="transition ease-in duration-200"
+          x-transition:leave-start="opacity-100 transform translate-y-0"
+          x-transition:leave-end="opacity-0 transform -translate-y-2"
           @click.outside="desktopMenuOpen = false"
           class="absolute left-0 right-0 z-10 w-full border-b border-r border-l bg-white"
           style="display: none"
