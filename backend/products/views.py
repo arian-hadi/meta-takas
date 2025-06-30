@@ -3,6 +3,7 @@ from .models import Product, Category
 from django.db.models import Q, Count
 from django.http import JsonResponse
 from django.template.loader import render_to_string
+from django.shortcuts import get_object_or_404, render
 
 
 class ProductListView(ListView):
@@ -125,3 +126,13 @@ class ProductDetailView(DetailView):
     context_object_name = 'product'
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
+
+def product_detail(request, slug):
+    product = get_object_or_404(Product, slug=slug)
+    related_products = Product.objects.filter(
+        category=product.category
+    ).exclude(id=product.id).order_by('-id')[:4]
+    return render(request, 'products/product_detail.html', {
+        'product': product,
+        'related_products': related_products,
+    })
