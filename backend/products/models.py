@@ -49,13 +49,13 @@ class Product(models.Model):
     accept_full_cash = models.BooleanField(default=False)
 
     EXCHANGE_PREFERENCES = [
-        ('will_give_extra_cash', "Will give extra cash"),
-        ('will_receive_extra_cash', "Will receive extra cash"),
-        ('cannot_give_extra_cash', "Cannot give extra cash"),
-        ('accept_half_cash', "50% cash can be requested"),
-        ('accept_half_barter', "50% barter can be requested"),
-        ('accept_full_barter', "Full barter accepted"),
-        ('accept_full_cash', "Full cash accepted"),
+        ('will_give_extra_cash', "Üste Para Verilir"),
+        ('will_receive_extra_cash', "Üste Para Alınır"),
+        ('cannot_give_extra_cash', "Üste Para Veremem"),
+        ('accept_half_cash', "%50 Nakit Talep Edilebilir"),
+        ('accept_half_barter', "%50 Takas Talep Edilir"),
+        ('accept_full_barter', "Tamamı Takas Olur"),
+        ('accept_full_cash', "Tamamı Nakit Olur"),
     ]
 
     def has_exchange_preferences(self):
