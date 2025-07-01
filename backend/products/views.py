@@ -144,4 +144,5 @@ def product_detail(request, slug):
     return render(request, 'products/product_detail.html', {
         'product': product,
         'related_products': related_products,
+        'EXCHANGE_PREFERENCES': Product.EXCHANGE_PREFERENCES,
     })

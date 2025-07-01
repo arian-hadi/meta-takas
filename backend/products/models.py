@@ -1,5 +1,6 @@
 from django.db import models
 from .utils.cities import TURKISH_CITIES
+from django.core.exceptions import ValidationError
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -32,6 +33,74 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     exchange_for = models.ManyToManyField(Category, related_name='exchange_products', blank=True)
     exchange_details = models.TextField(blank=True, null=True)
+
+
+    # Budget Range
+    min_budget = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    max_budget = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+
+    # Barter Preferences
+    will_give_extra_cash = models.BooleanField(default=False)
+    will_receive_extra_cash = models.BooleanField(default=False)
+    cannot_give_extra_cash = models.BooleanField(default=False)
+    accept_half_cash = models.BooleanField(default=False)
+    accept_half_barter = models.BooleanField(default=False)
+    accept_full_barter = models.BooleanField(default=False)
+    accept_full_cash = models.BooleanField(default=False)
+
+    EXCHANGE_PREFERENCES = [
+        ('will_give_extra_cash', "Will give extra cash"),
+        ('will_receive_extra_cash', "Will receive extra cash"),
+        ('cannot_give_extra_cash', "Cannot give extra cash"),
+        ('accept_half_cash', "50% cash can be requested"),
+        ('accept_half_barter', "50% barter can be requested"),
+        ('accept_full_barter', "Full barter accepted"),
+        ('accept_full_cash', "Full cash accepted"),
+    ]
+
+    def has_exchange_preferences(self):
+        return any([
+            self.will_give_extra_cash,
+            self.will_receive_extra_cash,
+            self.cannot_give_extra_cash,
+            self.accept_half_cash,
+            self.accept_half_barter,
+            self.accept_full_barter,
+            self.accept_full_cash,
+            self.min_budget is not None,
+            self.max_budget is not None,
+        ])
+
+    # ✅ 2. Method to return readable preference labels
+    def get_exchange_preference_labels(self):
+        labels = []
+        if self.will_give_extra_cash:
+            labels.append("Will give extra cash")
+        if self.will_receive_extra_cash:
+            labels.append("Will receive extra cash")
+        if self.cannot_give_extra_cash:
+            labels.append("Cannot give extra cash")
+        if self.accept_half_cash:
+            labels.append("50% cash can be requested")
+        if self.accept_half_barter:
+            labels.append("50% barter can be requested")
+        if self.accept_full_barter:
+            labels.append("Full barter accepted")
+        if self.accept_full_cash:
+            labels.append("Full cash accepted")
+        return labels
+
+    # ✅ 3. Clean method to validate logic
+    def clean(self):
+        # Only validate if listing is 'exchange'
+        if self.listing_type == 'exchange':
+            if self.will_give_extra_cash and self.cannot_give_extra_cash:
+                raise ValidationError("A product cannot both give and not give extra cash.")
+
+        # Optional: Check budget consistency
+        if self.min_budget and self.max_budget:
+            if self.min_budget > self.max_budget:
+                raise ValidationError("Minimum budget cannot be greater than maximum budget.")
 
     # Contact and address fields
     city = models.CharField(max_length=100, choices=TURKISH_CITIES)

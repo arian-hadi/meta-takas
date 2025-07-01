@@ -28,6 +28,32 @@ class ProductAdmin(admin.ModelAdmin):
     inlines = [ProductImageInline, ProductVideoInline]
     filter_horizontal = ('exchange_for',)
 
+        # Field groups
+    fieldsets = (
+        (None, {
+            'fields': (
+                'name', 'slug', 'category', 'listing_type', 'price', 'description',
+                'image', 'city', 'district', 'neighborhood', 'street', 'postal_code',
+                'phone_number', 'whatsapp_number', 'email'
+            )
+        }),
+        ('Exchange Preferences', {
+            'fields': (
+                'exchange_for', 'exchange_details',
+                'min_budget', 'max_budget',
+                'will_give_extra_cash',
+                'will_receive_extra_cash',
+                'cannot_give_extra_cash',
+                'accept_half_cash',
+                'accept_half_barter',
+                'accept_full_barter',
+                'accept_full_cash',
+            ),
+            'classes': ('collapse',),  # collapsible section
+        }),
+    )
+
+
     def has_add_permission(self, request):
         return request.user.is_superuser
 

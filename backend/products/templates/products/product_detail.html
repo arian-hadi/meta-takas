@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load product_extras %}
 {% block title %}Product Detail{% endblock %}
 
 {% block content %}
@@ -220,6 +221,55 @@
     </table>
 </section>
 
+
+{% if product.listing_type == 'exchange' and product.has_exchange_preferences %}
+<section class="container mx-auto max-w-[1200px] px-5 py-10">
+  <h2 class="text-xl font-bold mb-4 text-amber-700">Exchange Preferences</h2>
+
+  <div class="border border-amber-400 bg-yellow-50 rounded-lg p-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-800">
+
+      {% if product.get_exchange_preference_labels %}
+      <div>
+        <h3 class="font-semibold mb-2 text-amber-800">Accepted Conditions:</h3>
+        <ul class="list-disc list-inside space-y-1">
+          {% for field, label in EXCHANGE_PREFERENCES %}
+            <li>
+              {% if product|get_attr:field %}
+                <span class="font-bold text-green-700">✔ {{ label }}</span>
+              {% else %}
+                <span class="text-gray-500">{{ label }}</span>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+      {% if product.min_budget or product.max_budget %}
+      <div>
+        <h3 class="font-semibold mb-2 text-amber-800">Desired Budget Range:</h3>
+        <p>
+          {% if product.min_budget and product.max_budget %}
+            {{ product.min_budget }} TL – {{ product.max_budget }} TL
+          {% elif product.min_budget %}
+            From {{ product.min_budget }} TL
+          {% elif product.max_budget %}
+            Up to {{ product.max_budget }} TL
+          {% endif %}
+        </p>
+      </div>
+      {% endif %}
+
+    </div>
+  </div>
+</section>
+{% endif %}
+
+
+
+
+
 <!-- Related Products Section -->
 <section class="container mx-auto max-w-[1200px] px-5 py-10">
     <h2 class="text-xl font-bold mb-6">Related Products</h2>
@@ -273,6 +323,7 @@
         {% endfor %}
     </div>
 </section>
+
 
 <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
 <script>
