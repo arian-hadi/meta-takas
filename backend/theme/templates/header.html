@@ -7,7 +7,7 @@
           <a href="{% url 'homepage' %}">
             <img
             class="h-10 w-auto object-contain cursor-pointer"
-              src="{% static 'images/metatakas.png' %}"
+              src="{% static 'images/metatakaslogo.png' %}"
               alt="company logo"
             />
           </a>
@@ -71,9 +71,9 @@
                     name="q"
                     value="{{ request.GET.q }}"
                     class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-white-700 dark:border-gray-600  dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Search products..."
+                    placeholder="İlanları ara..."
                   />
-                  <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+                  <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Ara</button>
                   {% if current_listing_type %}
                     <input type="search" value="{{ current_listing_type }}">
                   {% endif %}      
@@ -279,10 +279,10 @@
               </button>
             </form>
             <ul class="text-center font-medium">
-              <li class="py-2"><a href="{% url 'homepage' %}">Home</a></li>
-              <li class="py-2"><a href="{% url 'product_list' %}">Catalog</a></li>
-              <li class="py-2"><a href="#">About Us</a></li>
-              <li class="py-2"><a href="{% url 'contact' %}">Contact Us</a></li>
+              <li class="py-2"><a href="{% url 'homepage' %}">Ana Sayfa</a></li>
+              <li class="py-2"><a href="{% url 'product_list' %}">İlanlar</a></li>
+              <li class="py-2"><a href="#">Hakkımızda</a></li>
+              <li class="py-2"><a href="{% url 'contact' %}">İletişim</a></li>
             </ul>
           </div>
         </section>
@@ -301,15 +301,15 @@
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-1 h-6 w-6 transition-transform duration-200" :class="{'rotate-90': desktopMenuOpen}">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>
-                All categories
+                 Tüm kategoriler
               </div>
             </button>
 
             <div class="mx-7 flex gap-8">
-              <a class="font-light text-white duration-200 hover:text-blue-400  relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-blue-400 after:transition-all after:duration-200 hover:after:w-full" href="{% url 'homepage' %}">Home</a>
-              <a class="font-light text-white duration-200 hover:text-blue-400  relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-blue-400 after:transition-all after:duration-200 hover:after:w-full" href="{% url 'product_list' %}">Catalog</a>
-              <a class="font-light text-white duration-200 hover:text-blue-400  relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-blue-400 after:transition-all after:duration-200 hover:after:w-full" href="{% url 'aboutus' %}">About Us</a>
-              <a class="font-light text-white duration-200 hover:text-blue-400  relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-blue-400 after:transition-all after:duration-200 hover:after:w-full" href="{% url 'contact' %}">Contact Us</a>
+              <a class="font-light text-white duration-200 hover:text-blue-400  relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-blue-400 after:transition-all after:duration-200 hover:after:w-full" href="{% url 'homepage' %}">Ana Sayfa</a>
+              <a class="font-light text-white duration-200 hover:text-blue-400  relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-blue-400 after:transition-all after:duration-200 hover:after:w-full" href="{% url 'product_list' %}">İlanlar</a>
+              <a class="font-light text-white duration-200 hover:text-blue-400  relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-blue-400 after:transition-all after:duration-200 hover:after:w-full" href="{% url 'aboutus' %}">Hakkımızda</a>
+              <a class="font-light text-white duration-200 hover:text-blue-400  relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-blue-400 after:transition-all after:duration-200 hover:after:w-full" href="{% url 'contact' %}">İletişim</a>
             </div>
 
             <div class="ml-auto flex gap-4 px-5">
