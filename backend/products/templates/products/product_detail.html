@@ -222,30 +222,33 @@
     </table>
 </section>
 
-
+<!-- Exchange Notes -->
 {% if product.listing_type == 'exchange' and product.exchange_notes.exists %}
 <section class="container mx-auto max-w-[1200px] px-5 py-6">
-  <div class="bg-gray-50 p-5 rounded-lg shadow-sm">
-    <h3 class="text-lg font-semibold text-gray-800">İlana Ait Takas Seçenekleri</h3>
-    <p class="text-sm text-gray-600 mt-1">Bu ilanın takas seçenekleri aşağıda mevcuttur.</p>
+    <div class="bg-gray-50 rounded-lg shadow-sm p-5">
+      <h3 class="text-lg font-semibold text-gray-800">İlana Ait Takas Seçenekleri</h3>
+      <p class="text-sm text-gray-600 mt-1">Bu ilanın takas seçenekleri aşağıda mevcuttur.</p>
+        
+      <div class="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-5 gap-x-6">
+        {% for note in product.exchange_notes.all %}
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-blue-400 rounded-full inline-block mt-0.5"></span>
+              <span class="font-medium text-gray-900">{{ note.category.name }} ile Takaslı</span>
+            </div>
+            {% if note.note %}
+            <div class="pl-5 mt-1">
+              <span class="text-sm text-gray-700">• {{ note.note }}</span>
+            </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+      
 
-    <div class="mt-4 space-y-4">
-      {% for note in product.exchange_notes.all %}
-        <div>
-          <div class="flex items-center gap-2">
-            <span class="w-2 h-2 bg-yellow-400 rounded-full inline-block"></span>
-            <span class="font-medium text-gray-800">{{ note.category.name }} ile Takaslı</span>
-          </div>
-          {% if note.note %}
-          <div class="pl-6 mt-1 text-sm text-gray-600">
-            • {{ note.note }}
-          </div>
-          {% endif %}
-        </div>
-      {% endfor %}
     </div>
-  </div>
-</section>
+  </section>
+  
 {% endif %}
 
 
@@ -299,7 +302,7 @@
 
 <!-- Related Products Section -->
 <section class="container mx-auto max-w-[1200px] px-5 py-10">
-    <h2 class="text-xl font-bold mb-6">Related Products</h2>
+    <h2 class="text-xl font-bold mb-6">Önerilen Ürünler</h2>
     <div class="grid grid-cols-2 gap-3 lg:grid-cols-4">
         {% for product in related_products %}
             <div class="flex flex-col h-full">

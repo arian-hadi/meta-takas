@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'info',
     'products',
     'contact',
+    'nested_admin',
 ]
 
 MIDDLEWARE = [
