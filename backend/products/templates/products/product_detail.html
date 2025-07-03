@@ -96,6 +96,10 @@
             </div>
         </div>
     </div>
+ 
+
+
+
 
     <!-- Product Info -->
     <div class="mx-auto px-5 lg:px-5">
@@ -176,6 +180,49 @@
 
     </div>
 </section>
+
+<!-- Fullscreen images-->
+<div id="lightboxOverlay"
+    class="fixed inset-0 z-50 hidden bg-black bg-opacity-80 flex items-center justify-center">
+  <!-- This inner wrapper ensures the swiper truly spans the viewport -->
+  <div class="absolute inset-0 flex items-center justify-center">
+    <!-- Lightbox Swiper -->
+    <div class="swiper lightbox-swiper w-screen h-screen flex items-center justify-center">
+      <div class="swiper-wrapper h-full">
+        {% if product.image %}
+        <div class="swiper-slide flex items-center justify-center h-full">
+          <img src="{{ product.image.url }}" alt="{{ product.name }}"
+              class="max-h-[90vh] max-w-[90vw] object-contain mx-auto"/>
+        </div>
+        {% endif %}
+
+        {% for image in product.images.all %}
+        {% if not product.image or image.image.url != product.image.url %}
+        <div class="swiper-slide flex items-center justify-center h-full">
+            <img src="{{ image.image.url }}" alt="Product Image"
+                class="max-h-[90vh] max-w-[90vw] object-contain mx-auto"/>
+        </div>
+        {% endif %}
+        {% endfor %}
+
+        {% for video in product.videos.all %}
+        <div class="swiper-slide flex items-center justify-center h-full">
+          <video controls class="max-h-[90vh] max-w-[90vw] object-contain mx-auto">
+              <source src="{{ video.video.url }}" type="video/mp4"/>
+          </video>
+        </div>
+        {% endfor %}
+      </div>
+      <!-- navigation -->
+      <div class="swiper-button-prev text-white"></div>
+      <div class="swiper-button-next text-white"></div>
+    </div>
+lightboxClose"
+            class="absolute top-4 right-4 text-white text-3xl leading-none">&times;</button>
+  </div>
+</div>
+    <!-- Close button -->
+    <button id="
 
 <!-- Product Details Section -->
 <section class="container mx-auto max-w-[1200px] px-5 py-5 lg:py-10">
@@ -355,9 +402,11 @@
 </section>
 
 
-<!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
+
+
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+  // 1) Initialize the main gallery Swiper
   var mainSwiper = new Swiper('.main-swiper', {
     spaceBetween: 10,
     navigation: {
@@ -366,30 +415,58 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   });
 
-  // Thumbnail click handler
+  // 2) Initialize the lightbox Swiper (hidden overlay)
+  var lightboxSwiper = new Swiper('.lightbox-swiper', {
+    spaceBetween: 10,
+    navigation: {
+      nextEl: '.lightbox-swiper .swiper-button-next',
+      prevEl: '.lightbox-swiper .swiper-button-prev',
+    },
+    keyboard: { enabled: true },
+  });
+
+  var overlay = document.getElementById('lightboxOverlay');
+  var closeBtn = document.getElementById('lightboxClose');
+
+  // 3) Thumbnail click handler for main gallery
   document.querySelectorAll('.thumbnail').forEach(function(thumb, idx) {
     thumb.addEventListener('click', function() {
+      // slide main gallery
       mainSwiper.slideTo(idx);
-      document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('ring-2', 'ring-violet-500'));
-      this.classList.add('ring-2', 'ring-violet-500');
+      // open lightbox at same slide
+      overlay.classList.remove('hidden');
+      lightboxSwiper.slideTo(idx, 0);
+      // thumbnail active ring
+      document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('ring-2','ring-violet-500'));
+      thumb.classList.add('ring-2','ring-violet-500');
     });
   });
 
-  // Highlight the active thumbnail on slide change
-  mainSwiper.on('slideChange', function() {
-    document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('ring-2', 'ring-violet-500'));
-    var activeThumb = document.querySelector('.thumbnail[data-index="' + mainSwiper.activeIndex + '"]');
-    if (activeThumb) {
-      activeThumb.classList.add('ring-2', 'ring-violet-500');
-    }
+  // 4) Main slide click opens lightbox
+  document.querySelectorAll('.main-swiper .swiper-slide').forEach(function(slide, idx) {
+    slide.style.cursor = 'zoom-in';
+    slide.addEventListener('click', function() {
+      overlay.classList.remove('hidden');
+      lightboxSwiper.slideTo(idx, 0);
+    });
   });
 
-  // Initial highlight
-  var firstThumb = document.querySelector('.thumbnail[data-index="0"]');
-  if (firstThumb) {
-    firstThumb.classList.add('ring-2', 'ring-violet-500');
-  }
+  // 5) Highlight active thumbnail on main slide change
+  mainSwiper.on('slideChange', function() {
+    document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('ring-2','ring-violet-500'));
+    var activeThumb = document.querySelector('.thumbnail[data-index="' + mainSwiper.activeIndex + '"]');
+    if (activeThumb) activeThumb.classList.add('ring-2','ring-violet-500');
+  });
+
+  // 6) Close lightbox
+  closeBtn.addEventListener('click', function() {
+    overlay.classList.add('hidden');
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') overlay.classList.add('hidden');
+  });
 });
 </script>
+
 
 {% endblock %}
