@@ -5,6 +5,16 @@
 {% block content %}
         <!-- breadcrumbs  -->
 
+        <style>
+          #mobileFilters {
+            transition: transform 0.2s ease-in-out;
+          }
+
+          #mobileFilters.-translate-x-full {
+            transform: translateX(-100%);
+          }
+        </style>
+
         <nav class="mx-auto w-full mt-4 max-w-[1200px] px-5">
           <ul class="flex items-center">
             <li class="cursor-pointer">
@@ -318,27 +328,97 @@
     }
 
     // ------------------------------
-    // ✅ PART 3: Filter Button Logic (this is what you asked for)
+    // ✅ PART 3: Mobile Filter & Categories Logic
     // ------------------------------
     const filterBtn = document.getElementById("toggleFilters");
+    const categoriesBtn = document.getElementById("toggleCategories");
     const mobileFilters = document.getElementById("mobileFilters");
+    const categoriesSection = document.getElementById("categoriesSection");
+    const priceCitySection = document.getElementById("priceCitySection");
 
-    if (filterBtn && mobileFilters) {
-      filterBtn.addEventListener("click", function () {
-        const isHidden = mobileFilters.classList.contains("hidden");
+    // Helper function to show mobile filters
+    function showMobileFilters() {
+      mobileFilters.classList.remove("hidden");
+      mobileFilters.classList.remove("-translate-x-full");
+    }
 
-        if (isHidden) {
-          mobileFilters.classList.remove("hidden");
-          mobileFilters.classList.remove("-translate-x-full"); // if you want sliding effect
+    // Helper function to hide mobile filters
+    function hideMobileFilters() {
+      mobileFilters.classList.add("-translate-x-full");
+      setTimeout(() => {
+        mobileFilters.classList.add("hidden");
+        // Hide both sections when filters are closed
+        categoriesSection.classList.add("hidden");
+        priceCitySection.classList.add("hidden");
+      }, 200);
+    }
+
+    // Categories Button Handler
+    if (categoriesBtn && mobileFilters && categoriesSection) {
+      categoriesBtn.addEventListener("click", function () {
+        const isFiltersHidden = mobileFilters.classList.contains("hidden");
+
+        if (isFiltersHidden) {
+          // Show filters and categories section
+          showMobileFilters();
+          categoriesSection.classList.remove("hidden");
+          priceCitySection.classList.add("hidden");
         } else {
-          mobileFilters.classList.add("-translate-x-full");
-          setTimeout(() => {
-            mobileFilters.classList.add("hidden");
-          }, 200); // match animation duration
+          // If filters are visible, check if categories are shown
+          const isCategoriesHidden = categoriesSection.classList.contains("hidden");
+          
+          if (isCategoriesHidden) {
+            // Show categories, hide price/city
+            categoriesSection.classList.remove("hidden");
+            priceCitySection.classList.add("hidden");
+          } else {
+            // Hide all filters
+            hideMobileFilters();
+          }
+        }
+      });
+    }
+
+    // Filter Button Handler (for price/city filters)
+    if (filterBtn && mobileFilters && priceCitySection) {
+      filterBtn.addEventListener("click", function () {
+        const isFiltersHidden = mobileFilters.classList.contains("hidden");
+
+        if (isFiltersHidden) {
+          // Show filters and price/city section
+          showMobileFilters();
+          priceCitySection.classList.remove("hidden");
+          categoriesSection.classList.add("hidden");
+        } else {
+          // If filters are visible, check if price/city are shown
+          const isPriceCityHidden = priceCitySection.classList.contains("hidden");
+          
+          if (isPriceCityHidden) {
+            // Show price/city, hide categories
+            priceCitySection.classList.remove("hidden");
+            categoriesSection.classList.add("hidden");
+          } else {
+            // Hide all filters
+            hideMobileFilters();
+          }
+        }
+      });
+    }
+
+    // Close filters when clicking outside
+    if (mobileFilters) {
+      document.addEventListener("click", function(event) {
+        const isClickInsideFilters = mobileFilters.contains(event.target);
+        const isClickOnFilterBtn = filterBtn && filterBtn.contains(event.target);
+        const isClickOnCategoriesBtn = categoriesBtn && categoriesBtn.contains(event.target);
+        
+        if (!isClickInsideFilters && !isClickOnFilterBtn && !isClickOnCategoriesBtn) {
+          if (!mobileFilters.classList.contains("hidden")) {
+            hideMobileFilters();
+          }
         }
       });
     }
   });
 </script>
-
 

@@ -114,6 +114,16 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+    
+
+class ExchangeCategoryNote(models.Model):
+    product = models.ForeignKey(Product, related_name='exchange_notes', on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    note = models.CharField(max_length=20, blank=True)
+
+    def __str__(self):
+        return f"{self.product.name} – {self.category.name}: {self.note}"
+
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, related_name='images', on_delete=models.CASCADE)
