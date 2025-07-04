@@ -207,26 +207,35 @@
               </a>
             </div>
 
-            <form method="get" action="{% url 'product_list' %}" class="my-4 mx-5 flex h-10 items-center border border-gray-300 rounded-md bg-white w-full">
-              <div class="px-3">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-5.197-5.197M15.803 15.803A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+            <form method="get" action="{% url 'product_list' %}" class="w-full max-w-[600px] mx-auto">
+              <div class="flex items-center border border-gray-300 rounded-lg bg-gray-50 px-3 py-2">
+                <!-- Search Icon -->
+                <svg class="w-5 h-5 text-gray-500 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                 </svg>
+
+                <!-- Search Input -->
+                <input
+                  type="search"
+                  name="q"
+                  value="{{ request.GET.q }}"
+                  placeholder="İlanları ara..."
+                  class="flex-grow text-sm text-gray-900 bg-transparent outline-none"
+                />
+
+                <!-- Search Button -->
+                <button
+                  type="submit"
+                  class="ml-3 px-4 py-2 text-sm text-white bg-blue-700 hover:bg-blue-800 rounded-md"
+                >
+                  Ara
+                </button>
               </div>
-              <input
-                type="search"
-                name="q"
-                value="{{ request.GET.q }}"
-                placeholder="İlanları ara..."
-                class="w-full text-sm px-2 py-1 outline-none bg-transparent"
-              />
-              <button
-                type="submit"
-                class="ml-2 h-full px-4 text-sm text-white bg-blue-700 hover:bg-blue-800 rounded-r-md"
-              >
-                Ara
-              </button>
             </form>
+
+
+
+
             <ul class="text-center font-medium">
               <li class="py-2"><a href="{% url 'homepage' %}">Ana Sayfa</a></li>
               <li class="py-2"><a href="{% url 'product_list' %}">İlanlar</a></li>
