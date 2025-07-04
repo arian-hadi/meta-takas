@@ -31,30 +31,7 @@
             </button>
           </div>
 
-          <!-- <form method="get" action="{% if current_category_slug %}{% url 'product_list_by_category' current_category_slug %}{% else %}{% url 'product_list' %}{% endif %}" class="hidden h-9 w-2/5 items-center border md:flex">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-3 h-4 w-4">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-            </svg>
 
-            <input
-              name="q"
-              value="{{ request.GET.q }}"
-              class="hidden w-11/12 outline-none md:block"
-              type="search"
-              placeholder="Search"
-            />
-
-            {% if current_listing_type %}
-              <input type="hidden" name="type" value="{{ current_listing_type }}">
-            {% endif %}
-            {% if current_sort %}
-              <input type="hidden" name="sort" value="{{ current_sort }}">
-            {% endif %}
-
-            <button class="ml-auto h-full bg-amber-400 px-4 hover:bg-blue-300">
-              Search
-            </button>
-          </form> -->
 
           
           <form method="get" action="{% url 'product_list' %}"  class="hidden h-9 w-2/5 items-center border md:flex">   
@@ -106,25 +83,6 @@
               <p class="text-xs">Wishlist</p>
             </a>
 
-            <!-- <a
-              href="cart.html"
-              class="flex cursor-pointer flex-col items-center justify-center"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                class="h-6 w-6"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 004.25 22.5h15.5a1.875 1.875 0 001.865-2.071l-1.263-12a1.875 1.875 0 00-1.865-1.679H16.5V6a4.5 4.5 0 10-9 0zM12 3a3 3 0 00-3 3v.75h6V6a3 3 0 00-3-3zm-3 8.25a3 3 0 106 0v-.75a.75.75 0 011.5 0v.75a4.5 4.5 0 11-9 0v-.75a.75.75 0 011.5 0v.75z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-
-              <p class="text-xs">Cart</p>
-            </a> -->
 
             <!-- <a
               href="{% url 'profile_information' %}"
@@ -249,33 +207,24 @@
               </a>
             </div>
 
-            <form class="my-4 mx-5 flex h-9 items-center border">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="mx-3 h-4 w-4"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-                />
-              </svg>
-
+            <form method="get" action="{% url 'product_list' %}" class="my-4 mx-5 flex h-10 items-center border border-gray-300 rounded-md bg-white w-full">
+              <div class="px-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-5.197-5.197M15.803 15.803A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                </svg>
+              </div>
               <input
-                class="hidden w-11/12 outline-none md:block"
                 type="search"
-                placeholder="Search"
+                name="q"
+                value="{{ request.GET.q }}"
+                placeholder="İlanları ara..."
+                class="w-full text-sm px-2 py-1 outline-none bg-transparent"
               />
-
               <button
                 type="submit"
-                class="ml-auto h-full bg-amber-400 px-4 hover:bg-blue-300"
+                class="ml-2 h-full px-4 text-sm text-white bg-blue-700 hover:bg-blue-800 rounded-r-md"
               >
-                Search
+                Ara
               </button>
             </form>
             <ul class="text-center font-medium">
