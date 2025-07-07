@@ -60,7 +60,7 @@ class ProductAdmin(admin.ModelAdmin):
         (None, {
             'fields': (
                 'name', 'slug', 'category', 'listing_type', 'price', 'description',
-                'image', 'city', 'district', 'neighborhood', 'street', 'postal_code',
+                'image', 'city', 'province', 'neighborhood', 'street', 'postal_code',
                 'phone_number', 'whatsapp_number', 'email'
             )
         }),

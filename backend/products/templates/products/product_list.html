@@ -458,6 +458,9 @@ citySelect.addEventListener("change", function () {
     empty.textContent = "Lütfen önce bir şehir seçin";
     provinceSelect.appendChild(empty);
   }
+
+  // ✅ Submit the form automatically to re-render with selected_city
+  this.form.submit();  // <- this line is important
 });
 </script>
 
