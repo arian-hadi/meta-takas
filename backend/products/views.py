@@ -1,5 +1,6 @@
 from django.views.generic import ListView, DetailView
 from .models import Product, Category, TURKISH_CITIES
+from .utils.city_data import CITY_CHOICES, PROVINCE_MAP
 from django.db.models import Q, Count
 from django.http import JsonResponse
 from django.template.loader import render_to_string
@@ -32,6 +33,7 @@ class ProductListView(ListView):
 
         self.category_slug = self.kwargs.get('category_slug')
 
+        province = self.request.GET.get('province')
         selected_categories = self.request.GET.getlist('category')
         selected_types = self.request.GET.getlist('type')
         price_min = self.request.GET.get('min_price')
@@ -39,6 +41,12 @@ class ProductListView(ListView):
         self.sort_by = self.request.GET.get('sort')
         city = self.request.GET.get('city')
 
+        if city:
+            queryset = queryset.filter(city=city)
+
+        if province:
+            queryset = queryset.filter(province=province) 
+ 
         if self.category_slug:
             queryset = queryset.filter(category__slug=self.category_slug)
 
@@ -124,7 +132,10 @@ class ProductListView(ListView):
         selected_exchange_for = self.request.GET.getlist('exchange_for')
         context['selected_exchange_for'] = selected_exchange_for
 
-        context['cities'] = [city for city, _ in TURKISH_CITIES]
+        context['cities'] = [city for city, _ in CITY_CHOICES]
+        context['selected_city'] = self.request.GET.get('city', '')
+        context['selected_province'] = self.request.GET.get('province', '')
+        context['province_map'] = PROVINCE_MAP
         context['selected_city'] = self.request.GET.get('city', '')
 
         return context

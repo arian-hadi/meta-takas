@@ -1,7 +1,8 @@
 from django.contrib import admin
-
-from django.contrib import admin
+from django import forms
 from .models import Category, Product, ProductImage, ProductVideo, ExchangeCategoryNote
+from .utils.city_data import CITY_CHOICES, PROVINCE_MAP
+from django import forms
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -21,6 +22,29 @@ class ProductVideoInline(admin.TabularInline):
 class ExchangeCategoryNoteInline(admin.TabularInline):
     model = ExchangeCategoryNote
     extra = 1
+
+
+
+class ProductAdminForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        # Always set city choices
+        self.fields['city'].widget = forms.Select(choices=CITY_CHOICES)
+
+        # Dynamically set province choices based on selected city
+        selected_city = self.data.get('city') or self.initial.get('city')
+
+        if selected_city in PROVINCE_MAP:
+            self.fields['province'].widget = forms.Select(
+                choices=[(p, p) for p in PROVINCE_MAP[selected_city]]
+            )
+        else:
+            self.fields['province'].widget = forms.Select(choices=[])
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):

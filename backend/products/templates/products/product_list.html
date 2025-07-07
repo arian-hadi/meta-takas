@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load dict_filters %}
 {% load static %}
 {% block title %}Product list{% endblock %}
 
@@ -127,15 +128,28 @@
                 </div>
               </div>
               <!-- CITY -->
-              <div class="border-b py-5">
-                <p class="mb-3 font-medium">ŞEHİR</p>
-                <select name="city" class="w-full border p-2 rounded">
-                  <option value="">Tüm Şehirler</option>
-                  {% for city in cities %}
-                    <option value="{{ city }}" {% if city == selected_city %}selected{% endif %}>{{ city }}</option>
+            <div class="border-b py-5">
+              <p class="mb-3 font-medium">ŞEHİR</p>
+              <select name="city" id="city" class="w-full border p-2 rounded">
+                <option value="">Tüm Şehirler</option>
+                {% for city in cities %}
+                  <option value="{{ city }}" {% if city == selected_city %}selected{% endif %}>{{ city }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <!-- İlçe (Province) Dropdown -->
+            <div class="border-b py-5">
+              <p class="mb-3 font-medium">İLÇE</p>
+              <select name="province" id="province" class="w-full border p-2 rounded">
+                {% if selected_city and selected_province %}
+                  {% for ilce in province_map|dict_get:selected_city %}
+                    <option value="{{ ilce }}" {% if ilce == selected_province %}selected{% endif %}>{{ ilce }}</option>
                   {% endfor %}
-                </select>
-              </div>
+                {% else %}
+                  <option value="">Lütfen önce bir şehir seçin</option>
+                {% endif %}
+              </select>
             </div>
             <!-- TAKAS ISTENEN (EXCHANGE FOR) FILTER -->
             <div class="border-b py-5">
@@ -278,6 +292,7 @@
 
         </div>
       </section>
+      {{ province_map|json_script:"province-map-data" }}
 
 
 {% endblock %}
@@ -420,5 +435,31 @@
       });
     }
   });
+
+const provinceMap = JSON.parse(document.getElementById("province-map-data").textContent);
+const citySelect = document.getElementById("city");
+const provinceSelect = document.getElementById("province");
+
+citySelect.addEventListener("change", function () {
+  const selectedCity = this.value;
+  const provinces = provinceMap[selectedCity] || [];
+
+  provinceSelect.innerHTML = "";
+
+  if (provinces.length > 0) {
+    provinces.forEach(function (ilce) {
+      const option = document.createElement("option");
+      option.value = ilce;
+      option.textContent = ilce;
+      provinceSelect.appendChild(option);
+    });
+  } else {
+    const empty = document.createElement("option");
+    empty.textContent = "Lütfen önce bir şehir seçin";
+    provinceSelect.appendChild(empty);
+  }
+});
 </script>
+
+
 

@@ -1,5 +1,6 @@
 from django.db import models
 from .utils.cities import TURKISH_CITIES
+from .utils.city_data import CITY_CHOICES, PROVINCE_MAP
 from django.core.exceptions import ValidationError
 
 class Category(models.Model):
@@ -103,8 +104,8 @@ class Product(models.Model):
                 raise ValidationError("Minimum budget cannot be greater than maximum budget.")
 
     # Contact and address fields
-    city = models.CharField(max_length=100, choices=TURKISH_CITIES)
-    district = models.CharField(max_length=100)
+    city = models.CharField(max_length=100, choices=CITY_CHOICES)  # E.g., Istanbul
+    province = models.CharField(max_length=100)    
     neighborhood = models.CharField(max_length=100)
     street = models.CharField(max_length=100)
     postal_code = models.CharField(max_length=20)
