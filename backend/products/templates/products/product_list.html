@@ -142,14 +142,9 @@
             <div class="border-b py-5">
               <p class="mb-3 font-medium">İLÇE</p>
               <select name="province" id="province" class="w-full border p-2 rounded">
-                {% if selected_city and selected_province %}
-                  {% for ilce in province_map|dict_get:selected_city %}
-                    <option value="{{ ilce }}" {% if ilce == selected_province %}selected{% endif %}>{{ ilce }}</option>
-                  {% endfor %}
-                {% else %}
-                  <option value="">Lütfen önce bir şehir seçin</option>
-                {% endif %}
+                <option value="">Lütfen önce bir şehir seçin</option>
               </select>
+
             </div>
             <!-- TAKAS ISTENEN (EXCHANGE FOR) FILTER -->
             <div class="border-b py-5">
@@ -300,6 +295,59 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
+  
+    setTimeout(function () {
+    const provinceMapEl = document.getElementById("province-map-data");
+    if (!provinceMapEl) return;
+
+    const provinceMap = JSON.parse(provinceMapEl.textContent);
+    const citySelect = document.getElementById("city");
+    const provinceSelect = document.getElementById("province");
+
+    const selectedProvince = "{{ selected_province|default:''|escapejs }}";
+
+    function updateProvinceOptions(selectedCity, preselect = null) {
+      provinceSelect.innerHTML = "";
+
+      const provinces = provinceMap[selectedCity] || [];
+
+      if (provinces.length > 0) {
+        provinces.forEach(function (ilce) {
+          const option = document.createElement("option");
+          option.value = ilce;
+          option.textContent = ilce;
+          if (ilce === preselect) {
+            option.selected = true;
+          }
+          provinceSelect.appendChild(option);
+        });
+      } else {
+        const empty = document.createElement("option");
+        empty.textContent = "Lütfen önce bir şehir seçin";
+        empty.disabled = true;
+        empty.selected = true;
+        provinceSelect.appendChild(empty);
+      }
+    }
+
+    if (citySelect && provinceSelect) {
+      const initialCity = citySelect.value;
+      if (initialCity) {
+        updateProvinceOptions(initialCity, selectedProvince);
+      }
+
+      citySelect.addEventListener("change", function () {
+        updateProvinceOptions(this.value);
+      });
+    }
+    console.log("City dropdown loaded:", citySelect?.value);
+
+  }, 10);
+
+
+
+
+
     // ------------------------------
     // ✅ PART 1: AJAX Live Search
     // ------------------------------
@@ -323,6 +371,9 @@
         }, 300);
       });
     }
+
+  
+
 
     // ------------------------------
     // ✅ PART 2: Categories Modal (if it exists)
@@ -436,33 +487,6 @@
     }
   });
 
-const provinceMap = JSON.parse(document.getElementById("province-map-data").textContent);
-const citySelect = document.getElementById("city");
-const provinceSelect = document.getElementById("province");
 
-citySelect.addEventListener("change", function () {
-  const selectedCity = this.value;
-  const provinces = provinceMap[selectedCity] || [];
-
-  provinceSelect.innerHTML = "";
-
-  if (provinces.length > 0) {
-    provinces.forEach(function (ilce) {
-      const option = document.createElement("option");
-      option.value = ilce;
-      option.textContent = ilce;
-      provinceSelect.appendChild(option);
-    });
-  } else {
-    const empty = document.createElement("option");
-    empty.textContent = "Lütfen önce bir şehir seçin";
-    provinceSelect.appendChild(empty);
-  }
-
-  // ✅ Submit the form automatically to re-render with selected_city
-  this.form.submit();  // <- this line is important
-});
 </script>
-
-
 
