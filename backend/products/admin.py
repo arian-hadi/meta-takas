@@ -48,6 +48,27 @@ class ProductAdminForm(forms.ModelForm):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
+    form = ProductAdminForm 
+    
+    class Media:
+        js = ('js/admin_city_province.js',)
+
+    def get_form(self, request, obj=None, **kwargs):
+        form = super().get_form(request, obj, **kwargs)
+
+        # Inject PROVINCE_MAP into the admin page as a JS global
+        import json
+        from django.utils.safestring import mark_safe
+        from .utils.city_data import PROVINCE_MAP
+
+        province_json = json.dumps(PROVINCE_MAP)
+        form.base_fields['province'].help_text = mark_safe(
+            f'<script>window.PROVINCE_MAP = {province_json};</script>'
+        )
+
+        return form
+
+
     prepopulated_fields = {"slug": ("name",)}
     list_display = ['name', 'category', 'listing_type', 'price', 'city', 'created_at']
     search_fields = ['name', 'description', 'city']
