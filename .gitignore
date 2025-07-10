@@ -34,3 +34,9 @@ dist/
 .DS_Store
 
 frontend/
+
+# Ignore all media uploads
+backend/media/
+
+# Keep the empty folder in repo (optional)
+!backend/media/.gitkeep

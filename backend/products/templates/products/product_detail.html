@@ -279,7 +279,7 @@
             {% if note.items.exists %}
             <ul class="pl-5 mt-1 list-disc text-sm text-gray-700">
               {% for item in note.items.all %}
-                <li>{{ item.item_name }}</li>
+                <li>{{ item.text }}</li>
               {% endfor %}
             </ul>
             {% endif %}
