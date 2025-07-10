@@ -1,26 +1,33 @@
 from django.contrib import admin
+import nested_admin
 from django import forms
-from .models import Category, Product, ProductImage, ProductVideo, ExchangeCategoryNote
+from .models import Category, Product, ProductImage, ProductVideo, ExchangeNote, ExchangeNoteItem
 from .utils.city_data import CITY_CHOICES, PROVINCE_MAP
 from django import forms
 
 @admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
+class CategoryAdmin(nested_admin.NestedModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
     list_display = ['name', 'slug']
 
 
-class ProductImageInline(admin.TabularInline):
+class ProductImageInline(nested_admin.NestedTabularInline):
     model = ProductImage
     extra = 3  # allows adding up to 5 images by default
 
 
-class ProductVideoInline(admin.TabularInline):
+class ProductVideoInline(nested_admin.NestedTabularInline):
     model = ProductVideo
     extra = 1
 
-class ExchangeCategoryNoteInline(admin.TabularInline):
-    model = ExchangeCategoryNote
+
+class ExchangeNoteItemInline(nested_admin.NestedTabularInline):
+    model = ExchangeNoteItem
+    extra = 2
+
+class ExchangeNoteInline(nested_admin.NestedTabularInline):
+    model = ExchangeNote
+    inlines = [ExchangeNoteItemInline]
     extra = 1
 
 
@@ -47,7 +54,7 @@ class ProductAdminForm(forms.ModelForm):
             self.fields['province'].widget = forms.Select(choices=[])
 
 @admin.register(Product)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(nested_admin.NestedModelAdmin):
     form = ProductAdminForm 
     
     class Media:
@@ -73,7 +80,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ['name', 'category', 'listing_type', 'price', 'city', 'created_at']
     search_fields = ['name', 'description', 'city']
     list_filter = ['category', 'city', 'listing_type']
-    inlines = [ProductImageInline, ProductVideoInline, ExchangeCategoryNoteInline]
+    inlines = [ProductImageInline, ProductVideoInline, ExchangeNoteInline]
     filter_horizontal = ('exchange_for',)
 
         # Field groups

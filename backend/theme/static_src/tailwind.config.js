@@ -41,6 +41,26 @@ module.exports = {
          */
         // '../../**/*.py'
     ],
+    
+    safelist: [
+    'translate-x-full',
+    'translate-x-0',
+    'transition',
+    'transform',
+    'duration-300',
+    'ease-in-out',
+    'hidden',           // needed for toggling visibility
+    'fixed',            // used on the overlay
+    'inset-0',          // used on the overlay
+    'inset-y-0',
+    'right-0',
+    'z-50',
+    'bg-black/30',
+    'bg-white',
+    'shadow-xl',
+    ],
+
+
     theme: {
         extend: {},
     },

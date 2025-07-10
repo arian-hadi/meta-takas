@@ -276,16 +276,17 @@
               <span class="w-2 h-2 bg-blue-400 rounded-full inline-block mt-0.5"></span>
               <span class="font-medium text-gray-900">{{ note.category.name }} ile Takaslı</span>
             </div>
-            {% if note.note %}
-            <div class="pl-5 mt-1">
-              <span class="text-sm text-gray-700">• {{ note.note }}</span>
-            </div>
+            {% if note.items.exists %}
+            <ul class="pl-5 mt-1 list-disc text-sm text-gray-700">
+              {% for item in note.items.all %}
+                <li>{{ item.item_name }}</li>
+              {% endfor %}
+            </ul>
             {% endif %}
           </div>
         {% endfor %}
       </div>
       
-
     </div>
   </section>
   

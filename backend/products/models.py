@@ -117,13 +117,20 @@ class Product(models.Model):
         return self.name
     
 
-class ExchangeCategoryNote(models.Model):
-    product = models.ForeignKey(Product, related_name='exchange_notes', on_delete=models.CASCADE)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    note = models.CharField(max_length=20, blank=True)
+class ExchangeNote(models.Model):
+    product = models.ForeignKey('Product', related_name='exchange_notes', on_delete=models.CASCADE)
+    category = models.ForeignKey('Category', on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.product.name} – {self.category.name}: {self.note}"
+        return f"{self.product.name} – {self.category.name}"
+
+
+class ExchangeNoteItem(models.Model):
+    note = models.ForeignKey(ExchangeNote, related_name='items', on_delete=models.CASCADE)
+    text = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.text
 
 
 class ProductImage(models.Model):
