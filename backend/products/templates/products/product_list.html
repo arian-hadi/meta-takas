@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
+{% load dict_filters %}
 {% load static %}
 {% block title %}Product list{% endblock %}
 
 {% block content %}
         <!-- breadcrumbs  -->
-
         <nav class="mx-auto w-full mt-4 max-w-[1200px] px-5">
           <ul class="flex items-center">
             <li class="cursor-pointer">
-              <a href="index.html">
+              <a href="{% url 'homepage' %}" class="flex items">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -25,43 +25,181 @@
               </a>
             </li>
             <li>
+              <a class="{% url 'homepage' %}">
               <span class="mx-2 text-gray-500">&gt;</span>
+              </a>
             </li>
 
             <li class="text-gray-500">Catalog</li>
           </ul>
         </nav>
+
         <!-- /breadcrumbs  -->
-      </div>
+
+
+
+        <!-- Filters Modal (Mobile only) -->
+
+        <!-- Open Button (only visible on mobile) -->
+          <div class="p-4 lg:hidden">
+            <button id="openDrawerBtn" type="button" class="px-4 py-2 bg-violet-700 text-white rounded">
+              Open Drawer
+            </button>
+          </div>
+
+          <!-- Overlay (Mobile only) -->
+          <div id="drawerOverlay" class="fixed inset-0 bg-black/30 opacity-0 pointer-events-none transition-opacity z-40 lg:hidden"></div>
+
+          <!-- Drawer Panel (from left, Mobile only) -->
+          <div id="leftDrawer" class="fixed inset-y-0 left-0 w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300 z-50 lg:hidden">
+            <div class="flex justify-between items-center p-4 border-b">
+              <h2 class="text-lg font-semibold">Left Drawer</h2>
+              <button id="closeDrawerBtn" type="button" class="text-gray-500 hover:text-gray-700">
+                ✕
+              </button>
+            </div>
+            <div class="p-4">
+              <p>This drawer only appears on small screens.</p>
+            </div>
+          </div>
+
+
+        <div class="fixed inset-y-0 right-0 w-80 max-w-full bg-white shadow-xl transform translate-x-full transition duration-300 ease-in-out" >
+
+            <div class="overflow-y-auto max-h-[85vh] p-4">
+      
+            <!-- Filter Form -->
+              <form method="get" action="{% url 'product_list' %}" class="p-4 overflow-y-auto max-h-[90vh] space-y-6">
+                <!-- CATEGORIES -->
+                <div>
+                  <p class="font-medium mb-2">Kategoriler</p>
+                  {% for category in categories %}
+                    <label class="flex items-center space-x-2 mb-2">
+                      <input type="checkbox" name="category" value="{{ category.slug }}" {% if category.slug in selected_categories %}checked{% endif %} class="accent-violet-600">
+                      <span>{{ category.name }}</span>
+                    </label>
+                  {% endfor %}
+                </div>
+
+                <!-- PRICE -->
+                <div>
+                  <p class="font-medium mb-2">Fiyat</p>
+                  <div class="flex gap-3">
+                    <input type="number" name="min_price" placeholder="Min" class="w-1/2 border rounded px-2 py-1" value="{{ min_price }}">
+                    <input type="number" name="max_price" placeholder="Max" class="w-1/2 border rounded px-2 py-1" value="{{ max_price }}">
+                  </div>
+                </div>
+
+                <!-- CITY -->
+                <div>
+                  <p class="font-medium mb-2">Şehir</p>
+                  <select name="city" id="cityMobile" class="w-full border p-2 rounded">
+                    <option value="">Tüm Şehirler</option>
+                    {% for city in cities %}
+                      <option value="{{ city }}" {% if city == selected_city %}selected{% endif %}>{{ city }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+
+                <!-- PROVINCE -->
+                <div>
+                  <p class="font-medium mb-2">İlçe</p>
+                  <select name="province" id="provinceMobile" class="w-full border p-2 rounded">
+                    <option value="">Lütfen önce bir şehir seçin</option>
+                  </select>
+                </div>
+
+                <!-- EXCHANGE FOR -->
+                <div>
+                  <p class="font-medium mb-2">Takas İstenen</p>
+                  {% for category in categories %}
+                    <label class="flex items-center space-x-2 mb-2">
+                      <input type="checkbox" name="exchange_for" value="{{ category.slug }}" {% if category.slug in selected_exchange_for %}checked{% endif %} class="accent-violet-600">
+                      <span>{{ category.name }}</span>
+                    </label>
+                  {% endfor %}
+                </div>
+
+                <!-- LISTING TYPE -->
+                <div>
+                  <p class="font-medium mb-2">İlan Türü</p>
+                  {% for type in types %}
+                    <label class="flex items-center space-x-2 mb-2">
+                      <input type="checkbox" name="type" value="{{ type.slug }}" {% if type.slug in selected_types %}checked{% endif %} class="accent-violet-600">
+                      <span>{{ type.label }}</span>
+                    </label>
+                  {% endfor %}
+                </div>
+
+                <!-- Submit -->
+                <div class="pt-4">
+                  <button type="submit" class="w-full bg-violet-700 text-white py-2 rounded">Filtrele</button>
+                </div>
+              </form>
+            </div>
+        </div>
+
+        
 
       <section
         class="container mx-auto flex-grow max-w-[1200px] border-b py-5 lg:flex lg:flex-row lg:py-10"
       >
         <!-- sidebar  -->
         <section class="hidden w-[300px] flex-shrink-0 px-4 lg:block">
-
+        <div id="filtersSection">
           <form method="get" action="{% url 'product_list' %}" class="space-y-6">
-
+            <div id="categoriesSection" class="space-y-6 hidden lg:block">
             <!-- CATEGORIES -->
-            <div class="border-b pb-5">
-              <p class="mb-3 font-medium">CATEGORIES</p>
-              {% for category in categories %}
-                <div class="flex w-full justify-between items-center">
-                  <div class="flex items-center">
-                    <input
-                      type="checkbox"
-                      name="category"
-                      value="{{ category.slug }}"
-                      class="accent-violet-600"
-                      {% if category.slug in selected_categories %}checked{% endif %}
-                    />
-                    <p class="ml-4 text-gray-800">{{ category.name }}</p>
+              <div class="border-b pb-5">
+                <p class="mb-3 font-medium">KATAGORILER</p>
+                {% for category in categories %}
+                  <div class="flex w-full justify-between items-center">
+                    <div class="flex items-center">
+                      <input
+                        type="checkbox"
+                        name="category"
+                        value="{{ category.slug }}"
+                        class="accent-violet-600"
+                        {% if category.slug in selected_categories %}checked{% endif %}
+                      />
+                      <p class="ml-4 text-gray-800">{{ category.name }}</p>
+                    </div>
+                    <div><p class="text-gray-500">({{ category.products.count }})</p></div>
                   </div>
-                  <div><p class="text-gray-500">({{ category.products.count }})</p></div>
+                {% endfor %}
+              </div>
+            </div>
+            <div id="priceCitySection" class="space-y-6 hidden lg:block">
+              <!-- PRICE -->
+              <div class="border-b py-5">
+                <div class="w-full">
+                  <p class="mb-3 font-medium">FİYAT</p>
+                  <div class="flex justify-between">
+                    <input type="number" name="min_price" class="h-8 w-[90px] border pl-2" placeholder="Min" value="{{ min_price }}" />
+                    <span class="px-3">-</span>
+                    <input type="number" name="max_price" class="h-8 w-[90px] border pl-2" placeholder="Max" value="{{ max_price }}" />
+                  </div>
                 </div>
-              {% endfor %}
+              </div>
+              <!-- CITY -->
+            <div class="border-b py-5">
+              <p class="mb-3 font-medium">ŞEHİR</p>
+              <select name="city" id="city" class="w-full border p-2 rounded">
+                <option value="">Tüm Şehirler</option>
+                {% for city in cities %}
+                  <option value="{{ city }}" {% if city == selected_city %}selected{% endif %}>{{ city }}</option>
+                {% endfor %}
+              </select>
             </div>
 
+            <!-- İlçe (Province) Dropdown -->
+            <div class="border-b py-5">
+              <p class="mb-3 font-medium">İLÇE</p>
+              <select name="province" id="province" class="w-full border p-2 rounded">
+                <option value="">Lütfen önce bir şehir seçin</option>
+              </select>
+
+            </div>
             <!-- TAKAS ISTENEN (EXCHANGE FOR) FILTER -->
             <div class="border-b py-5">
               <p class="mb-3 font-medium">TAKAS ISTENEN</p>
@@ -101,93 +239,21 @@
               {% endfor %}
             </div>
 
-            <!-- PRICE -->
-            <div class="border-b py-5">
-              <div class = "w-full">
-                <p class="mb-3 font-medium">PRICE</p>
-                <div class="flex justify-between">
-                  <input
-                    type="number"
-                    name="min_price"
-                    class="h-8 w-[90px] border pl-2"
-                    placeholder="Min"
-                    value="{{ min_price }}"
-                  />
-                  <span class="px-3">-</span>
-                  <input
-                    type="number"
-                    name="max_price"
-                    class="h-8 w-[90px] border pl-2"
-                    placeholder="Max"
-                    value="{{ max_price }}"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <!-- CITY -->
-            <div class="border-b py-5">
-              <p class="mb-3 font-medium">CITY</p>
-              <select name="city" class="w-full border p-2 rounded">
-                <option value="">All Cities</option>
-                {% for city in cities %}
-                  <option value="{{ city }}" {% if city == selected_city %}selected{% endif %}>{{ city }}</option>
-                {% endfor %}
-              </select>
-            </div>
-
             <!-- SUBMIT BUTTON -->
             <div class="pt-5">
               <button type="submit" class="px-4 py-2 bg-violet-600 text-white rounded">Apply Filters</button>
             </div>
 
           </form>
-
-
-
-            <!-- <div class="flex py-5">
-                <div class="w-full">
-                <p class="mb-3 font-medium">COLOR</p>
-
-                <div class="flex gap-2">
-                    <div
-                    class="h-8 w-8 cursor-pointer border border-white bg-gray-600 focus:ring-2 focus:ring-gray-500 active:ring-2 active:ring-gray-500"
-                    ></div>
-                    <div
-                    class="h-8 w-8 cursor-pointer border border-white bg-violet-900 focus:ring-2 focus:ring-gray-500 active:ring-2 active:ring-gray-500"
-                    ></div>
-                    <div
-                    class="h-8 w-8 cursor-pointer border border-white bg-red-900 focus:ring-2 focus:ring-gray-500 active:ring-2 active:ring-gray-500"
-                    ></div>
-                </div>
-                </div>
-            </div> -->
+        </div>
         </section>
         <!-- /sidebar  -->
 
 
-        <!-- <div class="mb-5 flex items-center justify-between px-5">
-          <div class="flex gap-3">
-            <form method="get" class="flex items-center gap-3">
-        
-              {% if current_listing_type %}
-                <input type="hidden" name="type" value="{{ current_listing_type }}">
-              {% endif %}
-
-              <label for="sort" class="text-sm font-medium">Sort by:</label>
-              <select name="sort" id="sort" onchange="this.form.submit()" class="border rounded px-3 py-2 text-sm">
-                <option value="newest" {% if current_sort == 'newest' or not current_sort %}selected{% endif %}>Yeni Eklenenler</option>
-                <option value="price_asc" {% if current_sort == 'price_asc' %}selected{% endif %}>Fiyat: Artan</option>
-                <option value="price_desc" {% if current_sort == 'price_desc' %}selected{% endif %}>Fiyat: Azalan</option>
-                <option value="name_asc" {% if current_sort == 'name_asc' %}selected{% endif %}>A-Z</option>
-              </select>
-            </form>
-          </div>
-        </div> -->
 
         <!--PRODUCT-LIST-START-->
         <div id = "results-container">
-          <div class="mb-5 flex items-center justify-between px-5">
+          <div class="mb-5 hidden md:flex items-center justify-between px-5">
             <form method="get" class="flex items-center gap-4 w-full">
               {# Keep other filter hidden fields if needed #}
               <label for="sort" class="text-sm font-medium">Sort by:</label>
@@ -277,30 +343,109 @@
 
         </div>
       </section>
+      {{ province_map|json_script:"province-map-data" }}
+
+
 {% endblock %}
 
 
 <script>
+document.addEventListener('DOMContentLoaded', function () {
+  // ------------------------------
+  // ✅ 1. City > Province Mapping (desktop only)
+  // ------------------------------
+  const provinceMapEl = document.getElementById("province-map-data");
+  const provinceMap = JSON.parse(provinceMapEl?.textContent || '{}');
+  const selectedProvince = "{{ selected_province|default:''|escapejs }}";
+
+  function updateProvinceOptions(cityEl, provinceEl, selectedCity, preselect = null) {
+    provinceEl.innerHTML = "";
+    const provinces = provinceMap[selectedCity] || [];
+
+    if (provinces.length > 0) {
+      provinces.forEach(function (ilce) {
+        const option = document.createElement("option");
+        option.value = ilce;
+        option.textContent = ilce;
+        if (ilce === preselect) option.selected = true;
+        provinceEl.appendChild(option);
+      });
+    } else {
+      const empty = document.createElement("option");
+      empty.textContent = "Lütfen önce bir şehir seçin";
+      empty.disabled = true;
+      empty.selected = true;
+      provinceEl.appendChild(empty);
+    }
+  }
+
+  const cityDesktop = document.getElementById("city");
+  const provinceDesktop = document.getElementById("province");
+  if (cityDesktop && provinceDesktop) {
+    // initialize on load
+    if (cityDesktop.value) {
+      updateProvinceOptions(cityDesktop, provinceDesktop, cityDesktop.value, selectedProvince);
+    }
+    // update when user changes city
+    cityDesktop.addEventListener("change", function () {
+      updateProvinceOptions(cityDesktop, provinceDesktop, this.value);
+    });
+  }
+
+  // ------------------------------
+  // ✅ 2. AJAX Live Search (if present)
+  // ------------------------------
   const searchInput = document.getElementById('default-search');
   const resultsContainer = document.getElementById('results-container');
 
-  let timeout = null;
+  if (searchInput && resultsContainer) {
+    let timeout = null;
+    searchInput.addEventListener('input', function () {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        fetch(`?q=${encodeURIComponent(this.value)}`, {
+          headers: { 'X-Requested-With': 'XMLHttpRequest' }
+        })
+        .then(res => res.json())
+        .then(data => {
+          resultsContainer.innerHTML = data.products_html;
+        });
+      }, 300);
+    });
+  }
 
-  searchInput.addEventListener('input', function () {
-    clearTimeout(timeout);
+  // ------------------------------
+  // ✅ 3. Categories Modal (if exists)
+  // ------------------------------
+  const categoriesModalBtn = document.getElementById('filter-categories-btn');
+  const modalCategories = document.getElementById('modal-categories');
 
-    timeout = setTimeout(() => {
-      const query = searchInput.value;
+  if (categoriesModalBtn && modalCategories) {
+    categoriesModalBtn.onclick = () => modalCategories.classList.remove('hidden');
+    modalCategories.onclick = e => {
+      if (e.target === e.currentTarget) modalCategories.classList.add('hidden');
+    };
+  }
 
-      fetch(`?q=${encodeURIComponent(query)}`, {
-        headers: {
-          'X-Requested-With': 'XMLHttpRequest'
-        }
-      })
-      .then(response => response.json())
-      .then(data => {
-        resultsContainer.innerHTML = data.products_html;
-      });
-    }, 300); // debounce delay in ms
-  });
+    const openBtn = document.getElementById("openDrawerBtn");
+    const closeBtn = document.getElementById("closeDrawerBtn");
+    const drawer = document.getElementById("leftDrawer");
+    const overlay = document.getElementById("drawerOverlay");
+
+    function openDrawer() {
+      drawer.classList.remove("-translate-x-full");
+      overlay.classList.remove("opacity-0", "pointer-events-none");
+    }
+
+    function closeDrawer() {
+      drawer.classList.add("-translate-x-full");
+      overlay.classList.add("opacity-0", "pointer-events-none");
+    }
+
+    openBtn?.addEventListener("click", openDrawer);
+    closeBtn?.addEventListener("click", closeDrawer);
+    overlay?.addEventListener("click", closeDrawer);
+
+});
 </script>
+

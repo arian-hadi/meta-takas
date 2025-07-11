@@ -13,3 +13,10 @@ class HomeView(TemplateView):
 
 class AboutUsView(TemplateView):
     template_name = "homepage/aboutus.html"
+
+
+class TermsView(TemplateView):
+    template_name = "homepage/terms.html"
+
+class ConditionsView(TemplateView):
+    template_name = "homepage/conditions.html"

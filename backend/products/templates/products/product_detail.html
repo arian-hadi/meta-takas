@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load product_extras %}
 {% block title %}Product Detail{% endblock %}
 
 {% block content %}
@@ -16,7 +17,8 @@
             </a>
         </li>
         <li><span class="mx-2 text-gray-500">&gt;</span></li>
-        <li class="text-gray-500">{{ product.name }}</li>
+        <li class = "text-gray-500"><a href="{% url 'product_list' %}">catalouge &gt;</a></li>
+        <li class="text-gray-500"> {{ product.name }}</li>
     </ul>
 </nav>
 
@@ -27,34 +29,65 @@
     <div class="container mx-auto px-4">
         <div class="flex flex-col items-center">
             <!-- Main Swiper (big image, swipeable) -->
-            <div class="swiper main-swiper w-full max-h-96 rounded border mb-4">
-            <div class="swiper-wrapper">
+                      
+          <div
+            class="swiper main-swiper w-full max-h-96 rounded border mb-4"
+            x-data="{
+              items: [
                 {% if product.image %}
-                <div class="swiper-slide">
+                { url: '{{ product.image.url }}', type: 'image', thumb: '{{ product.image.url }}' }{% if product.images.all or product.videos.all %},{% endif %}
+                {% endif %}
+                {% for img in product.images.all %}
+                { url: '{{ img.image.url }}', type: 'image', thumb: '{{ img.image.url }}' }{% if not forloop.last or product.videos.all %},{% endif %}
+                {% endfor %}
+                {% for vid in product.videos.all %}
+                { url: '{{ vid.video.url }}', type: 'video', thumb: '{% if vid.thumbnail %}{{ vid.thumbnail.url }}{% else %}{% static "images/video-placeholder.png" %}{% endif %}' }{% if not forloop.last %},{% endif %}
+                {% endfor %}
+              ]
+            }"
+          >
+            <div class="swiper-wrapper">
+              {% if product.image %}
+              <!-- Wrap each slide in an `<a>` that opens the lightbox at its index -->
+              <a
+                href="#"
+                class="swiper-slide"
+                x-init="$el.addEventListener('click', () => $dispatch('lightbox-open', { group: items, index: 0 }))"
+              >
                 <img src="{{ product.image.url }}" alt="{{ product.name }}" class="object-contain w-full max-h-96"/>
-                </div>
-                {% endif %}
-                {% for image in product.images.all %}
+              </a>
+              {% endif %}
+
+              {% for image in product.images.all %}
                 {% if not product.image or image.image.url != product.image.url %}
-                <div class="swiper-slide">
-                    <img src="{{ image.image.url }}" alt="Product Image" class="object-contain w-full max-h-96"/>
-                </div>
+                <a
+                  href="#"
+                  class="swiper-slide"
+                  x-init="$el.addEventListener('click', () => $dispatch('lightbox-open', { group: items, index: {{ forloop.counter }} }))"
+                >
+                  <img src="{{ image.image.url }}" alt="Product Image" class="object-contain w-full max-h-96"/>
+                </a>
                 {% endif %}
-                {% endfor %}
-                {# Add video slides #}
-                {% for video in product.videos.all %}
-                <div class="swiper-slide">
-                  <video controls class="object-contain w-full max-h-96" style="max-width:100%; max-height:24rem;">
-                    <source src="{{ video.video.url }}" type="video/mp4">
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-                {% endfor %}
+              {% endfor %}
+
+              {% for video in product.videos.all %}
+              <a
+                href="#"
+                class="swiper-slide"
+                x-init="$el.addEventListener('click', () => $dispatch('lightbox-open', { group: items, index: {{ product.images.count|add:forloop.counter0 }} }))"
+              >
+                <video controls class="object-contain w-full max-h-96">
+                  <source src="{{ video.video.url }}" type="video/mp4">
+                </video>
+              </a>
+              {% endfor %}
             </div>
-            <!-- Optional navigation buttons -->
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
-            </div>
+          </div>
+
+
+
             <!-- Thumbnails (static row, always visible) -->
             <div class="flex gap-2 mt-4 flex-wrap justify-center">
             {% if product.image %}
@@ -94,6 +127,10 @@
             </div>
         </div>
     </div>
+ 
+
+
+
 
     <!-- Product Info -->
     <div class="mx-auto px-5 lg:px-5">
@@ -175,6 +212,10 @@
     </div>
 </section>
 
+<!-- Fullscreen images-->
+
+
+
 <!-- Product Details Section -->
 <section class="container mx-auto max-w-[1200px] px-5 py-5 lg:py-10">
     <h2 class="text-xl">Product Details</h2>
@@ -220,9 +261,89 @@
     </table>
 </section>
 
+
+<!-- Exchange Notes -->
+{% if product.listing_type == 'exchange' and product.exchange_notes.exists %}
+<section class="container mx-auto max-w-[1200px] px-5 py-6">
+    <div class="bg-gray-50 rounded-lg shadow-sm p-5">
+      <h3 class="text-lg font-semibold text-gray-800">İlana Ait Takas Seçenekleri</h3>
+      <p class="text-sm text-gray-600 mt-1">Bu ilanın takas seçenekleri aşağıda mevcuttur.</p>
+        
+      <div class="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-5 gap-x-6">
+        {% for note in product.exchange_notes.all %}
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-blue-400 rounded-full inline-block mt-0.5"></span>
+              <span class="font-medium text-gray-900">{{ note.category.name }} ile Takaslı</span>
+            </div>
+            {% if note.items.exists %}
+            <ul class="pl-5 mt-1 list-disc text-sm text-gray-700">
+              {% for item in note.items.all %}
+                <li>{{ item.text }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+      
+    </div>
+  </section>
+  
+{% endif %}
+
+
+
+{% if product.listing_type == 'exchange' %}
+<section class="container mx-auto max-w-[1200px] px-5 py-10">
+  <h2 class="text-xl font-bold mb-4 text-amber-700">Bütçe</h2>
+
+  <div class="border border-yellow-300 bg-yellow-50 rounded-lg p-6">
+    <!-- Budget Inputs -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+      <div class="flex items-center gap-2">
+        <span class="bg-white px-3 py-1 rounded border border-gray-300 font-medium">Min</span>
+        <span class="flex-grow">
+          <input type="text" value="{{ product.min_budget }}" class="w-full px-3 py-1 rounded border border-gray-300 bg-white text-right" readonly>
+        </span>
+        <span class="text-gray-600">₺</span>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <span class="bg-white px-3 py-1 rounded border border-gray-300 font-medium">Max</span>
+        <span class="flex-grow">
+          <input type="text" value="{{ product.max_budget }}" class="w-full px-3 py-1 rounded border border-gray-300 bg-white text-right" readonly>
+        </span>
+        <span class="text-gray-600">₺</span>
+      </div>
+    </div>
+
+    <!-- Exchange Preference Checkboxes -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-3 gap-x-6 text-sm">
+    {% for field, label in EXCHANGE_PREFERENCES %}
+    <div class="flex items-center gap-2">
+        <input
+        type="checkbox"
+        class="text-blue-600 rounded border-gray-300"
+        {% if product|get_attr:field %} checked {% endif %}
+        disabled
+        >
+        <span class="{% if product|get_attr:field %}font-semibold text-gray-800{% else %}text-gray-400{% endif %}">
+        {{ label }}
+        </span>
+    </div>
+    {% endfor %}
+    </div>
+
+  </div>
+</section>
+{% endif %}
+
+
+
 <!-- Related Products Section -->
 <section class="container mx-auto max-w-[1200px] px-5 py-10">
-    <h2 class="text-xl font-bold mb-6">Related Products</h2>
+    <h2 class="text-xl font-bold mb-6">Önerilen Ürünler</h2>
     <div class="grid grid-cols-2 gap-3 lg:grid-cols-4">
         {% for product in related_products %}
             <div class="flex flex-col h-full">
@@ -274,9 +395,12 @@
     </div>
 </section>
 
-<!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
+
+
+
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+  // 1) Initialize the main gallery Swiper
   var mainSwiper = new Swiper('.main-swiper', {
     spaceBetween: 10,
     navigation: {
@@ -285,30 +409,35 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   });
 
-  // Thumbnail click handler
+  // 2) Initialize the lightbox Swiper (hidden overlay)
+  var lightboxSwiper = new Swiper('.lightbox-swiper', {
+    spaceBetween: 10,
+    navigation: {
+      nextEl: '.lightbox-swiper .swiper-button-next',
+      prevEl: '.lightbox-swiper .swiper-button-prev',
+    },
+    keyboard: { enabled: true },
+  });
+
+
+
+  // 3) Thumbnail click handler for main gallery
   document.querySelectorAll('.thumbnail').forEach(function(thumb, idx) {
     thumb.addEventListener('click', function() {
+      // slide main gallery
       mainSwiper.slideTo(idx);
-      document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('ring-2', 'ring-violet-500'));
-      this.classList.add('ring-2', 'ring-violet-500');
+      // open lightbox at same slide
+      overlay.classList.remove('hidden');
+      lightboxSwiper.slideTo(idx, 0);
+      // thumbnail active ring
+      document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('ring-2','ring-violet-500'));
+      thumb.classList.add('ring-2','ring-violet-500');
     });
   });
 
-  // Highlight the active thumbnail on slide change
-  mainSwiper.on('slideChange', function() {
-    document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('ring-2', 'ring-violet-500'));
-    var activeThumb = document.querySelector('.thumbnail[data-index="' + mainSwiper.activeIndex + '"]');
-    if (activeThumb) {
-      activeThumb.classList.add('ring-2', 'ring-violet-500');
-    }
-  });
 
-  // Initial highlight
-  var firstThumb = document.querySelector('.thumbnail[data-index="0"]');
-  if (firstThumb) {
-    firstThumb.classList.add('ring-2', 'ring-violet-500');
-  }
 });
 </script>
+
 
 {% endblock %}

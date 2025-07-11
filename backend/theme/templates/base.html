@@ -2,23 +2,33 @@
 <html lang="en">
 {% load static %}
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %}My Marketplace{% endblock %}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- If you're using django-tailwind: -->
-    <link href="{% static 'css/dist/styles.css' %}" rel="stylesheet">
-    <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.7/dist/css/splide.min.css"
-    />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.7/dist/js/splide.min.js"></script>
-    <script src="{% static 'js/scripts.js' %}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <meta charset="UTF-8">
+  <title>{% block title %}My Marketplace{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Tailwind (or your compiled CSS) -->
+  <link href="{% static 'css/dist/styles.css' %}" rel="stylesheet">
 
+  <!-- Carousel CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.7/dist/css/splide.min.css"/>
+
+  <!-- Alpine Lightbox CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/@alpinejs/lightbox@3.x.x/dist/style.css" />
+
+  <!-- Font Awesome (if used) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  
+  <!-- Alpine & Lightbox JS (deferred) -->
+  <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <script src="https://unpkg.com/@alpinejs/lightbox@3.x.x/dist/cdn.min.js" defer></script>
+
+  <!-- Carousel JS libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.7/dist/js/splide.min.js"></script>
+
+  <!-- Your custom scripts (e.g. Swiper init) -->
+  <script src="{% static 'js/scripts.js' %}"></script>
 </head>
 
 <body class="flex flex-col min-h-screen">
@@ -34,6 +44,13 @@
 
     {% include 'footer.html' %}
     
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/905413081092" target="_blank"
+       class="fixed bottom-6 right-6 z-50 flex items-center px-4 py-3 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg transition-all duration-200"
+       style="box-shadow: 0 4px 16px rgba(0,0,0,0.15); min-width: 180px;">
+        <i class="fab fa-whatsapp fa-lg mr-2"></i>
+        <span class="font-semibold">Share your product</span>
+    </a>
 
 </body>
 

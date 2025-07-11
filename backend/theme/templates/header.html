@@ -7,7 +7,7 @@
           <a href="{% url 'homepage' %}">
             <img
             class="h-10 w-auto object-contain cursor-pointer"
-              src="{% static 'images/metatakas.png' %}"
+              src="{% static 'images/metatakaslogo.png' %}"
               alt="company logo"
             />
           </a>
@@ -31,30 +31,7 @@
             </button>
           </div>
 
-          <!-- <form method="get" action="{% if current_category_slug %}{% url 'product_list_by_category' current_category_slug %}{% else %}{% url 'product_list' %}{% endif %}" class="hidden h-9 w-2/5 items-center border md:flex">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-3 h-4 w-4">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-            </svg>
 
-            <input
-              name="q"
-              value="{{ request.GET.q }}"
-              class="hidden w-11/12 outline-none md:block"
-              type="search"
-              placeholder="Search"
-            />
-
-            {% if current_listing_type %}
-              <input type="hidden" name="type" value="{{ current_listing_type }}">
-            {% endif %}
-            {% if current_sort %}
-              <input type="hidden" name="sort" value="{{ current_sort }}">
-            {% endif %}
-
-            <button class="ml-auto h-full bg-amber-400 px-4 hover:bg-blue-300">
-              Search
-            </button>
-          </form> -->
 
           
           <form method="get" action="{% url 'product_list' %}"  class="hidden h-9 w-2/5 items-center border md:flex">   
@@ -71,9 +48,9 @@
                     name="q"
                     value="{{ request.GET.q }}"
                     class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-white-700 dark:border-gray-600  dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Search products..."
+                    placeholder="İlanları ara..."
                   />
-                  <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+                  <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Ara</button>
                   {% if current_listing_type %}
                     <input type="search" value="{{ current_listing_type }}">
                   {% endif %}      
@@ -106,25 +83,6 @@
               <p class="text-xs">Wishlist</p>
             </a>
 
-            <!-- <a
-              href="cart.html"
-              class="flex cursor-pointer flex-col items-center justify-center"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                class="h-6 w-6"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 004.25 22.5h15.5a1.875 1.875 0 001.865-2.071l-1.263-12a1.875 1.875 0 00-1.865-1.679H16.5V6a4.5 4.5 0 10-9 0zM12 3a3 3 0 00-3 3v.75h6V6a3 3 0 00-3-3zm-3 8.25a3 3 0 106 0v-.75a.75.75 0 011.5 0v.75a4.5 4.5 0 11-9 0v-.75a.75.75 0 011.5 0v.75z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-
-              <p class="text-xs">Cart</p>
-            </a> -->
 
             <!-- <a
               href="{% url 'profile_information' %}"
@@ -173,7 +131,7 @@
           class="absolute left-0 right-0 z-50 h-screen w-full bg-white transform"
           style="display: none"
         >
-          <div class="mx-auto">
+          <!-- <div class="mx-auto">
             <div class="mx-auto flex w-full justify-center gap-3 py-4">
               <a
                 href="{% url 'wishlist' %}"
@@ -247,42 +205,42 @@
 
                 <p class="text-xs">Account</p>
               </a>
-            </div>
+            </div> -->
 
-            <form class="my-4 mx-5 flex h-9 items-center border">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="mx-3 h-4 w-4"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+            <form method="get" action="{% url 'product_list' %}" class="w-full max-w-[600px] mx-auto">
+              <div class="flex items-center border border-gray-300 rounded-lg bg-gray-50 px-3 py-2">
+                <!-- Search Icon -->
+                <svg class="w-5 h-5 text-gray-500 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                </svg>
+
+                <!-- Search Input -->
+                <input
+                  type="search"
+                  name="q"
+                  value="{{ request.GET.q }}"
+                  placeholder="İlanları ara..."
+                  class="flex-grow text-sm text-gray-900 bg-transparent outline-none"
                 />
-              </svg>
 
-              <input
-                class="hidden w-11/12 outline-none md:block"
-                type="search"
-                placeholder="Search"
-              />
-
-              <button
-                type="submit"
-                class="ml-auto h-full bg-amber-400 px-4 hover:bg-blue-300"
-              >
-                Search
-              </button>
+                <!-- Search Button -->
+                <button
+                  type="submit"
+                  class="ml-3 px-4 py-2 text-sm text-white bg-blue-700 hover:bg-blue-800 rounded-md"
+                >
+                  Ara
+                </button>
+              </div>
             </form>
+
+
+
+
             <ul class="text-center font-medium">
-              <li class="py-2"><a href="{% url 'homepage' %}">Home</a></li>
-              <li class="py-2"><a href="{% url 'product_list' %}">Catalog</a></li>
-              <li class="py-2"><a href="#">About Us</a></li>
-              <li class="py-2"><a href="{% url 'contact' %}">Contact Us</a></li>
+              <li class="py-2"><a href="{% url 'homepage' %}">Ana Sayfa</a></li>
+              <li class="py-2"><a href="{% url 'product_list' %}">İlanlar</a></li>
+              <li class="py-2"><a href="#">Hakkımızda</a></li>
+              <li class="py-2"><a href="{% url 'contact' %}">İletişim</a></li>
             </ul>
           </div>
         </section>
@@ -301,15 +259,15 @@
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-1 h-6 w-6 transition-transform duration-200" :class="{'rotate-90': desktopMenuOpen}">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>
-                All categories
+                 Tüm kategoriler
               </div>
             </button>
 
             <div class="mx-7 flex gap-8">
-              <a class="font-light text-white duration-200 hover:text-blue-400  relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-blue-400 after:transition-all after:duration-200 hover:after:w-full" href="{% url 'homepage' %}">Home</a>
-              <a class="font-light text-white duration-200 hover:text-blue-400  relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-blue-400 after:transition-all after:duration-200 hover:after:w-full" href="{% url 'product_list' %}">Catalog</a>
-              <a class="font-light text-white duration-200 hover:text-blue-400  relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-blue-400 after:transition-all after:duration-200 hover:after:w-full" href="{% url 'aboutus' %}">About Us</a>
-              <a class="font-light text-white duration-200 hover:text-blue-400  relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-blue-400 after:transition-all after:duration-200 hover:after:w-full" href="{% url 'contact' %}">Contact Us</a>
+              <a class="font-light text-white duration-200 hover:text-blue-400  relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-blue-400 after:transition-all after:duration-200 hover:after:w-full" href="{% url 'homepage' %}">Ana Sayfa</a>
+              <a class="font-light text-white duration-200 hover:text-blue-400  relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-blue-400 after:transition-all after:duration-200 hover:after:w-full" href="{% url 'product_list' %}">İlanlar</a>
+              <a class="font-light text-white duration-200 hover:text-blue-400  relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-blue-400 after:transition-all after:duration-200 hover:after:w-full" href="{% url 'aboutus' %}">Hakkımızda</a>
+              <a class="font-light text-white duration-200 hover:text-blue-400  relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-blue-400 after:transition-all after:duration-200 hover:after:w-full" href="{% url 'contact' %}">İletişim</a>
             </div>
 
             <div class="ml-auto flex gap-4 px-5">
