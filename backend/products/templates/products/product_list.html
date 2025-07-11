@@ -308,24 +308,32 @@
                     <p class="mt-2 font-semibold text-gray-800">{{ product.name }}</p>
 
                     {% if product.listing_type == 'sale' %}
-                      <p class="font-medium text-violet-900">{{ product.price }} TL </p>
-                    {% elif product.listing_type == 'exchange' %}
-                      <p class="text-sm text-gray-500 italic">Değer biçilen fiyat:</p>
-                      <p class="font-medium text-violet-900">~ {{ product.price }} TL </p>
+                      <p class="font-medium text-violet-900">{{ product.price }} TL</p>
 
+                    {% elif product.listing_type == 'exchange' %}
+                      <p class="font-medium text-violet-900">{{ product.price }} TL</p>
+
+                      <p class="text-sm text-gray-500 italic">Takas edilebilir:</p>
+                      
                       {% with categories=product.exchange_for.all %}
                         {% if categories %}
-                            {% for category in categories|slice:":2" %}
+                          {% if categories|length > 0 %}
+                            <p class="text-sm text-gray-800">
+                              {% for category in categories|slice:":2" %}
                                 {{ category.name }}{% if not forloop.last %}, {% endif %}
-                            {% endfor %}
-                            {% if categories|length > 2 %}
-                                ...
-                            {% endif %}
+                              {% endfor %}
+                              {% if categories|length > 2 %}...{% endif %}
+                            </p>
+                          {% else %}
+                            <p class="text-sm text-gray-400">Belirtilmemiş</p>
+                          {% endif %}
                         {% else %}
-                            <span class="text-gray-400">Belirtilmemiş</span>
+                          <p class="text-sm text-gray-400">Belirtilmemiş</p>
                         {% endif %}
                       {% endwith %}
                     {% endif %}
+
+
 
                     <div class="my-5">
                       <a href="{% url 'product_detail' product.slug %}">

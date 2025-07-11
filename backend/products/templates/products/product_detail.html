@@ -385,13 +385,37 @@
         <!-- Product content -->
         <div class="flex flex-col justify-between flex-grow mt-4">
           <p class="mt-2 font-semibold text-gray-800">{{ product.name }}</p>
-          <p class="font-medium text-violet-900">{{ product.price }} TL </p>
-          <div class="my-5">
-            <a href="{% url 'product_detail' product.slug %}">
-              <button class="h-10 w-full bg-violet-900 text-white hover:bg-violet-800 transition">View Details</button>
-            </a>
+
+          <!-- Price (same position always) -->
+          <p class="font-medium text-violet-900">{{ product.price }} TL</p>
+
+          <!-- Reserve consistent space for optional exchange info -->
+          <div class="min-h-[48px] mt-1">
+            {% if product.listing_type == 'exchange' %}
+              <p class="text-sm text-gray-500 italic">Takas edilebilir:</p>
+              {% with categories=product.exchange_for.all %}
+                {% if categories and categories|length > 0 %}
+                  <p class="text-sm text-gray-800">
+                    {% for category in categories|slice:":2" %}
+                      {{ category.name }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                    {% if categories|length > 2 %}...{% endif %}
+                  </p>
+                {% else %}
+                  <p class="text-sm text-gray-400">Belirtilmemiş</p>
+                {% endif %}
+              {% endwith %}
+            {% endif %}
           </div>
         </div>
+
+        <!-- Action buttons -->
+        <div class="my-5">
+          <a href="{% url 'product_detail' product.slug %}">
+            <button class="h-10 w-full bg-violet-900 text-white hover:bg-violet-800 transition">View Details</button>
+          </a>
+        </div>   
+
       </div>
     {% empty %}
       <p class="col-span-4 text-center text-gray-500">No related products found.</p>
