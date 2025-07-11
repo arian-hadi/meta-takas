@@ -36,7 +36,7 @@ dist/
 frontend/
 
 # Ignore all media uploads
-backend/media/
+backend/media/*
 
 # Keep the empty folder in repo (optional)
 !backend/media/.gitkeep
