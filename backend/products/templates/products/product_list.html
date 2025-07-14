@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load dict_filters %}
 {% load static %}
+{% load humanize %}
+
 {% block title %}Product list{% endblock %}
 
 {% block content %}
@@ -41,26 +43,147 @@
         <!-- Filters Modal (Mobile only) -->
 
         <!-- Open Button (only visible on mobile) -->
-          <div class="p-4 lg:hidden">
-            <button id="openDrawerBtn" type="button" class="px-4 py-2 bg-violet-700 text-white rounded">
-              Open Drawer
-            </button>
-          </div>
 
-          <!-- Overlay (Mobile only) -->
+        <!-- Sticky Filter and Sort Buttons (Mobile Only) -->
+          <div 
+            class="lg:hidden sticky top-0 z-40 bg-white border-t border-b shadow-sm"
+            x-show="!mobileMenuOpen"
+            x-transition
+            x-cloak
+          >
+
+          <div class="flex justify-between px-4 py-2">
+            <!-- Filter Button -->
+            <button id="openDrawerBtn" class="flex-1 mr-1 flex items-center justify-center gap-2 text-sm font-medium border border-gray-300 rounded py-2 bg-white">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L15 14.414V20a1 1 0 01-1.447.894l-4-2A1 1 0 019 18v-3.586L3.293 6.707A1 1 0 013 6V4z" />
+              </svg>
+              Filtrele
+            </button>
+
+            <!-- Sort Dropdown -->
+            <form method="get" class="flex-1 ml-1">
+              <select name="sort" onchange="this.form.submit()" class="w-full border border-gray-300 rounded py-2 px-3 text-sm">
+                <option value="newest" {% if current_sort == 'newest' or not current_sort %}selected{% endif %}>Newest</option>
+                <option value="oldest" {% if current_sort == 'oldest' %}selected{% endif %}>Oldest</option>
+                <option value="price_desc" {% if current_sort == 'price_desc' %}selected{% endif %}>Price: Highest to Lowest</option>
+                <option value="price_asc" {% if current_sort == 'price_asc' %}selected{% endif %}>Price: Lowest to Highest</option>
+              </select>
+            </form>
+          </div>
+        </div>
+                          <!-- Overlay (Mobile only) -->
           <div id="drawerOverlay" class="fixed inset-0 bg-black/30 opacity-0 pointer-events-none transition-opacity z-40 lg:hidden"></div>
 
           <!-- Drawer Panel (from left, Mobile only) -->
-          <div id="leftDrawer" class="fixed inset-y-0 left-0 w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300 z-50 lg:hidden">
+          <div id="leftDrawer" class="fixed inset-y-0 left-0 w-[90vw] max-w-sm bg-white shadow-lg transform -translate-x-full transition-transform duration-300 z-50 lg:hidden overflow-x-hidden overflow-y-auto">
             <div class="flex justify-between items-center p-4 border-b">
-              <h2 class="text-lg font-semibold">Left Drawer</h2>
               <button id="closeDrawerBtn" type="button" class="text-gray-500 hover:text-gray-700">
                 ✕
               </button>
             </div>
-            <div class="p-4">
-              <p>This drawer only appears on small screens.</p>
+
+            <div class="p-4 overflow-y-auto max-h-[85vh]">
+              <form method="get" action="{% url 'product_list' %}" class="space-y-4">
+
+                <!-- 🔽 Listing Type -->
+                <div x-data="{ open: true }" class="border-b pb-3">
+                  <button type="button" class="w-full flex justify-between items-center font-semibold" @click="open = !open">
+                    İlan Türü
+                    <span x-text="open ? '−' : '+'"></span>
+                  </button>
+                  <div x-show="open" class="mt-2 space-y-2">
+                  {% for type in types %}
+                    <label class="flex items-center space-x-2">
+                      <input type="checkbox" name="type" value="{{ type.slug }}" {% if type.slug in selected_types %}checked{% endif %} class="accent-violet-600">
+                      <span>{{ type.label }}</span>
+                    </label>
+                  {% endfor %}
+                  </div>
+                </div>
+
+                <!-- 🔽 Category -->
+                <div x-data="{ open: true }" class="border-b pb-3">
+                  <button type="button" class="w-full flex justify-between items-center font-semibold" @click="open = !open">
+                    Kategoriler
+                    <span x-text="open ? '−' : '+'"></span>
+                  </button>
+                  <div x-show="open" class="mt-2 space-y-2">
+                    {% for category in categories %}
+                      <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="category" value="{{ category.slug }}" {% if category.slug in selected_categories %}checked{% endif %} class="accent-violet-600">
+                        <span>{{ category.name }}</span>
+                      </label>
+                    {% endfor %}
+                  </div>
+                </div>
+
+                <!-- 🔽 Takas İstenen Kategoriler -->
+                <div x-data="{ open: true }" class="border-b pb-3">
+                  <button type="button" class="w-full flex justify-between items-center font-semibold" @click="open = !open">
+                    Takas İstenen Kategoriler
+                    <span x-text="open ? '−' : '+'"></span>
+                  </button>
+                  <div x-show="open" class="mt-2 space-y-2">
+                    {% for category in categories %}
+                      <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="exchange_for" value="{{ category.slug }}" {% if category.slug in selected_exchange_for %}checked{% endif %} class="accent-blue-500">
+                        <span>{{ category.name }}</span>
+                      </label>
+                    {% endfor %}
+                  </div>
+                </div>
+
+
+                <!-- 🔽 İl / İlçe -->
+                <div x-data="{ open: true }" class="border-b pb-3">
+                  <button type="button" class="w-full flex justify-between items-center font-semibold" @click="open = !open">
+                    Konum
+                    <span x-text="open ? '−' : '+'"></span>
+                  </button>
+                  <div x-show="open" class="mt-2 space-y-4">
+                    <div>
+                      <label for="cityDrawer" class="block text-sm text-gray-700 font-medium mb-1">İl</label>
+                      <select name="city" id="cityMobile" class="w-full border rounded px-2 py-1">
+                        <option value="">Tüm İller</option>
+                        {% for city in cities %}
+                          <option value="{{ city }}" {% if selected_city == city %}selected{% endif %}>{{ city }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+
+                    <div>
+                      <label for="provinceDrawer" class="block text-sm text-gray-700 font-medium mb-1">İlçe</label>
+                      <select name="province" id="provinceMobile" class="w-full border rounded px-2 py-1">
+                        <option value="">Lütfen önce il seçin</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+
+                <!-- 🔽 Fiyat -->
+                <div x-data="{ open: true }" class="border-b pb-3">
+                  <button type="button" class="w-full flex justify-between items-center font-semibold" @click="open = !open">
+                    Fiyat Aralığı
+                    <span x-text="open ? '−' : '+'"></span>
+                  </button>
+                  <div x-show="open" class="mt-2 flex gap-3">
+                    <input type="number" name="min_price" placeholder="Min" class="w-1/2 border rounded px-2 py-1" value="{{ min_price }}">
+                    <input type="number" name="max_price" placeholder="Max" class="w-1/2 border rounded px-2 py-1" value="{{ max_price }}">
+                  </div>
+                </div>
+
+                <!-- 🔽 Submit -->
+                <div class="pt-4">
+                  <button type="submit" class="w-full bg-violet-700 text-white py-2 rounded">Filtrele</button>
+                </div>
+
+              </form>
             </div>
+ 
+            
+
           </div>
 
 
@@ -92,9 +215,9 @@
 
                 <!-- CITY -->
                 <div>
-                  <p class="font-medium mb-2">Şehir</p>
+                  <p class="font-medium mb-2">İl</p>
                   <select name="city" id="cityMobile" class="w-full border p-2 rounded">
-                    <option value="">Tüm Şehirler</option>
+                    <option value="">Tüm İller</option>
                     {% for city in cities %}
                       <option value="{{ city }}" {% if city == selected_city %}selected{% endif %}>{{ city }}</option>
                     {% endfor %}
@@ -105,7 +228,7 @@
                 <div>
                   <p class="font-medium mb-2">İlçe</p>
                   <select name="province" id="provinceMobile" class="w-full border p-2 rounded">
-                    <option value="">Lütfen önce bir şehir seçin</option>
+                    
                   </select>
                 </div>
 
@@ -196,7 +319,7 @@
             <div class="border-b py-5">
               <p class="mb-3 font-medium">İLÇE</p>
               <select name="province" id="province" class="w-full border p-2 rounded">
-                <option value="">Lütfen önce bir şehir seçin</option>
+                
               </select>
 
             </div>
@@ -253,7 +376,7 @@
 
         <!--PRODUCT-LIST-START-->
         <div id = "results-container">
-          <div class="mb-5 hidden md:flex items-center justify-between px-5">
+          <div class="mb-5 hidden lg:flex items-center justify-between px-5">
             <form method="get" class="flex items-center gap-4 w-full">
               {# Keep other filter hidden fields if needed #}
               <label for="sort" class="text-sm font-medium">Sort by:</label>
@@ -308,24 +431,37 @@
                     <p class="mt-2 font-semibold text-gray-800">{{ product.name }}</p>
 
                     {% if product.listing_type == 'sale' %}
-                      <p class="font-medium text-violet-900">{{ product.price }} TL </p>
-                    {% elif product.listing_type == 'exchange' %}
-                      <p class="text-sm text-gray-500 italic">Değer biçilen fiyat:</p>
-                      <p class="font-medium text-violet-900">~ {{ product.price }} TL </p>
+                      <p class="font-medium text-violet-900">{{ product.price|floatformat:0|intcomma }} TL</p>
 
+
+                    {% elif product.listing_type == 'exchange' %}
+                      <p class="font-medium text-violet-900">{{ product.price|floatformat:0|intcomma }} TL</p>
+
+
+                      <p class="text-sm text-gray-500 italic">Takas edilebilir:</p>
+                      
                       {% with categories=product.exchange_for.all %}
                         {% if categories %}
-                            {% for category in categories|slice:":2" %}
+                          {% if categories|length > 0 %}
+                            <p class="text-sm text-gray-800">
+                              {% for category in categories|slice:":2" %}
                                 {{ category.name }}{% if not forloop.last %}, {% endif %}
-                            {% endfor %}
-                            {% if categories|length > 2 %}
-                                ...
-                            {% endif %}
+                              {% endfor %}
+                              {% if categories|length > 2 %}...{% endif %}
+                            </p>
+                          {% else %}
+                            <p class="text-sm text-gray-400">Belirtilmemiş</p>
+                          {% endif %}
                         {% else %}
-                            <span class="text-gray-400">Belirtilmemiş</span>
+                          <p class="text-sm text-gray-400">Belirtilmemiş</p>
                         {% endif %}
                       {% endwith %}
                     {% endif %}
+                    <p class="text-sm text-gray-500 mt-2">
+                      {{ product.created_at|date:"d/m/Y" }}
+                    </p>
+
+
 
                     <div class="my-5">
                       <a href="{% url 'product_detail' product.slug %}">
@@ -346,8 +482,6 @@
       {{ province_map|json_script:"province-map-data" }}
 
 
-{% endblock %}
-
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -363,6 +497,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const provinces = provinceMap[selectedCity] || [];
 
     if (provinces.length > 0) {
+      // ✅ Add "All Districts" option
+      const allOption = document.createElement("option");
+      allOption.value = "";
+      allOption.textContent = "Tüm İlçeler";
+      if (!preselect) allOption.selected = true;
+      provinceEl.appendChild(allOption);
+
       provinces.forEach(function (ilce) {
         const option = document.createElement("option");
         option.value = ilce;
@@ -379,16 +520,33 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+
   const cityDesktop = document.getElementById("city");
   const provinceDesktop = document.getElementById("province");
+
   if (cityDesktop && provinceDesktop) {
     // initialize on load
     if (cityDesktop.value) {
       updateProvinceOptions(cityDesktop, provinceDesktop, cityDesktop.value, selectedProvince);
     }
+
     // update when user changes city
     cityDesktop.addEventListener("change", function () {
       updateProvinceOptions(cityDesktop, provinceDesktop, this.value);
+    });
+  }
+
+
+  const cityMobile = document.getElementById("cityMobile");
+  const provinceMobile = document.getElementById("provinceMobile");
+
+  if (cityMobile && provinceMobile) {
+    if (cityMobile.value) {
+      updateProvinceOptions(cityMobile, provinceMobile, cityMobile.value, selectedProvince);
+    }
+
+    cityMobile.addEventListener("change", function () {
+      updateProvinceOptions(cityMobile, provinceMobile, this.value);
     });
   }
 
@@ -448,4 +606,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 </script>
+
+{% endblock %}
+
 

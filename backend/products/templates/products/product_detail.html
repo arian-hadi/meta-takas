@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load product_extras %}
+{% load humanize %}
+
 {% block title %}Product Detail{% endblock %}
 
 {% block content %}
@@ -54,7 +56,7 @@
                 class="swiper-slide"
                 x-init="$el.addEventListener('click', () => $dispatch('lightbox-open', { group: items, index: 0 }))"
               >
-                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="object-contain w-full max-h-96"/>
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="object-contain w-full my-automax-h-96"/>
               </a>
               {% endif %}
 
@@ -133,30 +135,74 @@
 
 
     <!-- Product Info -->
-    <div class="mx-auto px-5 lg:px-5">
-    <p class="mt-5 font-bold">
+    <div class="w-full px-5 lg:px-10">
+
+    <!-- <p class="mt-5 font-bold">
     Durum: 
     {% if product.listing_type == 'sale' %}
         <span class="text-green-600">Satılık</span>
     {% elif product.listing_type == 'exchange' %}
         <span class="text-amber-500">Takaslık</span>
     {% endif %}
-    </p>
+    </p> -->
         <h1 class="pt-3 text-2xl font-bold lg:pt-0">{{product.name}}</h2>
 
-        <p class="mt-5 font-bold">Category: <span class="font-normal">{{ product.category.name }}</span></p>
+        <!-- <p class="mt-5 font-bold">Category: <span class="font-normal">{{ product.category.name }}</span></p> -->
     
         <p class="mt-4 text-4xl font-bold text-violet-900">
-           {{ product.price }} TL
+           {{ product.price|floatformat:0|intcomma }} TL
         </p>
 
-        <p class="pt-5 text-sm leading-5 text-gray-500">{{ product.description }}</p>
+        <table class="mt-4 w-full table-auto border border-gray-200 text-sm">
+          <tbody>
+
+            <!-- Fixed: Condition -->
+            <tr class="border-b">
+              <td class="px-2 py-2 font-semibold text-gray-700">Durum</td>
+              <td class="px-2 py-2 font-bold 
+                  {% if product.listing_type == 'sale' %}text-green-600
+                  {% elif product.listing_type == 'exchange' %}text-amber-500
+                  {% endif %}">
+                {% if product.listing_type == 'sale' %}Satılık{% else %}Takaslık{% endif %}
+              </td>
+            </tr>
+
+            <!-- date -->
+            <tr class="border-b">
+              <td class="px-2 py-2 font-semibold text-gray-700">İlan Tarihi</td>
+              <td class="px-2 py-2 text-gray-900">{{ product.created_at|date:"d/m/Y" }}</td>
+            </tr>
+
+            <!-- Fixed: Category -->
+            <tr class="border-b">
+              <td class="px-2 py-2 font-semibold text-gray-700 w-1/3">Kategori</td>
+              <td class="px-2 py-2 text-gray-900">{{ product.category.name }}</td>
+            </tr>
+
+            
+            <!-- Optional: Location -->
+            <tr class="border-b">
+              <td class="px-2 py-2 font-semibold text-gray-700">İl / İlçe</td>
+              <td class="px-2 py-2 text-gray-900">{{ product.city }} / {{ product.province }}</td>
+            </tr>
+
+            <!-- Dynamic Custom Detail Rows -->
+            {% for row in product.detail_rows.all %}
+              <tr class="border-b">
+                <td class="px-2 py-2 font-semibold text-gray-700">{{ row.label }}</td>
+                <td class="px-2 py-2 text-gray-900">{{ row.value }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+
 
         <!-- Contact Info -->
 
         <div class="mt-7 flex flex-col gap-4 sm:flex-row sm:gap-6">
             <!-- Contact via Email -->
-            <a
+            <!-- <a
                 href="mailto:{{ product.email }}"
                 class="flex h-12 items-center justify-center rounded bg-violet-900 text-white transition 
                     hover:bg-violet-800 px-6 sm:px-8"
@@ -174,7 +220,7 @@
                 />
                 </svg>
                 Contact via Email
-            </a>
+            </a> -->
 
             <!-- Contact via WhatsApp -->
             <a
@@ -231,7 +277,7 @@
             </tr>
             <tr>
                 <td class="border pl-4 font-bold">District</td>
-                <td class="border pl-4">{{ product.district }}</td>
+                <td class="border pl-4">{{ product.province }}</td>
             </tr>
             <tr>
                 <td class="border pl-4 font-bold">Neighborhood</td>
@@ -342,58 +388,86 @@
 
 
 <!-- Related Products Section -->
-<section class="container mx-auto max-w-[1200px] px-5 py-10">
-    <h2 class="text-xl font-bold mb-6">Önerilen Ürünler</h2>
-    <div class="grid grid-cols-2 gap-3 lg:grid-cols-4">
-        {% for product in related_products %}
-            <div class="flex flex-col h-full">
-                <!-- Image and overlay -->
-                <div class="relative flex">
-                    <div class="w-72 h-52 bg-gray-100 overflow-hidden flex items-center justify-center">
-                        <img 
-                            src="{{ product.image.url }}" 
-                            alt="{{ product.name }}" 
-                            class="object-contain bg-white"
-                        >
-                    </div>
-                    <!-- Hover overlay -->
-                    <div class="absolute flex h-full w-full items-center justify-center gap-3 opacity-0 duration-150 hover:opacity-100 bg-black bg-opacity-30">
-                        <a href="{% url 'product_detail' product.slug %}" class="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-blue-400">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
-                            </svg>
-                        </a>
-                    </div>
-                    <!-- Badge -->
-                    <div class="absolute top-2 right-2 rounded-full px-3 py-1 text-[0.7rem] font-bold text-white uppercase tracking-wide shadow 
-                        {% if product.listing_type == 'exchange' %}
-                            bg-amber-500
-                        {% else %}
-                            bg-green-500
-                        {% endif %}">
-                        {% if product.listing_type == 'sale' %}
-                            Satılık
-                        {% else %}
-                            Takas
-                        {% endif %}
-                    </div>
-                </div>
-                <!-- Product content -->
-                <div class="flex flex-col justify-between min-h-[120px]">
-                    <p class="mt-2 font-semibold text-gray-800">{{ product.name }}</p>
-                    <p class="font-medium text-violet-900">{{ product.price }} TL </p>
-                    <div class="my-3">
-                        <a href="{% url 'product_detail' product.slug %}">
-                            <button class="h-10 w-full bg-violet-900 text-white hover:bg-violet-800 transition">View Details</button>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        {% empty %}
-            <p class="col-span-4 text-center text-gray-500">No related products found.</p>
-        {% endfor %}
-    </div>
-</section>
+<div class="mx-auto max-w-[1200px] px-5 py-10">
+  <h2 class="text-xl font-bold mb-6">Önerilen Ürünler</h2>
+
+  <section class="grid grid-cols-2 gap-3 lg:grid-cols-4">
+    {% for product in related_products %}
+      <div class="flex flex-col h-full">
+        <!-- Image and overlay -->
+        <div class="relative w-full">
+          <div class="aspect-[4/3] w-full bg-gray-100 overflow-hidden">
+            <img 
+              src="{{ product.image.url }}" 
+              alt="{{ product.name }}" 
+              class="w-full h-full object-contain bg-white"
+            >
+          </div>
+
+          <!-- Hover overlay -->
+          <div class="absolute inset-0 flex items-center justify-center gap-3 opacity-0 duration-150 hover:opacity-100 bg-black bg-opacity-30">
+            <a href="{% url 'product_detail' product.slug %}" class="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-blue-400">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Badge -->
+          <div class="absolute top-2 right-2 rounded-full px-3 py-1 text-[0.7rem] font-bold text-white uppercase tracking-wide shadow 
+            {% if product.listing_type == 'exchange' %}
+              bg-amber-500
+            {% else %}
+              bg-green-500
+            {% endif %}">
+            {% if product.listing_type == 'sale' %}
+              Satılık
+            {% else %}
+              Takas
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- Product content -->
+        <div class="flex flex-col justify-between flex-grow mt-4">
+          <p class="mt-2 font-semibold text-gray-800">{{ product.name }}</p>
+
+          <!-- Price (same position always) -->
+          <p class="font-medium text-violet-900">{{ product.price }} TL</p>
+
+          <!-- Reserve consistent space for optional exchange info -->
+          <div class="min-h-[48px] mt-1">
+            {% if product.listing_type == 'exchange' %}
+              <p class="text-sm text-gray-500 italic">Takas edilebilir:</p>
+              {% with categories=product.exchange_for.all %}
+                {% if categories and categories|length > 0 %}
+                  <p class="text-sm text-gray-800">
+                    {% for category in categories|slice:":2" %}
+                      {{ category.name }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                    {% if categories|length > 2 %}...{% endif %}
+                  </p>
+                {% else %}
+                  <p class="text-sm text-gray-400">Belirtilmemiş</p>
+                {% endif %}
+              {% endwith %}
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- Action buttons -->
+        <div class="my-5">
+          <a href="{% url 'product_detail' product.slug %}">
+            <button class="h-10 w-full bg-violet-900 text-white hover:bg-violet-800 transition">View Details</button>
+          </a>
+        </div>   
+
+      </div>
+    {% empty %}
+      <p class="col-span-4 text-center text-gray-500">No related products found.</p>
+    {% endfor %}
+  </section>
+</div>
 
 
 

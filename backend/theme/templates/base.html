@@ -29,10 +29,64 @@
 
   <!-- Your custom scripts (e.g. Swiper init) -->
   <script src="{% static 'js/scripts.js' %}"></script>
+  
+  <style>
+    .btn-whatsapp-pulse {
+      background: #25d366;
+      color: white;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      text-decoration: none;
+      border-radius: 9999px; /* fully rounded */
+      animation: pulse 1.5s ease-out infinite;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      z-index: 50;
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+      }
+      80% {
+        box-shadow: 0 0 0 14px rgba(37, 211, 102, 0);
+      }
+    }
+
+    .btn-whatsapp-pulse-border::before {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+      border: 5px solid #25d366;
+      opacity: 0.75;
+      animation: pulse-border 1.5s ease-out infinite;
+      z-index: -1;
+    }
+
+    @keyframes pulse-border {
+      0% {
+        transform: scale(1);
+        opacity: 0.75;
+      }
+      75% {
+        transform: scale(1.5);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1.5);
+        opacity: 0;
+      }
+    }
+  </style>
+
+
 </head>
 
 <body class="flex flex-col min-h-screen">
 
+ <div x-data="{ mobileMenuOpen: false, desktopMenuOpen: false }">
 
     {% include 'header.html' %}
 
@@ -42,15 +96,20 @@
         {% endblock %}
     </main>
 
+ </div>
     {% include 'footer.html' %}
     
     <!-- WhatsApp Floating Button -->
     <a href="https://wa.me/905413081092" target="_blank"
-       class="fixed bottom-6 right-6 z-50 flex items-center px-4 py-3 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg transition-all duration-200"
-       style="box-shadow: 0 4px 16px rgba(0,0,0,0.15); min-width: 180px;">
+      class="btn-whatsapp-pulse flex items-center px-4 py-3 text-white rounded-full transition-all duration-200"
+      style="min-width: 180px;">
         <i class="fab fa-whatsapp fa-lg mr-2"></i>
         <span class="font-semibold">Share your product</span>
     </a>
+
+
+
+
 
 </body>
 
