@@ -66,18 +66,16 @@
                 <!-- 🔽 Listing Type -->
                 <div x-data="{ open: true }" class="border-b pb-3">
                   <button type="button" class="w-full flex justify-between items-center font-semibold" @click="open = !open">
-                    Durum
+                    İlan Türü
                     <span x-text="open ? '−' : '+'"></span>
                   </button>
                   <div x-show="open" class="mt-2 space-y-2">
+                  {% for type in types %}
                     <label class="flex items-center space-x-2">
-                      <input type="radio" name="listing_type" value="sale" {% if listing_type == 'sale' %}checked{% endif %} class="accent-green-600">
-                      <span>Satılık</span>
+                      <input type="checkbox" name="type" value="{{ type.slug }}" {% if type.slug in selected_types %}checked{% endif %} class="accent-violet-600">
+                      <span>{{ type.label }}</span>
                     </label>
-                    <label class="flex items-center space-x-2">
-                      <input type="radio" name="listing_type" value="exchange" {% if listing_type == 'exchange' %}checked{% endif %} class="accent-amber-500">
-                      <span>Takaslık</span>
-                    </label>
+                  {% endfor %}
                   </div>
                 </div>
 
