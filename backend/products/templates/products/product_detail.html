@@ -54,7 +54,7 @@
                 class="swiper-slide"
                 x-init="$el.addEventListener('click', () => $dispatch('lightbox-open', { group: items, index: 0 }))"
               >
-                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="object-contain w-full max-h-96"/>
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="object-contain w-full my-automax-h-96"/>
               </a>
               {% endif %}
 
