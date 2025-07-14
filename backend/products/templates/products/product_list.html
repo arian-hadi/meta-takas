@@ -120,9 +120,9 @@
                   </button>
                   <div x-show="open" class="mt-2 space-y-4">
                     <div>
-                      <label for="cityDrawer" class="block text-sm text-gray-700 font-medium mb-1">Şehir</label>
-                      <select name="city" id="cityDrawer" class="w-full border rounded px-2 py-1">
-                        <option value="">Tüm Şehirler</option>
+                      <label for="cityDrawer" class="block text-sm text-gray-700 font-medium mb-1">İl</label>
+                      <select name="city" id="cityMobile" class="w-full border rounded px-2 py-1">
+                        <option value="">Tüm İller</option>
                         {% for city in cities %}
                           <option value="{{ city }}" {% if selected_city == city %}selected{% endif %}>{{ city }}</option>
                         {% endfor %}
@@ -131,8 +131,8 @@
 
                     <div>
                       <label for="provinceDrawer" class="block text-sm text-gray-700 font-medium mb-1">İlçe</label>
-                      <select name="province" id="provinceDrawer" class="w-full border rounded px-2 py-1">
-                        <option value="">Lütfen önce şehir seçin</option>
+                      <select name="province" id="provinceMobile" class="w-full border rounded px-2 py-1">
+                        <option value="">Lütfen önce il seçin</option>
                       </select>
                     </div>
                   </div>
@@ -192,9 +192,9 @@
 
                 <!-- CITY -->
                 <div>
-                  <p class="font-medium mb-2">Şehir</p>
+                  <p class="font-medium mb-2">İl</p>
                   <select name="city" id="cityMobile" class="w-full border p-2 rounded">
-                    <option value="">Tüm Şehirler</option>
+                    <option value="">Tüm İller</option>
                     {% for city in cities %}
                       <option value="{{ city }}" {% if city == selected_city %}selected{% endif %}>{{ city }}</option>
                     {% endfor %}
