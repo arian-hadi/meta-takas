@@ -152,7 +152,19 @@
            {{ product.price|floatformat:0|intcomma }} TL
         </p>
 
-        <p class="pt-5 text-sm leading-5 text-gray-500">{{ product.description }}</p>
+        {% if product.detail_rows.exists %}
+          <table class="mt-4 w-full max-w-md table-auto border border-gray-200 text-sm">
+            <tbody>
+              {% for row in product.detail_rows.all %}
+                <tr class="border-b">
+                  <td class="px-2 py-2 font-semibold text-gray-700 w-1/3">{{ row.label }}</td>
+                  <td class="px-2 py-2 text-gray-900">{{ row.value }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% endif %}
+   
 
         <!-- Contact Info -->
 

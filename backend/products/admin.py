@@ -1,7 +1,7 @@
 from django.contrib import admin
 import nested_admin
 from django import forms
-from .models import Category, Product, ProductImage, ProductVideo, ExchangeNote, ExchangeNoteItem
+from .models import Category, Product, ProductImage, ProductVideo, ExchangeNote, ExchangeNoteItem, ProductDetailRow
 from .utils.city_data import CITY_CHOICES, PROVINCE_MAP
 from django import forms
 
@@ -53,6 +53,13 @@ class ProductAdminForm(forms.ModelForm):
         else:
             self.fields['province'].widget = forms.Select(choices=[])
 
+
+class ProductDetailRowInline(nested_admin.NestedTabularInline):
+    model = ProductDetailRow
+    extra = 1
+    max_num = 9  # ⛔ limit to 9
+
+
 @admin.register(Product)
 class ProductAdmin(nested_admin.NestedModelAdmin):
     form = ProductAdminForm 
@@ -80,7 +87,7 @@ class ProductAdmin(nested_admin.NestedModelAdmin):
     list_display = ['name', 'category', 'listing_type', 'price', 'city', 'created_at']
     search_fields = ['name', 'description', 'city']
     list_filter = ['category', 'city', 'listing_type']
-    inlines = [ProductImageInline, ProductVideoInline, ExchangeNoteInline]
+    inlines = [ProductImageInline, ProductVideoInline, ExchangeNoteInline, ProductDetailRowInline]
     filter_horizontal = ('exchange_for',)
 
         # Field groups

@@ -147,3 +147,12 @@ class ProductVideo(models.Model):
 
     def __str__(self):
         return f"{self.product.name} - Video"
+    
+
+class ProductDetailRow(models.Model):
+    product = models.ForeignKey(Product, related_name='detail_rows', on_delete=models.CASCADE)
+    label = models.CharField(max_length=100)
+    value = models.CharField(max_length=255)
+
+    def __str__(self):
+        return f"{self.label}: {self.value}"
