@@ -474,6 +474,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const provinces = provinceMap[selectedCity] || [];
 
     if (provinces.length > 0) {
+      // ✅ Add "All Districts" option
+      const allOption = document.createElement("option");
+      allOption.value = "";
+      allOption.textContent = "Tüm İlçeler";
+      if (!preselect) allOption.selected = true;
+      provinceEl.appendChild(allOption);
+
       provinces.forEach(function (ilce) {
         const option = document.createElement("option");
         option.value = ilce;
@@ -489,6 +496,7 @@ document.addEventListener('DOMContentLoaded', function () {
       provinceEl.appendChild(empty);
     }
   }
+
 
   const cityDesktop = document.getElementById("city");
   const provinceDesktop = document.getElementById("province");
