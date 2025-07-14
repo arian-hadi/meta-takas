@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'products',
     'contact',
     'nested_admin',
+    'django.contrib.humanize'
 ]
 
 MIDDLEWARE = [

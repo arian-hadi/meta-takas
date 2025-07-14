@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load product_extras %}
+{% load humanize %}
+
 {% block title %}Product Detail{% endblock %}
 
 {% block content %}
@@ -147,7 +149,7 @@
         <p class="mt-5 font-bold">Category: <span class="font-normal">{{ product.category.name }}</span></p>
     
         <p class="mt-4 text-4xl font-bold text-violet-900">
-           {{ product.price }} TL
+           {{ product.price|floatformat:0|intcomma }} TL
         </p>
 
         <p class="pt-5 text-sm leading-5 text-gray-500">{{ product.description }}</p>

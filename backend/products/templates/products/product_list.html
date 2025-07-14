@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load dict_filters %}
 {% load static %}
+{% load humanize %}
+
 {% block title %}Product list{% endblock %}
 
 {% block content %}
@@ -308,10 +310,12 @@
                     <p class="mt-2 font-semibold text-gray-800">{{ product.name }}</p>
 
                     {% if product.listing_type == 'sale' %}
-                      <p class="font-medium text-violet-900">{{ product.price }} TL</p>
+                      <p class="font-medium text-violet-900">{{ product.price|floatformat:0|intcomma }} TL</p>
+
 
                     {% elif product.listing_type == 'exchange' %}
-                      <p class="font-medium text-violet-900">{{ product.price }} TL</p>
+                      <p class="font-medium text-violet-900">{{ product.price|floatformat:0|intcomma }} TL</p>
+
 
                       <p class="text-sm text-gray-500 italic">Takas edilebilir:</p>
                       
