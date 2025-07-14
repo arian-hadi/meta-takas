@@ -53,7 +53,7 @@
           <div id="drawerOverlay" class="fixed inset-0 bg-black/30 opacity-0 pointer-events-none transition-opacity z-40 lg:hidden"></div>
 
           <!-- Drawer Panel (from left, Mobile only) -->
-          <div id="leftDrawer" class="fixed inset-y-0 left-0 w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300 z-50 lg:hidden">
+          <div id="leftDrawer" class="fixed inset-y-0 left-0 w-[90vw] max-w-sm bg-white shadow-lg transform -translate-x-full transition-transform duration-300 z-50 lg:hidden overflow-x-hidden overflow-y-auto">
             <div class="flex justify-between items-center p-4 border-b">
               <button id="closeDrawerBtn" type="button" class="text-gray-500 hover:text-gray-700">
                 ✕
@@ -113,26 +113,33 @@
                   </div>
                 </div>
 
+
                 <!-- 🔽 İl / İlçe -->
                 <div x-data="{ open: true }" class="border-b pb-3">
                   <button type="button" class="w-full flex justify-between items-center font-semibold" @click="open = !open">
                     Konum
                     <span x-text="open ? '−' : '+'"></span>
                   </button>
-                  <div x-show="open" class="mt-2 space-y-2">
-                    <select name="city" id="cityDrawer" class="w-full border rounded px-2 py-1">
-                      <option value="">Şehir seçin</option>
-                      {% for key, label in CITY_CHOICES %}
-                        <option value="{{ key }}" {% if selected_city == key %}selected{% endif %}>{{ label }}</option>
-                      {% endfor %}
-                    </select>
+                  <div x-show="open" class="mt-2 space-y-4">
+                    <div>
+                      <label for="cityDrawer" class="block text-sm text-gray-700 font-medium mb-1">Şehir</label>
+                      <select name="city" id="cityDrawer" class="w-full border rounded px-2 py-1">
+                        <option value="">Tüm Şehirler</option>
+                        {% for city in cities %}
+                          <option value="{{ city }}" {% if selected_city == city %}selected{% endif %}>{{ city }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
 
-                    <select name="province" id="provinceDrawer" class="w-full border rounded px-2 py-1 mt-2">
-                      <option value="">Lütfen önce şehir seçin</option>
-                    </select>
-
+                    <div>
+                      <label for="provinceDrawer" class="block text-sm text-gray-700 font-medium mb-1">İlçe</label>
+                      <select name="province" id="provinceDrawer" class="w-full border rounded px-2 py-1">
+                        <option value="">Lütfen önce şehir seçin</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
+
 
                 <!-- 🔽 Fiyat -->
                 <div x-data="{ open: true }" class="border-b pb-3">
