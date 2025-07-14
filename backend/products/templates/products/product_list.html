@@ -55,14 +55,107 @@
           <!-- Drawer Panel (from left, Mobile only) -->
           <div id="leftDrawer" class="fixed inset-y-0 left-0 w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300 z-50 lg:hidden">
             <div class="flex justify-between items-center p-4 border-b">
-              <h2 class="text-lg font-semibold">Left Drawer</h2>
               <button id="closeDrawerBtn" type="button" class="text-gray-500 hover:text-gray-700">
                 ✕
               </button>
             </div>
-            <div class="p-4">
-              <p>This drawer only appears on small screens.</p>
+
+            <div class="p-4 overflow-y-auto max-h-[85vh]">
+              <form method="get" action="{% url 'product_list' %}" class="space-y-4">
+
+                <!-- 🔽 Listing Type -->
+                <div x-data="{ open: true }" class="border-b pb-3">
+                  <button type="button" class="w-full flex justify-between items-center font-semibold" @click="open = !open">
+                    Durum
+                    <span x-text="open ? '−' : '+'"></span>
+                  </button>
+                  <div x-show="open" class="mt-2 space-y-2">
+                    <label class="flex items-center space-x-2">
+                      <input type="radio" name="listing_type" value="sale" {% if listing_type == 'sale' %}checked{% endif %} class="accent-green-600">
+                      <span>Satılık</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                      <input type="radio" name="listing_type" value="exchange" {% if listing_type == 'exchange' %}checked{% endif %} class="accent-amber-500">
+                      <span>Takaslık</span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- 🔽 Category -->
+                <div x-data="{ open: true }" class="border-b pb-3">
+                  <button type="button" class="w-full flex justify-between items-center font-semibold" @click="open = !open">
+                    Kategoriler
+                    <span x-text="open ? '−' : '+'"></span>
+                  </button>
+                  <div x-show="open" class="mt-2 space-y-2">
+                    {% for category in categories %}
+                      <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="category" value="{{ category.slug }}" {% if category.slug in selected_categories %}checked{% endif %} class="accent-violet-600">
+                        <span>{{ category.name }}</span>
+                      </label>
+                    {% endfor %}
+                  </div>
+                </div>
+
+                <!-- 🔽 Takas İstenen Kategoriler -->
+                <div x-data="{ open: true }" class="border-b pb-3">
+                  <button type="button" class="w-full flex justify-between items-center font-semibold" @click="open = !open">
+                    Takas İstenen Kategoriler
+                    <span x-text="open ? '−' : '+'"></span>
+                  </button>
+                  <div x-show="open" class="mt-2 space-y-2">
+                    {% for category in categories %}
+                      <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="exchange_for" value="{{ category.slug }}" {% if category.slug in selected_exchange_for %}checked{% endif %} class="accent-blue-500">
+                        <span>{{ category.name }}</span>
+                      </label>
+                    {% endfor %}
+                  </div>
+                </div>
+
+                <!-- 🔽 İl / İlçe -->
+                <div x-data="{ open: true }" class="border-b pb-3">
+                  <button type="button" class="w-full flex justify-between items-center font-semibold" @click="open = !open">
+                    Konum
+                    <span x-text="open ? '−' : '+'"></span>
+                  </button>
+                  <div x-show="open" class="mt-2 space-y-2">
+                    <select name="city" id="cityDrawer" class="w-full border rounded px-2 py-1">
+                      <option value="">Şehir seçin</option>
+                      {% for key, label in CITY_CHOICES %}
+                        <option value="{{ key }}" {% if selected_city == key %}selected{% endif %}>{{ label }}</option>
+                      {% endfor %}
+                    </select>
+
+                    <select name="province" id="provinceDrawer" class="w-full border rounded px-2 py-1 mt-2">
+                      <option value="">Lütfen önce şehir seçin</option>
+                    </select>
+
+                  </div>
+                </div>
+
+                <!-- 🔽 Fiyat -->
+                <div x-data="{ open: true }" class="border-b pb-3">
+                  <button type="button" class="w-full flex justify-between items-center font-semibold" @click="open = !open">
+                    Fiyat Aralığı
+                    <span x-text="open ? '−' : '+'"></span>
+                  </button>
+                  <div x-show="open" class="mt-2 flex gap-3">
+                    <input type="number" name="min_price" placeholder="Min" class="w-1/2 border rounded px-2 py-1" value="{{ min_price }}">
+                    <input type="number" name="max_price" placeholder="Max" class="w-1/2 border rounded px-2 py-1" value="{{ max_price }}">
+                  </div>
+                </div>
+
+                <!-- 🔽 Submit -->
+                <div class="pt-4">
+                  <button type="submit" class="w-full bg-violet-700 text-white py-2 rounded">Filtrele</button>
+                </div>
+
+              </form>
             </div>
+ 
+            
+
           </div>
 
 
@@ -361,8 +454,6 @@
       {{ province_map|json_script:"province-map-data" }}
 
 
-{% endblock %}
-
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -479,4 +570,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 </script>
+
+{% endblock %}
+
 
