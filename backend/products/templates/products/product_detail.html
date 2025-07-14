@@ -136,35 +136,66 @@
 
     <!-- Product Info -->
     <div class="mx-auto px-5 lg:px-5">
-    <p class="mt-5 font-bold">
+    <!-- <p class="mt-5 font-bold">
     Durum: 
     {% if product.listing_type == 'sale' %}
         <span class="text-green-600">Satılık</span>
     {% elif product.listing_type == 'exchange' %}
         <span class="text-amber-500">Takaslık</span>
     {% endif %}
-    </p>
+    </p> -->
         <h1 class="pt-3 text-2xl font-bold lg:pt-0">{{product.name}}</h2>
 
-        <p class="mt-5 font-bold">Category: <span class="font-normal">{{ product.category.name }}</span></p>
+        <!-- <p class="mt-5 font-bold">Category: <span class="font-normal">{{ product.category.name }}</span></p> -->
     
         <p class="mt-4 text-4xl font-bold text-violet-900">
            {{ product.price|floatformat:0|intcomma }} TL
         </p>
 
-        {% if product.detail_rows.exists %}
-          <table class="mt-4 w-full max-w-md table-auto border border-gray-200 text-sm">
-            <tbody>
-              {% for row in product.detail_rows.all %}
-                <tr class="border-b">
-                  <td class="px-2 py-2 font-semibold text-gray-700 w-1/3">{{ row.label }}</td>
-                  <td class="px-2 py-2 text-gray-900">{{ row.value }}</td>
-                </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-        {% endif %}
-   
+        <table class="mt-4 w-full max-w-md table-auto border border-gray-200 text-sm">
+          <tbody>
+
+            <!-- Fixed: Condition -->
+            <tr class="border-b">
+              <td class="px-2 py-2 font-semibold text-gray-700">Durum</td>
+              <td class="px-2 py-2 font-bold 
+                  {% if product.listing_type == 'sale' %}text-green-600
+                  {% elif product.listing_type == 'exchange' %}text-amber-500
+                  {% endif %}">
+                {% if product.listing_type == 'sale' %}Satılık{% else %}Takaslık{% endif %}
+              </td>
+            </tr>
+
+            <!-- date -->
+            <tr class="border-b">
+              <td class="px-2 py-2 font-semibold text-gray-700">İlan Tarihi</td>
+              <td class="px-2 py-2 text-gray-900">{{ product.created_at|date:"d/m/Y" }}</td>
+            </tr>
+
+            <!-- Fixed: Category -->
+            <tr class="border-b">
+              <td class="px-2 py-2 font-semibold text-gray-700 w-1/3">Kategori</td>
+              <td class="px-2 py-2 text-gray-900">{{ product.category.name }}</td>
+            </tr>
+
+            
+            <!-- Optional: Location -->
+            <tr class="border-b">
+              <td class="px-2 py-2 font-semibold text-gray-700">İl / İlçe</td>
+              <td class="px-2 py-2 text-gray-900">{{ product.city }} / {{ product.province }}</td>
+            </tr>
+
+            <!-- Dynamic Custom Detail Rows -->
+            {% for row in product.detail_rows.all %}
+              <tr class="border-b">
+                <td class="px-2 py-2 font-semibold text-gray-700">{{ row.label }}</td>
+                <td class="px-2 py-2 text-gray-900">{{ row.value }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+
 
         <!-- Contact Info -->
 
