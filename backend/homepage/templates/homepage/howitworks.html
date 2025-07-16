@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}How it works{% endblock %}
+
+{% block content %}
+<!--Custom style-->
+ <style>
+       .swiper-wrapper {
+          height: fit-content !important;
+          width: 100% !important;
+      }
+      .swiper-pagination{
+          display: flex;
+          align-items: center;
+          justify-content: start;
+          gap: 16px;
+          position: relative;
+      }
+      .swiper-pagination-bullet {
+          width: 42px;
+          height: 42px;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          line-height: 26px;
+          font-size: 16px;
+          color: #6B7280;
+          opacity: 1;
+          background: #F9FAFB;
+          border: 1px solid #E5E7EB;
+      }
+      .swiper-pagination-bullet-active {
+      color: #fff;
+      background: #1D4ED8;
+      }
+      .swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
+        bottom: var(--swiper-pagination-bottom,0px);
+      }
+  </style> 
+ <section class="py-24 relative">
+        <div class="w-full max-w-7xl px-4 md:px-5 lg:px-5 mx-auto">
+            <div class="w-full flex-col justify-start items-center lg:gap-12 gap-8 inline-flex">
+                <div class="w-full flex-col justify-start items-center gap-3 flex">
+                    <span class="w-full text-center text-gray-500 text-base font-normal leading-relaxed">How It Works</span>
+                    <h2 class="w-full text-center text-indigo-700 text-4xl font-bold font-manrope leading-normal">Steps to Open Your Account</h2>
+                </div>
+                <div class="w-full justify-start lg:items-end items-center lg:gap-16 gap-8 flex lg:flex-row flex-col">
+                    <img class="object-cover" src="https://pagedone.io/asset/uploads/1720589731.png" alt="How It Works image" />
+                    <div class="swiper mySwiper flex flex-col lg:gap-32 gap-16 w-full">
+                    
+                    <div class="swiper-wrapper">
+
+                    <!-- Step 1 -->
+                    <div class="swiper-slide">
+                        <div class="w-full flex-col justify-center items-start gap-4 flex">
+                        <span class="w-full text-blue-700 text-base font-medium leading-relaxed lg:text-start text-center">1. Adım</span>
+                        <div class="w-full flex-col justify-center lg:items-start items-center gap-1.5 flex">
+                            <h4 class="text-gray-900 text-xl font-semibold leading-8 lg:text-start text-center">WhatsApp Üzerinden Bize Ulaşın</h4>
+                            <p class="lg:max-w-3xl w-full text-gray-400 text-base font-normal leading-relaxed lg:text-start text-center">
+                            Ürününüzü satmak ya da takas etmek istiyorsanız, WhatsApp üzerinden bizimle iletişime geçin. Sayfada bulunan “WhatsApp ile İletişime Geç” butonunu kullanarak hızlıca ulaşabilirsiniz.
+                            </p>
+                        </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="swiper-slide">
+                        <div class="w-full flex-col justify-center items-start gap-4 flex">
+                        <span class="w-full text-blue-700 text-base font-medium leading-relaxed lg:text-start text-center">2. Adım</span>
+                        <div class="w-full flex-col justify-center lg:items-start items-center gap-1.5 flex">
+                            <h4 class="text-gray-900 text-xl font-semibold leading-8 lg:text-start text-center">Ürün Bilgilerini Paylaşın</h4>
+                            <p class="lg:max-w-3xl w-full text-gray-400 text-base font-normal leading-relaxed lg:text-start text-center">
+                            Ürün adı, açıklaması, fiyat bilgisi (varsa), takas etmek istediğiniz ürün kategorileri, konum bilgisi (şehir/ilçe) ve net görselleri bizimle paylaşın.
+                            </p>
+                        </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="swiper-slide">
+                        <div class="w-full flex-col justify-center items-start gap-4 flex">
+                        <span class="w-full text-blue-700 text-base font-medium leading-relaxed lg:text-start text-center">3. Adım</span>
+                        <div class="w-full flex-col justify-center lg:items-start items-center gap-1.5 flex">
+                            <h4 class="text-gray-900 text-xl font-semibold leading-8 lg:text-start text-center">Ürün Yayına Alınıyor</h4>
+                            <p class="lg:max-w-3xl w-full text-gray-400 text-base font-normal leading-relaxed lg:text-start text-center">
+                            Bilgilerinizi aldıktan sonra ürünü MetaTakas platformunda sizin adınıza listeliyoruz. Ziyaretçiler ürününüzü görebilir ve teklif verebilir.
+                            </p>
+                        </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="swiper-slide">
+                        <div class="w-full flex-col justify-center items-start gap-4 flex">
+                        <span class="w-full text-blue-700 text-base font-medium leading-relaxed lg:text-start text-center">4. Adım</span>
+                        <div class="w-full flex-col justify-center lg:items-start items-center gap-1.5 flex">
+                            <h4 class="text-gray-900 text-xl font-semibold leading-8 lg:text-start text-center">Takas veya Satış Süreci</h4>
+                            <p class="lg:max-w-3xl w-full text-gray-400 text-base font-normal leading-relaxed lg:text-start text-center">
+                            Ürünle ilgilenen kullanıcılar yine WhatsApp üzerinden bize ulaşır. İlgili alıcıyı sizinle buluştururuz ve süreci güvenli bir şekilde yönetiriz.
+                            </p>
+                        </div>
+                        </div>
+                    </div>
+
+                    </div>
+
+                        <div class="swiper-pagination lg:justify-start justify-center"></div>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Custom JS -->
+  <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 32,
+            loop: true,
+            centeredSlides: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+                renderBullet: function (index, className) {
+                return '<span class="' + className + '">' + (index + 1) + "</span>";
+            },
+            },
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+        });
+    </script>
+                                            
+{% endblock %}

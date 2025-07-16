@@ -20,3 +20,7 @@ class TermsView(TemplateView):
 
 class ConditionsView(TemplateView):
     template_name = "homepage/conditions.html"
+
+
+class HowItWorksView(TemplateView):
+    template_name = "homepage/howitworks.html"
