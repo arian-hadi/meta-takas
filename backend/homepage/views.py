@@ -24,3 +24,6 @@ class ConditionsView(TemplateView):
 
 class HowItWorksView(TemplateView):
     template_name = "homepage/howitworks.html"
+
+class CreateListingView(TemplateView):
+    template_name = "homepage/create_listing.html"
