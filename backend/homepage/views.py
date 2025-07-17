@@ -27,3 +27,7 @@ class HowItWorksView(TemplateView):
 
 class CreateListingView(TemplateView):
     template_name = "homepage/create_listing.html"
+
+
+class ExchangeRulesView(TemplateView):
+    template_name = "homepage/exchange_rules.html"
