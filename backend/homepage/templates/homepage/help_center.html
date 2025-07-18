@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Yardım Merkezi{% endblock %}
+
+
+{% block content %}
+  <body class="bg-gray-100 min-h-screen">
+    <div class="max-w-3xl mx-auto py-12 px-4">
+      <h1 class="text-3xl font-bold text-gray-800 mb-8 text-center">Yardım Merkezi</h1>
+
+      <div class="bg-white shadow-md rounded-md divide-y divide-gray-200">
+        <details class="group p-4">
+          <summary class="flex justify-between items-center cursor-pointer text-gray-800 font-medium group-open:text-indigo-600">
+            MetaTakas nedir ve nasıl çalışır?
+            <svg class="w-4 h-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <p class="mt-2 text-gray-600">MetaTakas, ürünlerinizi satmak ya da takas etmek için ilanlarınızı WhatsApp üzerinden bize ulaştırarak yayınlayabileceğiniz bir platformdur.</p>
+        </details>
+
+        <details class="group p-4">
+          <summary class="flex justify-between items-center cursor-pointer text-gray-800 font-medium group-open:text-indigo-600">
+            İlanımı nasıl oluşturabilirim?
+            <svg class="w-4 h-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <p class="mt-2 text-gray-600">Ana sayfadaki WhatsApp ile iletişim butonuna tıklayarak ürün bilgilerinizi bize iletin, biz sizin adınıza ilanı oluşturalım.</p>
+        </details>
+
+        <details class="group p-4">
+          <summary class="flex justify-between items-center cursor-pointer text-gray-800 font-medium group-open:text-indigo-600">
+            Hangi ürünleri takas edebilirim?
+            <svg class="w-4 h-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <p class="mt-2 text-gray-600">Araçlar, emlak, elektronik, mobilya ve daha fazlası gibi birçok ürün kategorisinde takas yapabilirsiniz.</p>
+        </details>
+
+        <details class="group p-4">
+          <summary class="flex justify-between items-center cursor-pointer text-gray-800 font-medium group-open:text-indigo-600">
+            Ürünümün değerini nasıl belirlemeliyim?
+            <svg class="w-4 h-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <p class="mt-2 text-gray-600">Benzer ilanlara göz atarak, ürün durumu ve piyasadaki talebe göre değer belirleyebilirsiniz. Gerekirse bizden öneri alabilirsiniz.</p>
+        </details>
+
+        <details class="group p-4">
+          <summary class="flex justify-between items-center cursor-pointer text-gray-800 font-medium group-open:text-indigo-600">
+            MetaTakas ilan süreci güvenli mi?
+            <svg class="w-4 h-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <p class="mt-2 text-gray-600">İlanlar MetaTakas moderasyonu ile paylaşılır. Tüm alım/satım işlemleriniz WhatsApp üzerinden yürütülür, dolandırıcılık riskine karşı dikkatli olunuz.</p>
+        </details>
+
+        <details class="group p-4">
+          <summary class="flex justify-between items-center cursor-pointer text-gray-800 font-medium group-open:text-indigo-600">
+            WhatsApp üzerinden iletişime geçmek güvenli mi?
+            <svg class="w-4 h-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <p class="mt-2 text-gray-600">Evet, iletişim yalnızca resmi WhatsApp hattımız üzerinden sağlanır ve paylaştığınız bilgiler gizli tutulur.</p>
+        </details>
+      </div>
+    </div>
+  </body>
+{% endblock %}

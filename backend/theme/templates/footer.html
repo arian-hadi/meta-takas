@@ -50,9 +50,8 @@ class="mx-auto w-full max-w-[1200px] justify-between pb-10 flex flex-col lg:flex
     <div class="mx-5 mt-10">
     <p class="font-medium text-gray-500">DESTEK</p>
     <ul class="text-sm leading-8">
-        <li><a href="#">Yardım Merkezi</a></li>
+        <li><a href="{% url 'help_center' %}">Yardım Merkezi</a></li>
         <li><a href="{% url 'contact' %}">İletişim</a></li>
-        <li><a href="#">Sorun Bildir</a></li>
     </ul>
     </div>
 
@@ -69,7 +68,7 @@ class="mx-auto w-full max-w-[1200px] justify-between pb-10 flex flex-col lg:flex
     <div class="mx-5 mt-10">
     <p class="font-medium text-gray-500">HAKKIMIZDA</p>
     <ul class="text-sm leading-8">
-        <li><a href="#">Hakkımızda</a></li>
+        <li><a href="{% url 'aboutus' %}">Hakkımızda</a></li>
         <li><a href="#">Misyonumuz</a></li>
     </ul>
     </div>

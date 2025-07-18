@@ -35,9 +35,6 @@ class ValuationView(TemplateView):
 class HelpCenterView(TemplateView):
     template_name = "homepage/help_center.html"
 
-class FAQView(TemplateView):
-    template_name = "homepage/faq.html"
-
 
 #LEGAL
 class TermsOfUseView(TemplateView):
