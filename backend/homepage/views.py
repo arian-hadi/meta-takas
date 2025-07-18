@@ -52,4 +52,4 @@ class CommunityGuidelinesView(TemplateView):
 #ABOUT
 
 class OurMissionView(TemplateView):
-    template_name = "homepage/our_mission.html"
+    template_name = "homepage/mission.html"

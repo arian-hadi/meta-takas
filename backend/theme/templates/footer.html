@@ -58,10 +58,9 @@ class="mx-auto w-full max-w-[1200px] justify-between pb-10 flex flex-col lg:flex
     <div class="mx-5 mt-10">
     <p class="font-medium text-gray-500">YASAL</p>
     <ul class="text-sm leading-8">
-        <li><a href="#">Kullanım Şartları</a></li>
-        <li><a href="#">Gizlilik Politikası</a></li>
-        <li><a href="#">Çerez Politikası</a></li>
-        <li><a href="#">Topluluk Kuralları</a></li>
+        <li><a href="{% url 'terms_of_use' %}">Kullanım Şartları</a></li>
+        <li><a href="{% url 'privacy_policy' %}">Gizlilik Politikası</a></li>
+        <li><a href="{% url 'community_guidelines' %}">Topluluk Kuralları</a></li>
     </ul>
     </div>
 
@@ -69,7 +68,7 @@ class="mx-auto w-full max-w-[1200px] justify-between pb-10 flex flex-col lg:flex
     <p class="font-medium text-gray-500">HAKKIMIZDA</p>
     <ul class="text-sm leading-8">
         <li><a href="{% url 'aboutus' %}">Hakkımızda</a></li>
-        <li><a href="#">Misyonumuz</a></li>
+        <li><a href="{% url 'our_mission' %}">Misyonumuz</a></li>
     </ul>
     </div>
 </div>
