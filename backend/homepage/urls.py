@@ -11,7 +11,6 @@ urlpatterns = [
     path("help_center/", HelpCenterView.as_view(), name = 'help_center'),
     path("terms_of_use/", TermsOfUseView.as_view(), name = 'terms_of_use'),
     path("privacy_policy/", PrivacyPolicyView.as_view(), name = 'privacy_policy'),
-    path("cookie_policy/", CookiePolicyView.as_view(), name = 'cookie_policy'),
     path("community_guidelines/", CommunityGuidelinesView.as_view(), name = 'community_guidelines'),
     path("our_mission/", OurMissionView.as_view(), name = 'our_mission'),
 

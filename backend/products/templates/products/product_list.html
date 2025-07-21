@@ -64,10 +64,10 @@
             <!-- Sort Dropdown -->
             <form method="get" class="flex-1 ml-1">
               <select name="sort" onchange="this.form.submit()" class="w-full border border-gray-300 rounded py-2 px-3 text-sm">
-                <option value="newest" {% if current_sort == 'newest' or not current_sort %}selected{% endif %}>Newest</option>
-                <option value="oldest" {% if current_sort == 'oldest' %}selected{% endif %}>Oldest</option>
-                <option value="price_desc" {% if current_sort == 'price_desc' %}selected{% endif %}>Price: Highest to Lowest</option>
-                <option value="price_asc" {% if current_sort == 'price_asc' %}selected{% endif %}>Price: Lowest to Highest</option>
+                <option value="newest" {% if current_sort == 'newest' or not current_sort %}selected{% endif %}>En Yeniler</option>
+                <option value="oldest" {% if current_sort == 'oldest' %}selected{% endif %}>En Eskiler</option>
+                <option value="price_desc" {% if current_sort == 'price_desc' %}selected{% endif %}>Fiyat: Yüksekten Düşüğe</option>
+                <option value="price_asc" {% if current_sort == 'price_asc' %}selected{% endif %}> Fiyat: Düşükten Yükseğe</option>
               </select>
             </form>
           </div>
@@ -306,10 +306,10 @@
               </div>
               <!-- CITY -->
             <div class="border-b py-5">
-              <p class="mb-3 font-medium">ŞEHİR</p>
+              <p class="mb-3 font-medium">İl</p>
               <select name="city" id="city" class="w-full border p-2 rounded">
-                <option value="">Tüm Şehirler</option>
-                {% for city in cities %}
+                <option value="">Tüm İller</option>
+                {% for city in citiqes %}
                   <option value="{{ city }}" {% if city == selected_city %}selected{% endif %}>{{ city }}</option>
                 {% endfor %}
               </select>
@@ -379,12 +379,12 @@
           <div class="mb-5 hidden lg:flex items-center justify-between px-5">
             <form method="get" class="flex items-center gap-4 w-full">
               {# Keep other filter hidden fields if needed #}
-              <label for="sort" class="text-sm font-medium">Sort by:</label>
+              <label for="sort" class="text-sm font-medium">Sırala:</label>
               <select name="sort" id="sort" onchange="this.form.submit()" class="border rounded px-3 py-2 text-sm min-w-[200px]">
-                <option value="newest" {% if current_sort == 'newest' or not current_sort %}selected{% endif %}>Newest</option>
-                <option value="oldest" {% if current_sort == 'oldest' %}selected{% endif %}>Oldest</option>
-                <option value="price_desc" {% if current_sort == 'price_desc' %}selected{% endif %}>Price: Highest to Lowest</option>
-                <option value="price_asc" {% if current_sort == 'price_asc' %}selected{% endif %}>Price: Lowest to Highest</option>
+                <option value="newest" {% if current_sort == 'newest' or not current_sort %}selected{% endif %}>En Yeniler</option>
+                <option value="oldest" {% if current_sort == 'oldest' %}selected{% endif %}>En Eskiler</option>
+                <option value="price_desc" {% if current_sort == 'price_desc' %}selected{% endif %}>Fiyat: Yüksekten Düşüğe</option>
+                <option value="price_asc" {% if current_sort == 'price_asc' %}selected{% endif %}>Fiyat: Düşükten Yükseğe</option>
               </select>
               {# Add other filter hidden fields here if needed #}
             </form>

@@ -43,8 +43,6 @@ class TermsOfUseView(TemplateView):
 class PrivacyPolicyView(TemplateView):
     template_name = "homepage/privacy_policy.html"
 
-class CookiePolicyView(TemplateView):  
-    template_name = "homepage/cookie_policy.html"
 
 class CommunityGuidelinesView(TemplateView):
     template_name = "homepage/community_guidelines.html"
