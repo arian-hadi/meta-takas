@@ -11,6 +11,7 @@ class ProductListView(ListView):
     model = Product
     template_name = 'products/product_list.html'
     context_object_name = 'products'
+    paginate_by = 12
 
     types = [
         {'slug': 'sale', 'label': 'Satılık'},
@@ -94,7 +95,10 @@ class ProductListView(ListView):
             # Extract just the product list section using a unique div ID
             start = products_html.find('<!--PRODUCT-LIST-START-->')
             end = products_html.find('<!--PRODUCT-LIST-END-->')
-            only_products = products_html[start + 26:end].strip()
+            if start != -1 and end != -1 and end > start:
+                only_products = products_html[start + len('<!--PRODUCT-LIST-START-->'):end].strip()
+            else:
+                only_products = products_html  # fallback in case slicing fails
             return JsonResponse({'products_html': only_products})
         
         return super().render_to_response(context, **response_kwargs)

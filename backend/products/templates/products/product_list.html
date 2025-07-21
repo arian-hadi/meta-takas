@@ -309,7 +309,7 @@
               <p class="mb-3 font-medium">İl</p>
               <select name="city" id="city" class="w-full border p-2 rounded">
                 <option value="">Tüm İller</option>
-                {% for city in citiqes %}
+                {% for city in cities %}
                   <option value="{{ city }}" {% if city == selected_city %}selected{% endif %}>{{ city }}</option>
                 {% endfor %}
               </select>
@@ -474,9 +474,48 @@
                 <p class="col-span-3 text-center text-gray-500">No products available.</p>
               {% endfor %}
           </section>
+            {% if page_obj.paginator.num_pages > 1 or products %}
+              <ol class="flex justify-center text-xs font-medium space-x-1 mt-8">
+                {% if page_obj.has_previous %}
+                  <li>
+                    <a href="?page={{ page_obj.previous_page_number }}&{{ request.GET.urlencode|safe }}" class="inline-flex items-center justify-center w-8 h-8 border border-gray-100 rounded">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                      </svg>
+                    </a>
+                  </li>
+                {% endif %}
+
+                {% for num in paginator.page_range %}
+                  {% if num == page_obj.number %}
+                    <li class="block w-8 h-8 text-center text-white bg-blue-600 border-blue-600 rounded leading-8">{{ num }}</li>
+                  {% elif num >= page_obj.number|add:-2 and num <= page_obj.number|add:2 %}
+                    <li>
+                      <a href="?page={{ num }}&{{ request.GET.urlencode|safe }}" class="block w-8 h-8 text-center border border-gray-100 rounded leading-8">{{ num }}</a>
+                    </li>
+                  {% elif num == 1 or num == paginator.num_pages %}
+                    <li>
+                      <a href="?page={{ num }}&{{ request.GET.urlencode|safe }}" class="block w-8 h-8 text-center border border-gray-100 rounded leading-8">{{ num }}</a>
+                    </li>
+                  {% elif num == page_obj.number|add:-3 or num == page_obj.number|add:3 %}
+                    <li><span class="px-2">...</span></li>
+                  {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                  <li>
+                    <a href="?page={{ page_obj.next_page_number }}&{{ request.GET.urlencode|safe }}" class="inline-flex items-center justify-center w-8 h-8 border border-gray-100 rounded">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                      </svg>
+                    </a>
+                  </li>
+                {% endif %}
+              </ol>
+            {% endif %}
         </div>
         <!--PRODUCT-LIST-END-->
-
+        
         </div>
       </section>
       {{ province_map|json_script:"province-map-data" }}
@@ -572,6 +611,22 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+    resultsContainer?.addEventListener('click', function (e) {
+    const target = e.target.closest('a');
+    if (target && target.closest('ol')) {
+      e.preventDefault();
+      fetch(target.href, {
+        headers: { 'X-Requested-With': 'XMLHttpRequest' }
+      })
+      .then(res => res.json())
+      .then(data => {
+        resultsContainer.innerHTML = data.products_html;
+      });
+    }
+  });
+
+  
+
   // ------------------------------
   // ✅ 3. Categories Modal (if exists)
   // ------------------------------
@@ -603,6 +658,10 @@ document.addEventListener('DOMContentLoaded', function () {
     openBtn?.addEventListener("click", openDrawer);
     closeBtn?.addEventListener("click", closeDrawer);
     overlay?.addEventListener("click", closeDrawer);
+
+  
+  
+
 
 });
 </script>
