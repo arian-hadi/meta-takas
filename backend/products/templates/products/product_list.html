@@ -7,10 +7,16 @@
 
 {% block content %}
         <style>
-          .disable-transitions * {
-            transition: none !important;
-            animation: none !important;
-          }
+        .disable-transitions * {
+          transition: none !important;
+          animation: none !important;
+        }
+          
+        #results-container {
+          display: flex;
+          flex-direction: column;
+          min-height: 700px; /* adjust based on card height */
+        }
         </style>
         <!-- breadcrumbs  -->
         <nav class="mx-auto w-full mt-4 max-w-[1200px] px-5">
@@ -395,92 +401,98 @@
               {# Add other filter hidden fields here if needed #}
             </form>
           </div>
-          <section class="mx-auto grid max-w-[1200px] grid-cols-2 gap-3 px-5 pb-10 lg:grid-cols-3">
-              {% for product in products %}
-                <div class="flex flex-col h-full">
-                  <!-- Image and overlay -->
-                  <div class="relative w-full">
-                    <div class="aspect-[4/3] w-full bg-gray-100 overflow-hidden">
-                      <img 
-                        src="{{ product.image.url }}" 
-                        alt="{{ product.name }}" 
-                        class="w-full h-full object-contain bg-white"
-                      >
+
+          <div class="flex-grow">
+            <section class="mx-auto grid max-w-[1200px] grid-cols-2 gap-3 px-5 pb-10 lg:grid-cols-3">
+                {% for product in products %}
+                  <div class="flex flex-col h-full">
+                    <!-- Image and overlay -->
+                    <div class="relative w-full">
+                      <div class="aspect-[4/3] w-full bg-gray-100 overflow-hidden">
+                        <img 
+                          src="{{ product.image.url }}" 
+                          alt="{{ product.name }}" 
+                          class="w-full h-full object-contain bg-white"
+                        >
+                      </div>
+
+                      <!-- Hover overlay -->
+                      <div class="absolute inset-0 flex items-center justify-center gap-3 opacity-0 duration-150 hover:opacity-100 bg-black bg-opacity-30">
+                        <a href="{% url 'product_detail' product.slug %}" class="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-blue-400">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
+                          </svg>
+                        </a>
+                      </div>
+
+                      <!-- Badge -->
+                      <div class="absolute top-2 right-2 rounded-full px-3 py-1 text-[0.7rem] font-bold text-white uppercase tracking-wide shadow 
+                        {% if product.listing_type == 'exchange' %}
+                          bg-amber-500
+                        {% else %}
+                          bg-green-500
+                        {% endif %}">
+                        {% if product.listing_type == 'sale' %}
+                          Satılık
+                        {% else %}
+                          Takas
+                        {% endif %}
+                      </div>
                     </div>
 
-                    <!-- Hover overlay -->
-                    <div class="absolute inset-0 flex items-center justify-center gap-3 opacity-0 duration-150 hover:opacity-100 bg-black bg-opacity-30">
-                      <a href="{% url 'product_detail' product.slug %}" class="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-blue-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
-                        </svg>
-                      </a>
-                    </div>
+                    <!-- Product content -->
+                    <div class="flex flex-col justify-between flex-grow mt-4">
+                      <p class="mt-2 font-semibold text-gray-800">{{ product.name }}</p>
 
-                    <!-- Badge -->
-                    <div class="absolute top-2 right-2 rounded-full px-3 py-1 text-[0.7rem] font-bold text-white uppercase tracking-wide shadow 
-                      {% if product.listing_type == 'exchange' %}
-                        bg-amber-500
-                      {% else %}
-                        bg-green-500
-                      {% endif %}">
                       {% if product.listing_type == 'sale' %}
-                        Satılık
-                      {% else %}
-                        Takas
-                      {% endif %}
-                    </div>
-                  </div>
-
-                  <!-- Product content -->
-                  <div class="flex flex-col justify-between flex-grow mt-4">
-                    <p class="mt-2 font-semibold text-gray-800">{{ product.name }}</p>
-
-                    {% if product.listing_type == 'sale' %}
-                      <p class="font-medium text-violet-900">{{ product.price|floatformat:0|intcomma }} TL</p>
+                        <p class="font-medium text-violet-900">{{ product.price|floatformat:0|intcomma }} TL</p>
 
 
-                    {% elif product.listing_type == 'exchange' %}
-                      <p class="font-medium text-violet-900">{{ product.price|floatformat:0|intcomma }} TL</p>
+                      {% elif product.listing_type == 'exchange' %}
+                        <p class="font-medium text-violet-900">{{ product.price|floatformat:0|intcomma }} TL</p>
 
 
-                      <p class="text-sm text-gray-500 italic">Takas edilebilir:</p>
-                      
-                      {% with categories=product.exchange_for.all %}
-                        {% if categories %}
-                          {% if categories|length > 0 %}
-                            <p class="text-sm text-gray-800">
-                              {% for category in categories|slice:":2" %}
-                                {{ category.name }}{% if not forloop.last %}, {% endif %}
-                              {% endfor %}
-                              {% if categories|length > 2 %}...{% endif %}
-                            </p>
+                        <p class="text-sm text-gray-500 italic">Takas edilebilir:</p>
+                        
+                        {% with categories=product.exchange_for.all %}
+                          {% if categories %}
+                            {% if categories|length > 0 %}
+                              <p class="text-sm text-gray-800">
+                                {% for category in categories|slice:":2" %}
+                                  {{ category.name }}{% if not forloop.last %}, {% endif %}
+                                {% endfor %}
+                                {% if categories|length > 2 %}...{% endif %}
+                              </p>
+                            {% else %}
+                              <p class="text-sm text-gray-400">Belirtilmemiş</p>
+                            {% endif %}
                           {% else %}
                             <p class="text-sm text-gray-400">Belirtilmemiş</p>
                           {% endif %}
-                        {% else %}
-                          <p class="text-sm text-gray-400">Belirtilmemiş</p>
-                        {% endif %}
-                      {% endwith %}
-                    {% endif %}
-                    <p class="text-sm text-gray-500 mt-2">
-                      {{ product.created_at|date:"d/m/Y" }}
-                    </p>
+                        {% endwith %}
+                      {% endif %}
+                      <p class="text-sm text-gray-500 mt-2">
+                        {{ product.created_at|date:"d/m/Y" }}
+                      </p>
 
 
 
-                    <div class="my-5">
-                      <a href="{% url 'product_detail' product.slug %}">
-                        <button class="h-10 w-full bg-violet-900 text-white hover:bg-violet-800 transition">View Details</button>
-                      </a>
+                      <div class="my-5">
+                        <a href="{% url 'product_detail' product.slug %}">
+                          <button class="h-10 w-full bg-violet-900 text-white hover:bg-violet-800 transition">View Details</button>
+                        </a>
+                      </div>
                     </div>
                   </div>
-                </div>
-              {% empty %}
-                <p class="col-span-3 text-center text-gray-500">No products available.</p>
-              {% endfor %}
-          </section>
+                {% empty %}
+                  <p class="col-span-3 text-center text-gray-500">No products available.</p>
+                {% endfor %}  
+            </section>
+          </div>
+
+          <!-- Pagination --> 
             {% if page_obj.has_other_pages %}
+            <div class="mt-8 mb-12 flex justify-center min-h-[40px]">
               <ol class="flex justify-center text-xs font-medium space-x-1 mt-8">
                 {% if page_obj.has_previous %}
                   <li>
@@ -516,6 +528,7 @@
                   </li>
                 {% endif %}
               </ol>
+            </div>
             {% endif %}
 
         </div>
