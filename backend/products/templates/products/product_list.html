@@ -6,6 +6,12 @@
 {% block title %}Product list{% endblock %}
 
 {% block content %}
+        <style>
+          .disable-transitions * {
+            transition: none !important;
+            animation: none !important;
+          }
+        </style>
         <!-- breadcrumbs  -->
         <nav class="mx-auto w-full mt-4 max-w-[1200px] px-5">
           <ul class="flex items-center">
@@ -478,7 +484,7 @@
               <ol class="flex justify-center text-xs font-medium space-x-1 mt-8">
                 {% if page_obj.has_previous %}
                   <li>
-                    <a href="?page={{ page_obj.previous_page_number }}&{{ request.GET.urlencode|safe }}" class="inline-flex items-center justify-center w-8 h-8 border border-gray-100 rounded">
+                    <a href="?page={{ page_obj.previous_page_number }}{% if querystring %}&{{ querystring }}{% endif %}" class="inline-flex items-center justify-center w-8 h-8 border border-gray-100 rounded">
                       <!-- left arrow icon -->
                       &larr;
                     </a>
@@ -503,7 +509,7 @@
 
                 {% if page_obj.has_next %}
                   <li>
-                    <a href="?page={{ page_obj.next_page_number }}&{{ request.GET.urlencode|safe }}" class="inline-flex items-center justify-center w-8 h-8 border border-gray-100 rounded">
+                    <a href="?page={{ page_obj.next_page_number }}{% if querystring %}&{{ querystring }}{% endif %}" class="inline-flex items-center justify-center w-8 h-8 border border-gray-100 rounded">
                       <!-- right arrow icon -->
                       &rarr;
                     </a>
@@ -522,22 +528,37 @@
 
 
 <script>
-function bindPaginationClicks(container) {
-  container?.addEventListener('click', function (e) {
+function setupPagination(container) {
+  // Remove old listener if it exists
+  container.replaceWith(container.cloneNode(true));
+  container = document.getElementById('results-container');
+
+  container.addEventListener('click', function (e) {
     const target = e.target.closest('a');
     if (target && target.closest('ol')) {
       e.preventDefault();
+
+      container.classList.add('disable-transitions');
+
       fetch(target.href, {
         headers: { 'X-Requested-With': 'XMLHttpRequest' }
       })
       .then(res => res.json())
       .then(data => {
-        container.innerHTML = data.products_html;
-        bindPaginationClicks(container);  // 🔁 re-bind again!
+        requestAnimationFrame(() => {
+          container.innerHTML = data.products_html;
+          setTimeout(() => {
+            container.classList.remove('disable-transitions');
+          }, 50);
+
+          // 🔁 Re-bind only after replacing content
+          setupPagination(container);
+        });
       });
     }
   });
 }
+
 
 document.addEventListener('DOMContentLoaded', function () {
   // ------------------------------
@@ -632,27 +653,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-    resultsContainer?.addEventListener('click', function (e) {
-    const target = e.target.closest('a');
-    if (target && target.closest('ol')) {
-      e.preventDefault();
-      fetch(target.href, {
-        headers: { 'X-Requested-With': 'XMLHttpRequest' }
-      })
-      .then(res => res.json())
-      .then(data => {
-        const parent = resultsContainer.parentNode;
-        const temp = document.createElement('div');
-        temp.innerHTML = data.products_html;
-        const newResults = temp.querySelector('#results-container');
-        if (newResults) {
-          parent.replaceChild(newResults, resultsContainer);
-          bindPaginationClicks(newResults);  // rebind events
-        }
-      });
-    }
-  });
-
+  bindPaginationClicks(resultsContainer);
   
 
   // ------------------------------
