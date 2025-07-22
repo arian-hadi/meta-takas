@@ -5,6 +5,7 @@ from django.db.models import Q, Count
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 from django.shortcuts import get_object_or_404, render
+from bs4 import BeautifulSoup
 
 
 class ProductListView(ListView):
@@ -93,13 +94,11 @@ class ProductListView(ListView):
                 request=self.request
             )
             # Extract just the product list section using a unique div ID
-            start = products_html.find('<!--PRODUCT-LIST-START-->')
-            end = products_html.find('<!--PRODUCT-LIST-END-->')
-            if start != -1 and end != -1 and end > start:
-                only_products = products_html[start + len('<!--PRODUCT-LIST-START-->'):end].strip()
-            else:
-                only_products = products_html  # fallback in case slicing fails
-            return JsonResponse({'products_html': only_products})
+            soup = BeautifulSoup(products_html, 'html.parser')
+            results_container = soup.find('div', {'id': 'results-container'})
+            only_products = ''.join(str(child) for child in results_container.contents)
+
+            return JsonResponse({'products_html': only_products})  
         
         return super().render_to_response(context, **response_kwargs)
 
@@ -119,7 +118,11 @@ class ProductListView(ListView):
                 'count': count_map.get(t['slug'], 0)
             })
 
+        querydict = self.request.GET.copy()
+        if 'page' in querydict:
+            querydict.pop('page')
         
+        context['querystring'] = querydict.urlencode()
         context['types'] = types_with_counts
         context['current_category_slug'] = self.category_slug
 
@@ -161,3 +164,5 @@ def product_detail(request, slug):
         'related_products': related_products,
         'EXCHANGE_PREFERENCES': Product.EXCHANGE_PREFERENCES,
     })
+
+
