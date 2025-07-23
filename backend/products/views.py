@@ -5,12 +5,14 @@ from django.db.models import Q, Count
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 from django.shortcuts import get_object_or_404, render
+from bs4 import BeautifulSoup
 
 
 class ProductListView(ListView):
     model = Product
     template_name = 'products/product_list.html'
     context_object_name = 'products'
+    paginate_by = 12
 
     types = [
         {'slug': 'sale', 'label': 'Satılık'},
@@ -84,18 +86,15 @@ class ProductListView(ListView):
         return queryset
     
 
+    
     def render_to_response(self, context, **response_kwargs):
-        if self.request.headers.get('x-requested-with') == 'XMLHttpRequest':
-            products_html = render_to_string(
-                'products/product_list.html',
-                context,
-                request=self.request
-            )
-            # Extract just the product list section using a unique div ID
-            start = products_html.find('<!--PRODUCT-LIST-START-->')
-            end = products_html.find('<!--PRODUCT-LIST-END-->')
-            only_products = products_html[start + 26:end].strip()
-            return JsonResponse({'products_html': only_products})
+        if context.get('ajax_request'):
+            html = render_to_string('products/product_list.html', context, request=self.request)
+
+            from bs4 import BeautifulSoup
+            soup = BeautifulSoup(html, 'html.parser')
+            container = soup.find('div', {'id': 'results-container'})
+            return JsonResponse({'products_html': str(container)})
         
         return super().render_to_response(context, **response_kwargs)
 
@@ -115,7 +114,11 @@ class ProductListView(ListView):
                 'count': count_map.get(t['slug'], 0)
             })
 
+        querydict = self.request.GET.copy()
+        if 'page' in querydict:
+            querydict.pop('page')
         
+        context['querystring'] = querydict.urlencode()
         context['types'] = types_with_counts
         context['current_category_slug'] = self.category_slug
 
@@ -137,6 +140,7 @@ class ProductListView(ListView):
         context['selected_province'] = self.request.GET.get('province', '')
         context['province_map'] = PROVINCE_MAP
         context['selected_city'] = self.request.GET.get('city', '')
+        context['ajax_request'] = self.request.headers.get('x-requested-with') == 'XMLHttpRequest'
 
         return context
 
@@ -152,8 +156,16 @@ def product_detail(request, slug):
     related_products = Product.objects.filter(
         category=product.category
     ).exclude(id=product.id).order_by('-id')[:4]
+
+    querystring = request.META.get('HTTP_REFERER', '')
+    filters_query = ''
+    if '?' in querystring:
+        filters_query = querystring.split('?', 1)[-1]
+
     return render(request, 'products/product_detail.html', {
         'product': product,
         'related_products': related_products,
         'EXCHANGE_PREFERENCES': Product.EXCHANGE_PREFERENCES,
+        'filters_query': filters_query,
     })
+

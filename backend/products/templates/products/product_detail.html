@@ -19,8 +19,8 @@
             </a>
         </li>
         <li><span class="mx-2 text-gray-500">&gt;</span></li>
-        <li class = "text-gray-500"><a href="{% url 'product_list' %}">catalouge &gt;</a></li>
-        <li class="text-gray-500"> {{ product.name }}</li>
+        <li class = "text-gray-500"><a href="{% url 'product_list' %}?{{ filters_query }}">catalogue &gt;</a>
+        <li class="text-gray-500">{{ product.name }}</li>
     </ul>
 </nav>
 
@@ -250,7 +250,7 @@
                     />
                 </g>
                 </svg>
-                Contact via WhatsApp
+                WhatsApp ile iletişime geçin
             </a>
         </div>
 
@@ -264,12 +264,12 @@
 
 <!-- Product Details Section -->
 <section class="container mx-auto max-w-[1200px] px-5 py-5 lg:py-10">
-    <h2 class="text-xl">Product Details</h2>
+    <h2 class="text-xl">Açıklama</h2>
     <p class="mt-4 lg:w-3/4">
         {{ product.description }}
     </p>
 
-    <table class="mt-7 w-full table-auto divide-x divide-y lg:w-1/2">
+    <!-- <table class="mt-7 w-full table-auto divide-x divide-y lg:w-1/2">
         <tbody class="divide-x border">
             <tr>
                 <td class="border pl-4 font-bold">City</td>
@@ -304,8 +304,8 @@
                 <td class="border pl-4">{{ product.email }}</td>
             </tr>
         </tbody>
-    </table>
-</section>
+    </table> -->
+</section> 
 
 
 <!-- Exchange Notes -->

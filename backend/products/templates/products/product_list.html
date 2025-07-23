@@ -6,6 +6,18 @@
 {% block title %}Product list{% endblock %}
 
 {% block content %}
+        <style>
+        .disable-transitions * {
+          transition: none !important;
+          animation: none !important;
+        }
+          
+        #results-container {
+          display: flex;
+          flex-direction: column;
+          min-height: 700px; /* adjust based on card height */
+        }
+        </style>
         <!-- breadcrumbs  -->
         <nav class="mx-auto w-full mt-4 max-w-[1200px] px-5">
           <ul class="flex items-center">
@@ -64,10 +76,10 @@
             <!-- Sort Dropdown -->
             <form method="get" class="flex-1 ml-1">
               <select name="sort" onchange="this.form.submit()" class="w-full border border-gray-300 rounded py-2 px-3 text-sm">
-                <option value="newest" {% if current_sort == 'newest' or not current_sort %}selected{% endif %}>Newest</option>
-                <option value="oldest" {% if current_sort == 'oldest' %}selected{% endif %}>Oldest</option>
-                <option value="price_desc" {% if current_sort == 'price_desc' %}selected{% endif %}>Price: Highest to Lowest</option>
-                <option value="price_asc" {% if current_sort == 'price_asc' %}selected{% endif %}>Price: Lowest to Highest</option>
+                <option value="newest" {% if current_sort == 'newest' or not current_sort %}selected{% endif %}>En Yeniler</option>
+                <option value="oldest" {% if current_sort == 'oldest' %}selected{% endif %}>En Eskiler</option>
+                <option value="price_desc" {% if current_sort == 'price_desc' %}selected{% endif %}>Fiyat: Yüksekten Düşüğe</option>
+                <option value="price_asc" {% if current_sort == 'price_asc' %}selected{% endif %}> Fiyat: Düşükten Yükseğe</option>
               </select>
             </form>
           </div>
@@ -77,8 +89,8 @@
 
           <!-- Drawer Panel (from left, Mobile only) -->
           <div id="leftDrawer" class="fixed inset-y-0 left-0 w-[90vw] max-w-sm bg-white shadow-lg transform -translate-x-full transition-transform duration-300 z-50 lg:hidden overflow-x-hidden overflow-y-auto">
-            <div class="flex justify-between items-center p-4 border-b">
-              <button id="closeDrawerBtn" type="button" class="text-gray-500 hover:text-gray-700">
+            <div class="flex justify-end items-center p-4 border-b">
+              <button id="closeDrawerBtn" type="button" class="text-gray-500 hover:text-gray-700 text-xl">
                 ✕
               </button>
             </div>
@@ -87,7 +99,7 @@
               <form method="get" action="{% url 'product_list' %}" class="space-y-4">
 
                 <!-- 🔽 Listing Type -->
-                <div x-data="{ open: true }" class="border-b pb-3">
+                <div x-data="{ open: false }" class="border-b pb-3">
                   <button type="button" class="w-full flex justify-between items-center font-semibold" @click="open = !open">
                     İlan Türü
                     <span x-text="open ? '−' : '+'"></span>
@@ -103,7 +115,7 @@
                 </div>
 
                 <!-- 🔽 Category -->
-                <div x-data="{ open: true }" class="border-b pb-3">
+                <div x-data="{ open: false }" class="border-b pb-3">
                   <button type="button" class="w-full flex justify-between items-center font-semibold" @click="open = !open">
                     Kategoriler
                     <span x-text="open ? '−' : '+'"></span>
@@ -119,7 +131,7 @@
                 </div>
 
                 <!-- 🔽 Takas İstenen Kategoriler -->
-                <div x-data="{ open: true }" class="border-b pb-3">
+                <div x-data="{ open: false }" class="border-b pb-3">
                   <button type="button" class="w-full flex justify-between items-center font-semibold" @click="open = !open">
                     Takas İstenen Kategoriler
                     <span x-text="open ? '−' : '+'"></span>
@@ -136,7 +148,7 @@
 
 
                 <!-- 🔽 İl / İlçe -->
-                <div x-data="{ open: true }" class="border-b pb-3">
+                <div x-data="{ open: false }" class="border-b pb-3">
                   <button type="button" class="w-full flex justify-between items-center font-semibold" @click="open = !open">
                     Konum
                     <span x-text="open ? '−' : '+'"></span>
@@ -163,7 +175,7 @@
 
 
                 <!-- 🔽 Fiyat -->
-                <div x-data="{ open: true }" class="border-b pb-3">
+                <div x-data="{ open: false }" class="border-b pb-3">
                   <button type="button" class="w-full flex justify-between items-center font-semibold" @click="open = !open">
                     Fiyat Aralığı
                     <span x-text="open ? '−' : '+'"></span>
@@ -306,9 +318,9 @@
               </div>
               <!-- CITY -->
             <div class="border-b py-5">
-              <p class="mb-3 font-medium">ŞEHİR</p>
+              <p class="mb-3 font-medium">İl</p>
               <select name="city" id="city" class="w-full border p-2 rounded">
-                <option value="">Tüm Şehirler</option>
+                <option value="">Tüm İller</option>
                 {% for city in cities %}
                   <option value="{{ city }}" {% if city == selected_city %}selected{% endif %}>{{ city }}</option>
                 {% endfor %}
@@ -376,107 +388,155 @@
 
         <!--PRODUCT-LIST-START-->
         <div id = "results-container">
-          <div class="mb-5 hidden lg:flex items-center justify-between px-5">
-            <form method="get" class="flex items-center gap-4 w-full">
-              {# Keep other filter hidden fields if needed #}
-              <label for="sort" class="text-sm font-medium">Sort by:</label>
-              <select name="sort" id="sort" onchange="this.form.submit()" class="border rounded px-3 py-2 text-sm min-w-[200px]">
-                <option value="newest" {% if current_sort == 'newest' or not current_sort %}selected{% endif %}>Newest</option>
-                <option value="oldest" {% if current_sort == 'oldest' %}selected{% endif %}>Oldest</option>
-                <option value="price_desc" {% if current_sort == 'price_desc' %}selected{% endif %}>Price: Highest to Lowest</option>
-                <option value="price_asc" {% if current_sort == 'price_asc' %}selected{% endif %}>Price: Lowest to Highest</option>
-              </select>
-              {# Add other filter hidden fields here if needed #}
-            </form>
-          </div>
-          <section class="mx-auto grid max-w-[1200px] grid-cols-2 gap-3 px-5 pb-10 lg:grid-cols-3">
-              {% for product in products %}
-                <div class="flex flex-col h-full">
-                  <!-- Image and overlay -->
-                  <div class="relative w-full">
-                    <div class="aspect-[4/3] w-full bg-gray-100 overflow-hidden">
-                      <img 
-                        src="{{ product.image.url }}" 
-                        alt="{{ product.name }}" 
-                        class="w-full h-full object-contain bg-white"
-                      >
+          {% if not ajax_request %}
+            {# Only show sorting when it's NOT an AJAX request #} 
+              <div class="mb-5 hidden lg:flex items-center justify-between px-5">
+                <form method="get" class="flex items-center gap-4 w-full">
+                  {# Keep other filter hidden fields if needed #}
+                  <label for="sort" class="text-sm font-medium">Sırala:</label>
+                  <select name="sort" id="sort" onchange="this.form.submit()" class="border rounded px-3 py-2 text-sm min-w-[200px]">
+                    <option value="newest" {% if current_sort == 'newest' or not current_sort %}selected{% endif %}>En Yeniler</option>
+                    <option value="oldest" {% if current_sort == 'oldest' %}selected{% endif %}>En Eskiler</option>
+                    <option value="price_desc" {% if current_sort == 'price_desc' %}selected{% endif %}>Fiyat: Yüksekten Düşüğe</option>
+                    <option value="price_asc" {% if current_sort == 'price_asc' %}selected{% endif %}>Fiyat: Düşükten Yükseğe</option>
+                  </select>
+                  {# Add other filter hidden fields here if needed #}
+                </form>
+              </div>
+          {% endif %}
+
+          <div class="flex-grow">
+            <section class="mx-auto grid max-w-[1200px] grid-cols-2 gap-3 px-5 pb-10 lg:grid-cols-3">
+                {% for product in products %}
+                  <div class="flex flex-col h-full">
+                    <!-- Image and overlay -->
+                    <div class="relative w-full">
+                      <div class="aspect-[4/3] w-full bg-gray-100 overflow-hidden">
+                        <img 
+                          src="{{ product.image.url }}" 
+                          alt="{{ product.name }}" 
+                          class="w-full h-full object-contain bg-white"
+                        >
+                      </div>
+
+                      <!-- Hover overlay -->
+                      <div class="absolute inset-0 flex items-center justify-center gap-3 opacity-0 duration-150 hover:opacity-100 bg-black bg-opacity-30">
+                        <a href="{% url 'product_detail' product.slug %}" class="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-blue-400">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
+                          </svg>
+                        </a>
+                      </div>
+
+                      <!-- Badge -->
+                      <div class="absolute top-2 right-2 rounded-full px-3 py-1 text-[0.7rem] font-bold text-white uppercase tracking-wide shadow 
+                        {% if product.listing_type == 'exchange' %}
+                          bg-amber-500
+                        {% else %}
+                          bg-green-500
+                        {% endif %}">
+                        {% if product.listing_type == 'sale' %}
+                          Satılık
+                        {% else %}
+                          Takas
+                        {% endif %}
+                      </div>
                     </div>
 
-                    <!-- Hover overlay -->
-                    <div class="absolute inset-0 flex items-center justify-center gap-3 opacity-0 duration-150 hover:opacity-100 bg-black bg-opacity-30">
-                      <a href="{% url 'product_detail' product.slug %}" class="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-blue-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
-                        </svg>
-                      </a>
-                    </div>
+                    <!-- Product content -->
+                    <div class="flex flex-col justify-between flex-grow mt-4">
+                      <p class="mt-2 font-semibold text-gray-800">{{ product.name }}</p>
 
-                    <!-- Badge -->
-                    <div class="absolute top-2 right-2 rounded-full px-3 py-1 text-[0.7rem] font-bold text-white uppercase tracking-wide shadow 
-                      {% if product.listing_type == 'exchange' %}
-                        bg-amber-500
-                      {% else %}
-                        bg-green-500
-                      {% endif %}">
                       {% if product.listing_type == 'sale' %}
-                        Satılık
-                      {% else %}
-                        Takas
-                      {% endif %}
-                    </div>
-                  </div>
-
-                  <!-- Product content -->
-                  <div class="flex flex-col justify-between flex-grow mt-4">
-                    <p class="mt-2 font-semibold text-gray-800">{{ product.name }}</p>
-
-                    {% if product.listing_type == 'sale' %}
-                      <p class="font-medium text-violet-900">{{ product.price|floatformat:0|intcomma }} TL</p>
+                        <p class="font-medium text-violet-900">{{ product.price|floatformat:0|intcomma }} TL</p>
 
 
-                    {% elif product.listing_type == 'exchange' %}
-                      <p class="font-medium text-violet-900">{{ product.price|floatformat:0|intcomma }} TL</p>
+                      {% elif product.listing_type == 'exchange' %}
+                        <p class="font-medium text-violet-900">{{ product.price|floatformat:0|intcomma }} TL</p>
 
 
-                      <p class="text-sm text-gray-500 italic">Takas edilebilir:</p>
-                      
-                      {% with categories=product.exchange_for.all %}
-                        {% if categories %}
-                          {% if categories|length > 0 %}
-                            <p class="text-sm text-gray-800">
-                              {% for category in categories|slice:":2" %}
-                                {{ category.name }}{% if not forloop.last %}, {% endif %}
-                              {% endfor %}
-                              {% if categories|length > 2 %}...{% endif %}
-                            </p>
+                        <p class="text-sm text-gray-500 italic">Takas edilebilir:</p>
+                        
+                        {% with categories=product.exchange_for.all %}
+                          {% if categories %}
+                            {% if categories|length > 0 %}
+                              <p class="text-sm text-gray-800">
+                                {% for category in categories|slice:":2" %}
+                                  {{ category.name }}{% if not forloop.last %}, {% endif %}
+                                {% endfor %}
+                                {% if categories|length > 2 %}...{% endif %}
+                              </p>
+                            {% else %}
+                              <p class="text-sm text-gray-400">Belirtilmemiş</p>
+                            {% endif %}
                           {% else %}
                             <p class="text-sm text-gray-400">Belirtilmemiş</p>
                           {% endif %}
-                        {% else %}
-                          <p class="text-sm text-gray-400">Belirtilmemiş</p>
-                        {% endif %}
-                      {% endwith %}
-                    {% endif %}
-                    <p class="text-sm text-gray-500 mt-2">
-                      {{ product.created_at|date:"d/m/Y" }}
-                    </p>
+                        {% endwith %}
+                      {% endif %}
+                      <p class="text-sm text-gray-500 mt-2">
+                        {{ product.created_at|date:"d/m/Y" }}
+                      </p>
 
 
 
-                    <div class="my-5">
-                      <a href="{% url 'product_detail' product.slug %}">
-                        <button class="h-10 w-full bg-violet-900 text-white hover:bg-violet-800 transition">View Details</button>
-                      </a>
+                      <div class="my-5">
+                        <a href="{% url 'product_detail' product.slug %}">
+                          <button class="h-10 w-full bg-violet-900 text-white hover:bg-violet-800 transition">View Details</button>
+                        </a>
+                      </div>
                     </div>
                   </div>
-                </div>
-              {% empty %}
-                <p class="col-span-3 text-center text-gray-500">No products available.</p>
-              {% endfor %}
-          </section>
+                {% empty %}
+                  <p class="col-span-3 text-center text-gray-500">No products available.</p>
+                {% endfor %}  
+            </section>
+          </div>
+
+          <!-- Pagination --> 
+            {% if page_obj.has_other_pages %}
+            <div class="mt-8 mb-12 flex justify-center min-h-[40px]">
+              <ol class="flex justify-center text-xs font-medium space-x-1 mt-8">
+                {% if page_obj.has_previous %}
+                  <li>
+                    <a href="?page={{ page_obj.previous_page_number }}{% if querystring %}&{{ querystring }}{% endif %}" class="inline-flex items-center justify-center w-8 h-8 border border-gray-100 rounded">
+                      <!-- left arrow icon -->
+                      &larr;
+                    </a>
+                  </li>
+                {% endif %}
+
+                {% for num in paginator.page_range %}
+                  {% if num == page_obj.number %}
+                    <li class="block w-8 h-8 text-center text-white bg-blue-600 border-blue-600 rounded leading-8">{{ num }}</li>
+                  {% elif num >= page_obj.number|add:-2 and num <= page_obj.number|add:2 %}
+                    <li>
+                      <a href="?page={{ num }}{% if querystring %}&{{ querystring }}{% endif %}" class="block w-8 h-8 text-center border border-gray-100 rounded leading-8">{{ num }}</a>
+                    </li>
+                  {% elif num == 1 or num == paginator.num_pages %}
+                    <li>
+                      <a href="?page={{ num }}{% if querystring %}&{{ querystring }}{% endif %}" class="block w-8 h-8 text-center border border-gray-100 rounded leading-8">{{ num }}</a>
+                    </li>
+                  {% elif num == page_obj.number|add:-3 or num == page_obj.number|add:3 %}
+                    <li><span class="px-2">...</span></li>
+                  {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                  <li>
+                    <a href="?page={{ page_obj.next_page_number }}{% if querystring %}&{{ querystring }}{% endif %}" class="inline-flex items-center justify-center w-8 h-8 border border-gray-100 rounded">
+                      <!-- right arrow icon -->
+                      &rarr;
+                    </a>
+                  </li>
+                {% endif %}
+              </ol>
+            </div>
+            {% endif %}
+
         </div>
         <!--PRODUCT-LIST-END-->
-
+        
         </div>
       </section>
       {{ province_map|json_script:"province-map-data" }}
@@ -484,6 +544,42 @@
 
 
 <script>
+// function setupPagination(container) {
+//   // Remove old listener if it exists
+//   container.replaceWith(container.cloneNode(true));
+//   container = document.getElementById('results-container');
+
+//   container.addEventListener('click', function (e) {
+//     const target = e.target.closest('a');
+//     if (target && target.closest('ol')) {
+//       e.preventDefault();
+
+//       container.classList.add('disable-transitions');
+//       showLoading();
+
+//       fetch(target.href, {
+//         headers: { 'X-Requested-With': 'XMLHttpRequest' }
+//       })
+//       .then(res => res.json())
+//       .then(data => {
+//         requestAnimationFrame(() => {
+//           container.innerHTML = data.products_html;
+//           setTimeout(() => {
+//             container.classList.remove('disable-transitions');
+//           }, 50);
+//           setupPagination(container); // Re-bind after content reload
+//         });
+//       })
+//       .finally(() => {
+//         hideLoading();
+//       });
+//     }
+//   });
+// }
+
+
+
+
 document.addEventListener('DOMContentLoaded', function () {
   // ------------------------------
   // ✅ 1. City > Province Mapping (desktop only)
@@ -556,21 +652,35 @@ document.addEventListener('DOMContentLoaded', function () {
   const searchInput = document.getElementById('default-search');
   const resultsContainer = document.getElementById('results-container');
 
+  // if (resultsContainer) {
+  //   setupPagination(resultsContainer);
+  // }
+
+
   if (searchInput && resultsContainer) {
     let timeout = null;
     searchInput.addEventListener('input', function () {
       clearTimeout(timeout);
       timeout = setTimeout(() => {
+
+        showLoading();
+
         fetch(`?q=${encodeURIComponent(this.value)}`, {
           headers: { 'X-Requested-With': 'XMLHttpRequest' }
         })
         .then(res => res.json())
         .then(data => {
           resultsContainer.innerHTML = data.products_html;
+        })
+        .finally(() => {
+          hideLoading();
         });
       }, 300);
     });
   }
+
+  // bindPaginationClicks(resultsContainer);
+  
 
   // ------------------------------
   // ✅ 3. Categories Modal (if exists)
@@ -605,6 +715,29 @@ document.addEventListener('DOMContentLoaded', function () {
     overlay?.addEventListener("click", closeDrawer);
 
 });
+
+function bindDrawerEvents() {
+  const openBtn = document.getElementById("openDrawerBtn");
+  const closeBtn = document.getElementById("closeDrawerBtn");
+  const drawer = document.getElementById("leftDrawer");
+  const overlay = document.getElementById("drawerOverlay");
+
+  if (!openBtn || !closeBtn || !drawer || !overlay) return;
+
+  openBtn.addEventListener("click", () => {
+    drawer.classList.remove("-translate-x-full");
+    overlay.classList.remove("opacity-0", "pointer-events-none");
+  });
+
+  const closeDrawer = () => {
+    drawer.classList.add("-translate-x-full");
+    overlay.classList.add("opacity-0", "pointer-events-none");
+  };
+
+  closeBtn.addEventListener("click", closeDrawer);
+  overlay.addEventListener("click", closeDrawer);
+}
+
 </script>
 
 {% endblock %}

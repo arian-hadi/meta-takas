@@ -15,12 +15,39 @@ class AboutUsView(TemplateView):
     template_name = "homepage/aboutus.html"
 
 
-class TermsView(TemplateView):
-    template_name = "homepage/terms.html"
-
-class ConditionsView(TemplateView):
-    template_name = "homepage/conditions.html"
-
-
+#Exchange Rules
 class HowItWorksView(TemplateView):
     template_name = "homepage/howitworks.html"
+
+class CreateListingView(TemplateView):
+    template_name = "homepage/create_listing.html"
+
+
+class ExchangeRulesView(TemplateView):
+    template_name = "homepage/exchange_rules.html"
+
+
+class ValuationView(TemplateView):
+    template_name = "homepage/valuation.html"
+
+
+#SUPPORT
+class HelpCenterView(TemplateView):
+    template_name = "homepage/help_center.html"
+
+
+#LEGAL
+class TermsOfUseView(TemplateView):
+    template_name = "homepage/terms_of_use.html"
+
+class PrivacyPolicyView(TemplateView):
+    template_name = "homepage/privacy_policy.html"
+
+
+class CommunityGuidelinesView(TemplateView):
+    template_name = "homepage/community_guidelines.html"
+
+#ABOUT
+
+class OurMissionView(TemplateView):
+    template_name = "homepage/mission.html"

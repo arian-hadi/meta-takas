@@ -12,7 +12,7 @@ class="mx-auto w-full max-w-[1200px] justify-between pb-10 flex flex-col lg:flex
     Nakit yok! Takas var!
     </p>
     <div class="mt-10 flex gap-3">
-    <a href="https://github.com/bbulakh">
+    <!-- <a href="https://github.com/bbulakh">
         <img
         class="h-5 w-5 cursor-pointer"
         src="{% static 'images/github.svg' %}"
@@ -32,7 +32,7 @@ class="mx-auto w-full max-w-[1200px] justify-between pb-10 flex flex-col lg:flex
         src="{% static 'images/linkedin.svg' %}"
         alt="twitter icon"
         />
-    </a>
+    </a> -->
     </div>
 </div>
 
@@ -40,37 +40,35 @@ class="mx-auto w-full max-w-[1200px] justify-between pb-10 flex flex-col lg:flex
     <div class="mx-5 mt-10">
     <p class="font-medium text-gray-500">TAKAS HAKKINDA</p>
     <ul class="text-sm leading-8">
-        <li><a href="#">Takas Sistemi Nasıl Çalışır?</a></li>
-        <li><a href="#">İlan Oluşturma Rehberi</a></li>
-        <li><a href="#">Takas Kuralları</a></li>
-        <li><a href="#">Ürün Değerleme İpuçları</a></li>
+        <li><a href="{% url 'howitworks' %}">Takas Sistemi Nasıl Çalışır?</a></li>
+        <li><a href="{% url 'create_listing' %}">İlan Oluşturma Rehberi</a></li>
+        <li><a href="{% url 'exchange_rules' %}">Takas Kuralları</a></li>
+        <li><a href="{% url 'valuation' %}">Ürün Değerleme İpuçları</a></li>
     </ul>
     </div>
 
     <div class="mx-5 mt-10">
     <p class="font-medium text-gray-500">DESTEK</p>
     <ul class="text-sm leading-8">
-        <li><a href="#">Yardım Merkezi</a></li>
-        <li><a href="#">İletişim</a></li>
-        <li><a href="#">Sorun Bildir</a></li>
+        <li><a href="{% url 'help_center' %}">Yardım Merkezi</a></li>
+        <li><a href="{% url 'contact' %}">İletişim</a></li>
     </ul>
     </div>
 
     <div class="mx-5 mt-10">
     <p class="font-medium text-gray-500">YASAL</p>
     <ul class="text-sm leading-8">
-        <li><a href="#">Kullanım Şartları</a></li>
-        <li><a href="#">Gizlilik Politikası</a></li>
-        <li><a href="#">Çerez Politikası</a></li>
-        <li><a href="#">Topluluk Kuralları</a></li>
+        <li><a href="{% url 'terms_of_use' %}">Kullanım Şartları</a></li>
+        <li><a href="{% url 'privacy_policy' %}">Gizlilik Politikası</a></li>
+        <li><a href="{% url 'community_guidelines' %}">Topluluk Kuralları</a></li>
     </ul>
     </div>
 
     <div class="mx-5 mt-10">
     <p class="font-medium text-gray-500">HAKKIMIZDA</p>
     <ul class="text-sm leading-8">
-        <li><a href="#">Hakkımızda</a></li>
-        <li><a href="#">Misyonumuz</a></li>
+        <li><a href="{% url 'aboutus' %}">Hakkımızda</a></li>
+        <li><a href="{% url 'our_mission' %}">Misyonumuz</a></li>
     </ul>
     </div>
 </div>
@@ -83,7 +81,7 @@ class="mx-auto w-full max-w-[1200px] justify-between pb-10 flex flex-col lg:flex
 <div
     class="mx-auto flex max-w-[1200px] items-center justify-between px-4 pt-2"
 >
-    <p>&copy; Meta-Takas, 2025</p>
+    <p>&copy; 2025 Meta-Takas, All rights reserved</p>
     <div class="flex items-center space-x-3">
     <img
         class="h-8"

@@ -79,6 +79,51 @@
         opacity: 0;
       }
     }
+
+    .dots-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+    }
+
+    .dot {
+      height: 20px;
+      width: 20px;
+      margin-right: 10px;
+      border-radius: 10px;
+      background-color: #b3d4fc;
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+
+    .dot:last-child {
+      margin-right: 0;
+    }
+
+    .dot:nth-child(1) { animation-delay: -0.3s; }
+    .dot:nth-child(2) { animation-delay: -0.1s; }
+    .dot:nth-child(3) { animation-delay: 0.1s; }
+    .dot:nth-child(4) { animation-delay: 0.3s; }
+    .dot:nth-child(5) { animation-delay: 0.5s; }
+
+    /* @keyframes pulse {
+      0% {
+        transform: scale(0.8);
+        background-color: #b3d4fc;
+        box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
+      }
+      50% {
+        transform: scale(1.2);
+        background-color: #6793fb;
+        box-shadow: 0 0 0 10px rgba(178, 212, 252, 0);
+      }
+      100% {
+        transform: scale(0.8);
+        background-color: #b3d4fc;
+        box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
+      }
+    } */
   </style>
 
 
@@ -95,6 +140,16 @@
         <!-- Page content will go here -->
         {% endblock %}
     </main>
+    <div id="loading-overlay" class="fixed inset-0 z-[999] bg-white/80 hidden items-center justify-center">
+      <section class="dots-container">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </section>
+    </div>
+
 
  </div>
     {% include 'footer.html' %}
@@ -102,15 +157,31 @@
     <!-- WhatsApp Floating Button -->
     <a href="https://wa.me/905413081092" target="_blank"
       class="btn-whatsapp-pulse flex items-center px-4 py-3 text-white rounded-full transition-all duration-200"
-      style="min-width: 180px;">
+      style="min-width: 120px;">
         <i class="fab fa-whatsapp fa-lg mr-2"></i>
-        <span class="font-semibold">Share your product</span>
+        <span class="font-semibold">İlan ver</span>
     </a>
 
 
 
-
-
 </body>
+
+<script>
+function showLoading() {
+  const overlay = document.getElementById('loading-overlay');
+  if (overlay) {
+    overlay.classList.remove('hidden');
+    overlay.classList.add('flex');
+  }
+}
+
+function hideLoading() {
+  const overlay = document.getElementById('loading-overlay');
+  if (overlay) {
+    overlay.classList.add('hidden');
+    overlay.classList.remove('flex');
+  }
+}
+</script>
 
 </html>

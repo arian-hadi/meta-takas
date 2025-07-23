@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Kullanım Şartları{% endblock %}
+
+{% block content %}
+<div class="bg-gray-50 min-h-screen">
+  <div class="max-w-4xl mx-auto px-4 py-16">
+    <div class="p-8">
+      <h1 class="text-3xl font-bold text-gray-900 mb-8">MetaTakas Kullanım Şartları</h1>
+
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">1. Şartların Kabulü</h2>
+        <div class="prose text-gray-600">
+            <p>MetaTakas platformuna erişerek veya kullanarak, bu kullanım şartlarını ve gizlilik politikamızı kabul etmiş sayılırsınız. Şartları kabul etmiyorsanız, lütfen hizmeti kullanmayınız.</p>
+        </div>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">2. Kullanım Lisansı</h2>
+        <div class="bg-gray-50 rounded-lg p-6">
+          <ul class="space-y-4 text-gray-600">
+            <li class="flex gap-3">
+              <svg class="h-6 w-6 text-blue-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Paylaşılan ilan içerikleri yalnızca kişisel kullanım içindir. İçerikler kopyalanamaz veya ticari amaçla kullanılamaz.</span>
+            </li>
+            <li class="flex gap-3">
+              <svg class="h-6 w-6 text-blue-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>MetaTakas, içeriklerin doğruluğuna dair herhangi bir mülkiyet iddiasında bulunmaz.</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">3. Sorumluluk Reddi</h2>
+        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <svg class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div class="ml-3">
+              <p class="text-sm text-yellow-700">MetaTakas, kullanıcıların sunduğu ilanların içeriği, doğruluğu ve güvenliği konusunda herhangi bir garanti vermez. Ürünle ilgili tüm sorumluluk ilan veren kullanıcıya aittir.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">4. Kısıtlamalar</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="font-medium text-gray-900 mb-2">Süre Sınırlamaları</h3>
+            <p class="text-gray-600">İhlallerle ilgili bildirimler 30 gün içinde yapılmalıdır.</p>
+          </div>
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="font-medium text-gray-900 mb-2">Sorumluluk</h3>
+            <p class="text-gray-600">MetaTakas, kullanıcılar arasında gerçekleşen alışveriş ve takaslardan doğabilecek zararlardan sorumlu tutulamaz.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">5. Güncellemeler</h2>
+        <div class="prose text-gray-600">
+          <p>MetaTakas, bu kullanım şartlarını zaman zaman güncelleme hakkını saklı tutar. Güncellenmiş sürümler sitede yayınlandığı anda geçerlilik kazanır.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">6. İletişim</h2>
+        <div class="bg-gray-50 rounded-lg p-6 flex items-center justify-between">
+          <p class="text-gray-600">Kullanım şartlarıyla ilgili sorularınız için bizimle iletişime geçin.</p>
+          <a href="{% url 'contact' %}" class="inline-flex items-center text-blue-600 hover:text-blue-500">
+            <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            Bize Ulaşın
+          </a>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+{% endblock %}
