@@ -86,19 +86,15 @@ class ProductListView(ListView):
         return queryset
     
 
+    
     def render_to_response(self, context, **response_kwargs):
-        if self.request.headers.get('x-requested-with') == 'XMLHttpRequest':
-            products_html = render_to_string(
-                'products/product_list.html',
-                context,
-                request=self.request
-            )
-            # Extract just the product list section using a unique div ID
-            soup = BeautifulSoup(products_html, 'html.parser')
-            results_container = soup.find('div', {'id': 'results-container'})
-            only_products = ''.join(str(child) for child in results_container.contents)
+        if context.get('ajax_request'):
+            html = render_to_string('products/product_list.html', context, request=self.request)
 
-            return JsonResponse({'products_html': only_products})  
+            from bs4 import BeautifulSoup
+            soup = BeautifulSoup(html, 'html.parser')
+            container = soup.find('div', {'id': 'results-container'})
+            return JsonResponse({'products_html': str(container)})
         
         return super().render_to_response(context, **response_kwargs)
 
@@ -144,6 +140,7 @@ class ProductListView(ListView):
         context['selected_province'] = self.request.GET.get('province', '')
         context['province_map'] = PROVINCE_MAP
         context['selected_city'] = self.request.GET.get('city', '')
+        context['ajax_request'] = self.request.headers.get('x-requested-with') == 'XMLHttpRequest'
 
         return context
 
