@@ -89,8 +89,8 @@
 
           <!-- Drawer Panel (from left, Mobile only) -->
           <div id="leftDrawer" class="fixed inset-y-0 left-0 w-[90vw] max-w-sm bg-white shadow-lg transform -translate-x-full transition-transform duration-300 z-50 lg:hidden overflow-x-hidden overflow-y-auto">
-            <div class="flex justify-between items-center p-4 border-b">
-              <button id="closeDrawerBtn" type="button" class="text-gray-500 hover:text-gray-700">
+            <div class="flex justify-end items-center p-4 border-b">
+              <button id="closeDrawerBtn" type="button" class="text-gray-500 hover:text-gray-700 text-xl">
                 ✕
               </button>
             </div>
@@ -99,7 +99,7 @@
               <form method="get" action="{% url 'product_list' %}" class="space-y-4">
 
                 <!-- 🔽 Listing Type -->
-                <div x-data="{ open: true }" class="border-b pb-3">
+                <div x-data="{ open: false }" class="border-b pb-3">
                   <button type="button" class="w-full flex justify-between items-center font-semibold" @click="open = !open">
                     İlan Türü
                     <span x-text="open ? '−' : '+'"></span>
@@ -115,7 +115,7 @@
                 </div>
 
                 <!-- 🔽 Category -->
-                <div x-data="{ open: true }" class="border-b pb-3">
+                <div x-data="{ open: false }" class="border-b pb-3">
                   <button type="button" class="w-full flex justify-between items-center font-semibold" @click="open = !open">
                     Kategoriler
                     <span x-text="open ? '−' : '+'"></span>
@@ -131,7 +131,7 @@
                 </div>
 
                 <!-- 🔽 Takas İstenen Kategoriler -->
-                <div x-data="{ open: true }" class="border-b pb-3">
+                <div x-data="{ open: false }" class="border-b pb-3">
                   <button type="button" class="w-full flex justify-between items-center font-semibold" @click="open = !open">
                     Takas İstenen Kategoriler
                     <span x-text="open ? '−' : '+'"></span>
@@ -148,7 +148,7 @@
 
 
                 <!-- 🔽 İl / İlçe -->
-                <div x-data="{ open: true }" class="border-b pb-3">
+                <div x-data="{ open: false }" class="border-b pb-3">
                   <button type="button" class="w-full flex justify-between items-center font-semibold" @click="open = !open">
                     Konum
                     <span x-text="open ? '−' : '+'"></span>
@@ -175,7 +175,7 @@
 
 
                 <!-- 🔽 Fiyat -->
-                <div x-data="{ open: true }" class="border-b pb-3">
+                <div x-data="{ open: false }" class="border-b pb-3">
                   <button type="button" class="w-full flex justify-between items-center font-semibold" @click="open = !open">
                     Fiyat Aralığı
                     <span x-text="open ? '−' : '+'"></span>
