@@ -122,11 +122,11 @@
         <section
           x-show="mobileMenuOpen"
           x-transition:enter="transition ease-out duration-300"
-          x-transition:enter-start="-translate-x-full"
+          x-transition:enter-start="translate-x-full"
           x-transition:enter-end="translate-x-0"
           x-transition:leave="transition ease-in duration-300"
           x-transition:leave-start="translate-x-0"
-          x-transition:leave-end="-translate-x-full"
+          x-transition:leave-end="translate-x-full"
           @click.outside="mobileMenuOpen = false"
           class="absolute left-0 right-0 z-50 h-screen w-full bg-white transform"
           style="display: none"
