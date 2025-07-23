@@ -156,10 +156,16 @@ def product_detail(request, slug):
     related_products = Product.objects.filter(
         category=product.category
     ).exclude(id=product.id).order_by('-id')[:4]
+
+    querystring = request.META.get('HTTP_REFERER', '')
+    filters_query = ''
+    if '?' in querystring:
+        filters_query = querystring.split('?', 1)[-1]
+
     return render(request, 'products/product_detail.html', {
         'product': product,
         'related_products': related_products,
         'EXCHANGE_PREFERENCES': Product.EXCHANGE_PREFERENCES,
+        'filters_query': filters_query,
     })
-
 

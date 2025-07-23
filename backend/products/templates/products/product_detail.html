@@ -19,7 +19,7 @@
             </a>
         </li>
         <li><span class="mx-2 text-gray-500">&gt;</span></li>
-        <li class = "text-gray-500"><a href="{% url 'product_list' %}">catalouge &gt;</a></li>
+        <li class = "text-gray-500"><a href="{% url 'product_list' %}?{{ filters_query }}">catalogue &gt;</a>
         <li class="text-gray-500">{{ product.name }}</li>
     </ul>
 </nav>
