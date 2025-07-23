@@ -6,7 +6,12 @@
 {% block title %}Product Detail{% endblock %}
 
 {% block content %}
-
+<style>
+  /* Fix Swiper height override to allow image centering */
+  .main-swiper .swiper-slide {
+    height: auto !important;
+  }
+</style>
 <!-- Breadcrumb -->
 <nav class="mx-auto w-full mt-4 max-w-[1200px] px-5">
     <ul class="flex items-center">
@@ -64,10 +69,10 @@
                 {% if not product.image or image.image.url != product.image.url %}
                 <a
                   href="#"
-                  class="swiper-slide"
+                  class="swiper-slide flex items-center justify-center h-96"
                   x-init="$el.addEventListener('click', () => $dispatch('lightbox-open', { group: items, index: {{ forloop.counter }} }))"
                 >
-                  <img src="{{ image.image.url }}" alt="Product Image" class="object-contain w-full max-h-96"/>
+                  <img src="{{ image.image.url }}" alt="Product Image" class="object-contain w-full h-full"/>
                 </a>
                 {% endif %}
               {% endfor %}
