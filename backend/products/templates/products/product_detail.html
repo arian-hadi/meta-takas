@@ -24,7 +24,7 @@
             </a>
         </li>
         <li><span class="mx-2 text-gray-500">&gt;</span></li>
-        <li class = "text-gray-500"><a href="{% url 'product_list' %}?{{ filters_query }}">catalogue &gt;</a>
+        <li class = "text-gray-500"><a href="{% url 'product_list' %}?{{ filters_query }}">İlanlar &gt;</a>
         <li class="text-gray-500">{{ product.name }}</li>
     </ul>
 </nav>
@@ -461,7 +461,7 @@
 
             <div class="my-5 px-2">
               <a href="{% url 'product_detail' product.slug %}">
-                <button class="h-10 w-full bg-purple-500 text-white hover:bg-pink-500 transition">View Details</button>
+                <button class="h-10 w-full bg-purple-500 text-white hover:bg-pink-500 transition">Detayları Görüntüle</button>
               </a>
             </div>
           </div>
