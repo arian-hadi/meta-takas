@@ -77,27 +77,21 @@ class="mx-auto w-full max-w-[1200px] justify-between pb-10 flex flex-col lg:flex
 
 <!-- Payment and copyright  -->
 
-<section class="h-11 bg-blue-400">
-<div
-    class="mx-auto flex max-w-[1200px] items-center justify-between px-4 pt-2"
->
-    <p>&copy; 2025 Meta-Takas, All rights reserved</p>
-    <div class="flex items-center space-x-3">
-    <img
-      class="h-8 w-12 object-contain rounded-[5px]"
-      src="{% static 'images/metatakas-card.jpg' %}"
-      alt="Meta Takas Icon"
-    />
-    <img
-      class="h-8 w-9 object-contain rounded-[8px]"
-      src="{% static 'images/flag_of_Turkey.png' %}"
-      alt="Turkey Flag"
-    />
-    <!-- <img
-        class="h-8"
-        src="https://cdn-icons-png.flaticon.com/512/5968/5968144.png"
-        alt="Apple pay icon"
-    /> -->
+<section class="bg-blue-400 py-2">
+  <div class="mx-auto max-w-[1200px] px-4 flex flex-col sm:flex-row items-center justify-between text-center sm:text-left">
+    
+    <p class="text-sm text-white leading-snug">
+      &copy; 2025 <span class="font-semibold">Meta-Takas</span>, All rights reserved.
+      <span class="block sm:inline font-semibold">Made by Arian Hadi & Selçuk</span>
+    </p>
+
+    <div class="mt-2 sm:mt-0 flex items-center space-x-2">
+      <img
+        class="h-6 w-8 object-contain rounded-md"
+        src="{% static 'images/flag_of_Turkey.png' %}"
+        alt="Turkey Flag"
+      />
     </div>
-</div>
+
+  </div>
 </section>
