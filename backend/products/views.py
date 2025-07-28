@@ -155,7 +155,7 @@ def product_detail(request, slug):
     product = get_object_or_404(Product, slug=slug)
     related_products = Product.objects.filter(
         category=product.category
-    ).exclude(id=product.id).order_by('-id')[:4]
+    ).exclude(id=product.id).order_by('-id')
 
     querystring = request.META.get('HTTP_REFERER', '')
     filters_query = ''
