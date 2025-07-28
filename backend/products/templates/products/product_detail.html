@@ -11,6 +11,27 @@
   .main-swiper .swiper-slide {
     height: auto !important;
   }
+
+  .thumb-swiper .swiper-button-next,
+  .thumb-swiper .swiper-button-prev {
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+  }
+
+  .thumb-swiper .swiper-slide {
+    width: 80px !important;
+    height: 80px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .thumb-swiper .swiper-wrapper {
+    padding-left: 10px;
+  }
+
 </style>
 <!-- Breadcrumb -->
 <nav class="mx-auto w-full mt-4 max-w-[1200px] px-5">
@@ -96,42 +117,60 @@
 
 
             <!-- Thumbnails (static row, always visible) -->
-            <div class="flex gap-2 mt-4 flex-wrap justify-center">
-            {% if product.image %}
-            <img src="{{ product.image.url }}" alt="Thumbnail"
-                class="thumbnail w-20 h-20 object-cover rounded border cursor-pointer"
-                data-index="0"/>
-            {% endif %}
-            {% for image in product.images.all %}
-                {% if not product.image or image.image.url != product.image.url %}
-                <img src="{{ image.image.url }}" alt="Thumbnail"
-                    class="thumbnail w-20 h-20 object-cover rounded border cursor-pointer"
-                    data-index="{{ forloop.counter }}"/>
+            <div class="swiper thumb-swiper mt-4 w-full">
+              <div class="swiper-wrapper">
+
+                {% if product.image %}
+                  <div class="swiper-slide">
+                    <img src="{{ product.image.url }}" alt="Thumbnail"
+                        class="thumbnail w-20 h-20 object-cover rounded border cursor-pointer"
+                        data-index="0"/>
+                  </div>
                 {% endif %}
-            {% endfor %}
-            {# Add video thumbnails #}
-            {% for video in product.videos.all %}
-                <div class="relative thumbnail w-20 h-20 rounded border cursor-pointer group bg-gray-200 overflow-hidden" data-index="{{ forloop.counter0|add:product.images.count }}">
-                    
-                    {% if video.thumbnail %}
-                    <img src="{{ video.thumbnail.url }}" alt="Video Thumbnail"
-                        class="object-cover w-full h-full rounded absolute inset-0 z-0" />
-                    {% else %}
-                    <!-- fallback image or background -->
-                    {% endif %}
 
-                    <!-- Play icon centered -->
-                    <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
-                    <svg class="w-8 h-8 text-white drop-shadow-lg opacity-90 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
-                        <circle cx="10" cy="10" r="10" fill="rgba(0,0,0,0.5)"/>
-                        <polygon points="7,5 15,10 7,15" fill="white"/>
-                    </svg>
+                {% for image in product.images.all %}
+                  {% if not product.image or image.image.url != product.image.url %}
+                    <div class="swiper-slide">
+                      <img src="{{ image.image.url }}" alt="Thumbnail"
+                          class="thumbnail w-20 h-20 object-cover rounded border cursor-pointer"
+                          data-index="{{ forloop.counter }}"/>
                     </div>
+                  {% endif %}
+                {% endfor %}
 
-                </div>
-            {% endfor %}
+                {% for video in product.videos.all %}
+                  <div class="swiper-slide">
+                    <div class="relative thumbnail w-20 h-20 rounded border cursor-pointer group bg-gray-200 overflow-hidden"
+                        data-index="{{ forloop.counter0|add:product.images.count }}">
+                      
+                      {% if video.thumbnail %}
+                        <img src="{{ video.thumbnail.url }}" alt="Video Thumbnail"
+                            class="object-cover w-full h-full rounded absolute inset-0 z-0" />
+                      {% else %}
+                        <img src="{% static 'images/video-placeholder.png' %}" alt="Video Thumbnail"
+                            class="object-cover w-full h-full rounded absolute inset-0 z-0" />
+                      {% endif %}
 
+                      <!-- Play icon -->
+                      <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+                        <svg class="w-8 h-8 text-white drop-shadow-lg opacity-90 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                          <circle cx="10" cy="10" r="10" fill="rgba(0,0,0,0.5)"/>
+                          <polygon points="7,5 15,10 7,15" fill="white"/>
+                        </svg>
+                      </div>
+
+                    </div>
+                  </div>
+                {% endfor %}
+
+              </div>
+
+              <div class="swiper-button-prev thumb-swiper-prev !text-pink-500"></div>
+              <div class="swiper-button-next thumb-swiper-next !text-pink-500"></div>
             </div>
+          
+
+          
         </div>
     </div>
  
@@ -499,6 +538,16 @@ document.addEventListener('DOMContentLoaded', function () {
     keyboard: { enabled: true },
   });
 
+  var thumbSwiper = new Swiper('.thumb-swiper', {
+    slidesPerView: 'auto', // <- allow dynamic width slides
+    spaceBetween: 5,
+    watchOverflow: true,
+    navigation: {
+      nextEl: '.thumb-swiper-next',
+      prevEl: '.thumb-swiper-prev'
+    }
+  });
+
 
   new Swiper('.suggested-swiper', {
     slidesPerView: 1,
@@ -529,6 +578,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 });
+
+setTimeout(() => {
+  thumbSwiper.update();
+}, 100);
 </script>
 
 
