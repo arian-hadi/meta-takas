@@ -2,6 +2,7 @@
 {% load dict_filters %}
 {% load static %}
 {% load humanize %}
+{% load cache %}
 
 {% block title %}Product list{% endblock %}
 
@@ -406,6 +407,7 @@
               </div>
           {% endif %}
 
+          {% cache 300 product_list_grid querystring %}
           <div class="flex-grow">
             <section class="mx-auto grid max-w-[1200px] grid-cols-2 gap-3 px-5 pb-10 lg:grid-cols-3">
                 {% for product in products %}
@@ -493,6 +495,7 @@
                 {% endfor %}  
             </section>
           </div>
+          {% endcache %}
 
           <!-- Pagination --> 
             {% if page_obj.has_other_pages %}

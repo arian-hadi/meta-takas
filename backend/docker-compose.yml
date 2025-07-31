@@ -1,0 +1,73 @@
+version: '3.9'
+
+services:
+  web:
+    build: .
+    command: >
+      sh -c "
+        /wait-for-it.sh db:5432 --timeout=60 &&
+        python manage.py collectstatic --noinput &&
+        python manage.py migrate &&
+        cd /app/theme/static_src && npm run build &&
+        cd /app &&
+        gunicorn meta_core.wsgi:application --bind 0.0.0.0:8000 --workers 3"
+    volumes:
+      - ./theme/static_src:/app/theme/static_src  # Source files
+      - ./theme/static:/app/theme/static  # Compiled output
+      - ./static:/app/static
+      - static_volume:/app/staticfiles
+      - ./media:/app/media  # Media files
+      - ./.env:/app/.env  # Mount .env file
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=${DOCKER_DATABASE_URL}
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  db:
+    image: postgres:16
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_DB: meta
+      POSTGRES_USER: meta
+      POSTGRES_PASSWORD: agile
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  tailwind:
+    build: .
+    command: >
+      sh -c "
+        cd /app/theme/static_src &&
+        npm run dev"
+    volumes:
+      - ./theme/static_src:/app/theme/static_src
+      - ./theme/static:/app/theme/static
+    depends_on:
+      - web
+
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  static_volume:

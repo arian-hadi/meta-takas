@@ -6,8 +6,11 @@ from django.http import JsonResponse
 from django.template.loader import render_to_string
 from django.shortcuts import get_object_or_404, render
 from bs4 import BeautifulSoup
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
 
 
+@method_decorator(cache_page(60 * 5), name='dispatch')
 class ProductListView(ListView):
     model = Product
     template_name = 'products/product_list.html'
@@ -144,6 +147,7 @@ class ProductListView(ListView):
 
         return context
 
+@method_decorator(cache_page(60 * 10), name='dispatch')
 class ProductDetailView(DetailView):
     model = Product
     template_name = 'products/product_detail.html'
@@ -151,6 +155,7 @@ class ProductDetailView(DetailView):
     slug_field = 'slug'
     slug_url_arg = 'slug'
 
+@cache_page(60 * 10)
 def product_detail(request, slug):
     product = get_object_or_404(Product, slug=slug)
     related_products = Product.objects.filter(
