@@ -1,0 +1,62 @@
+# Meta Takas - English Translations
+# Copyright (C) 2025 Meta Takas
+# This file is distributed under the same license as the Meta Takas package.
+# Meta Takas Team <info@metatakas.com>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Meta Takas 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-01 08:25+0000\n"
+"PO-Revision-Date: 2025-08-01 08:25+0000\n"
+"Last-Translator: Meta Takas Team <info@metatakas.com>\n"
+"Language-Team: English <en@metatakas.com>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: accounts/manager.py:14
+msgid "Please enter a valid email address"
+msgstr "Please enter a valid email address"
+
+#: accounts/manager.py:19
+msgid "An email address is required"
+msgstr "An email address is required"
+
+#: meta_core/settings.py:115
+msgid "English"
+msgstr "English"
+
+#: meta_core/settings.py:116
+msgid "Turkish"
+msgstr "Turkish"
+
+#: theme/templates/header.html:45
+msgid "Search listings..."
+msgstr "Search listings..."
+
+#: theme/templates/header.html:49
+msgid "Search"
+msgstr "Search"
+
+#: theme/templates/header.html:58
+msgid "Welcome"
+msgstr "Welcome"
+
+#: theme/templates/header.html:75
+msgid "Home"
+msgstr "Home"
+
+#: theme/templates/header.html:76
+msgid "Listings"
+msgstr "Listings"
+
+#: theme/templates/header.html:77
+msgid "About Us"
+msgstr "About Us"
+
+#: theme/templates/header.html:78
+msgid "Contact"
+msgstr "Contact"
