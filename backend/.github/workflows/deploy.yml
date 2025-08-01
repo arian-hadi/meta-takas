@@ -1,0 +1,34 @@
+name: Test Docker Build (Pre-Deployment)
+
+on:
+  push:
+    branches:
+      - master  # Change if your main branch has a different name
+
+jobs:
+  build:
+    name: Build Docker Image
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build Docker Image
+        run: docker build -t backend-app:latest .
+
+      # - name: Deploy to Switchbox (Uncomment when ready)
+      #   uses: appleboy/ssh-action@v1.0.0
+      #   with:
+      #     host: ${{ secrets.SWITCHBOX_HOST }}
+      #     username: ${{ secrets.SWITCHBOX_USER }}
+      #     key: ${{ secrets.SWITCHBOX_SSH_KEY }}
+      #     script: |
+      #       cd /home/user/
+      #       docker-compose -f docker-compose.prod.yml pull
+      #       docker-compose -f docker-compose.prod.yml up -d --build
+      #       docker exec backend_web python manage.py migrate
+      #       docker exec backend_web python manage.py collectstatic --noinput

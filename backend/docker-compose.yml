@@ -8,10 +8,9 @@ services:
         /wait-for-it.sh db:5432 --timeout=60 &&
         python manage.py collectstatic --noinput &&
         python manage.py migrate &&
-        cd /app/theme/static_src && npm run build &&
-        cd /app &&
-        gunicorn meta_core.wsgi:application --bind 0.0.0.0:8000 --workers 3"
+        python manage.py runserver 0.0.0.0:8000"
     volumes:
+      - .:/app  # Mount entire project for live reload
       - ./theme/static_src:/app/theme/static_src  # Source files
       - ./theme/static:/app/theme/static  # Compiled output
       - ./static:/app/static
