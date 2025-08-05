@@ -51,7 +51,7 @@ class="mx-auto w-full max-w-[1200px] justify-between pb-10 flex flex-col lg:flex
 
     <!-- SUPPORT -->
     <div class="mx-5 mt-10">
-      <p class="font-medium text-gray-500">{% trans 'SUPPORT' %}</p>
+      <p class="font-medium text-gray-500">{% trans "Support" as label %}{{ label|upper }}</p>
       <ul class="text-sm leading-8">
         <li><a href="{% url 'help_center' %}">{% trans 'Help Center' %}</a></li>
         <li><a href="{% url 'contact' %}">{% trans 'Contact' %}</a></li>

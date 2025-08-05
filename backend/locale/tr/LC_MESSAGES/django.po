@@ -26,35 +26,29 @@ msgstr "Lütfen geçerli bir e-posta adresi girin"
 msgid "An email address is required"
 msgstr "E-posta adresi gereklidir"
 
-#: contact/forms.py:8
-#, fuzzy
-#| msgid "Please select a city first"
+
 msgid "Please select a category"
-msgstr "Lütfen önce bir şehir seçin"
+msgstr "Lütfen önce bir kategori seçin"
 
 #: contact/forms.py:9
 msgid "Delivery"
-msgstr ""
+msgstr "Teslimat"
 
-#: contact/forms.py:10
-#, fuzzy
-#| msgid "24/7 Support"
+
 msgid "Support"
-msgstr "7/24 Destek"
+msgstr "Destek"
 
 #: contact/forms.py:11
 msgid "Profile"
-msgstr ""
+msgstr "Profil"
 
 #: contact/forms.py:12
 msgid "Careers"
-msgstr ""
+msgstr "Kariyer"
 
-#: contact/forms.py:13
-#, fuzzy
-#| msgid "Category"
+
 msgid "Other category"
-msgstr "Kategori"
+msgstr "Diğer kategori"
 
 #: contact/templates/contact/contact.html:5
 #: homepage/templates/homepage/terms_of_use.html:84
@@ -1240,9 +1234,6 @@ msgstr "Takas Kuralları"
 msgid "Product Evaluation Tips"
 msgstr "Ürün Değerlendirme İpuçları"
 
-#: theme/templates/footer.html:54
-msgid "SUPPORT"
-msgstr "DESTEK"
 
 #: theme/templates/footer.html:63
 msgid "LEGAL"

@@ -62,12 +62,7 @@
 
           <div class="relative mb-6">
             {{ form.subject.errors }}
-            <select name="subject" id="id_subject" class="w-full rounded border-2 px-3 py-2" required>
-              {% for value, label in form.fields.subject.choices %}
-                <option value="{{ value }}" {% if form.subject.value == value %}selected{% endif %}>{{ label }}</option>
-              {% endfor %}
-            </select>
-
+            {{ form.subject }}
           </div>
 
           <div class="mb-6 flex items-center">

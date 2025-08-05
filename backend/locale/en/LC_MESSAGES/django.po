@@ -35,7 +35,7 @@ msgstr "Delivery"
 
 
 msgid "Support"
-msgstr "24/7 Support"
+msgstr "Support"
 
 #: contact/forms.py:11
 msgid "Profile"
@@ -46,7 +46,7 @@ msgid "Careers"
 msgstr "Careers"
 
 msgid "Other category"
-msgstr "Category"
+msgstr "Other category"
 
 #: contact/templates/contact/contact.html:5
 #: homepage/templates/homepage/terms_of_use.html:84
@@ -1227,9 +1227,7 @@ msgstr "Barter Rules"
 msgid "Product Evaluation Tips"
 msgstr "Product Evaluation Tips"
 
-#: theme/templates/footer.html:54
-msgid "SUPPORT"
-msgstr "SUPPORT"
+
 
 #: theme/templates/footer.html:63
 msgid "LEGAL"
