@@ -60,3 +60,203 @@ msgstr "Hakkımızda"
 #: theme/templates/header.html:78
 msgid "Contact"
 msgstr "İletişim"
+
+#: products/templates/products/product_list.html:8
+msgid "Product list"
+msgstr "Ürün listesi"
+
+#: products/templates/products/product_list.html:35
+msgid "Catalog"
+msgstr "Katalog"
+
+#: products/templates/products/product_list.html:58
+msgid "Apply"
+msgstr "Uygula"
+
+#: products/templates/products/product_list.html:64
+msgid "Newest"
+msgstr "En Yeniler"
+
+#: products/templates/products/product_list.html:65
+msgid "Oldest"
+msgstr "En Eskiler"
+
+#: products/templates/products/product_list.html:66
+msgid "Price: High to Low"
+msgstr "Fiyat: Yüksekten Düşüğe"
+
+#: products/templates/products/product_list.html:67
+msgid "Price: Low to High"
+msgstr "Fiyat: Düşükten Yükseğe"
+
+#: products/templates/products/product_list.html:78
+msgid "Listing Type"
+msgstr "İlan Türü"
+
+#: products/templates/products/product_list.html:87
+msgid "Categories"
+msgstr "Kategoriler"
+
+#: products/templates/products/product_list.html:98
+msgid "Exchange Requested Categories"
+msgstr "Takas İstenen Kategoriler"
+
+#: products/templates/products/product_list.html:109
+msgid "Location"
+msgstr "Konum"
+
+#: products/templates/products/product_list.html:113
+msgid "Province"
+msgstr "İl"
+
+#: products/templates/products/product_list.html:115
+msgid "All Provinces"
+msgstr "Tüm İller"
+
+#: products/templates/products/product_list.html:120
+msgid "District"
+msgstr "İlçe"
+
+#: products/templates/products/product_list.html:122
+msgid "Please select province first"
+msgstr "Lütfen önce il seçin"
+
+#: products/templates/products/product_list.html:127
+msgid "Price Range"
+msgstr "Fiyat Aralığı"
+
+#: products/templates/products/product_list.html:131
+msgid "Min"
+msgstr "Min"
+
+#: products/templates/products/product_list.html:132
+msgid "Max"
+msgstr "Max"
+
+#: products/templates/products/product_list.html:200
+msgid "Price"
+msgstr "Fiyat"
+
+#: products/templates/products/product_list.html:210
+msgid "Exchange Requested"
+msgstr "Takas İstenen"
+
+#: products/templates/products/product_list.html:220
+msgid "Filter"
+msgstr "Filtrele"
+
+#: products/templates/products/product_list.html:240
+msgid "CATEGORIES"
+msgstr "KATEGORİLER"
+
+#: products/templates/products/product_list.html:250
+msgid "PRICE"
+msgstr "FİYAT"
+
+#: products/templates/products/product_list.html:260
+msgid "PROVINCE"
+msgstr "İL"
+
+#: products/templates/products/product_list.html:265
+msgid "All provinces"
+msgstr "Tüm İller"
+
+#: products/templates/products/product_list.html:272
+msgid "DISTRICT"
+msgstr "İLÇE"
+
+#: products/templates/products/product_list.html:274
+msgid "Please select the province first"
+msgstr "Lütfen önce il seçin"
+
+#: products/templates/products/product_list.html:279
+msgid "EXCHANGE REQUESTED"
+msgstr "TAKAS İSTENEN"
+
+#: products/templates/products/product_list.html:290
+msgid "LISTING TYPE"
+msgstr "İLAN TÜRÜ"
+
+#: products/templates/products/product_list.html:297
+msgid "Apply Filters"
+msgstr "Filtreleri Uygula"
+
+#: products/templates/products/product_list.html:310
+msgid "Sort:"
+msgstr "Sırala:"
+
+#: products/templates/products/product_list.html:380
+msgid "For Sale"
+msgstr "Satılık"
+
+#: products/templates/products/product_list.html:382
+msgid "Exchange"
+msgstr "Takas"
+
+#: products/templates/products/product_list.html:395
+msgid "Exchangeable for:"
+msgstr "Takas edilebilir:"
+
+#: products/templates/products/product_list.html:403
+msgid "Not specified"
+msgstr "Belirtilmemiş"
+
+#: products/templates/products/product_list.html:410
+msgid "View Details"
+msgstr "Detayları Görüntüle"
+
+#: products/templates/products/product_list.html:415
+msgid "No products available."
+msgstr "Ürün bulunamadı."
+
+#: products/templates/products/product_list.html:580
+msgid "All Districts"
+msgstr "Tüm İlçeler"
+
+#: products/templates/products/product_list.html:587
+msgid "Please select a city first"
+msgstr "Lütfen önce bir şehir seçin"
+
+
+#: products/templates/products/product_detail.html
+msgid "Status"
+msgstr "Durum"
+
+#: products/templates/products/product_detail.html
+msgid "Announcement Date"
+msgstr "İlan Tarihi"
+
+
+#: products/templates/products/product_detail.html
+msgid "Category"
+msgstr "Kategori"
+
+
+#: products/templates/products/product_detail.html
+msgid "Province / District"
+msgstr "İl / İlçe"
+
+
+#: products/templates/products/product_detail.html
+msgid "Contact via Whatsapp"
+msgstr "WhatsApp ile iletişime geçin"
+
+
+#: products/templates/products/product_detail.html
+msgid "Description"
+msgstr "Açıklama"
+
+#: products/templates/products/product_detail.html
+msgid "Listing Exchange Options"
+msgstr "İlana Ait Takas Seçenekleri"
+
+
+
+#: products/templates/products/product_detail.html
+msgid "Exchange options for this ad are available below."
+msgstr "Bu ilanın takas seçenekleri aşağıda mevcuttur."
+
+
+#: products/templates/products/product_detail.html
+msgid "Budget"
+msgstr "Bütçe"

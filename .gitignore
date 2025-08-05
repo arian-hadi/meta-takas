@@ -40,3 +40,6 @@ backend/media/*
 
 # Keep the empty folder in repo (optional)
 !backend/media/.gitkeep
+
+
+*.mo

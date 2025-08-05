@@ -60,3 +60,200 @@ msgstr "About Us"
 #: theme/templates/header.html:78
 msgid "Contact"
 msgstr "Contact"
+
+#: products/templates/products/product_list.html:8
+msgid "Product list"
+msgstr "Product list"
+
+#: products/templates/products/product_list.html:35
+msgid "Catalog"
+msgstr "Catalog"
+
+#: products/templates/products/product_list.html:58
+msgid "Apply"
+msgstr "Apply"
+
+#: products/templates/products/product_list.html:64
+msgid "Newest"
+msgstr "Newest"
+
+#: products/templates/products/product_list.html:65
+msgid "Oldest"
+msgstr "Oldest"
+
+#: products/templates/products/product_list.html:66
+msgid "Price: High to Low"
+msgstr "Price: High to Low"
+
+#: products/templates/products/product_list.html:67
+msgid "Price: Low to High"
+msgstr "Price: Low to High"
+
+#: products/templates/products/product_list.html:78
+msgid "Listing Type"
+msgstr "Listing Type"
+
+#: products/templates/products/product_list.html:87
+msgid "Categories"
+msgstr "Categories"
+
+#: products/templates/products/product_list.html:98
+msgid "Exchange Requested Categories"
+msgstr "Exchange Requested Categories"
+
+#: products/templates/products/product_list.html:109
+msgid "Location"
+msgstr "Location"
+
+#: products/templates/products/product_list.html:113
+msgid "Province"
+msgstr "Province"
+
+#: products/templates/products/product_list.html:115
+msgid "All Provinces"
+msgstr "All Provinces"
+
+#: products/templates/products/product_list.html:120
+msgid "District"
+msgstr "District"
+
+#: products/templates/products/product_list.html:122
+msgid "Please select province first"
+msgstr "Please select province first"
+
+#: products/templates/products/product_list.html:127
+msgid "Price Range"
+msgstr "Price Range"
+
+#: products/templates/products/product_list.html:131
+msgid "Min"
+msgstr "Min"
+
+#: products/templates/products/product_list.html:132
+msgid "Max"
+msgstr "Max"
+
+#: products/templates/products/product_list.html:200
+msgid "Price"
+msgstr "Price"
+
+#: products/templates/products/product_list.html:210
+msgid "Exchange Requested"
+msgstr "Exchange Requested"
+
+#: products/templates/products/product_list.html:220
+msgid "Filter"
+msgstr "Filter"
+
+#: products/templates/products/product_list.html:240
+msgid "CATEGORIES"
+msgstr "CATEGORIES"
+
+#: products/templates/products/product_list.html:250
+msgid "PRICE"
+msgstr "PRICE"
+
+#: products/templates/products/product_list.html:260
+msgid "PROVINCE"
+msgstr "PROVINCE"
+
+#: products/templates/products/product_list.html:265
+msgid "All provinces"
+msgstr "All provinces"
+
+#: products/templates/products/product_list.html:272
+msgid "DISTRICT"
+msgstr "DISTRICT"
+
+#: products/templates/products/product_list.html:274
+msgid "Please select the province first"
+msgstr "Please select the province first"
+
+#: products/templates/products/product_list.html:279
+msgid "EXCHANGE REQUESTED"
+msgstr "EXCHANGE REQUESTED"
+
+#: products/templates/products/product_list.html:290
+msgid "LISTING TYPE"
+msgstr "LISTING TYPE"
+
+#: products/templates/products/product_list.html:297
+msgid "Apply Filters"
+msgstr "Apply Filters"
+
+#: products/templates/products/product_list.html:310
+msgid "Sort:"
+msgstr "Sort:"
+
+#: products/templates/products/product_list.html:380
+msgid "For Sale"
+msgstr "For Sale"
+
+#: products/templates/products/product_list.html:382
+msgid "Exchange"
+msgstr "Exchange"
+
+#: products/templates/products/product_list.html:395
+msgid "Exchangeable for:"
+msgstr "Exchangeable for:"
+
+#: products/templates/products/product_list.html:403
+msgid "Not specified"
+msgstr "Not specified"
+
+#: products/templates/products/product_list.html:410
+msgid "View Details"
+msgstr "View Details"
+
+#: products/templates/products/product_list.html:415
+msgid "No products available."
+msgstr "No products available."
+
+#: products/templates/products/product_list.html:580
+msgid "All Districts"
+msgstr "All Districts"
+
+#: products/templates/products/product_list.html:587
+msgid "Please select a city first"
+msgstr "Please select a city first"
+
+
+#: products/templates/products/product_detail.html
+msgid "Status"
+msgstr "Status"
+
+#: products/templates/products/product_detail.html
+msgid "Announcement Date"
+msgstr "Announcement Date"
+
+#: products/templates/products/product_detail.html
+msgid "Category"
+msgstr "Category"
+
+#: products/templates/products/product_detail.html
+msgid "Province / District"
+msgstr "Province / District"
+
+#: products/templates/products/product_detail.html
+msgid "Contact via Whatsapp"
+msgstr "Contact via Whatsapp"
+
+#: products/templates/products/product_detail.html
+msgid "Description"
+msgstr "Description"
+
+
+#: products/templates/products/product_detail.html
+msgid "Listing Exchange Options"
+msgstr "Listing Exchange Options"
+
+
+#: products/templates/products/product_detail.html
+msgid "Exchange options for this ad are available below."
+msgstr "Exchange options for this ad are available below."
+
+
+#: products/templates/products/product_detail.html
+msgid "Budget"
+msgstr "Budget"
+

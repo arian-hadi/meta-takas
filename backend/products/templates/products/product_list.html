@@ -3,8 +3,9 @@
 {% load static %}
 {% load humanize %}
 {% load cache %}
+{% load i18n %}
 
-{% block title %}Product list{% endblock %}
+{% block title %}{% trans 'Product list' %}{% endblock %}
 
 {% block content %}
         <style>
@@ -45,7 +46,7 @@
               </a>
             </li>
 
-            <li class="text-gray-500">Catalog</li>
+            <li class="text-gray-500">{% trans 'Catalog' %}</li>
           </ul>
         </nav>
 
@@ -71,16 +72,16 @@
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L15 14.414V20a1 1 0 01-1.447.894l-4-2A1 1 0 019 18v-3.586L3.293 6.707A1 1 0 013 6V4z" />
               </svg>
-              Uygula
+              {% trans 'Apply' %}
             </button>
 
             <!-- Sort Dropdown -->
             <form method="get" class="flex-1 ml-1">
               <select name="sort" onchange="this.form.submit()" class="w-full border border-gray-300 rounded py-2 px-3 text-sm">
-                <option value="newest" {% if current_sort == 'newest' or not current_sort %}selected{% endif %}>En Yeniler</option>
-                <option value="oldest" {% if current_sort == 'oldest' %}selected{% endif %}>En Eskiler</option>
-                <option value="price_desc" {% if current_sort == 'price_desc' %}selected{% endif %}>Fiyat: Yüksekten Düşüğe</option>
-                <option value="price_asc" {% if current_sort == 'price_asc' %}selected{% endif %}> Fiyat: Düşükten Yükseğe</option>
+                <option value="newest" {% if current_sort == 'newest' or not current_sort %}selected{% endif %}>{% trans 'Newest' %}</option>
+                <option value="oldest" {% if current_sort == 'oldest' %}selected{% endif %}>{% trans 'Oldest' %}</option>
+                <option value="price_desc" {% if current_sort == 'price_desc' %}selected{% endif %}>{% trans 'Price: High to Low' %}</option>
+                <option value="price_asc" {% if current_sort == 'price_asc' %}selected{% endif %}>{% trans 'Price: Low to High' %}</option>
               </select>
             </form>
           </div>
@@ -103,7 +104,7 @@
                 <!-- 🔽 Listing Type -->
                 <div x-data="{ open: false }" class="border-b pb-3">
                   <button type="button" class="w-full flex justify-between items-center font-semibold" @click="open = !open">
-                    İlan Türü
+                    {% trans 'Listing Type' %}
                     <span x-text="open ? '−' : '+'"></span>
                   </button>
                   <div x-show="open" class="mt-2 space-y-2">
@@ -119,7 +120,7 @@
                 <!-- 🔽 Category -->
                 <div x-data="{ open: false }" class="border-b pb-3">
                   <button type="button" class="w-full flex justify-between items-center font-semibold" @click="open = !open">
-                    Kategoriler
+                    {% trans 'Categories' %}
                     <span x-text="open ? '−' : '+'"></span>
                   </button>
                   <div x-show="open" class="mt-2 space-y-2">
@@ -135,7 +136,7 @@
                 <!-- 🔽 Takas İstenen Kategoriler -->
                 <div x-data="{ open: false }" class="border-b pb-3">
                   <button type="button" class="w-full flex justify-between items-center font-semibold" @click="open = !open">
-                    Takas İstenen Kategoriler
+                    {% trans 'Exchange Requested Categories' %}
                     <span x-text="open ? '−' : '+'"></span>
                   </button>
                   <div x-show="open" class="mt-2 space-y-2">
@@ -152,14 +153,14 @@
                 <!-- 🔽 İl / İlçe -->
                 <div x-data="{ open: false }" class="border-b pb-3">
                   <button type="button" class="w-full flex justify-between items-center font-semibold" @click="open = !open">
-                    Konum
+                    {% trans 'Location' %}
                     <span x-text="open ? '−' : '+'"></span>
                   </button>
                   <div x-show="open" class="mt-2 space-y-4">
                     <div>
-                      <label for="cityDrawer" class="block text-sm text-gray-700 font-medium mb-1">İl</label>
+                      <label for="cityDrawer" class="block text-sm text-gray-700 font-medium mb-1">{% trans 'Province' %}</label>
                       <select name="city" id="cityMobile" class="w-full border rounded px-2 py-1">
-                        <option value="">Tüm İller</option>
+                        <option value="">{% trans 'All Provinces' %}</option>
                         {% for city in cities %}
                           <option value="{{ city }}" {% if selected_city == city %}selected{% endif %}>{{ city }}</option>
                         {% endfor %}
@@ -167,9 +168,9 @@
                     </div>
 
                     <div>
-                      <label for="provinceDrawer" class="block text-sm text-gray-700 font-medium mb-1">İlçe</label>
+                      <label for="provinceDrawer" class="block text-sm text-gray-700 font-medium mb-1">{% trans 'District' %}</label>
                       <select name="province" id="provinceMobile" class="w-full border rounded px-2 py-1">
-                        <option value="">Lütfen önce il seçin</option>
+                        <option value="">{% trans 'Please select province first' %}</option>
                       </select>
                     </div>
                   </div>
@@ -179,18 +180,18 @@
                 <!-- 🔽 Fiyat -->
                 <div x-data="{ open: false }" class="border-b pb-3">
                   <button type="button" class="w-full flex justify-between items-center font-semibold" @click="open = !open">
-                    Fiyat Aralığı
+                    {% trans 'Price Range' %}
                     <span x-text="open ? '−' : '+'"></span>
                   </button>
                   <div x-show="open" class="mt-2 flex gap-3">
-                    <input type="number" name="min_price" placeholder="Min" class="w-1/2 border rounded px-2 py-1" value="{{ min_price }}">
-                    <input type="number" name="max_price" placeholder="Max" class="w-1/2 border rounded px-2 py-1" value="{{ max_price }}">
+                    <input type="number" name="min_price" placeholder="{% trans 'Min' %}" class="w-1/2 border rounded px-2 py-1" value="{{ min_price }}">
+                    <input type="number" name="max_price" placeholder="{% trans 'Max' %}" class="w-1/2 border rounded px-2 py-1" value="{{ max_price }}">
                   </div>
                 </div>
 
                 <!-- 🔽 Submit -->
                 <div class="pt-4">
-                  <button type="submit" class="w-full bg-violet-700 text-white py-2 rounded">Uygula</button>
+                  <button type="submit" class="w-full bg-violet-700 text-white py-2 rounded">{% trans 'Apply' %}</button>
                 </div>
 
               </form>
@@ -209,7 +210,7 @@
               <form method="get" action="{% url 'product_list' %}" class="p-4 overflow-y-auto max-h-[90vh] space-y-6">
                 <!-- CATEGORIES -->
                 <div>
-                  <p class="font-medium mb-2">Kategoriler</p>
+                  <p class="font-medium mb-2">{% trans 'Categories' %}</p>
                   {% for category in categories %}
                     <label class="flex items-center space-x-2 mb-2">
                       <input type="checkbox" name="category" value="{{ category.slug }}" {% if category.slug in selected_categories %}checked{% endif %} class="accent-violet-600">
@@ -220,18 +221,18 @@
 
                 <!-- PRICE -->
                 <div>
-                  <p class="font-medium mb-2">Fiyat</p>
+                  <p class="font-medium mb-2">{% trans 'Price' %}</p>
                   <div class="flex gap-3">
-                    <input type="number" name="min_price" placeholder="Min" class="w-1/2 border rounded px-2 py-1" value="{{ min_price }}">
-                    <input type="number" name="max_price" placeholder="Max" class="w-1/2 border rounded px-2 py-1" value="{{ max_price }}">
+                    <input type="number" name="min_price" placeholder="{% trans 'Min' %}" class="w-1/2 border rounded px-2 py-1" value="{{ min_price }}">
+                    <input type="number" name="max_price" placeholder="{% trans 'Max' %}" class="w-1/2 border rounded px-2 py-1" value="{{ max_price }}">
                   </div>
                 </div>
 
                 <!-- CITY -->
                 <div>
-                  <p class="font-medium mb-2">İl</p>
+                  <p class="font-medium mb-2">{% trans 'Province' %}</p>
                   <select name="city" id="cityMobile" class="w-full border p-2 rounded">
-                    <option value="">Tüm İller</option>
+                    <option value="">{% trans 'All Provinces' %}</option>
                     {% for city in cities %}
                       <option value="{{ city }}" {% if city == selected_city %}selected{% endif %}>{{ city }}</option>
                     {% endfor %}
@@ -240,7 +241,7 @@
 
                 <!-- PROVINCE -->
                 <div>
-                  <p class="font-medium mb-2">İlçe</p>
+                  <p class="font-medium mb-2">{% trans 'District' %}</p>
                   <select name="province" id="provinceMobile" class="w-full border p-2 rounded">
                     
                   </select>
@@ -248,7 +249,7 @@
 
                 <!-- EXCHANGE FOR -->
                 <div>
-                  <p class="font-medium mb-2">Takas İstenen</p>
+                  <p class="font-medium mb-2">{% trans 'Exchange Requested' %}</p>
                   {% for category in categories %}
                     <label class="flex items-center space-x-2 mb-2">
                       <input type="checkbox" name="exchange_for" value="{{ category.slug }}" {% if category.slug in selected_exchange_for %}checked{% endif %} class="accent-violet-600">
@@ -259,7 +260,7 @@
 
                 <!-- LISTING TYPE -->
                 <div>
-                  <p class="font-medium mb-2">İlan Türü</p>
+                  <p class="font-medium mb-2">{% trans 'Listing Type' %}</p>
                   {% for type in types %}
                     <label class="flex items-center space-x-2 mb-2">
                       <input type="checkbox" name="type" value="{{ type.slug }}" {% if type.slug in selected_types %}checked{% endif %} class="accent-violet-600">
@@ -270,7 +271,7 @@
 
                 <!-- Submit -->
                 <div class="pt-4">
-                  <button type="submit" class="w-full bg-violet-700 text-white py-2 rounded">Filtrele</button>
+                  <button type="submit" class="w-full bg-violet-700 text-white py-2 rounded">{% trans 'Filter' %}</button>
                 </div>
               </form>
             </div>
@@ -288,7 +289,7 @@
             <div id="categoriesSection" class="space-y-6 hidden lg:block">
             <!-- CATEGORIES -->
               <div class="border-b pb-5">
-                <p class="mb-3 font-medium">KATAGORILER</p>
+                <p class="mb-3 font-medium">{% trans 'CATEGORIES' %}</p>
                 {% for category in categories %}
                   <div class="flex w-full justify-between items-center">
                     <div class="flex items-center">
@@ -310,19 +311,19 @@
               <!-- PRICE -->
               <div class="border-b py-5">
                 <div class="w-full">
-                  <p class="mb-3 font-medium">FİYAT</p>
+                  <p class="mb-3 font-medium">{% trans 'PRICE' %}</p>
                   <div class="flex justify-between">
-                    <input type="number" name="min_price" class="h-8 w-[90px] border pl-2" placeholder="Min" value="{{ min_price }}" />
+                    <input type="number" name="min_price" class="h-8 w-[90px] border pl-2" placeholder="{% trans 'Min' %}" value="{{ min_price }}" />
                     <span class="px-3">-</span>
-                    <input type="number" name="max_price" class="h-8 w-[90px] border pl-2" placeholder="Max" value="{{ max_price }}" />
+                    <input type="number" name="max_price" class="h-8 w-[90px] border pl-2" placeholder="{% trans 'Max' %}" value="{{ max_price }}" />
                   </div>
                 </div>
               </div>
               <!-- CITY -->
             <div class="border-b py-5">
-              <p class="mb-3 font-medium">İl</p>
+              <p class="mb-3 font-medium">{% trans 'PROVINCE' %}</p>
               <select name="city" id="city" class="w-full border p-2 rounded">
-                <option value="">Tüm İller</option>
+                <option value="">{% trans 'All provinces' %}</option>
                 {% for city in cities %}
                   <option value="{{ city }}" {% if city == selected_city %}selected{% endif %}>{{ city }}</option>
                 {% endfor %}
@@ -331,15 +332,15 @@
 
             <!-- İlçe (Province) Dropdown -->
             <div class="border-b py-5">
-              <p class="mb-3 font-medium">İLÇE</p>
+              <p class="mb-3 font-medium">{% trans 'DISTRICT' %}</p>
               <select name="province" id="province" class="w-full border p-2 rounded">
-                <option value="">Lütfen önce il seçin</option>  
+                <option value="">{% trans 'Please select the province first' %}</option>  
               </select>
 
             </div>
             <!-- TAKAS ISTENEN (EXCHANGE FOR) FILTER -->
             <div class="border-b py-5">
-              <p class="mb-3 font-medium">TAKAS ISTENEN</p>
+              <p class="mb-3 font-medium">{% trans 'EXCHANGE REQUESTED' %}</p>
               {% for category in categories %}
                 <div class="flex w-full justify-between items-center">
                   <div class="flex items-center">
@@ -358,7 +359,7 @@
 
             <!-- LISTING TYPE -->
             <div class="border-b py-5">
-              <p class="mb-3 font-medium">LISTING TYPE</p>
+              <p class="mb-3 font-medium">{% trans 'LISTING TYPE' %}</p>
               {% for type in types %}
                 <div class="flex w-full justify-between items-center">
                   <div class="flex items-center">
@@ -378,7 +379,7 @@
 
             <!-- SUBMIT BUTTON -->
             <div class="pt-5">
-              <button type="submit" class="px-4 py-2 bg-violet-600 text-white rounded">Filtreleri Uygula</button>
+              <button type="submit" class="px-4 py-2 bg-violet-600 text-white rounded">{% trans 'Apply Filters' %}</button>
             </div>
 
           </form>
@@ -395,12 +396,12 @@
               <div class="mb-5 hidden lg:flex items-center justify-between px-5">
                 <form method="get" class="flex items-center gap-4 w-full">
                   {# Keep other filter hidden fields if needed #}
-                  <label for="sort" class="text-sm font-medium">Sırala:</label>
+                  <label for="sort" class="text-sm font-medium">{% trans 'Sort:' %}</label>
                   <select name="sort" id="sort" onchange="this.form.submit()" class="border rounded px-3 py-2 text-sm min-w-[200px]">
-                    <option value="newest" {% if current_sort == 'newest' or not current_sort %}selected{% endif %}>En Yeniler</option>
-                    <option value="oldest" {% if current_sort == 'oldest' %}selected{% endif %}>En Eskiler</option>
-                    <option value="price_desc" {% if current_sort == 'price_desc' %}selected{% endif %}>Fiyat: Yüksekten Düşüğe</option>
-                    <option value="price_asc" {% if current_sort == 'price_asc' %}selected{% endif %}>Fiyat: Düşükten Yükseğe</option>
+                    <option value="newest" {% if current_sort == 'newest' or not current_sort %}selected{% endif %}>{% trans 'Newest' %}</option>
+                    <option value="oldest" {% if current_sort == 'oldest' %}selected{% endif %}>{% trans 'Oldest' %}</option>
+                    <option value="price_desc" {% if current_sort == 'price_desc' %}selected{% endif %}>{% trans 'Price: High to Low' %}</option>
+                    <option value="price_asc" {% if current_sort == 'price_asc' %}selected{% endif %}>{% trans 'Price: Low to High' %}</option>
                   </select>
                   {# Add other filter hidden fields here if needed #}
                 </form>
@@ -439,9 +440,9 @@
                           bg-green-500
                         {% endif %}">
                         {% if product.listing_type == 'sale' %}
-                          Satılık
+                          {% trans 'For Sale' %}
                         {% else %}
-                          Takas
+                          {% trans 'Exchange' %}
                         {% endif %}
                       </div>
                     </div>
@@ -458,7 +459,7 @@
                         <p class="font-medium text-violet-900">{{ product.price|floatformat:0|intcomma }} TL</p>
 
 
-                        <p class="text-sm text-gray-500 italic">Takas edilebilir:</p>
+                        <p class="text-sm text-gray-500 italic">{% trans 'Exchangeable for:' %}</p>
                         
                         {% with categories=product.exchange_for.all %}
                           {% if categories %}
@@ -470,10 +471,10 @@
                                 {% if categories|length > 2 %}...{% endif %}
                               </p>
                             {% else %}
-                              <p class="text-sm text-gray-400">Belirtilmemiş</p>
+                              <p class="text-sm text-gray-400">{% trans 'Not specified' %}</p>
                             {% endif %}
                           {% else %}
-                            <p class="text-sm text-gray-400">Belirtilmemiş</p>
+                            <p class="text-sm text-gray-400">{% trans 'Not specified' %}</p>
                           {% endif %}
                         {% endwith %}
                       {% endif %}
@@ -485,13 +486,13 @@
 
                       <div class="my-5">
                         <a href="{% url 'product_detail' product.slug %}">
-                          <button class="h-10 w-full bg-purple-500 text-white hover:bg-pink-400 transition">Detayları Görüntüle</button>
+                          <button class="h-10 w-full bg-purple-500 text-white hover:bg-pink-400 transition">{% trans 'View Details' %}</button>
                         </a>
                       </div>
                     </div>
                   </div>
                 {% empty %}
-                  <p class="col-span-3 text-center text-gray-500">No products available.</p>
+                  <p class="col-span-3 text-center text-gray-500">{% trans 'No products available.' %}</p>
                 {% endfor %}  
             </section>
           </div>
@@ -600,7 +601,7 @@ document.addEventListener('DOMContentLoaded', function () {
       // ✅ Add "All Districts" option
       const allOption = document.createElement("option");
       allOption.value = "";
-      allOption.textContent = "Tüm İlçeler";
+      allOption.textContent = "{% trans 'All Districts' %}";
       if (!preselect) allOption.selected = true;
       provinceEl.appendChild(allOption);
 
@@ -613,7 +614,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     } else {
       const empty = document.createElement("option");
-      empty.textContent = "Lütfen önce bir şehir seçin";
+      empty.textContent = "{% trans 'Please select a city first' %}";
       empty.disabled = true;
       empty.selected = true;
       provinceEl.appendChild(empty);
