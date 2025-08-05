@@ -130,13 +130,13 @@
 
 </head>
 
-<body class="flex flex-col min-h-screen">
+<body class="min-h-screen flex flex-col">
 
- <div x-data="{ mobileMenuOpen: false, desktopMenuOpen: false }">
+ <div x-data="{ mobileMenuOpen: false, desktopMenuOpen: false }" class="flex-1 flex flex-col">
 
     {% include 'header.html' %}
 
-     <main class="flex-grow">
+     <main class="flex-1">
         {% block content %}
         <!-- Page content will go here -->
         {% endblock %}

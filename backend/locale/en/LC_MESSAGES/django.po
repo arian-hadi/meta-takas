@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Meta Takas 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-01 08:25+0000\n"
+"POT-Creation-Date: 2025-08-05 14:08+0000\n"
 "PO-Revision-Date: 2025-08-01 08:25+0000\n"
 "Last-Translator: Meta Takas Team <info@metatakas.com>\n"
 "Language-Team: English <en@metatakas.com>\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
 #: accounts/manager.py:14
 msgid "Please enter a valid email address"
 msgstr "Please enter a valid email address"
@@ -24,6 +25,945 @@ msgstr "Please enter a valid email address"
 #: accounts/manager.py:19
 msgid "An email address is required"
 msgstr "An email address is required"
+
+
+msgid "Please select a category"
+msgstr "Please select a category"
+
+msgid "Delivery"
+msgstr "Delivery"
+
+
+msgid "Support"
+msgstr "24/7 Support"
+
+#: contact/forms.py:11
+msgid "Profile"
+msgstr "Profile"
+
+#: contact/forms.py:12
+msgid "Careers"
+msgstr "Careers"
+
+msgid "Other category"
+msgstr "Category"
+
+#: contact/templates/contact/contact.html:5
+#: homepage/templates/homepage/terms_of_use.html:84
+msgid "Contact Us"
+msgstr "Contact Us"
+
+#: contact/templates/contact/contact.html:39
+msgid "Full Name"
+msgstr "Full Name"
+
+#: contact/templates/contact/contact.html:49
+msgid "Email address"
+msgstr "Email address"
+
+#: contact/templates/contact/contact.html:59
+msgid "Message"
+msgstr "Message"
+
+#: contact/templates/contact/contact.html:74
+msgid "Terms and Conditions"
+msgstr "Terms and Conditions"
+
+#: contact/templates/contact/contact.html:78
+msgid "Submit"
+msgstr "Submit"
+
+#: contact/templates/contact/contact.html:102
+msgid "Technical Support"
+msgstr "Technical Support"
+
+#: contact/templates/contact/contact.html:122
+msgid "Address"
+msgstr "Address"
+
+#: contact/templates/contact/contact.html:146
+msgid "Landline"
+msgstr "Landline"
+
+#: contact/templates/contact/contact.html:165
+msgid "Mobile"
+msgstr "Mobile"
+
+#: homepage/templates/homepage/aboutus.html:19 theme/templates/footer.html:75
+#: theme/templates/header.html:146 theme/templates/header.html:163
+msgid "About Us"
+msgstr "About Us"
+
+#: homepage/templates/homepage/aboutus.html:21
+#: homepage/templates/homepage/aboutus.html:46
+msgid ""
+"Metatakas is an innovative solution that brings the traditional barter "
+"system into the digital age. It enables people and businesses to trade "
+"unused goods, services, or value without using cash, supporting economic and "
+"environmental sustainability."
+msgstr ""
+"Metatakas is an innovative solution that brings the traditional barter "
+"system into the digital age. It enables people and businesses to trade "
+"unused goods, services, or value without using cash, supporting economic and "
+"environmental sustainability."
+
+#: homepage/templates/homepage/aboutus.html:38
+msgid "Since 2024"
+msgstr "Since 2024"
+
+#: homepage/templates/homepage/aboutus.html:44
+msgid "About MetaTakas"
+msgstr "About MetaTakas"
+
+#: homepage/templates/homepage/aboutus.html:74
+msgid "Why MetaTakas?"
+msgstr "Why MetaTakas?"
+
+#: homepage/templates/homepage/aboutus.html:76
+#, fuzzy
+#| msgid ""
+#| "- Save Money: Meet your needs without cash and protect your budget.  \n"
+#| "- Eco-Friendly: Prevent waste and support sustainability by reusing "
+#| "unused items.  \n"
+#| "- Easy and Secure: Make fast transactions on a transparent and "
+#| "trustworthy platform.  \n"
+#| "- Diversity: Barter in different categories such as products, services, "
+#| "knowledge, or digital assets.  \n"
+#| "Metatakas is not just a barter platform — it's a movement that empowers "
+#| "communities and encourages more efficient use of resources as part of the "
+#| "sharing economy. Join Metatakas and step into the future of trade."
+msgid ""
+"- Save Money: Meet your needs without cash and protect your budget. - Eco-"
+"Friendly: Prevent waste and support sustainability by reusing unused items. "
+"- Easy and Secure: Make fast transactions on a transparent and trustworthy "
+"platform. - Diversity: Barter in different categories such as products, "
+"services, knowledge, or digital assets. Metatakas is not just a barter "
+"platform — it's a movement that empowers communities and encourages more "
+"efficient use of resources as part of the sharing economy. Join Metatakas "
+"and step into the future of trade."
+msgstr ""
+"- Save Money: Meet your needs without cash and protect your budget.  \n"
+"- Eco-Friendly: Prevent waste and support sustainability by reusing unused "
+"items.  \n"
+"- Easy and Secure: Make fast transactions on a transparent and trustworthy "
+"platform.  \n"
+"- Diversity: Barter in different categories such as products, services, "
+"knowledge, or digital assets.  \n"
+"Metatakas is not just a barter platform — it's a movement that empowers "
+"communities and encourages more efficient use of resources as part of the "
+"sharing economy. Join Metatakas and step into the future of trade."
+
+#: homepage/templates/homepage/aboutus.html:85
+msgid "Our Values"
+msgstr "Our Values"
+
+#: homepage/templates/homepage/aboutus.html:87
+#, fuzzy
+#| msgid ""
+#| "Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum placeat "
+#| "odit, est eum dolorem esse totam iusto necessitatibus eligendi illo "
+#| "doloribus vero aperiam atque tempora repudiandae molestiae nemo "
+#| "distinctio quisquam!"
+msgid ""
+"\n"
+"            Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum\n"
+"            placeat odit, est eum dolorem esse totam iusto necessitatibus\n"
+"            eligendi illo doloribus vero aperiam atque tempora repudiandae\n"
+"            molestiae nemo distinctio quisquam!\n"
+"          "
+msgstr ""
+"Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum placeat odit, "
+"est eum dolorem esse totam iusto necessitatibus eligendi illo doloribus vero "
+"aperiam atque tempora repudiandae molestiae nemo distinctio quisquam!"
+
+#: homepage/templates/homepage/community_guidelines.html:4
+#: homepage/templates/homepage/community_guidelines.html:10
+#: theme/templates/footer.html:67
+msgid "Community Guidelines"
+msgstr "Community Guidelines"
+
+#: homepage/templates/homepage/community_guidelines.html:12
+msgid ""
+"Please review the following rules to help maintain a safe, respectful, and "
+"supportive environment on the MetaTakas platform."
+msgstr ""
+"Please review the following rules to help maintain a safe, respectful, and "
+"supportive environment on the MetaTakas platform."
+
+#: homepage/templates/homepage/community_guidelines.html:18
+msgid "1. Be Respectful and Kind"
+msgstr "1. Be Respectful and Kind"
+
+#: homepage/templates/homepage/community_guidelines.html:20
+msgid ""
+"Always be respectful and understanding when communicating with other users. "
+"Insults, discrimination, threats, or hate speech are not allowed."
+msgstr ""
+"Always be respectful and understanding when communicating with other users. "
+"Insults, discrimination, threats, or hate speech are not allowed."
+
+#: homepage/templates/homepage/community_guidelines.html:26
+msgid "2. Share Accurate and Truthful Information"
+msgstr "2. Share Accurate and Truthful Information"
+
+#: homepage/templates/homepage/community_guidelines.html:28
+msgid ""
+"Provide accurate, complete, and honest information about your product in "
+"listings. Sharing fake or stolen products is prohibited."
+msgstr ""
+"Provide accurate, complete, and honest information about your product in "
+"listings. Sharing fake or stolen products is prohibited."
+
+#: homepage/templates/homepage/community_guidelines.html:34
+msgid "3. Follow the Law"
+msgstr "3. Follow the Law"
+
+#: homepage/templates/homepage/community_guidelines.html:36
+msgid ""
+"All transactions must comply with the law. Listing or bartering illegal "
+"items is not allowed on the platform."
+msgstr ""
+"All transactions must comply with the law. Listing or bartering illegal "
+"items is not allowed on the platform."
+
+#: homepage/templates/homepage/community_guidelines.html:42
+msgid "4. No Spam or Ads"
+msgstr "4. No Spam or Ads"
+
+#: homepage/templates/homepage/community_guidelines.html:44
+msgid ""
+"Unsolicited messages, duplicate content, or commercial advertising are "
+"against community rules."
+msgstr ""
+"Unsolicited messages, duplicate content, or commercial advertising are "
+"against community rules."
+
+#: homepage/templates/homepage/community_guidelines.html:50
+msgid "5. Safe Trading Practices"
+msgstr "5. Safe Trading Practices"
+
+#: homepage/templates/homepage/community_guidelines.html:52
+msgid ""
+"Be cautious of fraud during trades. Avoid sharing personal details beyond "
+"the information shared through the platform."
+msgstr ""
+"Be cautious of fraud during trades. Avoid sharing personal details beyond "
+"the information shared through the platform."
+
+#: homepage/templates/homepage/community_guidelines.html:59
+msgid ""
+"Users who do not follow these rules may be warned, have their listings "
+"removed, or have their accounts suspended."
+msgstr ""
+"Users who do not follow these rules may be warned, have their listings "
+"removed, or have their accounts suspended."
+
+#: homepage/templates/homepage/create_listing.html:4
+#: homepage/templates/homepage/create_listing.html:55
+msgid "Listing Creation Guide"
+msgstr "Listing Creation Guide"
+
+#: homepage/templates/homepage/create_listing.html:67
+#: homepage/templates/homepage/howitworks.html:67
+msgid "Step 1"
+msgstr "Step 1"
+
+#: homepage/templates/homepage/create_listing.html:69
+msgid "Contact via WhatsApp"
+msgstr "Contact via WhatsApp"
+
+#: homepage/templates/homepage/create_listing.html:71
+msgid ""
+"To create a listing, simply reach out to us via WhatsApp. Use the \"Contact "
+"via WhatsApp\" button on the homepage to connect easily."
+msgstr ""
+"To create a listing, simply reach out to us via WhatsApp. Use the \"Contact "
+"via WhatsApp\" button on the homepage to connect easily."
+
+#: homepage/templates/homepage/create_listing.html:82
+#: homepage/templates/homepage/howitworks.html:80
+msgid "Step 2"
+msgstr "Step 2"
+
+#: homepage/templates/homepage/create_listing.html:84
+msgid "Send Us Product Info"
+msgstr "Send Us Product Info"
+
+#: homepage/templates/homepage/create_listing.html:86
+msgid ""
+"Share the product name, description, price (if any), desired barter "
+"categories, city/district, and clear photos."
+msgstr ""
+"Share the product name, description, price (if any), desired barter "
+"categories, city/district, and clear photos."
+
+#: homepage/templates/homepage/create_listing.html:97
+#: homepage/templates/homepage/howitworks.html:93
+msgid "Step 3"
+msgstr "Step 3"
+
+#: homepage/templates/homepage/create_listing.html:99
+msgid "Your Listing Goes Live"
+msgstr "Your Listing Goes Live"
+
+#: homepage/templates/homepage/create_listing.html:101
+msgid ""
+"Once we receive your info, we review it and publish the listing on "
+"MetaTakas. Visitors can now view your product!"
+msgstr ""
+"Once we receive your info, we review it and publish the listing on "
+"MetaTakas. Visitors can now view your product!"
+
+#: homepage/templates/homepage/create_listing.html:112
+#: homepage/templates/homepage/howitworks.html:106
+msgid "Step 4"
+msgstr "Step 4"
+
+#: homepage/templates/homepage/create_listing.html:114
+#: homepage/templates/homepage/howitworks.html:108
+msgid "Barter or Sale Process"
+msgstr "Barter or Sale Process"
+
+#: homepage/templates/homepage/create_listing.html:116
+msgid ""
+"Interested users contact us. We connect you with the buyer and ensure a "
+"smooth transaction."
+msgstr ""
+"Interested users contact us. We connect you with the buyer and ensure a "
+"smooth transaction."
+
+#: homepage/templates/homepage/exchange_rules.html:4
+msgid "Exchange Rules"
+msgstr "Exchange Rules"
+
+#: homepage/templates/homepage/exchange_rules.html:13
+msgid "Rules"
+msgstr "Rules"
+
+#: homepage/templates/homepage/exchange_rules.html:14
+msgid "Exchange System Rules"
+msgstr "Exchange System Rules"
+
+#: homepage/templates/homepage/exchange_rules.html:29
+msgid "Accurate Information"
+msgstr "Accurate Information"
+
+#: homepage/templates/homepage/exchange_rules.html:32
+msgid ""
+"Product details must be complete, accurate, and up-to-date. Listings with "
+"misleading information will be rejected."
+msgstr ""
+"Product details must be complete, accurate, and up-to-date. Listings with "
+"misleading information will be rejected."
+
+#: homepage/templates/homepage/exchange_rules.html:46
+msgid "Prohibited Content"
+msgstr "Prohibited Content"
+
+#: homepage/templates/homepage/exchange_rules.html:49
+msgid ""
+"Listings that include illegal, counterfeit, violent, or inappropriate items "
+"are prohibited."
+msgstr ""
+"Listings that include illegal, counterfeit, violent, or inappropriate items "
+"are prohibited."
+
+#: homepage/templates/homepage/exchange_rules.html:63
+msgid "Barter Expectation"
+msgstr "Barter Expectation"
+
+#: homepage/templates/homepage/exchange_rules.html:66
+msgid "Barter listings must clearly state which items are desired in exchange."
+msgstr ""
+"Barter listings must clearly state which items are desired in exchange."
+
+#: homepage/templates/homepage/exchange_rules.html:80
+msgid "Listing Approval"
+msgstr "Listing Approval"
+
+#: homepage/templates/homepage/exchange_rules.html:83
+msgid ""
+"All listings are reviewed by the MetaTakas team. If not suitable, they will "
+"not be published."
+msgstr ""
+"All listings are reviewed by the MetaTakas team. If not suitable, they will "
+"not be published."
+
+#: homepage/templates/homepage/exchange_rules.html:97
+msgid "Barter Responsibility"
+msgstr "Barter Responsibility"
+
+#: homepage/templates/homepage/exchange_rules.html:100
+msgid ""
+"MetaTakas is only a facilitator. Responsibility for the transaction lies "
+"with the parties involved."
+msgstr ""
+"MetaTakas is only a facilitator. Responsibility for the transaction lies "
+"with the parties involved."
+
+#: homepage/templates/homepage/exchange_rules.html:114
+msgid "Photos and Location"
+msgstr "Photos and Location"
+
+#: homepage/templates/homepage/exchange_rules.html:117
+msgid ""
+"Product images must be clear, and the location (city & district) must be "
+"accurate."
+msgstr ""
+"Product images must be clear, and the location (city & district) must be "
+"accurate."
+
+#: homepage/templates/homepage/help_center.html:4
+#: homepage/templates/homepage/help_center.html:10
+#: theme/templates/footer.html:56
+msgid "Help Center"
+msgstr "Help Center"
+
+#: homepage/templates/homepage/help_center.html:15
+msgid "What is MetaTakas and how does it work?"
+msgstr "What is MetaTakas and how does it work?"
+
+#: homepage/templates/homepage/help_center.html:20
+msgid ""
+"MetaTakas is a platform where you can submit your listings via WhatsApp to "
+"sell or barter your products."
+msgstr ""
+"MetaTakas is a platform where you can submit your listings via WhatsApp to "
+"sell or barter your products."
+
+#: homepage/templates/homepage/help_center.html:25
+msgid "How can I create a listing?"
+msgstr "How can I create a listing?"
+
+#: homepage/templates/homepage/help_center.html:30
+msgid ""
+"Click the WhatsApp button on the homepage and send us your product info. "
+"We'll create the listing for you."
+msgstr ""
+"Click the WhatsApp button on the homepage and send us your product info. "
+"We'll create the listing for you."
+
+#: homepage/templates/homepage/help_center.html:35
+msgid "What items can I barter?"
+msgstr "What items can I barter?"
+
+#: homepage/templates/homepage/help_center.html:40
+msgid ""
+"You can barter cars, real estate, electronics, furniture, and many other "
+"categories."
+msgstr ""
+"You can barter cars, real estate, electronics, furniture, and many other "
+"categories."
+
+#: homepage/templates/homepage/help_center.html:45
+msgid "How should I determine my product's value?"
+msgstr "How should I determine my product's value?"
+
+#: homepage/templates/homepage/help_center.html:50
+msgid ""
+"Check similar listings, consider condition and demand, and optionally ask us "
+"for advice."
+msgstr ""
+"Check similar listings, consider condition and demand, and optionally ask us "
+"for advice."
+
+#: homepage/templates/homepage/help_center.html:55
+msgid "Is the MetaTakas listing process safe?"
+msgstr "Is the MetaTakas listing process safe?"
+
+#: homepage/templates/homepage/help_center.html:60
+msgid ""
+"Listings are moderated by MetaTakas. Transactions occur via WhatsApp — "
+"always stay cautious of fraud."
+msgstr ""
+"Listings are moderated by MetaTakas. Transactions occur via WhatsApp — "
+"always stay cautious of fraud."
+
+#: homepage/templates/homepage/help_center.html:65
+msgid "Is WhatsApp communication safe?"
+msgstr "Is WhatsApp communication safe?"
+
+#: homepage/templates/homepage/help_center.html:70
+msgid ""
+"Yes, communication is handled only through our official WhatsApp number, and "
+"your data is kept confidential."
+msgstr ""
+"Yes, communication is handled only through our official WhatsApp number, and "
+"your data is kept confidential."
+
+#: homepage/templates/homepage/homepage.html:23
+msgid "Sell or Barter Your Product"
+msgstr "Sell or Barter Your Product"
+
+#: homepage/templates/homepage/homepage.html:26
+msgid "Create your listing now, meet with buyers or barter partners."
+msgstr "Create your listing now, meet with buyers or barter partners."
+
+#: homepage/templates/homepage/homepage.html:31
+msgid "Get Started"
+msgstr "Get Started"
+
+#: homepage/templates/homepage/homepage.html:66
+msgid "Secure Barter & Sale Support"
+msgstr "Secure Barter & Sale Support"
+
+#: homepage/templates/homepage/homepage.html:68
+msgid "We support you in your buying, selling, and barter transactions."
+msgstr "We support you in your buying, selling, and barter transactions."
+
+#: homepage/templates/homepage/homepage.html:96
+msgid "Verified Listings"
+msgstr "Verified Listings"
+
+#: homepage/templates/homepage/homepage.html:98
+msgid "Each listing is reviewed for category and intent before publishing."
+msgstr "Each listing is reviewed for category and intent before publishing."
+
+#: homepage/templates/homepage/homepage.html:126
+msgid "24/7 Support"
+msgstr "24/7 Support"
+
+#: homepage/templates/homepage/homepage.html:128
+msgid "You can contact us anytime, from anywhere."
+msgstr "You can contact us anytime, from anywhere."
+
+#: homepage/templates/homepage/homepage.html:136
+#, fuzzy
+#| msgid "CATEGORIES"
+msgid "EXPLORE CATEGORIES"
+msgstr "CATEGORIES"
+
+#: homepage/templates/homepage/homepage.html:155
+msgid "BOATS"
+msgstr "BOATS"
+
+#: homepage/templates/homepage/homepage.html:173
+msgid "VEHICLES"
+msgstr "VEHICLES"
+
+#: homepage/templates/homepage/homepage.html:191
+msgid "REAL ESTATE"
+msgstr "REAL ESTATE"
+
+#: homepage/templates/homepage/homepage.html:209
+msgid "ELECTRONICS"
+msgstr "ELECTRONICS"
+
+#: homepage/templates/homepage/homepage.html:227
+msgid "HOME GOODS"
+msgstr "HOME GOODS"
+
+#: homepage/templates/homepage/homepage.html:245
+msgid "ACCESSORIES"
+msgstr "ACCESSORIES"
+
+#: homepage/templates/homepage/homepage.html:268
+msgid "POST YOUR LISTING NOW"
+msgstr "POST YOUR LISTING NOW"
+
+#: homepage/templates/homepage/homepage.html:269
+msgid "SELL AND BARTER"
+msgstr "SELL AND BARTER"
+
+#: homepage/templates/homepage/homepage.html:271
+msgid "ÜRÜNÜNÜZÜ SATMAK <br /> VEYA TAKAS ETMEK İSTEYENLERLE BULUŞUN"
+msgstr ""
+
+#: homepage/templates/homepage/homepage.html:279
+msgid "Post Ad"
+msgstr "Post Ad"
+
+#: homepage/templates/homepage/homepage.html:293
+msgid "NEW ARRIVALS"
+msgstr "NEW ARRIVALS"
+
+#: homepage/templates/homepage/homepage.html:327
+#: products/templates/products/product_list.html:443
+msgid "For Sale"
+msgstr "For Sale"
+
+#: homepage/templates/homepage/homepage.html:329
+#: products/templates/products/product_detail.html:474
+#: products/templates/products/product_list.html:445
+msgid "Exchange"
+msgstr "Exchange"
+
+#: homepage/templates/homepage/homepage.html:340
+#: products/templates/products/product_detail.html:486
+#: products/templates/products/product_list.html:462
+msgid "Exchangeable for:"
+msgstr "Exchangeable for:"
+
+#: homepage/templates/homepage/homepage.html:350
+#: products/templates/products/product_detail.html:496
+#: products/templates/products/product_list.html:474
+#: products/templates/products/product_list.html:477
+msgid "Not specified"
+msgstr "Not specified"
+
+#: homepage/templates/homepage/homepage.html:359
+#: products/templates/products/product_detail.html:505
+#: products/templates/products/product_list.html:489
+msgid "View Details"
+msgstr "View Details"
+
+#: homepage/templates/homepage/howitworks.html:4
+msgid "How it works"
+msgstr "How it works"
+
+#: homepage/templates/homepage/howitworks.html:56
+msgid "How MetaTakas Works"
+msgstr "How MetaTakas Works"
+
+#: homepage/templates/homepage/howitworks.html:69
+msgid "Contact Us via WhatsApp"
+msgstr "Contact Us via WhatsApp"
+
+#: homepage/templates/homepage/howitworks.html:71
+msgid ""
+"If you want to sell or barter your product, contact us via WhatsApp. You can "
+"quickly reach us using the 'Contact via WhatsApp' button on the page."
+msgstr ""
+"If you want to sell or barter your product, contact us via WhatsApp. You can "
+"quickly reach us using the 'Contact via WhatsApp' button on the page."
+
+#: homepage/templates/homepage/howitworks.html:82
+msgid "Share Product Information"
+msgstr "Share Product Information"
+
+#: homepage/templates/homepage/howitworks.html:84
+msgid ""
+"Share the product name, description, price (if any), desired barter "
+"categories, location (city/district), and clear images with us."
+msgstr ""
+"Share the product name, description, price (if any), desired barter "
+"categories, location (city/district), and clear images with us."
+
+#: homepage/templates/homepage/howitworks.html:95
+msgid "Product is Published"
+msgstr "Product is Published"
+
+#: homepage/templates/homepage/howitworks.html:97
+msgid ""
+"Once we receive your info, we list the product on MetaTakas on your behalf. "
+"Visitors can view your item and submit offers."
+msgstr ""
+"Once we receive your info, we list the product on MetaTakas on your behalf. "
+"Visitors can view your item and submit offers."
+
+#: homepage/templates/homepage/howitworks.html:110
+msgid ""
+"Interested users contact us via WhatsApp. We connect them with you and "
+"securely manage the process."
+msgstr ""
+"Interested users contact us via WhatsApp. We connect them with you and "
+"securely manage the process."
+
+#: homepage/templates/homepage/mission.html:4
+#: homepage/templates/homepage/mission.html:8 theme/templates/footer.html:76
+msgid "Our Mission"
+msgstr "Our Mission"
+
+#: homepage/templates/homepage/mission.html:22
+msgid "Building Connections"
+msgstr "Building Connections"
+
+#: homepage/templates/homepage/mission.html:23
+msgid ""
+"We aim to build a reliable bridge by connecting our users with the best "
+"barter and sale opportunities."
+msgstr ""
+"We aim to build a reliable bridge by connecting our users with the best "
+"barter and sale opportunities."
+
+#: homepage/templates/homepage/mission.html:33
+msgid "Providing a Secure Platform"
+msgstr "Providing a Secure Platform"
+
+#: homepage/templates/homepage/mission.html:34
+msgid ""
+"We've created a modern digital platform where you can safely publish "
+"listings and evaluate products."
+msgstr ""
+"We've created a modern digital platform where you can safely publish "
+"listings and evaluate products."
+
+#: homepage/templates/homepage/mission.html:43
+msgid "Flexibility in Trading"
+msgstr "Flexibility in Trading"
+
+#: homepage/templates/homepage/mission.html:44
+msgid ""
+"Whether it’s a sale or a trade, we offer flexible options tailored to user "
+"needs to make transactions easier."
+msgstr ""
+"Whether it’s a sale or a trade, we offer flexible options tailored to user "
+"needs to make transactions easier."
+
+#: homepage/templates/homepage/privacy_policy.html:4
+#: homepage/templates/homepage/privacy_policy.html:13
+msgid "Privacy & Cookie Policy"
+msgstr "Privacy & Cookie Policy"
+
+#: homepage/templates/homepage/privacy_policy.html:19
+msgid ""
+"<span class='font-semibold text-blue-bg-blue-600'>MetaTakas</span> values "
+"your privacy. This document explains how we collect, use, and protect user "
+"data."
+msgstr ""
+"<span class='font-semibold text-blue-bg-blue-600'>MetaTakas</span> values "
+"your privacy. This document explains how we collect, use, and protect user "
+"data."
+
+#: homepage/templates/homepage/privacy_policy.html:21
+msgid "By using our services, you agree to this policy."
+msgstr "By using our services, you agree to this policy."
+
+#: homepage/templates/homepage/privacy_policy.html:31
+msgid "Information Collected"
+msgstr "Information Collected"
+
+#: homepage/templates/homepage/privacy_policy.html:36
+msgid ""
+"<strong>Contact Information:</strong> Name, phone number, email address."
+msgstr ""
+"<strong>Contact Information:</strong> Name, phone number, email address."
+
+#: homepage/templates/homepage/privacy_policy.html:39
+msgid "<strong>Listing Content:</strong> Product descriptions, photos, videos."
+msgstr ""
+"<strong>Listing Content:</strong> Product descriptions, photos, videos."
+
+#: homepage/templates/homepage/privacy_policy.html:42
+msgid ""
+"<strong>Technical Data:</strong> IP address, device and browser information."
+msgstr ""
+"<strong>Technical Data:</strong> IP address, device and browser information."
+
+#: homepage/templates/homepage/privacy_policy.html:52
+msgid "Purpose of Data Use"
+msgstr "Purpose of Data Use"
+
+#: homepage/templates/homepage/privacy_policy.html:55
+msgid ""
+"Collected data is used to publish listings, improve user experience, ensure "
+"security, and fulfill legal obligations."
+msgstr ""
+"Collected data is used to publish listings, improve user experience, ensure "
+"security, and fulfill legal obligations."
+
+#: homepage/templates/homepage/privacy_policy.html:63
+msgid "Data Sharing"
+msgstr "Data Sharing"
+
+#: homepage/templates/homepage/privacy_policy.html:66
+msgid "Your data is shared with third parties only in the following cases:"
+msgstr "Your data is shared with third parties only in the following cases:"
+
+#: homepage/templates/homepage/privacy_policy.html:69
+msgid "With hosting or technical support providers."
+msgstr "With hosting or technical support providers."
+
+#: homepage/templates/homepage/privacy_policy.html:70
+msgid "When legally required by authorities."
+msgstr "When legally required by authorities."
+
+#: homepage/templates/homepage/privacy_policy.html:78
+msgid "Cookie Usage"
+msgstr "Cookie Usage"
+
+#: homepage/templates/homepage/privacy_policy.html:81
+msgid ""
+"Our site uses cookies to enhance your experience. You may disable them via "
+"your browser settings."
+msgstr ""
+"Our site uses cookies to enhance your experience. You may disable them via "
+"your browser settings."
+
+#: homepage/templates/homepage/privacy_policy.html:89
+msgid "Account and Data Deletion"
+msgstr "Account and Data Deletion"
+
+#: homepage/templates/homepage/privacy_policy.html:92
+msgid "If you wish to delete your account:"
+msgstr "If you wish to delete your account:"
+
+#: homepage/templates/homepage/privacy_policy.html:95
+msgid "Contact us via the contact section."
+msgstr "Contact us via the contact section."
+
+#: homepage/templates/homepage/privacy_policy.html:96
+msgid "Your request will be reviewed and processed."
+msgstr "Your request will be reviewed and processed."
+
+#: homepage/templates/homepage/privacy_policy.html:104
+#: theme/templates/footer.html:57 theme/templates/header.html:147
+#: theme/templates/header.html:166
+msgid "Contact"
+msgstr "Contact"
+
+#: homepage/templates/homepage/privacy_policy.html:107
+msgid "Email:"
+msgstr "Email:"
+
+#: homepage/templates/homepage/privacy_policy.html:108
+msgid "Address:"
+msgstr "Address:"
+
+#: homepage/templates/homepage/terms_of_use.html:4
+#: homepage/templates/homepage/terms_of_use.html:10
+msgid "MetaTakas Terms of Use"
+msgstr "MetaTakas Terms of Use"
+
+#: homepage/templates/homepage/terms_of_use.html:13
+msgid "1. Acceptance of Terms"
+msgstr "1. Acceptance of Terms"
+
+#: homepage/templates/homepage/terms_of_use.html:15
+msgid ""
+"By accessing or using the MetaTakas platform, you agree to these terms of "
+"use and our privacy policy. If you do not agree, please do not use the "
+"service."
+msgstr ""
+"By accessing or using the MetaTakas platform, you agree to these terms of "
+"use and our privacy policy. If you do not agree, please do not use the "
+"service."
+
+#: homepage/templates/homepage/terms_of_use.html:20
+msgid "2. Usage License"
+msgstr "2. Usage License"
+
+#: homepage/templates/homepage/terms_of_use.html:27
+msgid ""
+"Shared listing content is for personal use only. It may not be copied or "
+"used for commercial purposes."
+msgstr ""
+"Shared listing content is for personal use only. It may not be copied or "
+"used for commercial purposes."
+
+#: homepage/templates/homepage/terms_of_use.html:33
+msgid ""
+"MetaTakas does not claim ownership or guarantee the accuracy of the content."
+msgstr ""
+"MetaTakas does not claim ownership or guarantee the accuracy of the content."
+
+#: homepage/templates/homepage/terms_of_use.html:40
+msgid "3. Disclaimer of Liability"
+msgstr "3. Disclaimer of Liability"
+
+#: homepage/templates/homepage/terms_of_use.html:49
+msgid ""
+"MetaTakas does not guarantee the content, accuracy, or security of user-"
+"submitted listings. Responsibility lies with the user who created the "
+"listing."
+msgstr ""
+"MetaTakas does not guarantee the content, accuracy, or security of user-"
+"submitted listings. Responsibility lies with the user who created the "
+"listing."
+
+#: homepage/templates/homepage/terms_of_use.html:56
+msgid "4. Restrictions"
+msgstr "4. Restrictions"
+
+#: homepage/templates/homepage/terms_of_use.html:59
+msgid "Time Limits"
+msgstr "Time Limits"
+
+#: homepage/templates/homepage/terms_of_use.html:60
+msgid "Reports of violations must be submitted within 30 days."
+msgstr "Reports of violations must be submitted within 30 days."
+
+#: homepage/templates/homepage/terms_of_use.html:63
+msgid "Liability"
+msgstr "Liability"
+
+#: homepage/templates/homepage/terms_of_use.html:64
+msgid ""
+"MetaTakas is not responsible for any losses resulting from transactions "
+"between users."
+msgstr ""
+"MetaTakas is not responsible for any losses resulting from transactions "
+"between users."
+
+#: homepage/templates/homepage/terms_of_use.html:70
+msgid "5. Updates"
+msgstr "5. Updates"
+
+#: homepage/templates/homepage/terms_of_use.html:72
+msgid ""
+"MetaTakas reserves the right to update these terms. Updates become effective "
+"once published on the site."
+msgstr ""
+"MetaTakas reserves the right to update these terms. Updates become effective "
+"once published on the site."
+
+#: homepage/templates/homepage/terms_of_use.html:77
+msgid "6. Contact"
+msgstr "6. Contact"
+
+#: homepage/templates/homepage/terms_of_use.html:79
+msgid "If you have questions about the terms, feel free to contact us."
+msgstr "If you have questions about the terms, feel free to contact us."
+
+#: homepage/templates/homepage/valuation.html:4
+msgid "Valuation Tips"
+msgstr "Valuation Tips"
+
+#: homepage/templates/homepage/valuation.html:21
+msgid "Product Valuation Tips"
+msgstr "Product Valuation Tips"
+
+#: homepage/templates/homepage/valuation.html:24
+msgid ""
+"Evaluate your listing accurately to create faster sale or barter "
+"opportunities."
+msgstr ""
+"Evaluate your listing accurately to create faster sale or barter "
+"opportunities."
+
+#: homepage/templates/homepage/valuation.html:38
+msgid "Do Market Research"
+msgstr "Do Market Research"
+
+#: homepage/templates/homepage/valuation.html:40
+msgid ""
+"Check second-hand prices of similar items to determine a realistic value."
+msgstr ""
+"Check second-hand prices of similar items to determine a realistic value."
+
+#: homepage/templates/homepage/valuation.html:48
+msgid "Product Condition"
+msgstr "Product Condition"
+
+#: homepage/templates/homepage/valuation.html:50
+msgid ""
+"Whether the item is functional, undamaged, and gently used affects its price."
+msgstr ""
+"Whether the item is functional, undamaged, and gently used affects its price."
+
+#: homepage/templates/homepage/valuation.html:60
+msgid "Model and Year"
+msgstr "Model and Year"
+
+#: homepage/templates/homepage/valuation.html:62
+msgid ""
+"The item's year, model, and technical details are crucial in determining its "
+"market value."
+msgstr ""
+"The item's year, model, and technical details are crucial in determining its "
+"market value."
+
+#: homepage/templates/homepage/valuation.html:70
+msgid "Barter Balance"
+msgstr "Barter Balance"
+
+#: homepage/templates/homepage/valuation.html:72
+msgid ""
+"Consider value alignment with barter items. Balanced value makes bartering "
+"easier."
+msgstr ""
+"Consider value alignment with barter items. Balanced value makes bartering "
+"easier."
 
 #: meta_core/settings.py:115
 msgid "English"
@@ -33,749 +973,345 @@ msgstr "English"
 msgid "Turkish"
 msgstr "Turkish"
 
-#: theme/templates/header.html:45
-msgid "Search listings..."
-msgstr "Search listings..."
+#: products/models.py:54
+msgid "Üste Para Verilir"
+msgstr ""
 
-#: theme/templates/header.html:49
-msgid "Search"
-msgstr "Search"
+#: products/models.py:55
+msgid "Üste Para Alınır"
+msgstr ""
 
-#: theme/templates/header.html:58
-msgid "Welcome"
-msgstr "Welcome"
+#: products/models.py:56
+msgid "Üste Para Veremem"
+msgstr ""
 
-#: theme/templates/header.html:75
-msgid "Home"
-msgstr "Home"
+#: products/models.py:57
+msgid "%50 Nakit Talep Edilebilir"
+msgstr ""
 
-#: theme/templates/header.html:76
+#: products/models.py:58
+msgid "%50 Takas Talep Edilir"
+msgstr ""
+
+#: products/models.py:59
+msgid "Tamamı Takas Olur"
+msgstr ""
+
+#: products/models.py:60
+msgid "Tamamı Nakit Olur"
+msgstr ""
+
+#: products/templates/products/product_detail.html:50
+#: theme/templates/header.html:145 theme/templates/header.html:160
 msgid "Listings"
 msgstr "Listings"
 
-#: theme/templates/header.html:77
-msgid "About Us"
-msgstr "About Us"
+#: products/templates/products/product_detail.html:207
+msgid "Status"
+msgstr "Status"
 
-#: theme/templates/header.html:78
-msgid "Contact"
-msgstr "Contact"
+#: products/templates/products/product_detail.html:212
+#: products/templates/products/product_detail.html:472
+#, fuzzy
+#| msgid "For Sale"
+msgid "Sale"
+msgstr "For Sale"
+
+#: products/templates/products/product_detail.html:212
+msgid "Trade"
+msgstr ""
+
+#: products/templates/products/product_detail.html:218
+msgid "Announcement Date"
+msgstr "Announcement Date"
+
+#: products/templates/products/product_detail.html:224
+msgid "Category"
+msgstr "Category"
+
+#: products/templates/products/product_detail.html:231
+msgid "Province / District"
+msgstr "Province / District"
+
+#: products/templates/products/product_detail.html:299
+msgid "Contact via Whatsapp"
+msgstr "Contact via Whatsapp"
+
+#: products/templates/products/product_detail.html:313
+msgid "Description"
+msgstr "Description"
+
+#: products/templates/products/product_detail.html:361
+msgid "Listing Exchange Options"
+msgstr "Listing Exchange Options"
+
+#: products/templates/products/product_detail.html:362
+msgid "Exchange options for this ad are available below."
+msgstr "Exchange options for this ad are available below."
+
+#: products/templates/products/product_detail.html:391
+msgid "Budget"
+msgstr "Budget"
+
+#: products/templates/products/product_detail.html:438
+msgid "Recommended Products"
+msgstr ""
 
 #: products/templates/products/product_list.html:8
 msgid "Product list"
 msgstr "Product list"
 
-#: products/templates/products/product_list.html:35
+#: products/templates/products/product_list.html:49
 msgid "Catalog"
 msgstr "Catalog"
 
-#: products/templates/products/product_list.html:58
+#: products/templates/products/product_list.html:75
+#: products/templates/products/product_list.html:194
 msgid "Apply"
 msgstr "Apply"
 
-#: products/templates/products/product_list.html:64
+#: products/templates/products/product_list.html:81
+#: products/templates/products/product_list.html:401
 msgid "Newest"
 msgstr "Newest"
 
-#: products/templates/products/product_list.html:65
+#: products/templates/products/product_list.html:82
+#: products/templates/products/product_list.html:402
 msgid "Oldest"
 msgstr "Oldest"
 
-#: products/templates/products/product_list.html:66
+#: products/templates/products/product_list.html:83
+#: products/templates/products/product_list.html:403
 msgid "Price: High to Low"
 msgstr "Price: High to Low"
 
-#: products/templates/products/product_list.html:67
+#: products/templates/products/product_list.html:84
+#: products/templates/products/product_list.html:404
 msgid "Price: Low to High"
 msgstr "Price: Low to High"
 
-#: products/templates/products/product_list.html:78
+#: products/templates/products/product_list.html:107
+#: products/templates/products/product_list.html:263
 msgid "Listing Type"
 msgstr "Listing Type"
 
-#: products/templates/products/product_list.html:87
+#: products/templates/products/product_list.html:123
+#: products/templates/products/product_list.html:213
 msgid "Categories"
 msgstr "Categories"
 
-#: products/templates/products/product_list.html:98
+#: products/templates/products/product_list.html:139
 msgid "Exchange Requested Categories"
 msgstr "Exchange Requested Categories"
 
-#: products/templates/products/product_list.html:109
+#: products/templates/products/product_list.html:156
 msgid "Location"
 msgstr "Location"
 
-#: products/templates/products/product_list.html:113
+#: products/templates/products/product_list.html:161
+#: products/templates/products/product_list.html:233
 msgid "Province"
 msgstr "Province"
 
-#: products/templates/products/product_list.html:115
+#: products/templates/products/product_list.html:163
+#: products/templates/products/product_list.html:235
 msgid "All Provinces"
 msgstr "All Provinces"
 
-#: products/templates/products/product_list.html:120
+#: products/templates/products/product_list.html:171
+#: products/templates/products/product_list.html:244
 msgid "District"
 msgstr "District"
 
-#: products/templates/products/product_list.html:122
+#: products/templates/products/product_list.html:173
 msgid "Please select province first"
 msgstr "Please select province first"
 
-#: products/templates/products/product_list.html:127
+#: products/templates/products/product_list.html:183
 msgid "Price Range"
 msgstr "Price Range"
 
-#: products/templates/products/product_list.html:131
+#: products/templates/products/product_list.html:187
+#: products/templates/products/product_list.html:226
+#: products/templates/products/product_list.html:316
 msgid "Min"
 msgstr "Min"
 
-#: products/templates/products/product_list.html:132
+#: products/templates/products/product_list.html:188
+#: products/templates/products/product_list.html:227
+#: products/templates/products/product_list.html:318
 msgid "Max"
 msgstr "Max"
 
-#: products/templates/products/product_list.html:200
+#: products/templates/products/product_list.html:224
 msgid "Price"
 msgstr "Price"
 
-#: products/templates/products/product_list.html:210
+#: products/templates/products/product_list.html:252
 msgid "Exchange Requested"
 msgstr "Exchange Requested"
 
-#: products/templates/products/product_list.html:220
+#: products/templates/products/product_list.html:274
 msgid "Filter"
 msgstr "Filter"
 
-#: products/templates/products/product_list.html:240
+#: products/templates/products/product_list.html:292
 msgid "CATEGORIES"
 msgstr "CATEGORIES"
 
-#: products/templates/products/product_list.html:250
+#: products/templates/products/product_list.html:314
 msgid "PRICE"
 msgstr "PRICE"
 
-#: products/templates/products/product_list.html:260
+#: products/templates/products/product_list.html:324
 msgid "PROVINCE"
 msgstr "PROVINCE"
 
-#: products/templates/products/product_list.html:265
+#: products/templates/products/product_list.html:326
 msgid "All provinces"
 msgstr "All provinces"
 
-#: products/templates/products/product_list.html:272
+#: products/templates/products/product_list.html:335
 msgid "DISTRICT"
 msgstr "DISTRICT"
 
-#: products/templates/products/product_list.html:274
+#: products/templates/products/product_list.html:337
 msgid "Please select the province first"
 msgstr "Please select the province first"
 
-#: products/templates/products/product_list.html:279
+#: products/templates/products/product_list.html:343
 msgid "EXCHANGE REQUESTED"
 msgstr "EXCHANGE REQUESTED"
 
-#: products/templates/products/product_list.html:290
+#: products/templates/products/product_list.html:362
 msgid "LISTING TYPE"
 msgstr "LISTING TYPE"
 
-#: products/templates/products/product_list.html:297
+#: products/templates/products/product_list.html:382
 msgid "Apply Filters"
 msgstr "Apply Filters"
 
-#: products/templates/products/product_list.html:310
+#: products/templates/products/product_list.html:399
 msgid "Sort:"
 msgstr "Sort:"
 
-#: products/templates/products/product_list.html:380
-msgid "For Sale"
-msgstr "For Sale"
-
-#: products/templates/products/product_list.html:382
-msgid "Exchange"
-msgstr "Exchange"
-
-#: products/templates/products/product_list.html:395
-msgid "Exchangeable for:"
-msgstr "Exchangeable for:"
-
-#: products/templates/products/product_list.html:403
-msgid "Not specified"
-msgstr "Not specified"
-
-#: products/templates/products/product_list.html:410
-msgid "View Details"
-msgstr "View Details"
-
-#: products/templates/products/product_list.html:415
+#: products/templates/products/product_list.html:495
 msgid "No products available."
 msgstr "No products available."
 
-#: products/templates/products/product_list.html:580
+#: products/templates/products/product_list.html:604
 msgid "All Districts"
 msgstr "All Districts"
 
-#: products/templates/products/product_list.html:587
+#: products/templates/products/product_list.html:617
 msgid "Please select a city first"
 msgstr "Please select a city first"
 
-
-#: products/templates/products/product_detail.html
-msgid "Status"
-msgstr "Status"
-
-#: products/templates/products/product_detail.html
-msgid "Announcement Date"
-msgstr "Announcement Date"
-
-#: products/templates/products/product_detail.html
-msgid "Category"
-msgstr "Category"
-
-#: products/templates/products/product_detail.html
-msgid "Province / District"
-msgstr "Province / District"
-
-#: products/templates/products/product_detail.html
-msgid "Contact via Whatsapp"
-msgstr "Contact via Whatsapp"
-
-#: products/templates/products/product_detail.html
-msgid "Description"
-msgstr "Description"
-
-
-#: products/templates/products/product_detail.html
-msgid "Listing Exchange Options"
-msgstr "Listing Exchange Options"
-
-
-#: products/templates/products/product_detail.html
-msgid "Exchange options for this ad are available below."
-msgstr "Exchange options for this ad are available below."
-
-
-#: products/templates/products/product_detail.html
-msgid "Budget"
-msgstr "Budget"
-
-
-#: products/templates/products/product_detail.html
-msgid "Extra cash will be given"
-msgstr "Extra cash will be given"
-
-
-#: products/templates/products/product_detail.html
-msgid "I can't give extra cash"
-msgstr "I can't give extra cash"
-
-
-#: products/templates/products/product_detail.html
-msgid "50% trade is requested"
-msgstr "50% trade is requested"
-
-
-#: products/templates/products/product_detail.html
-msgid "Full payment in cash"
-msgstr "Full payment in cash"
-
-#: products/templates/products/product_detail.html
-msgid "Extra cash will be taken"
-msgstr "Extra cash will be taken"
-
-
-#: products/templates/products/product_detail.html
-msgid "50% cash may be requested"
-msgstr "50% cash may be requested"
-
-#: products/templates/products/product_detail.html
-msgid "Full trade is acceptable"
-msgstr "Full trade is acceptable"
-
-
-
-#: templates/footer.html:...
-
-
+#: theme/templates/footer.html:43
 msgid "ABOUT TAKAS"
 msgstr "ABOUT TAKAS"
 
+#: theme/templates/footer.html:45
 msgid "How the Barter System Work?"
 msgstr "How the Barter System Work?"
 
+#: theme/templates/footer.html:46
 msgid "Ad Creation Guide"
 msgstr "Ad Creation Guide"
 
+#: theme/templates/footer.html:47
 msgid "Barter Rules"
 msgstr "Barter Rules"
 
+#: theme/templates/footer.html:48
 msgid "Product Evaluation Tips"
 msgstr "Product Evaluation Tips"
 
+#: theme/templates/footer.html:54
 msgid "SUPPORT"
 msgstr "SUPPORT"
 
-msgid "Help Center"
-msgstr "Help Center"
-
-
+#: theme/templates/footer.html:63
 msgid "LEGAL"
 msgstr "LEGAL"
 
+#: theme/templates/footer.html:65
 msgid "Terms of Use"
 msgstr "Terms of Use"
 
+#: theme/templates/footer.html:66
 msgid "Privacy Policy"
 msgstr "Privacy Policy"
 
-msgid "Community Guidelines"
-msgstr "Community Guidelines"
+#: theme/templates/footer.html:73
+#, fuzzy
+#| msgid "ABOUT TAKAS"
+msgid "ABOUT US"
+msgstr "ABOUT TAKAS"
 
+#: theme/templates/header.html:48 theme/templates/header.html:117
+msgid "Search listings..."
+msgstr "Search listings..."
 
-msgid "Our Mission"
-msgstr "Our Mission"
+#: theme/templates/header.html:51 theme/templates/header.html:121
+msgid "Search"
+msgstr "Search"
 
-msgid "No cash! Barter only!"
-msgstr "No cash! Barter only!"
+#: theme/templates/header.html:144 theme/templates/header.html:157
+msgid "Home"
+msgstr "Home"
 
-msgid "All rights reserved."
-msgstr "All rights reserved."
+#: theme/templates/header.html:172
+msgid "Welcome"
+msgstr "Welcome"
 
-msgid "Made by Arian Hadi & Selçuk"
-msgstr "Made by Arian Hadi & Selçuk"
+#~ msgid "Extra cash will be given"
+#~ msgstr "Extra cash will be given"
 
-msgid "Turkey Flag"
-msgstr "Turkey Flag"
+#~ msgid "I can't give extra cash"
+#~ msgstr "I can't give extra cash"
 
-msgid "company logo"
-msgstr "company logo"
+#~ msgid "50% trade is requested"
+#~ msgstr "50% trade is requested"
 
+#~ msgid "Full payment in cash"
+#~ msgstr "Full payment in cash"
 
+#~ msgid "Extra cash will be taken"
+#~ msgstr "Extra cash will be taken"
 
+#~ msgid "50% cash may be requested"
+#~ msgstr "50% cash may be requested"
 
-#: templates/homepage.html:...
-msgid "Sell or Barter Your Product"
-msgstr "Sell or Barter Your Product"
+#~ msgid "Full trade is acceptable"
+#~ msgstr "Full trade is acceptable"
 
-msgid "Create your listing now, meet with buyers or barter partners."
-msgstr "Create your listing now, meet with buyers or barter partners."
+#~ msgid "No cash! Barter only!"
+#~ msgstr "No cash! Barter only!"
 
-msgid "Get Started"
-msgstr "Get Started"
+#~ msgid "All rights reserved."
+#~ msgstr "All rights reserved."
 
-msgid "Secure Barter & Sale Support"
-msgstr "Secure Barter & Sale Support"
+#~ msgid "Made by Arian Hadi & Selçuk"
+#~ msgstr "Made by Arian Hadi & Selçuk"
 
-msgid "We support you in your buying, selling, and barter transactions."
-msgstr "We support you in your buying, selling, and barter transactions."
+#~ msgid "Turkey Flag"
+#~ msgstr "Turkey Flag"
 
-msgid "Verified Listings"
-msgstr "Verified Listings"
+#~ msgid "company logo"
+#~ msgstr "company logo"
 
-msgid "Each listing is reviewed for category and intent before publishing."
-msgstr "Each listing is reviewed for category and intent before publishing."
+#~ msgid "Explore Categories"
+#~ msgstr "Explore Categories"
 
-msgid "24/7 Support"
-msgstr "24/7 Support"
+#~ msgid "MEET PEOPLE WHO WANT TO SELL OR BARTER PRODUCTS"
+#~ msgstr "MEET PEOPLE WHO WANT TO SELL OR BARTER PRODUCTS"
 
-msgid "You can contact us anytime, from anywhere."
-msgstr "You can contact us anytime, from anywhere."
+#~ msgid "I accept"
+#~ msgstr "I accept"
 
-msgid "Explore Categories"
-msgstr "Explore Categories"
+#~ msgid "Partnership"
+#~ msgstr "Partnership"
 
-msgid "BOATS"
-msgstr "BOATS"
-
-msgid "VEHICLES"
-msgstr "VEHICLES"
-
-msgid "REAL ESTATE"
-msgstr "REAL ESTATE"
-
-msgid "ELECTRONICS"
-msgstr "ELECTRONICS"
-
-msgid "HOME GOODS"
-msgstr "HOME GOODS"
-
-msgid "ACCESSORIES"
-msgstr "ACCESSORIES"
-
-msgid "POST YOUR LISTING NOW"
-msgstr "POST YOUR LISTING NOW"
-
-msgid "SELL AND BARTER"
-msgstr "SELL AND BARTER"
-
-msgid "MEET PEOPLE WHO WANT TO SELL OR BARTER PRODUCTS"
-msgstr "MEET PEOPLE WHO WANT TO SELL OR BARTER PRODUCTS"
-
-msgid "Post Ad"
-msgstr "Post Ad"
-
-msgid "NEW ARRIVALS"
-msgstr "NEW ARRIVALS"
-
-
-
-#: templates/aboutus.html:...
-
-msgid "Since 2024"
-msgstr "Since 2024"
-
-msgid "About MetaTakas"
-msgstr "About MetaTakas"
-
-msgid "Why MetaTakas?"
-msgstr "Why MetaTakas?"
-
-msgid "Our Values"
-msgstr "Our Values"
-
-msgid ""
-"Metatakas is an innovative solution that brings the traditional barter system into the digital age. It enables people and businesses to trade unused goods, services, or value without using cash, supporting economic and environmental sustainability."
-msgstr ""
-"Metatakas is an innovative solution that brings the traditional barter system into the digital age. It enables people and businesses to trade unused goods, services, or value without using cash, supporting economic and environmental sustainability."
-
-msgid ""
-"- Save Money: Meet your needs without cash and protect your budget.  \n"
-"- Eco-Friendly: Prevent waste and support sustainability by reusing unused items.  \n"
-"- Easy and Secure: Make fast transactions on a transparent and trustworthy platform.  \n"
-"- Diversity: Barter in different categories such as products, services, knowledge, or digital assets.  \n"
-"Metatakas is not just a barter platform — it's a movement that empowers communities and encourages more efficient use of resources as part of the sharing economy. Join Metatakas and step into the future of trade."
-msgstr ""
-"- Save Money: Meet your needs without cash and protect your budget.  \n"
-"- Eco-Friendly: Prevent waste and support sustainability by reusing unused items.  \n"
-"- Easy and Secure: Make fast transactions on a transparent and trustworthy platform.  \n"
-"- Diversity: Barter in different categories such as products, services, knowledge, or digital assets.  \n"
-"Metatakas is not just a barter platform — it's a movement that empowers communities and encourages more efficient use of resources as part of the sharing economy. Join Metatakas and step into the future of trade."
-
-msgid ""
-"Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum placeat odit, est eum dolorem esse totam iusto necessitatibus eligendi illo doloribus vero aperiam atque tempora repudiandae molestiae nemo distinctio quisquam!"
-msgstr ""
-"Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum placeat odit, est eum dolorem esse totam iusto necessitatibus eligendi illo doloribus vero aperiam atque tempora repudiandae molestiae nemo distinctio quisquam!"
-
-
-
-#: templates/howitworks.html:...
-msgid "How it works"
-msgstr "How it works"
-
-msgid "How MetaTakas Works"
-msgstr "How MetaTakas Works"
-
-msgid "Step 1"
-msgstr "Step 1"
-
-msgid "Contact Us via WhatsApp"
-msgstr "Contact Us via WhatsApp"
-
-msgid "If you want to sell or barter your product, contact us via WhatsApp. You can quickly reach us using the 'Contact via WhatsApp' button on the page."
-msgstr "If you want to sell or barter your product, contact us via WhatsApp. You can quickly reach us using the 'Contact via WhatsApp' button on the page."
-
-msgid "Step 2"
-msgstr "Step 2"
-
-msgid "Share Product Information"
-msgstr "Share Product Information"
-
-msgid "Share the product name, description, price (if any), desired barter categories, location (city/district), and clear images with us."
-msgstr "Share the product name, description, price (if any), desired barter categories, location (city/district), and clear images with us."
-
-msgid "Step 3"
-msgstr "Step 3"
-
-msgid "Product is Published"
-msgstr "Product is Published"
-
-msgid "Once we receive your info, we list the product on MetaTakas on your behalf. Visitors can view your item and submit offers."
-msgstr "Once we receive your info, we list the product on MetaTakas on your behalf. Visitors can view your item and submit offers."
-
-msgid "Step 4"
-msgstr "Step 4"
-
-msgid "Barter or Sale Process"
-msgstr "Barter or Sale Process"
-
-msgid "Interested users contact us via WhatsApp. We connect them with you and securely manage the process."
-msgstr "Interested users contact us via WhatsApp. We connect them with you and securely manage the process."
-
-
-
-#: templates/create_listing.html:...
-
-
-msgid "Listing Creation Guide"
-msgstr "Listing Creation Guide"
-
-msgid "Contact via WhatsApp"
-msgstr "Contact via WhatsApp"
-
-msgid "To create a listing, simply reach out to us via WhatsApp. Use the \"Contact via WhatsApp\" button on the homepage to connect easily."
-msgstr "To create a listing, simply reach out to us via WhatsApp. Use the \"Contact via WhatsApp\" button on the homepage to connect easily."
-
-msgid "Send Us Product Info"
-msgstr "Send Us Product Info"
-
-msgid "Share the product name, description, price (if any), desired barter categories, city/district, and clear photos."
-msgstr "Share the product name, description, price (if any), desired barter categories, city/district, and clear photos."
-
-msgid "Your Listing Goes Live"
-msgstr "Your Listing Goes Live"
-
-msgid "Once we receive your info, we review it and publish the listing on MetaTakas. Visitors can now view your product!"
-msgstr "Once we receive your info, we review it and publish the listing on MetaTakas. Visitors can now view your product!"
-
-
-msgid "Interested users contact us. We connect you with the buyer and ensure a smooth transaction."
-msgstr "Interested users contact us. We connect you with the buyer and ensure a smooth transaction."
-
-
-
-#: templates/exchange_rule.html:...
-msgid "Exchange Rules"
-msgstr "Exchange Rules"
-
-msgid "Rules"
-msgstr "Rules"
-
-msgid "Exchange System Rules"
-msgstr "Exchange System Rules"
-
-msgid "Accurate Information"
-msgstr "Accurate Information"
-
-msgid "Product details must be complete, accurate, and up-to-date. Listings with misleading information will be rejected."
-msgstr "Product details must be complete, accurate, and up-to-date. Listings with misleading information will be rejected."
-
-msgid "Prohibited Content"
-msgstr "Prohibited Content"
-
-msgid "Listings that include illegal, counterfeit, violent, or inappropriate items are prohibited."
-msgstr "Listings that include illegal, counterfeit, violent, or inappropriate items are prohibited."
-
-msgid "Barter Expectation"
-msgstr "Barter Expectation"
-
-msgid "Barter listings must clearly state which items are desired in exchange."
-msgstr "Barter listings must clearly state which items are desired in exchange."
-
-msgid "Listing Approval"
-msgstr "Listing Approval"
-
-msgid "All listings are reviewed by the MetaTakas team. If not suitable, they will not be published."
-msgstr "All listings are reviewed by the MetaTakas team. If not suitable, they will not be published."
-
-msgid "Barter Responsibility"
-msgstr "Barter Responsibility"
-
-msgid "MetaTakas is only a facilitator. Responsibility for the transaction lies with the parties involved."
-msgstr "MetaTakas is only a facilitator. Responsibility for the transaction lies with the parties involved."
-
-msgid "Photos and Location"
-msgstr "Photos and Location"
-
-msgid "Product images must be clear, and the location (city & district) must be accurate."
-msgstr "Product images must be clear, and the location (city & district) must be accurate."
-
-
-#: templates/valuation.html:...
-msgid "Valuation Tips"
-msgstr "Valuation Tips"
-
-msgid "Product Valuation Tips"
-msgstr "Product Valuation Tips"
-
-msgid "Evaluate your listing accurately to create faster sale or barter opportunities."
-msgstr "Evaluate your listing accurately to create faster sale or barter opportunities."
-
-msgid "Do Market Research"
-msgstr "Do Market Research"
-
-msgid "Check second-hand prices of similar items to determine a realistic value."
-msgstr "Check second-hand prices of similar items to determine a realistic value."
-
-msgid "Product Condition"
-msgstr "Product Condition"
-
-msgid "Whether the item is functional, undamaged, and gently used affects its price."
-msgstr "Whether the item is functional, undamaged, and gently used affects its price."
-
-msgid "Model and Year"
-msgstr "Model and Year"
-
-msgid "The item's year, model, and technical details are crucial in determining its market value."
-msgstr "The item's year, model, and technical details are crucial in determining its market value."
-
-msgid "Barter Balance"
-msgstr "Barter Balance"
-
-msgid "Consider value alignment with barter items. Balanced value makes bartering easier."
-msgstr "Consider value alignment with barter items. Balanced value makes bartering easier."
-
-
-
-
-#: templates/help_center.html:...
-
-msgid "What is MetaTakas and how does it work?"
-msgstr "What is MetaTakas and how does it work?"
-
-msgid "MetaTakas is a platform where you can submit your listings via WhatsApp to sell or barter your products."
-msgstr "MetaTakas is a platform where you can submit your listings via WhatsApp to sell or barter your products."
-
-msgid "How can I create a listing?"
-msgstr "How can I create a listing?"
-
-msgid "Click the WhatsApp button on the homepage and send us your product info. We'll create the listing for you."
-msgstr "Click the WhatsApp button on the homepage and send us your product info. We'll create the listing for you."
-
-msgid "What items can I barter?"
-msgstr "What items can I barter?"
-
-msgid "You can barter cars, real estate, electronics, furniture, and many other categories."
-msgstr "You can barter cars, real estate, electronics, furniture, and many other categories."
-
-msgid "How should I determine my product's value?"
-msgstr "How should I determine my product's value?"
-
-msgid "Check similar listings, consider condition and demand, and optionally ask us for advice."
-msgstr "Check similar listings, consider condition and demand, and optionally ask us for advice."
-
-msgid "Is the MetaTakas listing process safe?"
-msgstr "Is the MetaTakas listing process safe?"
-
-msgid "Listings are moderated by MetaTakas. Transactions occur via WhatsApp — always stay cautious of fraud."
-msgstr "Listings are moderated by MetaTakas. Transactions occur via WhatsApp — always stay cautious of fraud."
-
-msgid "Is WhatsApp communication safe?"
-msgstr "Is WhatsApp communication safe?"
-
-msgid "Yes, communication is handled only through our official WhatsApp number, and your data is kept confidential."
-msgstr "Yes, communication is handled only through our official WhatsApp number, and your data is kept confidential."
-
-
-
-
-#: templates/terms_of_use.html:...
-msgid "MetaTakas Terms of Use"
-msgstr "MetaTakas Terms of Use"
-
-msgid "1. Acceptance of Terms"
-msgstr "1. Acceptance of Terms"
-
-msgid "By accessing or using the MetaTakas platform, you agree to these terms of use and our privacy policy. If you do not agree, please do not use the service."
-msgstr "By accessing or using the MetaTakas platform, you agree to these terms of use and our privacy policy. If you do not agree, please do not use the service."
-
-msgid "2. Usage License"
-msgstr "2. Usage License"
-
-msgid "Shared listing content is for personal use only. It may not be copied or used for commercial purposes."
-msgstr "Shared listing content is for personal use only. It may not be copied or used for commercial purposes."
-
-msgid "MetaTakas does not claim ownership or guarantee the accuracy of the content."
-msgstr "MetaTakas does not claim ownership or guarantee the accuracy of the content."
-
-msgid "3. Disclaimer of Liability"
-msgstr "3. Disclaimer of Liability"
-
-msgid "MetaTakas does not guarantee the content, accuracy, or security of user-submitted listings. Responsibility lies with the user who created the listing."
-msgstr "MetaTakas does not guarantee the content, accuracy, or security of user-submitted listings. Responsibility lies with the user who created the listing."
-
-msgid "4. Restrictions"
-msgstr "4. Restrictions"
-
-msgid "Time Limits"
-msgstr "Time Limits"
-
-msgid "Reports of violations must be submitted within 30 days."
-msgstr "Reports of violations must be submitted within 30 days."
-
-msgid "Liability"
-msgstr "Liability"
-
-msgid "MetaTakas is not responsible for any losses resulting from transactions between users."
-msgstr "MetaTakas is not responsible for any losses resulting from transactions between users."
-
-msgid "5. Updates"
-msgstr "5. Updates"
-
-msgid "MetaTakas reserves the right to update these terms. Updates become effective once published on the site."
-msgstr "MetaTakas reserves the right to update these terms. Updates become effective once published on the site."
-
-msgid "6. Contact"
-msgstr "6. Contact"
-
-msgid "If you have questions about the terms, feel free to contact us."
-msgstr "If you have questions about the terms, feel free to contact us."
-
-msgid "Contact Us"
-msgstr "Contact Us"
-
-
-
-#: templates/privacy_policy.html:...
-msgid "Privacy & Cookie Policy"
-msgstr "Privacy & Cookie Policy"
-
-msgid "<span class='font-semibold text-blue-bg-blue-600'>MetaTakas</span> values your privacy. This document explains how we collect, use, and protect user data."
-msgstr "<span class='font-semibold text-blue-bg-blue-600'>MetaTakas</span> values your privacy. This document explains how we collect, use, and protect user data."
-
-msgid "By using our services, you agree to this policy."
-msgstr "By using our services, you agree to this policy."
-
-msgid "Information Collected"
-msgstr "Information Collected"
-
-msgid "<strong>Contact Information:</strong> Name, phone number, email address."
-msgstr "<strong>Contact Information:</strong> Name, phone number, email address."
-
-
-msgid "<strong>Listing Content:</strong> Product descriptions, photos, videos."
-msgstr "<strong>Listing Content:</strong> Product descriptions, photos, videos."
-
-msgid "<strong>Technical Data:</strong> IP address, device and browser information."
-msgstr "<strong>Technical Data:</strong> IP address, device and browser information."
-
-
-msgid "Purpose of Data Use"
-msgstr "Purpose of Data Use"
-
-msgid "Collected data is used to publish listings, improve user experience, ensure security, and fulfill legal obligations."
-msgstr "Collected data is used to publish listings, improve user experience, ensure security, and fulfill legal obligations."
-
-msgid "Data Sharing"
-msgstr "Data Sharing"
-
-msgid "Your data is shared with third parties only in the following cases:"
-msgstr "Your data is shared with third parties only in the following cases:"
-
-msgid "With hosting or technical support providers."
-msgstr "With hosting or technical support providers."
-
-msgid "When legally required by authorities."
-msgstr "When legally required by authorities."
-
-msgid "Cookie Usage"
-msgstr "Cookie Usage"
-
-msgid "Our site uses cookies to enhance your experience. You may disable them via your browser settings."
-msgstr "Our site uses cookies to enhance your experience. You may disable them via your browser settings."
-
-msgid "Account and Data Deletion"
-msgstr "Account and Data Deletion"
-
-msgid "If you wish to delete your account:"
-msgstr "If you wish to delete your account:"
-
-msgid "Contact us via the contact section."
-msgstr "Contact us via the contact section."
-
-msgid "Your request will be reviewed and processed."
-msgstr "Your request will be reviewed and processed."
-
-
-msgid "Email:"
-msgstr "Email:"
-
-msgid "Address:"
-msgstr "Address:"
+#~ msgid "Feedback / Suggestion"
+#~ msgstr "Feedback / Suggestion"
