@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}How it works{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "How it works" %}{% endblock %}
 
 {% block content %}
 <!--Custom style-->
@@ -52,7 +53,7 @@
 
                 <div class="w-full flex-col justify-start items-center gap-3 flex">
                     <!-- <span class="w-full text-center text-gray-500 text-base font-normal leading-relaxed">How It Works</span> -->
-                    <h2 class="w-full text-center text-indigo-700 text-4xl font-bold font-manrope leading-normal">MetaTakas Nasıl Çalışır?</h2>
+                    <h2 class="w-full text-center text-indigo-700 text-4xl font-bold font-manrope leading-normal">{% trans "How MetaTakas Works" %}</h2>
                 </div>
                 <div class="w-full justify-start items-center lg:gap-16 gap-8 flex lg:flex-row flex-col">
                     <img class="object-cover" src="https://pagedone.io/asset/uploads/1720589731.png" alt="How It Works image" />
@@ -63,11 +64,11 @@
                     <!-- Step 1 -->
                     <div class="swiper-slide">
                         <div class="w-full flex-col justify-center items-start gap-4 flex">
-                        <span class="w-full text-blue-700 text-base font-medium leading-relaxed lg:text-start text-center">1. Adım</span>
+                        <span class="w-full text-blue-700 text-base font-medium leading-relaxed lg:text-start text-center">{% trans "Step 1" %}</span>
                         <div class="w-full flex-col justify-center lg:items-start items-center gap-1.5 flex">
-                            <h4 class="text-gray-900 text-xl font-semibold leading-8 lg:text-start text-center">WhatsApp Üzerinden Bize Ulaşın</h4>
+                            <h4 class="text-gray-900 text-xl font-semibold leading-8 lg:text-start text-center">{% trans "Contact Us via WhatsApp" %}</h4>
                             <p class="lg:max-w-3xl w-full text-gray-400 text-base font-normal leading-relaxed lg:text-start text-center">
-                            Ürününüzü satmak ya da takas etmek istiyorsanız, WhatsApp üzerinden bizimle iletişime geçin. Sayfada bulunan “WhatsApp ile İletişime Geç” butonunu kullanarak hızlıca ulaşabilirsiniz.
+                            {% blocktrans %}If you want to sell or barter your product, contact us via WhatsApp. You can quickly reach us using the 'Contact via WhatsApp' button on the page.{% endblocktrans %}
                             </p>
                         </div>
                         </div>
@@ -76,11 +77,11 @@
                     <!-- Step 2 -->
                     <div class="swiper-slide">
                         <div class="w-full flex-col justify-center items-start gap-4 flex">
-                        <span class="w-full text-blue-700 text-base font-medium leading-relaxed lg:text-start text-center">2. Adım</span>
+                        <span class="w-full text-blue-700 text-base font-medium leading-relaxed lg:text-start text-center">{% trans "Step 2" %}</span>
                         <div class="w-full flex-col justify-center lg:items-start items-center gap-1.5 flex">
-                            <h4 class="text-gray-900 text-xl font-semibold leading-8 lg:text-start text-center">Ürün Bilgilerini Paylaşın</h4>
+                            <h4 class="text-gray-900 text-xl font-semibold leading-8 lg:text-start text-center">{% trans "Share Product Information" %}</h4>
                             <p class="lg:max-w-3xl w-full text-gray-400 text-base font-normal leading-relaxed lg:text-start text-center">
-                            Ürün adı, açıklaması, fiyat bilgisi (varsa), takas etmek istediğiniz ürün kategorileri, konum bilgisi (şehir/ilçe) ve net görselleri bizimle paylaşın.
+                            {% blocktrans %}Share the product name, description, price (if any), desired barter categories, location (city/district), and clear images with us.{% endblocktrans %}
                             </p>
                         </div>
                         </div>
@@ -89,11 +90,11 @@
                     <!-- Step 3 -->
                     <div class="swiper-slide">
                         <div class="w-full flex-col justify-center items-start gap-4 flex">
-                        <span class="w-full text-blue-700 text-base font-medium leading-relaxed lg:text-start text-center">3. Adım</span>
+                        <span class="w-full text-blue-700 text-base font-medium leading-relaxed lg:text-start text-center">{% trans "Step 3" %}</span>
                         <div class="w-full flex-col justify-center lg:items-start items-center gap-1.5 flex">
-                            <h4 class="text-gray-900 text-xl font-semibold leading-8 lg:text-start text-center">Ürün Yayına Alınıyor</h4>
+                            <h4 class="text-gray-900 text-xl font-semibold leading-8 lg:text-start text-center">{% trans "Product is Published" %}</h4>
                             <p class="lg:max-w-3xl w-full text-gray-400 text-base font-normal leading-relaxed lg:text-start text-center">
-                            Bilgilerinizi aldıktan sonra ürünü MetaTakas platformunda sizin adınıza listeliyoruz. Ziyaretçiler ürününüzü görebilir ve teklif verebilir.
+                            {% blocktrans %}Once we receive your info, we list the product on MetaTakas on your behalf. Visitors can view your item and submit offers.{% endblocktrans %}
                             </p>
                         </div>
                         </div>
@@ -102,11 +103,11 @@
                     <!-- Step 4 -->
                     <div class="swiper-slide">
                         <div class="w-full flex-col justify-center items-start gap-4 flex">
-                        <span class="w-full text-blue-700 text-base font-medium leading-relaxed lg:text-start text-center">4. Adım</span>
+                        <span class="w-full text-blue-700 text-base font-medium leading-relaxed lg:text-start text-center">{% trans "Step 4" %}</span>
                         <div class="w-full flex-col justify-center lg:items-start items-center gap-1.5 flex">
-                            <h4 class="text-gray-900 text-xl font-semibold leading-8 lg:text-start text-center">Takas veya Satış Süreci</h4>
+                            <h4 class="text-gray-900 text-xl font-semibold leading-8 lg:text-start text-center">{% trans "Barter or Sale Process" %}</h4>
                             <p class="lg:max-w-3xl w-full text-gray-400 text-base font-normal leading-relaxed lg:text-start text-center">
-                            Ürünle ilgilenen kullanıcılar yine WhatsApp üzerinden bize ulaşır. İlgili alıcıyı sizinle buluştururuz ve süreci güvenli bir şekilde yönetiriz.
+                                {% blocktrans %}Interested users contact us via WhatsApp. We connect them with you and securely manage the process.{% endblocktrans %}
                             </p>
                         </div>
                         </div>

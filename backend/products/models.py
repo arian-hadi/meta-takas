@@ -2,6 +2,7 @@ from django.db import models
 from .utils.cities import TURKISH_CITIES
 from .utils.city_data import CITY_CHOICES, PROVINCE_MAP
 from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -50,15 +51,15 @@ class Product(models.Model):
     accept_full_cash = models.BooleanField(default=False)
 
     EXCHANGE_PREFERENCES = [
-        ('will_give_extra_cash', "Üste Para Verilir"),
-        ('will_receive_extra_cash', "Üste Para Alınır"),
-        ('cannot_give_extra_cash', "Üste Para Veremem"),
-        ('accept_half_cash', "%50 Nakit Talep Edilebilir"),
-        ('accept_half_barter', "%50 Takas Talep Edilir"),
-        ('accept_full_barter', "Tamamı Takas Olur"),
-        ('accept_full_cash', "Tamamı Nakit Olur"),
+        ('will_give_extra_cash', _("Üste Para Verilir")),
+        ('will_receive_extra_cash', _("Üste Para Alınır")),
+        ('cannot_give_extra_cash', _("Üste Para Veremem")),
+        ('accept_half_cash', _("%50 Nakit Talep Edilebilir")),
+        ('accept_half_barter', _("%50 Takas Talep Edilir")),
+        ('accept_full_barter', _("Tamamı Takas Olur")),
+        ('accept_full_cash', _("Tamamı Nakit Olur")),
     ]
-
+    
     def has_exchange_preferences(self):
         return any([
             self.will_give_extra_cash,

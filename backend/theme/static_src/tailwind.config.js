@@ -24,6 +24,13 @@ module.exports = {
         'bg-black/30',
         'bg-white',
         'shadow-xl',
+
+        'bg-violet-800',
+        'bg-violet-700',
+        'bg-violet-600',
+        'bg-violet-500',
+        'hover:bg-violet-300',
+        'hover:bg-violet-400',
     ],
 
     theme: {

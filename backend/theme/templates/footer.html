@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <footer
 class="mx-auto w-full max-w-[1200px] justify-between pb-10 flex flex-col lg:flex-row"
 >
@@ -36,42 +37,46 @@ class="mx-auto w-full max-w-[1200px] justify-between pb-10 flex flex-col lg:flex
     </div>
 </div>
 
-<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+    <!-- ABOUT TAKA -->
     <div class="mx-5 mt-10">
-    <p class="font-medium text-gray-500">TAKAS HAKKINDA</p>
-    <ul class="text-sm leading-8">
-        <li><a href="{% url 'howitworks' %}">Takas Sistemi Nasıl Çalışır?</a></li>
-        <li><a href="{% url 'create_listing' %}">İlan Oluşturma Rehberi</a></li>
-        <li><a href="{% url 'exchange_rules' %}">Takas Kuralları</a></li>
-        <li><a href="{% url 'valuation' %}">Ürün Değerleme İpuçları</a></li>
-    </ul>
+      <p class="font-medium text-gray-500">{% trans 'ABOUT TAKAS' %}</p>
+      <ul class="text-sm leading-8">
+        <li><a href="{% url 'howitworks' %}">{% trans 'How the Barter System Work?' %}</a></li>
+        <li><a href="{% url 'create_listing' %}">{% trans 'Ad Creation Guide' %}</a></li>
+        <li><a href="{% url 'exchange_rules' %}">{% trans 'Barter Rules' %}</a></li>
+        <li><a href="{% url 'valuation' %}">{% trans 'Product Evaluation Tips' %}</a></li>
+      </ul>
     </div>
 
+    <!-- SUPPORT -->
     <div class="mx-5 mt-10">
-    <p class="font-medium text-gray-500">DESTEK</p>
-    <ul class="text-sm leading-8">
-        <li><a href="{% url 'help_center' %}">Yardım Merkezi</a></li>
-        <li><a href="{% url 'contact' %}">İletişim</a></li>
-    </ul>
+      <p class="font-medium text-gray-500">{% trans 'SUPPORT' %}</p>
+      <ul class="text-sm leading-8">
+        <li><a href="{% url 'help_center' %}">{% trans 'Help Center' %}</a></li>
+        <li><a href="{% url 'contact' %}">{% trans 'Contact' %}</a></li>
+      </ul>
     </div>
 
+    <!-- LEGAL -->
     <div class="mx-5 mt-10">
-    <p class="font-medium text-gray-500">YASAL</p>
-    <ul class="text-sm leading-8">
-        <li><a href="{% url 'terms_of_use' %}">Kullanım Şartları</a></li>
-        <li><a href="{% url 'privacy_policy' %}">Gizlilik Politikası</a></li>
-        <li><a href="{% url 'community_guidelines' %}">Topluluk Kuralları</a></li>
-    </ul>
+      <p class="font-medium text-gray-500">{% trans 'LEGAL' %}</p>
+      <ul class="text-sm leading-8">
+        <li><a href="{% url 'terms_of_use' %}">{% trans 'Terms of Use' %}</a></li>
+        <li><a href="{% url 'privacy_policy' %}">{% trans 'Privacy Policy' %}</a></li>
+        <li><a href="{% url 'community_guidelines' %}">{% trans 'Community Guidelines' %}</a></li>
+      </ul>
     </div>
 
+    <!-- ABOUT US -->
     <div class="mx-5 mt-10">
-    <p class="font-medium text-gray-500">HAKKIMIZDA</p>
-    <ul class="text-sm leading-8">
-        <li><a href="{% url 'aboutus' %}">Hakkımızda</a></li>
-        <li><a href="{% url 'our_mission' %}">Misyonumuz</a></li>
-    </ul>
+      <p class="font-medium text-gray-500">{% trans 'ABOUT US' %}</p>
+      <ul class="text-sm leading-8">
+        <li><a href="{% url 'aboutus' %}">{% trans 'About Us' %}</a></li>
+        <li><a href="{% url 'our_mission' %}">{% trans 'Our Mission' %}</a></li>
+      </ul>
     </div>
-</div>
+  </div>
 </footer>
 <!-- /Desktop Footer  -->
 

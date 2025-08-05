@@ -471,7 +471,7 @@
                 {% if product.listing_type == 'sale' %}
                   {% trans 'Sale' %}
                 {% else %}
-                  Takas
+                  {% trans 'Exchange' %}
                 {% endif %}
               </div>
             </div>
@@ -483,7 +483,7 @@
 
               <div class="min-h-[48px] mt-1">
                 {% if product.listing_type == 'exchange' %}
-                  <p class="text-sm text-gray-500 italic">Takas edilebilir:</p>
+                  <p class="text-sm text-gray-500 italic">{% trans 'Exchangeable for:' %}</p>
                   {% with categories=product.exchange_for.all %}
                     {% if categories and categories|length > 0 %}
                       <p class="text-sm text-gray-800">
@@ -493,7 +493,7 @@
                         {% if categories|length > 2 %}...{% endif %}
                       </p>
                     {% else %}
-                      <p class="text-sm text-gray-400">Belirtilmemiş</p>
+                      <p class="text-sm text-gray-400">{% trans 'Not specified' %}</p>
                     {% endif %}
                   {% endwith %}
                 {% endif %}

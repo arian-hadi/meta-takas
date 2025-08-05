@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Meta Takas 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-01 08:24+0000\n"
+"POT-Creation-Date: 2025-08-01 12:17+0000\n"
 "PO-Revision-Date: 2025-08-01 08:24+0000\n"
 "Last-Translator: Meta Takas Team <info@metatakas.com>\n"
 "Language-Team: Turkish <tr@metatakas.com>\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
 #: accounts/manager.py:14
 msgid "Please enter a valid email address"
 msgstr "Lütfen geçerli bir e-posta adresi girin"
@@ -33,230 +34,524 @@ msgstr "İngilizce"
 msgid "Turkish"
 msgstr "Türkçe"
 
-#: theme/templates/header.html:45
-msgid "Search listings..."
-msgstr "İlanları ara..."
+#: products/models.py:54
+#, fuzzy
+#| msgid "I can't give extra cash"
+msgid "Will give extra cash"
+msgstr "Üste Para Veremem"
 
-#: theme/templates/header.html:49
-msgid "Search"
-msgstr "Ara"
+#: products/models.py:55
+#, fuzzy
+#| msgid "I can't give extra cash"
+msgid "Will receive extra cash"
+msgstr "Üste Para Veremem"
 
-#: theme/templates/header.html:58
-msgid "Welcome"
-msgstr "Hoş geldiniz"
+#: products/models.py:56
+#, fuzzy
+#| msgid "I can't give extra cash"
+msgid "Cannot give extra cash"
+msgstr "Üste Para Veremem"
 
-#: theme/templates/header.html:75
-msgid "Home"
-msgstr "Ana Sayfa"
+#: products/models.py:57
+#, fuzzy, python-format
+#| msgid "50% cash may be requested"
+msgid "50% cash can be requested"
+msgstr "%50 Nakit Talep Edilebilir"
 
-#: theme/templates/header.html:76
+#: products/models.py:58
+#, fuzzy
+#| msgid "50% cash may be requested"
+msgid "50% barter can be requested"
+msgstr "%50 Nakit Talep Edilebilir"
+
+#: products/models.py:59
+#, fuzzy
+#| msgid "Full trade is acceptable"
+msgid "Full barter accepted"
+msgstr "Tamamı Takas Olur"
+
+#: products/models.py:60
+#, fuzzy
+#| msgid "Full trade is acceptable"
+msgid "Full cash accepted"
+msgstr "Tamamı Takas Olur"
+
+#: products/templates/products/product_detail.html:50
+#: theme/templates/header.html:129 theme/templates/header.html:144
 msgid "Listings"
 msgstr "İlanlar"
 
-#: theme/templates/header.html:77
-msgid "About Us"
-msgstr "Hakkımızda"
+#: products/templates/products/product_detail.html:207
+msgid "Status"
+msgstr "Durum"
 
-#: theme/templates/header.html:78
-msgid "Contact"
-msgstr "İletişim"
+#: products/templates/products/product_detail.html:212
+#: products/templates/products/product_detail.html:472
+#, fuzzy
+#| msgid "For Sale"
+msgid "Sale"
+msgstr "Satılık"
+
+#: products/templates/products/product_detail.html:212
+msgid "Trade"
+msgstr ""
+
+#: products/templates/products/product_detail.html:218
+msgid "Announcement Date"
+msgstr "İlan Tarihi"
+
+#: products/templates/products/product_detail.html:224
+msgid "Category"
+msgstr "Kategori"
+
+#: products/templates/products/product_detail.html:231
+msgid "Province / District"
+msgstr "İl / İlçe"
+
+#: products/templates/products/product_detail.html:299
+msgid "Contact via Whatsapp"
+msgstr "WhatsApp ile iletişime geçin"
+
+#: products/templates/products/product_detail.html:313
+msgid "Description"
+msgstr "Açıklama"
+
+#: products/templates/products/product_detail.html:361
+msgid "Listing Exchange Options"
+msgstr "İlana Ait Takas Seçenekleri"
+
+#: products/templates/products/product_detail.html:362
+msgid "Exchange options for this ad are available below."
+msgstr "Bu ilanın takas seçenekleri aşağıda mevcuttur."
+
+#: products/templates/products/product_detail.html:391
+msgid "Budget"
+msgstr ""
+
+#: products/templates/products/product_detail.html:438
+msgid "Recommended Products"
+msgstr ""
+
+#: products/templates/products/product_detail.html:474
+#: products/templates/products/product_list.html:445
+msgid "Exchange"
+msgstr "Takas"
+
+#: products/templates/products/product_detail.html:486
+#: products/templates/products/product_list.html:462
+msgid "Exchangeable for:"
+msgstr "Takas edilebilir:"
+
+#: products/templates/products/product_detail.html:496
+#: products/templates/products/product_list.html:474
+#: products/templates/products/product_list.html:477
+msgid "Not specified"
+msgstr "Belirtilmemiş"
+
+#: products/templates/products/product_detail.html:505
+#: products/templates/products/product_list.html:489
+msgid "View Details"
+msgstr "Detayları Görüntüle"
 
 #: products/templates/products/product_list.html:8
 msgid "Product list"
 msgstr "Ürün listesi"
 
-#: products/templates/products/product_list.html:35
+#: products/templates/products/product_list.html:49
 msgid "Catalog"
 msgstr "Katalog"
 
-#: products/templates/products/product_list.html:58
+#: products/templates/products/product_list.html:75
+#: products/templates/products/product_list.html:194
 msgid "Apply"
 msgstr "Uygula"
 
-#: products/templates/products/product_list.html:64
+#: products/templates/products/product_list.html:81
+#: products/templates/products/product_list.html:401
 msgid "Newest"
 msgstr "En Yeniler"
 
-#: products/templates/products/product_list.html:65
+#: products/templates/products/product_list.html:82
+#: products/templates/products/product_list.html:402
 msgid "Oldest"
 msgstr "En Eskiler"
 
-#: products/templates/products/product_list.html:66
+#: products/templates/products/product_list.html:83
+#: products/templates/products/product_list.html:403
 msgid "Price: High to Low"
 msgstr "Fiyat: Yüksekten Düşüğe"
 
-#: products/templates/products/product_list.html:67
+#: products/templates/products/product_list.html:84
+#: products/templates/products/product_list.html:404
 msgid "Price: Low to High"
 msgstr "Fiyat: Düşükten Yükseğe"
 
-#: products/templates/products/product_list.html:78
+#: products/templates/products/product_list.html:107
+#: products/templates/products/product_list.html:263
 msgid "Listing Type"
 msgstr "İlan Türü"
 
-#: products/templates/products/product_list.html:87
+#: products/templates/products/product_list.html:123
+#: products/templates/products/product_list.html:213
 msgid "Categories"
 msgstr "Kategoriler"
 
-#: products/templates/products/product_list.html:98
+#: products/templates/products/product_list.html:139
 msgid "Exchange Requested Categories"
 msgstr "Takas İstenen Kategoriler"
 
-#: products/templates/products/product_list.html:109
+#: products/templates/products/product_list.html:156
 msgid "Location"
 msgstr "Konum"
 
-#: products/templates/products/product_list.html:113
+#: products/templates/products/product_list.html:161
+#: products/templates/products/product_list.html:233
 msgid "Province"
 msgstr "İl"
 
-#: products/templates/products/product_list.html:115
+#: products/templates/products/product_list.html:163
+#: products/templates/products/product_list.html:235
 msgid "All Provinces"
 msgstr "Tüm İller"
 
-#: products/templates/products/product_list.html:120
+#: products/templates/products/product_list.html:171
+#: products/templates/products/product_list.html:244
 msgid "District"
 msgstr "İlçe"
 
-#: products/templates/products/product_list.html:122
+#: products/templates/products/product_list.html:173
 msgid "Please select province first"
 msgstr "Lütfen önce il seçin"
 
-#: products/templates/products/product_list.html:127
+#: products/templates/products/product_list.html:183
 msgid "Price Range"
 msgstr "Fiyat Aralığı"
 
-#: products/templates/products/product_list.html:131
+#: products/templates/products/product_list.html:187
+#: products/templates/products/product_list.html:226
+#: products/templates/products/product_list.html:316
 msgid "Min"
 msgstr "Min"
 
-#: products/templates/products/product_list.html:132
+#: products/templates/products/product_list.html:188
+#: products/templates/products/product_list.html:227
+#: products/templates/products/product_list.html:318
 msgid "Max"
 msgstr "Max"
 
-#: products/templates/products/product_list.html:200
+#: products/templates/products/product_list.html:224
 msgid "Price"
 msgstr "Fiyat"
 
-#: products/templates/products/product_list.html:210
+#: products/templates/products/product_list.html:252
 msgid "Exchange Requested"
 msgstr "Takas İstenen"
 
-#: products/templates/products/product_list.html:220
+#: products/templates/products/product_list.html:274
 msgid "Filter"
 msgstr "Filtrele"
 
-#: products/templates/products/product_list.html:240
+#: products/templates/products/product_list.html:292
 msgid "CATEGORIES"
 msgstr "KATEGORİLER"
 
-#: products/templates/products/product_list.html:250
+#: products/templates/products/product_list.html:314
 msgid "PRICE"
 msgstr "FİYAT"
 
-#: products/templates/products/product_list.html:260
+#: products/templates/products/product_list.html:324
 msgid "PROVINCE"
 msgstr "İL"
 
-#: products/templates/products/product_list.html:265
+#: products/templates/products/product_list.html:326
 msgid "All provinces"
 msgstr "Tüm İller"
 
-#: products/templates/products/product_list.html:272
+#: products/templates/products/product_list.html:335
 msgid "DISTRICT"
 msgstr "İLÇE"
 
-#: products/templates/products/product_list.html:274
+#: products/templates/products/product_list.html:337
 msgid "Please select the province first"
 msgstr "Lütfen önce il seçin"
 
-#: products/templates/products/product_list.html:279
+#: products/templates/products/product_list.html:343
 msgid "EXCHANGE REQUESTED"
 msgstr "TAKAS İSTENEN"
 
-#: products/templates/products/product_list.html:290
+#: products/templates/products/product_list.html:362
 msgid "LISTING TYPE"
 msgstr "İLAN TÜRÜ"
 
-#: products/templates/products/product_list.html:297
+#: products/templates/products/product_list.html:382
 msgid "Apply Filters"
 msgstr "Filtreleri Uygula"
 
-#: products/templates/products/product_list.html:310
+#: products/templates/products/product_list.html:399
 msgid "Sort:"
 msgstr "Sırala:"
 
-#: products/templates/products/product_list.html:380
+#: products/templates/products/product_list.html:443
 msgid "For Sale"
 msgstr "Satılık"
 
-#: products/templates/products/product_list.html:382
-msgid "Exchange"
-msgstr "Takas"
-
-#: products/templates/products/product_list.html:395
-msgid "Exchangeable for:"
-msgstr "Takas edilebilir:"
-
-#: products/templates/products/product_list.html:403
-msgid "Not specified"
-msgstr "Belirtilmemiş"
-
-#: products/templates/products/product_list.html:410
-msgid "View Details"
-msgstr "Detayları Görüntüle"
-
-#: products/templates/products/product_list.html:415
+#: products/templates/products/product_list.html:495
 msgid "No products available."
 msgstr "Ürün bulunamadı."
 
-#: products/templates/products/product_list.html:580
+#: products/templates/products/product_list.html:604
 msgid "All Districts"
 msgstr "Tüm İlçeler"
 
-#: products/templates/products/product_list.html:587
+#: products/templates/products/product_list.html:617
 msgid "Please select a city first"
 msgstr "Lütfen önce bir şehir seçin"
 
+#: theme/templates/header.html:48 theme/templates/header.html:101
+msgid "Search listings..."
+msgstr "İlanları ara..."
 
-#: products/templates/products/product_detail.html
-msgid "Status"
-msgstr "Durum"
+#: theme/templates/header.html:51 theme/templates/header.html:105
+msgid "Search"
+msgstr "Ara"
 
-#: products/templates/products/product_detail.html
-msgid "Announcement Date"
-msgstr "İlan Tarihi"
+#: theme/templates/header.html:128 theme/templates/header.html:141
+msgid "Home"
+msgstr "Ana Sayfa"
 
+#: theme/templates/header.html:130 theme/templates/header.html:147
+msgid "About Us"
+msgstr "Hakkımızda"
 
-#: products/templates/products/product_detail.html
-msgid "Category"
-msgstr "Kategori"
+#: theme/templates/header.html:131 theme/templates/header.html:150
+msgid "Contact"
+msgstr "İletişim"
 
+#: theme/templates/header.html:156
+msgid "Welcome"
+msgstr "Hoş geldiniz"
 
-#: products/templates/products/product_detail.html
-msgid "Province / District"
-msgstr "İl / İlçe"
+#~ msgid "Extra cash will be given"
+#~ msgstr "Üste Para Verilir"
 
+#~ msgid "50% trade is requested"
+#~ msgstr "%50 Takas Talep Edilir"
 
-#: products/templates/products/product_detail.html
-msgid "Contact via Whatsapp"
-msgstr "WhatsApp ile iletişime geçin"
+#~ msgid "Full payment in cash"
+#~ msgstr "Tamamı Nakit Olur"
 
-
-#: products/templates/products/product_detail.html
-msgid "Description"
-msgstr "Açıklama"
-
-#: products/templates/products/product_detail.html
-msgid "Listing Exchange Options"
-msgstr "İlana Ait Takas Seçenekleri"
-
-
-
-#: products/templates/products/product_detail.html
-msgid "Exchange options for this ad are available below."
-msgstr "Bu ilanın takas seçenekleri aşağıda mevcuttur."
+#~ msgid "Extra cash will be taken"
+#~ msgstr "Üste Para Alınır"
 
 
-#: products/templates/products/product_detail.html
-msgid "Budget"
-msgstr "Bütçe"
+
+#: templates/footer.html:...
+
+msgid "ABOUT TAKAS"
+msgstr "TAKAS HAKKINDA"
+
+msgid "How the Barter System Work?"
+msgstr "Takas Sistemi Nasıl Çalışır?"
+
+msgid "Ad Creation Guide"
+msgstr "İlan Oluşturma Rehberi"
+
+msgid "Barter Rules"
+msgstr "Takas Kuralları"
+
+msgid "Product Evaluation Tips"
+msgstr "Ürün Değerlendirme İpuçları"
+
+msgid "SUPPORT"
+msgstr "DESTEK"
+
+msgid "Help Center"
+msgstr "Yardım Merkezi"
+
+
+msgid "LEGAL"
+msgstr "YASAL"
+
+msgid "Terms of Use"
+msgstr "Kullanım Şartları"
+
+msgid "Privacy Policy"
+msgstr "Gizlilik Politikası"
+
+msgid "Community Guidelines"
+msgstr "Topluluk Kuralları"
+
+msgid "ABOUT US"
+msgstr "BİZİ TANIYIN"
+
+
+msgid "Our Mission"
+msgstr "Misyonumuz"
+
+msgid "No cash! Barter only!"
+msgstr "Nakit yok! Takas var!"
+
+msgid "All rights reserved."
+msgstr "Tüm hakları saklıdır."
+
+msgid "Made by Arian Hadi & Selçuk"
+msgstr "Arian Hadi & Selçuk tarafından yapılmıştır"
+
+msgid "Turkey Flag"
+msgstr "Türkiye Bayrağı"
+
+msgid "company logo"
+msgstr "şirket logosu"
+
+
+
+
+#: templates/homepage.html:...
+msgid "Sell or Barter Your Product"
+msgstr "Ürününü Sat veya Takas Et"
+
+msgid "Create your listing now, meet with buyers or barter partners."
+msgstr "İlanını hemen oluştur, alıcılarla veya takas yapacaklarla buluş."
+
+msgid "Get Started"
+msgstr "Hemen Başla"
+
+msgid "Secure Barter & Sale Support"
+msgstr "Güvenli Takas & Satış Desteği"
+
+msgid "We support you in your buying, selling, and barter transactions."
+msgstr "Ürün alım-satım ve takas işlemlerinizde yanınızdayız"
+
+msgid "Verified Listings"
+msgstr "Doğrulanmış İlanlar"
+
+msgid "Each listing is reviewed for category and intent before publishing."
+msgstr "Her ilan kategorisi ve amacı kontrol edilerek yayınlanır"
+
+msgid "24/7 Support"
+msgstr "7/24 Destek"
+
+msgid "You can contact us anytime, from anywhere."
+msgstr "Her zaman, her yerden bizimle iletişim kurabilirsiniz"
+
+msgid "Explore Categories"
+msgstr "KATEGORİLERİ KEŞFET"
+
+msgid "BOATS"
+msgstr "GEMİLER"
+
+msgid "VEHICLES"
+msgstr "ARAÇLAR"
+
+msgid "REAL ESTATE"
+msgstr "EMLAK"
+
+msgid "ELECTRONICS"
+msgstr "ELEKTRONİK"
+
+msgid "HOME GOODS"
+msgstr "EV EŞYALARI"
+
+msgid "ACCESSORIES"
+msgstr "AKSESUAR"
+
+msgid "POST YOUR LISTING NOW"
+msgstr "HEMEN İLAN VERİN"
+
+msgid "SELL AND BARTER"
+msgstr "SAT VE TAKAS"
+
+msgid "MEET PEOPLE WHO WANT TO SELL OR BARTER PRODUCTS"
+msgstr "ÜRÜNÜNÜZÜ SATMAK VEYA TAKAS ETMEK İSTEYENLERLE BULUŞUN"
+
+msgid "Post Ad"
+msgstr "İlan ver"
+
+msgid "NEW ARRIVALS"
+msgstr "YENİLER"
+
+
+
+#: templates/aboutus.html:...
+
+msgid "Since 2024"
+msgstr "2024'den beri"
+
+msgid "About MetaTakas"
+msgstr "MetaTakas Hakkında"
+
+msgid "Why MetaTakas?"
+msgstr "Neden MetaTakas?"
+
+msgid "Our Values"
+msgstr "Değerlerimiz"
+
+msgid ""
+"Metatakas is an innovative solution that brings the traditional barter system into the digital age. It enables people and businesses to trade unused goods, services, or value without using cash, supporting economic and environmental sustainability."
+msgstr ""
+"Metatakas, modern dünyada geleneksel takas sistemini dijital bir platforma taşıyan yenilikçi bir çözümdür. İnsanların ve işletmelerin ellerindeki kullanılmayan ürünleri, hizmetleri veya değerleri nakit kullanmadan takas etmesine olanak tanır ve bu sayede ekonomik ve çevresel sürdürülebilirliği destekler."
+
+msgid ""
+"- Save Money: Meet your needs without cash and protect your budget.  \n"
+"- Eco-Friendly: Prevent waste and support sustainability by reusing unused items.  \n"
+"- Easy and Secure: Make fast transactions on a transparent and trustworthy platform.  \n"
+"- Diversity: Barter in different categories such as products, services, knowledge, or digital assets.  \n"
+"Metatakas is not just a barter platform — it's a movement that empowers communities and encourages more efficient use of resources as part of the sharing economy. Join Metatakas and step into the future of trade."
+msgstr ""
+"- Tasarruf: Nakit kullanmadan ihtiyaçlarınızı karşılayarak bütçenizi koruyun.  \n"
+"- Çevre Dostu: Kullanılmayan ürünleri yeniden değerlendirerek israfı önleyin ve sürdürülebilirliği destekleyin.  \n"
+"- Kolay ve Güvenli: Şeffaf ve güvenilir bir platformda hızlı işlemler gerçekleştirin.  \n"
+"- Çeşitlilik: Ürün, hizmet, bilgi veya dijital varlık gibi farklı kategorilerde takas yapma imkanı.  \n"
+"Metatakas yalnızca bir takas platformu değil; aynı zamanda toplulukları güçlendiren ve kaynakları daha verimli kullanmayı teşvik eden bir paylaşım ekonomisi hareketidir. Geleceğin ticaretine Metatakas ile adım atın."
+
+msgid ""
+"Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum placeat odit, est eum dolorem esse totam iusto necessitatibus eligendi illo doloribus vero aperiam atque tempora repudiandae molestiae nemo distinctio quisquam!"
+msgstr ""
+"Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum placeat odit, est eum dolorem esse totam iusto necessitatibus eligendi illo doloribus vero aperiam atque tempora repudiandae molestiae nemo distinctio quisquam!"
+
+
+
+
+
+#: templates/howitworks.html:...
+msgid "How it works"
+msgstr "Nasıl çalışır"
+
+msgid "How MetaTakas Works"
+msgstr "MetaTakas Nasıl Çalışır?"
+
+msgid "Step 1"
+msgstr "1. Adım"
+
+msgid "Contact Us via WhatsApp"
+msgstr "WhatsApp Üzerinden Bize Ulaşın"
+
+msgid "If you want to sell or barter your product, contact us via WhatsApp. You can quickly reach us using the 'Contact via WhatsApp' button on the page."
+msgstr "Ürününüzü satmak ya da takas etmek istiyorsanız, WhatsApp üzerinden bizimle iletişime geçin. Sayfada bulunan 'WhatsApp ile İletişime Geç' butonunu kullanarak hızlıca ulaşabilirsiniz."
+
+msgid "Step 2"
+msgstr "2. Adım"
+
+msgid "Share Product Information"
+msgstr "Ürün Bilgilerini Paylaşın"
+
+msgid "Share the product name, description, price (if any), desired barter categories, location (city/district), and clear images with us."
+msgstr "Ürün adı, açıklaması, fiyat bilgisi (varsa), takas etmek istediğiniz ürün kategorileri, konum bilgisi (şehir/ilçe) ve net görselleri bizimle paylaşın."
+
+msgid "Step 3"
+msgstr "3. Adım"
+
+msgid "Product is Published"
+msgstr "Ürün Yayına Alınıyor"
+
+msgid "Once we receive your info, we list the product on MetaTakas on your behalf. Visitors can view your item and submit offers."
+msgstr "Bilgilerinizi aldıktan sonra ürünü MetaTakas platformunda sizin adınıza listeliyoruz. Ziyaretçiler ürününüzü görebilir ve teklif verebilir."
+
+msgid "Step 4"
+msgstr "4. Adım"
+
+msgid "Barter or Sale Process"
+msgstr "Takas veya Satış Süreci"
+
+msgid "Interested users contact us via WhatsApp. We connect them with you and securely manage the process."
+msgstr "Ürünle ilgilenen kullanıcılar yine WhatsApp üzerinden bize ulaşır. İlgili alıcıyı sizinle buluştururuz ve süreci güvenli bir şekilde yönetiriz."

@@ -59,18 +59,34 @@
     <!-- Right Side - Language Switcher and User Info -->
     <div class="hidden gap-3 md:!flex">
       <!-- Language Switcher -->
-      <form action="{% url 'set_language' %}" method="post" class="flex items-center">
+      <form action="{% url 'set_language' %}" method="post" class="relative">
         {% csrf_token %}
-        <select name="language" onchange="this.form.submit()" class="text-sm border border-gray-300 rounded-lg px-2 py-1 focus:ring-blue-500 focus:border-blue-500 bg-white">
-          {% get_current_language as LANGUAGE_CODE %}
-          {% get_available_languages as LANGUAGES %}
-          {% for lang in LANGUAGES %}
-            <option value="{{ lang.0 }}"{% if lang.0 == LANGUAGE_CODE %} selected{% endif %}>
-              {{ lang.1 }}
-            </option>
-          {% endfor %}
-        </select>
+        <div class="relative">
+          <select name="language" onchange="this.form.submit()"
+            class="appearance-none w-36 text-sm border border-gray-300 rounded-md  py-2 pr-10 bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-medium">
+            {% get_current_language as LANGUAGE_CODE %}
+            {% get_available_languages as LANGUAGES %}
+            {% for lang in LANGUAGES %}
+              {% if lang.0 == "en" %}
+                <option value="en" {% if lang.0 == LANGUAGE_CODE %} selected{% endif %}>🇬🇧 English</option>
+              {% elif lang.0 == "tr" %}
+                <option value="tr" {% if lang.0 == LANGUAGE_CODE %} selected{% endif %}>🇹🇷 Türkçe</option>
+              {% elif lang.0 == "de" %}
+                <option value="de" {% if lang.0 == LANGUAGE_CODE %} selected{% endif %}>🇩🇪 Deutsch</option>
+              {% else %}
+                <option value="{{ lang.0 }}" {% if lang.0 == LANGUAGE_CODE %} selected{% endif %}>
+                  🌐 {{ lang.1 }}
+                </option>
+              {% endif %}
+            {% endfor %}
+          </select>
+
+        </div>
       </form>
+
+      
+
+      
     </div>
   </header>
 

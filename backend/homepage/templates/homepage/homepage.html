@@ -2,6 +2,7 @@
 {% load static %}
 {% load humanize %}
 {% block title %}homepage{% endblock %}
+{% load i18n %}
 
 {% block content %}
 
@@ -19,15 +20,15 @@
         class="absolute top-1/2 left-1/2 mx-auto flex w-11/12 max-w-[1200px] -translate-x-1/2 -translate-y-1/2 flex-col text-center text-white lg:ml-5"
       >
         <h1 class="text-4xl font-bold sm:text-5xl lg:text-left">
-          Ürününü Sat veya Takas Et
+          {% trans "Sell or Barter Your Product" %}
         </h1>
         <p class="pt-3 text-xs lg:w-3/5 lg:pt-5 lg:text-left lg:text-base">
-          İlanını hemen oluştur, alıcılarla veya takas yapacaklarla buluş.
+          {% trans "Create your listing now, meet with buyers or barter partners." %}
         </p>
         <a href ="{% url 'product_list' %}"
-          class="mx-auto mt-5 w-1/2 bg-violet-800 px-3 py-2 text-black duration-100 hover:bg-violet-300 lg:mx-0 lg:h-10 lg:w-2/12 lg:px-10"
+          class="mx-auto mt-5 w-1/2 bg-blue-300 px-3 py-2 text-black duration-100 hover:bg-violet-300 lg:mx-0 lg:h-10 lg:w-2/12 lg:px-10"
         >
-          Hemen Başla
+          {% trans "Get Started" %}
         </a>
       </div>
     </div>
@@ -62,9 +63,9 @@
         </div>
 
         <div class="ml-6 flex flex-col justify-center">
-          <h3 class="text-left text-xs font-bold lg:text-sm">Güvenli Takas & Satış Desteği</h3>
+          <h3 class="text-left text-xs font-bold lg:text-sm">{% trans "Secure Barter & Sale Support" %}</h3>
           <p class="text-light text-center text-xs lg:text-left lg:text-sm">
-            Ürün alım-satım ve takas işlemlerinizde yanınızdayız
+            {% trans "We support you in your buying, selling, and barter transactions." %}
           </p>
         </div>
       </div>
@@ -92,9 +93,9 @@
         </div>
 
         <div class="ml-6 flex flex-col justify-center">
-          <h3 class="text-left text-xs font-bold lg:text-sm">Doğrulanmış İlanlar</h3>
+          <h3 class="text-left text-xs font-bold lg:text-sm">{% trans "Verified Listings" %}</h3>
           <p class="text-light text-left text-xs lg:text-sm">
-            Her ilan kategorisi ve amacı kontrol edilerek yayınlanır
+            {% trans "Each listing is reviewed for category and intent before publishing." %}
           </p>
         </div>
       </div>
@@ -122,9 +123,9 @@
         </div>
 
         <div class="ml-6 flex flex-col justify-center">
-          <h3 class="text-left text-xs font-bold lg:text-sm">7/24 Destek</h3>
+          <h3 class="text-left text-xs font-bold lg:text-sm">{% trans "24/7 Support" %}</h3>
           <p class="text-light text-left text-xs lg:text-sm">
-            Her zaman, her yerden bizimle iletişim kurabilirsiniz
+            {% trans "You can contact us anytime, from anywhere." %}
           </p>
         </div>
       </div>
@@ -132,7 +133,7 @@
 
     <!-- /Cons bages  -->
 
-    <h2 class="mx-auto mb-5 max-w-[1200px] px-5">KATEGORİLERİ KEŞFET</h2>
+    <h2 class="mx-auto mb-5 max-w-[1200px] px-5">{% trans "EXPLORE CATEGORIES" %}</h2>
 
     <!-- Cathegories -->
     <section
@@ -151,7 +152,7 @@
           <p
             class="pointer-events-none absolute top-1/2 left-1/2 w-11/12 -translate-x-1/2 -translate-y-1/2 text-center text-white lg:text-xl"
           >
-            GEMİLER
+            {% trans "BOATS" %}
           </p>
         </div>
       </a>
@@ -169,7 +170,7 @@
           <p
             class="pointer-events-none absolute top-1/2 left-1/2 w-11/12 -translate-x-1/2 -translate-y-1/2 text-center text-white lg:text-xl"
           >
-            ARAÇLAR
+            {% trans "VEHICLES" %}
           </p>
         </div>
       </a>
@@ -187,7 +188,7 @@
           <p
             class="pointer-events-none absolute top-1/2 left-1/2 w-11/12 -translate-x-1/2 -translate-y-1/2 text-center text-white lg:text-xl"
           >
-            EMLAK
+            {% trans "REAL ESTATE" %}
           </p>
         </div>
       </a>
@@ -205,7 +206,7 @@
           <p
             class="pointer-events-none absolute top-1/2 left-1/2 w-11/12 -translate-x-1/2 -translate-y-1/2 text-center text-white lg:text-xl"
           >
-            ELEKTRONİK
+           {% trans "ELECTRONICS" %}
           </p>
         </div>
       </a>
@@ -223,7 +224,7 @@
           <p
             class="pointer-events-none absolute top-1/2 left-1/2 w-11/12 -translate-x-1/2 -translate-y-1/2 text-center text-white lg:text-xl"
           >
-            EV EŞYALARI
+           {% trans "HOME GOODS" %}
           </p>
         </div>
       </a>
@@ -241,7 +242,7 @@
           <p
             class="pointer-events-none absolute top-1/2 left-1/2 w-11/12 -translate-x-1/2 -translate-y-1/2 text-center text-white lg:text-xl"
           >
-            AKSESUAR
+            {% trans "ACCESSORIES" %}
           </p>
         </div>
       </a>
@@ -264,17 +265,18 @@
         style="background-color: #8CCDEB;"
       >
         <div class="py-8 px-3 lg:px-16">
-          <p class="text-black">HEMEN İLAN VERİN</p>
-          <h2 class="pt-6 text-5xl font-bold text-[#321081]">SAT VE TAKAS</h2>
+          <p class="text-black">{% trans "POST YOUR LISTING NOW" %}</p>
+          <h2 class="pt-6 text-5xl font-bold text-[#321081]">{% trans "SELL AND BARTER" %}</h2>
           <p class="pt-4 text-black">
-            ÜRÜNÜNÜZÜ SATMAK <br />
-            VEYA TAKAS ETMEK İSTEYENLERLE BULUŞUN
+            {% blocktrans trimmed %}
+            ÜRÜNÜNÜZÜ SATMAK <br /> VEYA TAKAS ETMEK İSTEYENLERLE BULUŞUN
+            {% endblocktrans %}
           </p>
           <a
             href="https://wa.me/905413081092"
             target="_blank"
             class="inline-block mt-6 text-white bg-[#321081] px-4 py-2 duration-100 hover:bg-[#725CAD]">
-            İlan ver
+           {% trans "Post Ad" %}
           </a>
         </div>
 
@@ -288,7 +290,7 @@
 
     <!-- /Special offer card -->
 
-    <p class="mx-auto mt-10 mb-5 max-w-[1200px] px-5">YENİLER</p>
+    <p class="mx-auto mt-10 mb-5 max-w-[1200px] px-5">{% trans "NEW ARRIVALS" %}</p>
 
     <!-- Recommendations -->
     
@@ -322,9 +324,9 @@
                 bg-green-500
               {% endif %}">
               {% if product.listing_type == 'sale' %}
-                Satılık
+                {% trans "For Sale" %}
               {% else %}
-                Takas
+                {% trans "Exchange" %}
               {% endif %}
             </div>
           </div>
@@ -335,7 +337,7 @@
             <p class="font-medium text-violet-900">{{ product.price|floatformat:0|intcomma }} TL</p>
 
             {% if product.listing_type == 'exchange' %}
-              <p class="text-sm text-gray-500 italic">Takas edilebilir:</p>
+              <p class="text-sm text-gray-500 italic">{% trans "Exchangeable for:" %}</p>
               {% with categories=product.exchange_for.all %}
                 {% if categories and categories|length > 0 %}
                   <p class="text-sm text-gray-800">
@@ -345,7 +347,7 @@
                     {% if categories|length > 2 %}...{% endif %}
                   </p>
                 {% else %}
-                  <p class="text-sm text-gray-400">Belirtilmemiş</p>
+                  <p class="text-sm text-gray-400">{% trans "Not specified" %}</p>
                 {% endif %}
               {% endwith %}
             {% endif %}
@@ -354,7 +356,7 @@
 
             <div class="my-5">
               <a href="{% url 'product_detail' product.slug %}">
-                <button class="h-10 w-full bg-purple-500 text-white hover:bg-pink-500 transition">Detayları Görüntüle</button>
+                <button class="h-10 w-full bg-purple-500 text-white hover:bg-pink-500 transition">{% trans "View Details" %}</button>
               </a>
             </div>
           </div>

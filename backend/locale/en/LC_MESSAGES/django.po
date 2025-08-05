@@ -257,3 +257,244 @@ msgstr "Exchange options for this ad are available below."
 msgid "Budget"
 msgstr "Budget"
 
+
+#: products/templates/products/product_detail.html
+msgid "Extra cash will be given"
+msgstr "Extra cash will be given"
+
+
+#: products/templates/products/product_detail.html
+msgid "I can't give extra cash"
+msgstr "I can't give extra cash"
+
+
+#: products/templates/products/product_detail.html
+msgid "50% trade is requested"
+msgstr "50% trade is requested"
+
+
+#: products/templates/products/product_detail.html
+msgid "Full payment in cash"
+msgstr "Full payment in cash"
+
+#: products/templates/products/product_detail.html
+msgid "Extra cash will be taken"
+msgstr "Extra cash will be taken"
+
+
+#: products/templates/products/product_detail.html
+msgid "50% cash may be requested"
+msgstr "50% cash may be requested"
+
+#: products/templates/products/product_detail.html
+msgid "Full trade is acceptable"
+msgstr "Full trade is acceptable"
+
+
+
+#: templates/footer.html:...
+
+
+msgid "ABOUT TAKAS"
+msgstr "ABOUT TAKAS"
+
+msgid "How the Barter System Work?"
+msgstr "How the Barter System Work?"
+
+msgid "Ad Creation Guide"
+msgstr "Ad Creation Guide"
+
+msgid "Barter Rules"
+msgstr "Barter Rules"
+
+msgid "Product Evaluation Tips"
+msgstr "Product Evaluation Tips"
+
+msgid "SUPPORT"
+msgstr "SUPPORT"
+
+msgid "Help Center"
+msgstr "Help Center"
+
+
+msgid "LEGAL"
+msgstr "LEGAL"
+
+msgid "Terms of Use"
+msgstr "Terms of Use"
+
+msgid "Privacy Policy"
+msgstr "Privacy Policy"
+
+msgid "Community Guidelines"
+msgstr "Community Guidelines"
+
+
+msgid "Our Mission"
+msgstr "Our Mission"
+
+msgid "No cash! Barter only!"
+msgstr "No cash! Barter only!"
+
+msgid "All rights reserved."
+msgstr "All rights reserved."
+
+msgid "Made by Arian Hadi & Selçuk"
+msgstr "Made by Arian Hadi & Selçuk"
+
+msgid "Turkey Flag"
+msgstr "Turkey Flag"
+
+msgid "company logo"
+msgstr "company logo"
+
+
+
+
+#: templates/homepage.html:...
+msgid "Sell or Barter Your Product"
+msgstr "Sell or Barter Your Product"
+
+msgid "Create your listing now, meet with buyers or barter partners."
+msgstr "Create your listing now, meet with buyers or barter partners."
+
+msgid "Get Started"
+msgstr "Get Started"
+
+msgid "Secure Barter & Sale Support"
+msgstr "Secure Barter & Sale Support"
+
+msgid "We support you in your buying, selling, and barter transactions."
+msgstr "We support you in your buying, selling, and barter transactions."
+
+msgid "Verified Listings"
+msgstr "Verified Listings"
+
+msgid "Each listing is reviewed for category and intent before publishing."
+msgstr "Each listing is reviewed for category and intent before publishing."
+
+msgid "24/7 Support"
+msgstr "24/7 Support"
+
+msgid "You can contact us anytime, from anywhere."
+msgstr "You can contact us anytime, from anywhere."
+
+msgid "Explore Categories"
+msgstr "Explore Categories"
+
+msgid "BOATS"
+msgstr "BOATS"
+
+msgid "VEHICLES"
+msgstr "VEHICLES"
+
+msgid "REAL ESTATE"
+msgstr "REAL ESTATE"
+
+msgid "ELECTRONICS"
+msgstr "ELECTRONICS"
+
+msgid "HOME GOODS"
+msgstr "HOME GOODS"
+
+msgid "ACCESSORIES"
+msgstr "ACCESSORIES"
+
+msgid "POST YOUR LISTING NOW"
+msgstr "POST YOUR LISTING NOW"
+
+msgid "SELL AND BARTER"
+msgstr "SELL AND BARTER"
+
+msgid "MEET PEOPLE WHO WANT TO SELL OR BARTER PRODUCTS"
+msgstr "MEET PEOPLE WHO WANT TO SELL OR BARTER PRODUCTS"
+
+msgid "Post Ad"
+msgstr "Post Ad"
+
+msgid "NEW ARRIVALS"
+msgstr "NEW ARRIVALS"
+
+
+
+#: templates/aboutus.html:...
+
+msgid "Since 2024"
+msgstr "Since 2024"
+
+msgid "About MetaTakas"
+msgstr "About MetaTakas"
+
+msgid "Why MetaTakas?"
+msgstr "Why MetaTakas?"
+
+msgid "Our Values"
+msgstr "Our Values"
+
+msgid ""
+"Metatakas is an innovative solution that brings the traditional barter system into the digital age. It enables people and businesses to trade unused goods, services, or value without using cash, supporting economic and environmental sustainability."
+msgstr ""
+"Metatakas is an innovative solution that brings the traditional barter system into the digital age. It enables people and businesses to trade unused goods, services, or value without using cash, supporting economic and environmental sustainability."
+
+msgid ""
+"- Save Money: Meet your needs without cash and protect your budget.  \n"
+"- Eco-Friendly: Prevent waste and support sustainability by reusing unused items.  \n"
+"- Easy and Secure: Make fast transactions on a transparent and trustworthy platform.  \n"
+"- Diversity: Barter in different categories such as products, services, knowledge, or digital assets.  \n"
+"Metatakas is not just a barter platform — it's a movement that empowers communities and encourages more efficient use of resources as part of the sharing economy. Join Metatakas and step into the future of trade."
+msgstr ""
+"- Save Money: Meet your needs without cash and protect your budget.  \n"
+"- Eco-Friendly: Prevent waste and support sustainability by reusing unused items.  \n"
+"- Easy and Secure: Make fast transactions on a transparent and trustworthy platform.  \n"
+"- Diversity: Barter in different categories such as products, services, knowledge, or digital assets.  \n"
+"Metatakas is not just a barter platform — it's a movement that empowers communities and encourages more efficient use of resources as part of the sharing economy. Join Metatakas and step into the future of trade."
+
+msgid ""
+"Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum placeat odit, est eum dolorem esse totam iusto necessitatibus eligendi illo doloribus vero aperiam atque tempora repudiandae molestiae nemo distinctio quisquam!"
+msgstr ""
+"Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum placeat odit, est eum dolorem esse totam iusto necessitatibus eligendi illo doloribus vero aperiam atque tempora repudiandae molestiae nemo distinctio quisquam!"
+
+
+
+#: templates/howitworks.html:...
+msgid "How it works"
+msgstr "How it works"
+
+msgid "How MetaTakas Works"
+msgstr "How MetaTakas Works"
+
+msgid "Step 1"
+msgstr "Step 1"
+
+msgid "Contact Us via WhatsApp"
+msgstr "Contact Us via WhatsApp"
+
+msgid "If you want to sell or barter your product, contact us via WhatsApp. You can quickly reach us using the 'Contact via WhatsApp' button on the page."
+msgstr "If you want to sell or barter your product, contact us via WhatsApp. You can quickly reach us using the 'Contact via WhatsApp' button on the page."
+
+msgid "Step 2"
+msgstr "Step 2"
+
+msgid "Share Product Information"
+msgstr "Share Product Information"
+
+msgid "Share the product name, description, price (if any), desired barter categories, location (city/district), and clear images with us."
+msgstr "Share the product name, description, price (if any), desired barter categories, location (city/district), and clear images with us."
+
+msgid "Step 3"
+msgstr "Step 3"
+
+msgid "Product is Published"
+msgstr "Product is Published"
+
+msgid "Once we receive your info, we list the product on MetaTakas on your behalf. Visitors can view your item and submit offers."
+msgstr "Once we receive your info, we list the product on MetaTakas on your behalf. Visitors can view your item and submit offers."
+
+msgid "Step 4"
+msgstr "Step 4"
+
+msgid "Barter or Sale Process"
+msgstr "Barter or Sale Process"
+
+msgid "Interested users contact us via WhatsApp. We connect them with you and securely manage the process."
+msgstr "Interested users contact us via WhatsApp. We connect them with you and securely manage the process."
