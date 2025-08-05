@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}İlan Oluşturma Rehberi{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Listing Creation Guide" %}{% endblock %}
 
 {% block content %}
 <style>
@@ -51,7 +52,7 @@
     <div class="flex-col justify-start items-center gap-6 lg:gap-10 inline-flex w-full">
       <div class="flex-col justify-start items-center gap-3 flex w-full">
         <h2 class="text-center text-indigo-700 text-4xl font-bold font-manrope leading-normal">
-          İlan Oluşturma Rehberi
+          {% trans "Listing Creation Guide" %}
         </h2>
       </div>
       <div class="w-full justify-start items-center lg:gap-16 gap-8 flex lg:flex-row flex-col">
@@ -63,11 +64,13 @@
             <!-- Step 1 -->
             <div class="swiper-slide">
               <div class="flex-col gap-4 flex w-full">
-                <span class="text-blue-700 text-base font-medium leading-relaxed text-center lg:text-start">1. Adım</span>
+                <span class="text-blue-700 text-base font-medium leading-relaxed text-center lg:text-start">{% trans "Step 1" %}</span>
                 <div class="flex-col gap-1.5 flex items-center lg:items-start text-center lg:text-start w-full">
-                  <h4 class="text-gray-900 text-xl font-semibold leading-8">WhatsApp Üzerinden İletişime Geçin</h4>
+                  <h4 class="text-gray-900 text-xl font-semibold leading-8">>WhatsApp Üzerinden İletişime Geçin</h4>
                   <p class="text-gray-400 text-base leading-relaxed">
-                    İlan eklemek için doğrudan WhatsApp'tan bizimle iletişim kurmanız yeterli. Anasayfadaki "WhatsApp ile İletişime Geç" butonunu kullanarak kolayca ulaşabilirsiniz.
+                    {% blocktrans trimmed %}
+                      To create a listing, simply reach out to us via WhatsApp. Use the "Contact via WhatsApp" button on the homepage to connect easily.
+                    {% endblocktrans %}
                   </p>
                 </div>
               </div>
@@ -76,11 +79,13 @@
             <!-- Step 2 -->
             <div class="swiper-slide">
               <div class="flex-col gap-4 flex w-full">
-                <span class="text-blue-700 text-base font-medium leading-relaxed text-center lg:text-start">2. Adım</span>
+                <span class="text-blue-700 text-base font-medium leading-relaxed text-center lg:text-start">{% trans "Step 2" %}</span>
                 <div class="flex-col gap-1.5 flex items-center lg:items-start text-center lg:text-start w-full">
-                  <h4 class="text-gray-900 text-xl font-semibold leading-8">Ürün Bilgilerini Bize Gönderin</h4>
+                  <h4 class="text-gray-900 text-xl font-semibold leading-8">{% trans "Send Us Product Info" %}</h4>
                   <p class="text-gray-400 text-base leading-relaxed">
-                    Ürününüzün adı, açıklaması, fiyat bilgisi (varsa), takas edilmek istenen ürün kategorileri, şehir/ilçe ve net fotoğrafları iletmeniz yeterlidir.
+                    {% blocktrans trimmed %}
+                      Share the product name, description, price (if any), desired barter categories, city/district, and clear photos.
+                    {% endblocktrans %}
                   </p>
                 </div>
               </div>
@@ -89,11 +94,13 @@
             <!-- Step 3 -->
             <div class="swiper-slide">
               <div class="flex-col gap-4 flex w-full">
-                <span class="text-blue-700 text-base font-medium leading-relaxed text-center lg:text-start">3. Adım</span>
+                <span class="text-blue-700 text-base font-medium leading-relaxed text-center lg:text-start">{% trans "Step 3" %}</span>
                 <div class="flex-col gap-1.5 flex items-center lg:items-start text-center lg:text-start w-full">
-                  <h4 class="text-gray-900 text-xl font-semibold leading-8">İlanınız Yayınlanıyor</h4>
+                  <h4 class="text-gray-900 text-xl font-semibold leading-8">{% trans "Your Listing Goes Live" %}</h4>
                   <p class="text-gray-400 text-base leading-relaxed">
-                    Bilgileri aldıktan sonra ilanınız kontrol edilip MetaTakas’ta yayınlanır. Artık ziyaretçiler ürününüzü görebilir!
+                    {% blocktrans trimmed %}
+                      Once we receive your info, we review it and publish the listing on MetaTakas. Visitors can now view your product!
+                    {% endblocktrans %}
                   </p>
                 </div>
               </div>
@@ -102,11 +109,13 @@
             <!-- Step 4 -->
             <div class="swiper-slide">
               <div class="flex-col gap-4 flex w-full">
-                <span class="text-blue-700 text-base font-medium leading-relaxed text-center lg:text-start">4. Adım</span>
+                <span class="text-blue-700 text-base font-medium leading-relaxed text-center lg:text-start">{% trans "Step 4" %}</span>
                 <div class="flex-col gap-1.5 flex items-center lg:items-start text-center lg:text-start w-full">
-                  <h4 class="text-gray-900 text-xl font-semibold leading-8">Takas veya Satış Süreci</h4>
+                  <h4 class="text-gray-900 text-xl font-semibold leading-8">{% trans "Barter or Sale Process" %}</h4>
                   <p class="text-gray-400 text-base leading-relaxed">
-                    Ürününüzle ilgilenen kişiler bize ulaşır. Biz de alıcı ile sizi buluşturur ve işlemin sorunsuz ilerlemesini sağlarız.
+                    {% blocktrans trimmed %}
+                      Interested users contact us. We connect you with the buyer and ensure a smooth transaction.
+                    {% endblocktrans %}
                   </p>
                 </div>
               </div>

@@ -498,3 +498,33 @@ msgstr "Barter or Sale Process"
 
 msgid "Interested users contact us via WhatsApp. We connect them with you and securely manage the process."
 msgstr "Interested users contact us via WhatsApp. We connect them with you and securely manage the process."
+
+
+
+#: templates/create_listing.html:...
+
+
+msgid "Listing Creation Guide"
+msgstr "Listing Creation Guide"
+
+msgid "Contact via WhatsApp"
+msgstr "Contact via WhatsApp"
+
+msgid "To create a listing, simply reach out to us via WhatsApp. Use the \"Contact via WhatsApp\" button on the homepage to connect easily."
+msgstr "To create a listing, simply reach out to us via WhatsApp. Use the \"Contact via WhatsApp\" button on the homepage to connect easily."
+
+msgid "Send Us Product Info"
+msgstr "Send Us Product Info"
+
+msgid "Share the product name, description, price (if any), desired barter categories, city/district, and clear photos."
+msgstr "Share the product name, description, price (if any), desired barter categories, city/district, and clear photos."
+
+msgid "Your Listing Goes Live"
+msgstr "Your Listing Goes Live"
+
+msgid "Once we receive your info, we review it and publish the listing on MetaTakas. Visitors can now view your product!"
+msgstr "Once we receive your info, we review it and publish the listing on MetaTakas. Visitors can now view your product!"
+
+
+msgid "Interested users contact us. We connect you with the buyer and ensure a smooth transaction."
+msgstr "Interested users contact us. We connect you with the buyer and ensure a smooth transaction."

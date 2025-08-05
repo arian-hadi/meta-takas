@@ -555,3 +555,35 @@ msgstr "Takas veya Satış Süreci"
 
 msgid "Interested users contact us via WhatsApp. We connect them with you and securely manage the process."
 msgstr "Ürünle ilgilenen kullanıcılar yine WhatsApp üzerinden bize ulaşır. İlgili alıcıyı sizinle buluştururuz ve süreci güvenli bir şekilde yönetiriz."
+
+
+
+#: templates/create_listing.html:...
+
+
+msgid "Listing Creation Guide"
+msgstr "İlan Oluşturma Rehberi"
+
+
+msgid "Contact via WhatsApp"
+msgstr "WhatsApp Üzerinden İletişime Geçin"
+
+msgid "To create a listing, simply reach out to us via WhatsApp. Use the \"Contact via WhatsApp\" button on the homepage to connect easily."
+msgstr "İlan eklemek için doğrudan WhatsApp'tan bizimle iletişim kurmanız yeterli. Anasayfadaki \"WhatsApp ile İletişime Geç\" butonunu kullanarak kolayca ulaşabilirsiniz."
+
+
+msgid "Send Us Product Info"
+msgstr "Ürün Bilgilerini Bize Gönderin"
+
+msgid "Share the product name, description, price (if any), desired barter categories, city/district, and clear photos."
+msgstr "Ürününüzün adı, açıklaması, fiyat bilgisi (varsa), takas edilmek istenen ürün kategorileri, şehir/ilçe ve net fotoğrafları iletmeniz yeterlidir."
+
+
+msgid "Your Listing Goes Live"
+msgstr "İlanınız Yayınlanıyor"
+
+msgid "Once we receive your info, we review it and publish the listing on MetaTakas. Visitors can now view your product!"
+msgstr "Bilgileri aldıktan sonra ilanınız kontrol edilip MetaTakas’ta yayınlanır. Artık ziyaretçiler ürününüzü görebilir!"
+
+msgid "Interested users contact us. We connect you with the buyer and ensure a smooth transaction."
+msgstr "Ürününüzle ilgilenen kişiler bize ulaşır. Biz de alıcı ile sizi buluşturur ve işlemin sorunsuz ilerlemesini sağlarız."
