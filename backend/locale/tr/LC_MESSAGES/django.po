@@ -587,3 +587,52 @@ msgstr "Bilgileri aldıktan sonra ilanınız kontrol edilip MetaTakas’ta yayı
 
 msgid "Interested users contact us. We connect you with the buyer and ensure a smooth transaction."
 msgstr "Ürününüzle ilgilenen kişiler bize ulaşır. Biz de alıcı ile sizi buluşturur ve işlemin sorunsuz ilerlemesini sağlarız."
+
+
+
+
+#: templates/exchange_rule.html:...
+msgid "Exchange Rules"
+msgstr "Takas Kuralları"
+
+msgid "Rules"
+msgstr "Kurallar"
+
+msgid "Exchange System Rules"
+msgstr "Takas Sistemi Kuralları"
+
+msgid "Accurate Information"
+msgstr "Doğru Bilgi"
+
+msgid "Product details must be complete, accurate, and up-to-date. Listings with misleading information will be rejected."
+msgstr "Ürün bilgileri eksiksiz, doğru ve güncel olmalıdır. Yanıltıcı bilgilerle oluşturulan ilanlar reddedilir."
+
+msgid "Prohibited Content"
+msgstr "Yasaklı İçerikler"
+
+msgid "Listings that include illegal, counterfeit, violent, or inappropriate items are prohibited."
+msgstr "Yasa dışı, sahte, şiddet içerikli ya da uygunsuz ürünlerin ilanı yasaktır."
+
+msgid "Barter Expectation"
+msgstr "Takas Beklentisi"
+
+msgid "Barter listings must clearly state which items are desired in exchange."
+msgstr "Takas ilanlarında, hangi ürünlerle takas yapılmak istendiği açıkça belirtilmelidir."
+
+msgid "Listing Approval"
+msgstr "İlan Onayı"
+
+msgid "All listings are reviewed by the MetaTakas team. If not suitable, they will not be published."
+msgstr "Tüm ilanlar önce MetaTakas ekibi tarafından incelenir. Uygun bulunmazsa yayınlanmaz."
+
+msgid "Barter Responsibility"
+msgstr "Takas Sorumluluğu"
+
+msgid "MetaTakas is only a facilitator. Responsibility for the transaction lies with the parties involved."
+msgstr "MetaTakas yalnızca aracıdır. Takas işlemleri tarafların sorumluluğundadır."
+
+msgid "Photos and Location"
+msgstr "Fotoğraf ve Konum"
+
+msgid "Product images must be clear, and the location (city & district) must be accurate."
+msgstr "Ürün görselleri net olmalı ve konum (şehir & ilçe) doğru girilmelidir."

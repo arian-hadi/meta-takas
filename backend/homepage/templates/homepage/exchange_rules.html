@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}How it works{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Exchange Rules" %}{% endblock %}
 
 {% block content %}
 <section class="bg-white pb-6">
@@ -9,8 +10,8 @@
 
 
             <div class="mb-16 text-center">
-                <h4 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Kurallar</h4>
-                <p class="mt-2 text-5xl lg:text-7xl font-bold tracking-tight text-gray-900">Takas Sistemi Kuralları</p>
+                <h4 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">{% trans "Rules" %}</h4>
+                <p class="mt-2 text-5xl lg:text-7xl font-bold tracking-tight text-gray-900">{% trans "Exchange System Rules" %}</p>
             </div>
 
 
@@ -25,10 +26,10 @@
                                 d="M16 3C8.8 3 3 8.8 3 16s5.8 13 13 13 13-5.8 13-13c0-1.398-.188-2.793-.688-4.094L26.688 13.5c.2.8.313 1.602.313 2.5 0 6.102-4.898 11-11 11S5 22.102 5 16 9.898 5 16 5c3 0 5.695 1.195 7.594 3.094L25 6.688C22.7 4.386 19.5 3 16 3zm11.281 4.281L16 18.563l-4.281-4.282-1.438 1.438 5 5 .719.687.719-.687 12-12z">
                             </path>
                         </svg>
-                        <div class="ml-4 text-xl">Doğru Bilgi</div>
+                        <div class="ml-4 text-xl">{% trans "Accurate Information" %}</div>
                     </div>
                     <p class="leading-loose text-gray-500">
-                         Ürün bilgileri eksiksiz, doğru ve güncel olmalıdır. Yanıltıcı bilgilerle oluşturulan ilanlar reddedilir.
+                        {% blocktrans %}Product details must be complete, accurate, and up-to-date. Listings with misleading information will be rejected.{% endblocktrans %}
                     </p>
                 </div>
 
@@ -42,10 +43,10 @@
                                 d="M16 3C8.8 3 3 8.8 3 16s5.8 13 13 13 13-5.8 13-13c0-1.398-.188-2.793-.688-4.094L26.688 13.5c.2.8.313 1.602.313 2.5 0 6.102-4.898 11-11 11S5 22.102 5 16 9.898 5 16 5c3 0 5.695 1.195 7.594 3.094L25 6.688C22.7 4.386 19.5 3 16 3zm11.281 4.281L16 18.563l-4.281-4.282-1.438 1.438 5 5 .719.687.719-.687 12-12z">
                             </path>
                         </svg>
-                        <div class="ml-4 text-xl">Yasaklı İçerikler</div>
+                        <div class="ml-4 text-xl">{% trans "Prohibited Content" %}</div>
                     </div>
                     <p class="leading-loose text-gray-500">
-                        Yasa dışı, sahte, şiddet içerikli ya da uygunsuz ürünlerin ilanı yasaktır.
+                        {% blocktrans %}Listings that include illegal, counterfeit, violent, or inappropriate items are prohibited.{% endblocktrans %}
                     </p>
                 </div>
 
@@ -59,10 +60,10 @@
                                 d="M16 3C8.8 3 3 8.8 3 16s5.8 13 13 13 13-5.8 13-13c0-1.398-.188-2.793-.688-4.094L26.688 13.5c.2.8.313 1.602.313 2.5 0 6.102-4.898 11-11 11S5 22.102 5 16 9.898 5 16 5c3 0 5.695 1.195 7.594 3.094L25 6.688C22.7 4.386 19.5 3 16 3zm11.281 4.281L16 18.563l-4.281-4.282-1.438 1.438 5 5 .719.687.719-.687 12-12z">
                             </path>
                         </svg>
-                        <div class="ml-4 text-xl">Takas Beklentisi</div>
+                        <div class="ml-4 text-xl">{% trans "Barter Expectation" %}</div>
                     </div>
                     <p class="leading-loose text-gray-500">
-                        Takas ilanlarında, hangi ürünlerle takas yapılmak istendiği açıkça belirtilmelidir.
+                        {% blocktrans %}Barter listings must clearly state which items are desired in exchange.{% endblocktrans %}
                     </p>
                 </div>
 
@@ -76,10 +77,10 @@
                                 d="M16 3C8.8 3 3 8.8 3 16s5.8 13 13 13 13-5.8 13-13c0-1.398-.188-2.793-.688-4.094L26.688 13.5c.2.8.313 1.602.313 2.5 0 6.102-4.898 11-11 11S5 22.102 5 16 9.898 5 16 5c3 0 5.695 1.195 7.594 3.094L25 6.688C22.7 4.386 19.5 3 16 3zm11.281 4.281L16 18.563l-4.281-4.282-1.438 1.438 5 5 .719.687.719-.687 12-12z">
                             </path>
                         </svg>
-                        <div class="ml-4 text-xl">İlan Onayı</div>
+                        <div class="ml-4 text-xl">{% trans "Listing Approval" %}</div>
                     </div>
                     <p class="leading-loose text-gray-500">
-                        Tüm ilanlar önce MetaTakas ekibi tarafından incelenir. Uygun bulunmazsa yayınlanmaz.
+                        {% blocktrans %}All listings are reviewed by the MetaTakas team. If not suitable, they will not be published.{% endblocktrans %}
                     </p>
                 </div>
 
@@ -93,10 +94,10 @@
                                 d="M16 3C8.8 3 3 8.8 3 16s5.8 13 13 13 13-5.8 13-13c0-1.398-.188-2.793-.688-4.094L26.688 13.5c.2.8.313 1.602.313 2.5 0 6.102-4.898 11-11 11S5 22.102 5 16 9.898 5 16 5c3 0 5.695 1.195 7.594 3.094L25 6.688C22.7 4.386 19.5 3 16 3zm11.281 4.281L16 18.563l-4.281-4.282-1.438 1.438 5 5 .719.687.719-.687 12-12z">
                             </path>
                         </svg>
-                        <div class="ml-4 text-xl">Takas Sorumluluğu</div>
+                        <div class="ml-4 text-xl">{% trans "Barter Responsibility" %}</div>
                     </div>
                     <p class="leading-loose text-gray-500">
-                        MetaTakas yalnızca aracıdır. Takas işlemleri tarafların sorumluluğundadır.
+                        {% blocktrans %}MetaTakas is only a facilitator. Responsibility for the transaction lies with the parties involved.{% endblocktrans %}
                     </p>
                 </div>
 
@@ -110,10 +111,10 @@
                                 d="M16 3C8.8 3 3 8.8 3 16s5.8 13 13 13 13-5.8 13-13c0-1.398-.188-2.793-.688-4.094L26.688 13.5c.2.8.313 1.602.313 2.5 0 6.102-4.898 11-11 11S5 22.102 5 16 9.898 5 16 5c3 0 5.695 1.195 7.594 3.094L25 6.688C22.7 4.386 19.5 3 16 3zm11.281 4.281L16 18.563l-4.281-4.282-1.438 1.438 5 5 .719.687.719-.687 12-12z">
                             </path>
                         </svg>
-                        <div class="ml-4 text-xl">Fotoğraf ve Konum</div>
+                        <div class="ml-4 text-xl">{% trans "Photos and Location" %}</div>
                     </div>
                     <p class="leading-loose text-gray-500">
-                         Ürün görselleri net olmalı ve konum (şehir & ilçe) doğru girilmelidir.
+                      {% blocktrans %}Product images must be clear, and the location (city & district) must be accurate.{% endblocktrans %}
                     </p>
                 </div>
 

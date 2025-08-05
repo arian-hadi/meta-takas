@@ -528,3 +528,51 @@ msgstr "Once we receive your info, we review it and publish the listing on MetaT
 
 msgid "Interested users contact us. We connect you with the buyer and ensure a smooth transaction."
 msgstr "Interested users contact us. We connect you with the buyer and ensure a smooth transaction."
+
+
+
+#: templates/exchange_rule.html:...
+msgid "Exchange Rules"
+msgstr "Exchange Rules"
+
+msgid "Rules"
+msgstr "Rules"
+
+msgid "Exchange System Rules"
+msgstr "Exchange System Rules"
+
+msgid "Accurate Information"
+msgstr "Accurate Information"
+
+msgid "Product details must be complete, accurate, and up-to-date. Listings with misleading information will be rejected."
+msgstr "Product details must be complete, accurate, and up-to-date. Listings with misleading information will be rejected."
+
+msgid "Prohibited Content"
+msgstr "Prohibited Content"
+
+msgid "Listings that include illegal, counterfeit, violent, or inappropriate items are prohibited."
+msgstr "Listings that include illegal, counterfeit, violent, or inappropriate items are prohibited."
+
+msgid "Barter Expectation"
+msgstr "Barter Expectation"
+
+msgid "Barter listings must clearly state which items are desired in exchange."
+msgstr "Barter listings must clearly state which items are desired in exchange."
+
+msgid "Listing Approval"
+msgstr "Listing Approval"
+
+msgid "All listings are reviewed by the MetaTakas team. If not suitable, they will not be published."
+msgstr "All listings are reviewed by the MetaTakas team. If not suitable, they will not be published."
+
+msgid "Barter Responsibility"
+msgstr "Barter Responsibility"
+
+msgid "MetaTakas is only a facilitator. Responsibility for the transaction lies with the parties involved."
+msgstr "MetaTakas is only a facilitator. Responsibility for the transaction lies with the parties involved."
+
+msgid "Photos and Location"
+msgstr "Photos and Location"
+
+msgid "Product images must be clear, and the location (city & district) must be accurate."
+msgstr "Product images must be clear, and the location (city & district) must be accurate."
