@@ -576,3 +576,206 @@ msgstr "Photos and Location"
 
 msgid "Product images must be clear, and the location (city & district) must be accurate."
 msgstr "Product images must be clear, and the location (city & district) must be accurate."
+
+
+#: templates/valuation.html:...
+msgid "Valuation Tips"
+msgstr "Valuation Tips"
+
+msgid "Product Valuation Tips"
+msgstr "Product Valuation Tips"
+
+msgid "Evaluate your listing accurately to create faster sale or barter opportunities."
+msgstr "Evaluate your listing accurately to create faster sale or barter opportunities."
+
+msgid "Do Market Research"
+msgstr "Do Market Research"
+
+msgid "Check second-hand prices of similar items to determine a realistic value."
+msgstr "Check second-hand prices of similar items to determine a realistic value."
+
+msgid "Product Condition"
+msgstr "Product Condition"
+
+msgid "Whether the item is functional, undamaged, and gently used affects its price."
+msgstr "Whether the item is functional, undamaged, and gently used affects its price."
+
+msgid "Model and Year"
+msgstr "Model and Year"
+
+msgid "The item's year, model, and technical details are crucial in determining its market value."
+msgstr "The item's year, model, and technical details are crucial in determining its market value."
+
+msgid "Barter Balance"
+msgstr "Barter Balance"
+
+msgid "Consider value alignment with barter items. Balanced value makes bartering easier."
+msgstr "Consider value alignment with barter items. Balanced value makes bartering easier."
+
+
+
+
+#: templates/help_center.html:...
+
+msgid "What is MetaTakas and how does it work?"
+msgstr "What is MetaTakas and how does it work?"
+
+msgid "MetaTakas is a platform where you can submit your listings via WhatsApp to sell or barter your products."
+msgstr "MetaTakas is a platform where you can submit your listings via WhatsApp to sell or barter your products."
+
+msgid "How can I create a listing?"
+msgstr "How can I create a listing?"
+
+msgid "Click the WhatsApp button on the homepage and send us your product info. We'll create the listing for you."
+msgstr "Click the WhatsApp button on the homepage and send us your product info. We'll create the listing for you."
+
+msgid "What items can I barter?"
+msgstr "What items can I barter?"
+
+msgid "You can barter cars, real estate, electronics, furniture, and many other categories."
+msgstr "You can barter cars, real estate, electronics, furniture, and many other categories."
+
+msgid "How should I determine my product's value?"
+msgstr "How should I determine my product's value?"
+
+msgid "Check similar listings, consider condition and demand, and optionally ask us for advice."
+msgstr "Check similar listings, consider condition and demand, and optionally ask us for advice."
+
+msgid "Is the MetaTakas listing process safe?"
+msgstr "Is the MetaTakas listing process safe?"
+
+msgid "Listings are moderated by MetaTakas. Transactions occur via WhatsApp — always stay cautious of fraud."
+msgstr "Listings are moderated by MetaTakas. Transactions occur via WhatsApp — always stay cautious of fraud."
+
+msgid "Is WhatsApp communication safe?"
+msgstr "Is WhatsApp communication safe?"
+
+msgid "Yes, communication is handled only through our official WhatsApp number, and your data is kept confidential."
+msgstr "Yes, communication is handled only through our official WhatsApp number, and your data is kept confidential."
+
+
+
+
+#: templates/terms_of_use.html:...
+msgid "MetaTakas Terms of Use"
+msgstr "MetaTakas Terms of Use"
+
+msgid "1. Acceptance of Terms"
+msgstr "1. Acceptance of Terms"
+
+msgid "By accessing or using the MetaTakas platform, you agree to these terms of use and our privacy policy. If you do not agree, please do not use the service."
+msgstr "By accessing or using the MetaTakas platform, you agree to these terms of use and our privacy policy. If you do not agree, please do not use the service."
+
+msgid "2. Usage License"
+msgstr "2. Usage License"
+
+msgid "Shared listing content is for personal use only. It may not be copied or used for commercial purposes."
+msgstr "Shared listing content is for personal use only. It may not be copied or used for commercial purposes."
+
+msgid "MetaTakas does not claim ownership or guarantee the accuracy of the content."
+msgstr "MetaTakas does not claim ownership or guarantee the accuracy of the content."
+
+msgid "3. Disclaimer of Liability"
+msgstr "3. Disclaimer of Liability"
+
+msgid "MetaTakas does not guarantee the content, accuracy, or security of user-submitted listings. Responsibility lies with the user who created the listing."
+msgstr "MetaTakas does not guarantee the content, accuracy, or security of user-submitted listings. Responsibility lies with the user who created the listing."
+
+msgid "4. Restrictions"
+msgstr "4. Restrictions"
+
+msgid "Time Limits"
+msgstr "Time Limits"
+
+msgid "Reports of violations must be submitted within 30 days."
+msgstr "Reports of violations must be submitted within 30 days."
+
+msgid "Liability"
+msgstr "Liability"
+
+msgid "MetaTakas is not responsible for any losses resulting from transactions between users."
+msgstr "MetaTakas is not responsible for any losses resulting from transactions between users."
+
+msgid "5. Updates"
+msgstr "5. Updates"
+
+msgid "MetaTakas reserves the right to update these terms. Updates become effective once published on the site."
+msgstr "MetaTakas reserves the right to update these terms. Updates become effective once published on the site."
+
+msgid "6. Contact"
+msgstr "6. Contact"
+
+msgid "If you have questions about the terms, feel free to contact us."
+msgstr "If you have questions about the terms, feel free to contact us."
+
+msgid "Contact Us"
+msgstr "Contact Us"
+
+
+
+#: templates/privacy_policy.html:...
+msgid "Privacy & Cookie Policy"
+msgstr "Privacy & Cookie Policy"
+
+msgid "<span class='font-semibold text-blue-bg-blue-600'>MetaTakas</span> values your privacy. This document explains how we collect, use, and protect user data."
+msgstr "<span class='font-semibold text-blue-bg-blue-600'>MetaTakas</span> values your privacy. This document explains how we collect, use, and protect user data."
+
+msgid "By using our services, you agree to this policy."
+msgstr "By using our services, you agree to this policy."
+
+msgid "Information Collected"
+msgstr "Information Collected"
+
+msgid "<strong>Contact Information:</strong> Name, phone number, email address."
+msgstr "<strong>Contact Information:</strong> Name, phone number, email address."
+
+
+msgid "<strong>Listing Content:</strong> Product descriptions, photos, videos."
+msgstr "<strong>Listing Content:</strong> Product descriptions, photos, videos."
+
+msgid "<strong>Technical Data:</strong> IP address, device and browser information."
+msgstr "<strong>Technical Data:</strong> IP address, device and browser information."
+
+
+msgid "Purpose of Data Use"
+msgstr "Purpose of Data Use"
+
+msgid "Collected data is used to publish listings, improve user experience, ensure security, and fulfill legal obligations."
+msgstr "Collected data is used to publish listings, improve user experience, ensure security, and fulfill legal obligations."
+
+msgid "Data Sharing"
+msgstr "Data Sharing"
+
+msgid "Your data is shared with third parties only in the following cases:"
+msgstr "Your data is shared with third parties only in the following cases:"
+
+msgid "With hosting or technical support providers."
+msgstr "With hosting or technical support providers."
+
+msgid "When legally required by authorities."
+msgstr "When legally required by authorities."
+
+msgid "Cookie Usage"
+msgstr "Cookie Usage"
+
+msgid "Our site uses cookies to enhance your experience. You may disable them via your browser settings."
+msgstr "Our site uses cookies to enhance your experience. You may disable them via your browser settings."
+
+msgid "Account and Data Deletion"
+msgstr "Account and Data Deletion"
+
+msgid "If you wish to delete your account:"
+msgstr "If you wish to delete your account:"
+
+msgid "Contact us via the contact section."
+msgstr "Contact us via the contact section."
+
+msgid "Your request will be reviewed and processed."
+msgstr "Your request will be reviewed and processed."
+
+
+msgid "Email:"
+msgstr "Email:"
+
+msgid "Address:"
+msgstr "Address:"

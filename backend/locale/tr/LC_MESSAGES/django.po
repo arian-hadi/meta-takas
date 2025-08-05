@@ -636,3 +636,204 @@ msgstr "Fotoğraf ve Konum"
 
 msgid "Product images must be clear, and the location (city & district) must be accurate."
 msgstr "Ürün görselleri net olmalı ve konum (şehir & ilçe) doğru girilmelidir."
+
+
+
+#: templates/valuation.html:...
+msgid "Valuation Tips"
+msgstr "Değerleme İpuçları"
+
+msgid "Product Valuation Tips"
+msgstr "Ürün Değerleme İpuçları"
+
+msgid "Evaluate your listing accurately to create faster sale or barter opportunities."
+msgstr "İlanınızı doğru değerlendirin, hızlı takas veya satış fırsatları yaratın."
+
+msgid "Do Market Research"
+msgstr "Piyasa Araştırması Yapın"
+
+msgid "Check second-hand prices of similar items to determine a realistic value."
+msgstr "Benzer ürünlerin ikinci el fiyatlarını kontrol ederek gerçekçi bir fiyat belirleyin."
+
+msgid "Product Condition"
+msgstr "Ürün Durumu"
+
+msgid "Whether the item is functional, undamaged, and gently used affects its price."
+msgstr "Ürünün çalışır durumda olması, hasarsız olması ve kullanım izleri fiyatı etkiler."
+
+msgid "Model and Year"
+msgstr "Model ve Yıl"
+
+msgid "The item's year, model, and technical details are crucial in determining its market value."
+msgstr "Ürünün yılı, modeli ve teknik detayları, piyasa değerinin belirlenmesinde çok önemlidir."
+
+msgid "Barter Balance"
+msgstr "Takas Dengesi"
+
+msgid "Consider value alignment with barter items. Balanced value makes bartering easier."
+msgstr "Takas yapılacak ürünlerle değer uyumunu göz önünde bulundurun. Denk değerli ürünler takasta daha kolay anlaşılır."
+
+
+msgid "What is MetaTakas and how does it work?"
+msgstr "MetaTakas nedir ve nasıl çalışır?"
+
+msgid "MetaTakas is a platform where you can submit your listings via WhatsApp to sell or barter your products."
+msgstr "MetaTakas, ürünlerinizi satmak ya da takas etmek için ilanlarınızı WhatsApp üzerinden bize ulaştırarak yayınlayabileceğiniz bir platformdur."
+
+msgid "How can I create a listing?"
+msgstr "İlanımı nasıl oluşturabilirim?"
+
+msgid "Click the WhatsApp button on the homepage and send us your product info. We'll create the listing for you."
+msgstr "Ana sayfadaki WhatsApp ile iletişim butonuna tıklayarak ürün bilgilerinizi bize iletin, biz sizin adınıza ilanı oluşturalım."
+
+msgid "What items can I barter?"
+msgstr "Hangi ürünleri takas edebilirim?"
+
+msgid "You can barter cars, real estate, electronics, furniture, and many other categories."
+msgstr "Araçlar, emlak, elektronik, mobilya ve daha fazlası gibi birçok ürün kategorisinde takas yapabilirsiniz."
+
+msgid "How should I determine my product's value?"
+msgstr "Ürünümün değerini nasıl belirlemeliyim?"
+
+msgid "Check similar listings, consider condition and demand, and optionally ask us for advice."
+msgstr "Benzer ilanlara göz atarak, ürün durumu ve piyasadaki talebe göre değer belirleyebilirsiniz. Gerekirse bizden öneri alabilirsiniz."
+
+msgid "Is the MetaTakas listing process safe?"
+msgstr "MetaTakas ilan süreci güvenli mi?"
+
+msgid "Listings are moderated by MetaTakas. Transactions occur via WhatsApp — always stay cautious of fraud."
+msgstr "İlanlar MetaTakas moderasyonu ile paylaşılır. Tüm alım/satım işlemleriniz WhatsApp üzerinden yürütülür, dolandırıcılık riskine karşı dikkatli olunuz."
+
+msgid "Is WhatsApp communication safe?"
+msgstr "WhatsApp üzerinden iletişime geçmek güvenli mi?"
+
+msgid "Yes, communication is handled only through our official WhatsApp number, and your data is kept confidential."
+msgstr "Evet, iletişim yalnızca resmi WhatsApp hattımız üzerinden sağlanır ve paylaştığınız bilgiler gizli tutulur."
+
+
+
+#: templates/terms_of_use.html:...
+msgid "MetaTakas Terms of Use"
+msgstr "MetaTakas Kullanım Şartları"
+
+msgid "1. Acceptance of Terms"
+msgstr "1. Şartların Kabulü"
+
+msgid "By accessing or using the MetaTakas platform, you agree to these terms of use and our privacy policy. If you do not agree, please do not use the service."
+msgstr "MetaTakas platformuna erişerek veya kullanarak, bu kullanım şartlarını ve gizlilik politikamızı kabul etmiş sayılırsınız. Şartları kabul etmiyorsanız, lütfen hizmeti kullanmayınız."
+
+msgid "2. Usage License"
+msgstr "2. Kullanım Lisansı"
+
+msgid "Shared listing content is for personal use only. It may not be copied or used for commercial purposes."
+msgstr "Paylaşılan ilan içerikleri yalnızca kişisel kullanım içindir. İçerikler kopyalanamaz veya ticari amaçla kullanılamaz."
+
+msgid "MetaTakas does not claim ownership or guarantee the accuracy of the content."
+msgstr "MetaTakas, içeriklerin doğruluğuna dair herhangi bir mülkiyet iddiasında bulunmaz."
+
+msgid "3. Disclaimer of Liability"
+msgstr "3. Sorumluluk Reddi"
+
+msgid "MetaTakas does not guarantee the content, accuracy, or security of user-submitted listings. Responsibility lies with the user who created the listing."
+msgstr "MetaTakas, kullanıcıların sunduğu ilanların içeriği, doğruluğu ve güvenliği konusunda herhangi bir garanti vermez. Ürünle ilgili tüm sorumluluk ilan veren kullanıcıya aittir."
+
+msgid "4. Restrictions"
+msgstr "4. Kısıtlamalar"
+
+msgid "Time Limits"
+msgstr "Süre Sınırlamaları"
+
+msgid "Reports of violations must be submitted within 30 days."
+msgstr "İhlallerle ilgili bildirimler 30 gün içinde yapılmalıdır."
+
+msgid "Liability"
+msgstr "Sorumluluk"
+
+msgid "MetaTakas is not responsible for any losses resulting from transactions between users."
+msgstr "MetaTakas, kullanıcılar arasında gerçekleşen alışveriş ve takaslardan doğabilecek zararlardan sorumlu tutulamaz."
+
+msgid "5. Updates"
+msgstr "5. Güncellemeler"
+
+msgid "MetaTakas reserves the right to update these terms. Updates become effective once published on the site."
+msgstr "MetaTakas, bu kullanım şartlarını zaman zaman güncelleme hakkını saklı tutar. Güncellenmiş sürümler sitede yayınlandığı anda geçerlilik kazanır."
+
+msgid "6. Contact"
+msgstr "6. İletişim"
+
+msgid "If you have questions about the terms, feel free to contact us."
+msgstr "Kullanım şartlarıyla ilgili sorularınız için bizimle iletişime geçin."
+
+msgid "Contact Us"
+msgstr "Bize Ulaşın"
+
+
+
+
+#: templates/privacy_policy.html:...
+msgid "Privacy & Cookie Policy"
+msgstr "Gizlilik ve Çerez Politikası"
+
+msgid "<span class='font-semibold text-blue-bg-blue-600'>MetaTakas</span> values your privacy. This document explains how we collect, use, and protect user data."
+msgstr "<span class='font-semibold text-blue-bg-blue-600'>MetaTakas</span> olarak gizliliğiniz bizim için önemlidir. Bu belge, kullanıcı bilgilerinin nasıl toplandığını, kullanıldığını ve korunduğunu açıklar."
+
+
+msgid "By using our services, you agree to this policy."
+msgstr "Hizmetlerimizi kullanarak bu politikayı kabul etmiş sayılırsınız."
+
+
+msgid "Information Collected"
+msgstr "Toplanan Bilgiler"
+
+msgid "<strong>Contact Information:</strong> Name, phone number, email address."
+msgstr "<strong>İletişim Bilgileri:</strong> Ad, telefon numarası, e-posta adresi."
+
+
+msgid "<strong>Listing Content:</strong> Product descriptions, photos, videos."
+msgstr "<strong>İlan İçeriği:</strong> Ürün açıklamaları, fotoğraflar, videolar."
+
+msgid "<strong>Technical Data:</strong> IP address, device and browser information."
+msgstr "<strong>Teknik Veriler:</strong> IP adresi, cihaz ve tarayıcı bilgileri."
+
+
+msgid "Purpose of Data Use"
+msgstr "Bilgilerin Kullanım Amaçları"
+
+msgid "Collected data is used to publish listings, improve user experience, ensure security, and fulfill legal obligations."
+msgstr "Toplanan bilgiler ilan yayınlama, kullanıcı deneyimini geliştirme, güvenliği sağlama ve yasal yükümlülükleri yerine getirme amacıyla kullanılmaktadır."
+
+msgid "Data Sharing"
+msgstr "Veri Paylaşımı"
+
+msgid "Your data is shared with third parties only in the following cases:"
+msgstr "Verileriniz üçüncü taraflarla yalnızca aşağıdaki durumlarda paylaşılır:"
+
+msgid "With hosting or technical support providers."
+msgstr "Teknik destek veya barındırma hizmeti sağlayıcılarıyla."
+
+msgid "When legally required by authorities."
+msgstr "Yasal merciler tarafından zorunlu kılındığında."
+
+msgid "Cookie Usage"
+msgstr "Çerez Kullanımı"
+
+msgid "Our site uses cookies to enhance your experience. You may disable them via your browser settings."
+msgstr "Sitemiz, kullanıcı deneyimini geliştirmek için çerezler (cookies) kullanmaktadır. Tarayıcı ayarlarınızdan çerez kullanımını engelleyebilirsiniz."
+
+msgid "Account and Data Deletion"
+msgstr "Hesap ve Veri Silme"
+
+msgid "If you wish to delete your account:"
+msgstr "Hesabınızı silmek isterseniz:"
+
+msgid "Contact us via the contact section."
+msgstr "İletişim bölümünden bize ulaşabilirsiniz."
+
+msgid "Your request will be reviewed and processed."
+msgstr "Talebiniz değerlendirilerek sistemden kaldırma işlemi yapılır."
+
+msgid "Email:"
+msgstr "E-posta:"
+
+msgid "Address:"
+msgstr "Adres:"
