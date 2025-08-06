@@ -36,6 +36,7 @@
 
 </style>
 <!-- Breadcrumb -->
+
 <nav class="mx-auto w-full mt-4 max-w-[1200px] px-5">
     <ul class="flex items-center">
         <li class="cursor-pointer">
@@ -209,7 +210,7 @@
                   {% if product.listing_type == 'sale' %}text-green-600
                   {% elif product.listing_type == 'exchange' %}text-amber-500
                   {% endif %}">
-                {% if product.listing_type == 'sale' %}{% trans 'Sale' %}{% else %}{% trans 'Trade' %}{% endif %}
+                {% if product.listing_type == 'sale' %}{% trans 'Sale' %}{% else %}{% trans 'Exchange' %}{% endif %}
               </td>
             </tr>
 
@@ -412,19 +413,19 @@
 
     <!-- Exchange Preference Checkboxes -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-3 gap-x-6 text-sm">
-    {% for field, label in EXCHANGE_PREFERENCES %}
-    <div class="flex items-center gap-2">
-        <input
-        type="checkbox"
-        class="text-blue-600 rounded border-gray-300"
-        {% if product|get_attr:field %} checked {% endif %}
-        disabled
-        >
-        <span class="{% if product|get_attr:field %}font-semibold text-gray-800{% else %}text-gray-400{% endif %}">
-        {{ label }}
-        </span>
-    </div>
-    {% endfor %}
+      {% for field, label in EXCHANGE_PREFERENCES %}
+        <div class="flex items-center gap-2">
+            <input
+              type="checkbox"
+              class="text-blue-600 rounded border-gray-300"
+              {% if product|get_attr:field %} checked {% endif %}
+              disabled
+            >
+            <span class="{% if product|get_attr:field %}font-semibold text-gray-800{% else %}text-gray-400{% endif %}">
+              {{ label }}
+            </span>
+        </div>
+      {% endfor %}
     </div>
 
   </div>

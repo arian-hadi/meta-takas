@@ -980,33 +980,7 @@ msgstr "İngilizce"
 msgid "Turkish"
 msgstr "Türkçe"
 
-#: products/models.py:54
-msgid "Üste Para Verilir"
-msgstr ""
 
-#: products/models.py:55
-msgid "Üste Para Alınır"
-msgstr ""
-
-#: products/models.py:56
-msgid "Üste Para Veremem"
-msgstr ""
-
-#: products/models.py:57
-msgid "%50 Nakit Talep Edilebilir"
-msgstr ""
-
-#: products/models.py:58
-msgid "%50 Takas Talep Edilir"
-msgstr ""
-
-#: products/models.py:59
-msgid "Tamamı Takas Olur"
-msgstr ""
-
-#: products/models.py:60
-msgid "Tamamı Nakit Olur"
-msgstr ""
 
 #: products/templates/products/product_detail.html:50
 #: theme/templates/header.html:145 theme/templates/header.html:160
@@ -1024,9 +998,6 @@ msgstr "Durum"
 msgid "Sale"
 msgstr "Satılık"
 
-#: products/templates/products/product_detail.html:212
-msgid "Trade"
-msgstr ""
 
 #: products/templates/products/product_detail.html:218
 msgid "Announcement Date"
@@ -1058,11 +1029,11 @@ msgstr "Bu ilanın takas seçenekleri aşağıda mevcuttur."
 
 #: products/templates/products/product_detail.html:391
 msgid "Budget"
-msgstr ""
+msgstr "Bütçe"
 
 #: products/templates/products/product_detail.html:438
 msgid "Recommended Products"
-msgstr ""
+msgstr "Önerilen Ürünler"
 
 #: products/templates/products/product_list.html:8
 msgid "Product list"
@@ -1267,55 +1238,26 @@ msgstr "Ana Sayfa"
 msgid "Welcome"
 msgstr "Hoş geldiniz"
 
-#, fuzzy
-#~| msgid "I can't give extra cash"
-#~ msgid "Will give extra cash"
-#~ msgstr "Üste Para Veremem"
+msgid "Will give extra cash"
+msgstr "Üste para verilir"
 
-#, fuzzy
-#~| msgid "I can't give extra cash"
-#~ msgid "Will receive extra cash"
-#~ msgstr "Üste Para Veremem"
+msgid "Will receive extra cash"
+msgstr "Üste para alınır"
 
-#, fuzzy
-#~| msgid "I can't give extra cash"
-#~ msgid "Cannot give extra cash"
-#~ msgstr "Üste Para Veremem"
+msgid "Cannot give extra cash"
+msgstr "Üste para veremem"
 
-#, fuzzy, python-format
-#~| msgid "50% cash may be requested"
-#~ msgid "50% cash can be requested"
-#~ msgstr "%50 Nakit Talep Edilebilir"
+msgid "50% cash can be requested"
+msgstr "%50 nakit talep edilebilir"
 
-#, fuzzy
-#~| msgid "50% cash may be requested"
-#~ msgid "50% barter can be requested"
-#~ msgstr "%50 Nakit Talep Edilebilir"
+msgid "50% barter can be requested"
+msgstr "%50 takas talep edilebilir"
 
-#, fuzzy
-#~| msgid "Full trade is acceptable"
-#~ msgid "Full barter accepted"
-#~ msgstr "Tamamı Takas Olur"
+msgid "Full barter accepted"
+msgstr "Tamamı takas olur"
 
-#, fuzzy
-#~| msgid "Full trade is acceptable"
-#~ msgid "Full cash accepted"
-#~ msgstr "Tamamı Takas Olur"
-
-#~ msgid "Extra cash will be given"
-#~ msgstr "Üste Para Verilir"
-
-#~ msgid "50% trade is requested"
-#~ msgstr "%50 Takas Talep Edilir"
-
-#~ msgid "Full payment in cash"
-#~ msgstr "Tamamı Nakit Olur"
-
-#~ msgid "Extra cash will be taken"
-#~ msgstr "Üste Para Alınır"
-
-#~ msgid "No cash! Barter only!"
-#~ msgstr "Nakit yok! Takas var!"
+msgid "Full cash accepted"
+msgstr "Tamamı nakit olur"
 
 #~ msgid "All rights reserved."
 #~ msgstr "Tüm hakları saklıdır."

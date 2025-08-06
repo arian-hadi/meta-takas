@@ -1017,9 +1017,6 @@ msgstr "Status"
 msgid "Sale"
 msgstr "For Sale"
 
-#: products/templates/products/product_detail.html:212
-msgid "Trade"
-msgstr ""
 
 #: products/templates/products/product_detail.html:218
 msgid "Announcement Date"
@@ -1055,7 +1052,7 @@ msgstr "Budget"
 
 #: products/templates/products/product_detail.html:438
 msgid "Recommended Products"
-msgstr ""
+msgstr "Recommended Products"
 
 #: products/templates/products/product_list.html:8
 msgid "Product list"
@@ -1263,29 +1260,26 @@ msgstr "Home"
 msgid "Welcome"
 msgstr "Welcome"
 
-#~ msgid "Extra cash will be given"
-#~ msgstr "Extra cash will be given"
+msgid "Will give extra cash"
+msgstr "Will give extra cash"
 
-#~ msgid "I can't give extra cash"
-#~ msgstr "I can't give extra cash"
+msgid "Will receive extra cash"
+msgstr "Will receive extra cash"
 
-#~ msgid "50% trade is requested"
-#~ msgstr "50% trade is requested"
+msgid "Cannot give extra cash"
+msgstr "Cannot give extra cash"
 
-#~ msgid "Full payment in cash"
-#~ msgstr "Full payment in cash"
+msgid "50% cash can be requested"
+msgstr "50% cash can be requested"
 
-#~ msgid "Extra cash will be taken"
-#~ msgstr "Extra cash will be taken"
+msgid "50% barter can be requested"
+msgstr "50% barter can be requested"
 
-#~ msgid "50% cash may be requested"
-#~ msgstr "50% cash may be requested"
+msgid "Full barter accepted"
+msgstr "Full barter accepted"
 
-#~ msgid "Full trade is acceptable"
-#~ msgstr "Full trade is acceptable"
-
-#~ msgid "No cash! Barter only!"
-#~ msgstr "No cash! Barter only!"
+msgid "Full cash accepted"
+msgstr "Full cash accepted"
 
 #~ msgid "All rights reserved."
 #~ msgstr "All rights reserved."

@@ -3,6 +3,8 @@ module.exports = {
         '../templates/**/*.html',
         '../../templates/**/*.html',
         '../../**/templates/**/*.html',
+        './products/templates/products/*.html',
+        './homepage/templates/homepage/*.html',
         // '!../../**/node_modules',
         // '../../**/*.js',
         // '../../**/*.py'
