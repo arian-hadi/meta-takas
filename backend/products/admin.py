@@ -60,7 +60,7 @@ class ProductDetailRowInline(nested_admin.NestedTabularInline):
     model = ProductDetailRow
     extra = 1
     max_num = 9  # ⛔ limit to 9
-
+    exclude = ('label', 'value') 
 
 @admin.register(Product)
 class ProductAdmin(TranslationAdmin, nested_admin.NestedModelAdmin):
