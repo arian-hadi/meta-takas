@@ -63,7 +63,7 @@ class ProductDetailRowInline(nested_admin.NestedTabularInline):
 
 
 @admin.register(Product)
-class ProductAdmin(nested_admin.NestedModelAdmin):
+class ProductAdmin(TranslationAdmin, nested_admin.NestedModelAdmin):
     form = ProductAdminForm 
     
     class Media:
