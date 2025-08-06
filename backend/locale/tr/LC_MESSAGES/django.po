@@ -1276,3 +1276,7 @@ msgstr "Tamamı nakit olur"
 
 #~ msgid "Feedback / Suggestion"
 #~ msgstr "Geri Bildirim / Öneri"
+
+
+msgid "Exchangeable with {{ category }} "
+msgstr "{{ category }} ile Takaslı"

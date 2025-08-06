@@ -367,7 +367,9 @@
           <div>
             <div class="flex items-center gap-2">
               <span class="w-2 h-2 bg-blue-400 rounded-full inline-block mt-0.5"></span>
-              <span class="font-medium text-gray-900">{{ note.category.name }} ile Takaslı</span>
+              <span class="font-medium text-gray-900">
+                {% blocktrans with category=note.category.name %}Exchangeable with {{ category }}{% endblocktrans %}
+              </span>
             </div>
             {% if note.items.exists %}
             <ul class="pl-5 mt-1 list-disc text-sm text-gray-700">
