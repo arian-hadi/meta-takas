@@ -4,9 +4,11 @@ from django import forms
 from .models import Category, Product, ProductImage, ProductVideo, ExchangeNote, ExchangeNoteItem, ProductDetailRow
 from .utils.city_data import CITY_CHOICES, PROVINCE_MAP
 from django import forms
+import products.translation 
+from modeltranslation.admin import TranslationAdmin
 
 @admin.register(Category)
-class CategoryAdmin(nested_admin.NestedModelAdmin):
+class CategoryAdmin(TranslationAdmin, nested_admin.NestedModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
     list_display = ['name', 'slug']
 

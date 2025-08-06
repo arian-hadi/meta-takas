@@ -601,9 +601,7 @@ msgstr "Exchangeable for:"
 msgid "Not specified"
 msgstr "Not specified"
 
-#: homepage/templates/homepage/homepage.html:359
-#: products/templates/products/product_detail.html:505
-#: products/templates/products/product_list.html:489
+
 msgid "View Details"
 msgstr "View Details"
 
@@ -1010,12 +1008,9 @@ msgstr "Listings"
 msgid "Status"
 msgstr "Status"
 
-#: products/templates/products/product_detail.html:212
-#: products/templates/products/product_detail.html:472
-#, fuzzy
-#| msgid "For Sale"
+
 msgid "Sale"
-msgstr "For Sale"
+msgstr "Sale"
 
 
 #: products/templates/products/product_detail.html:218

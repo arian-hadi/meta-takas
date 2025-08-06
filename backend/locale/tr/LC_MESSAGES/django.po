@@ -579,10 +579,6 @@ msgstr "İlan ver"
 msgid "NEW ARRIVALS"
 msgstr "YENİLER"
 
-#: homepage/templates/homepage/homepage.html:327
-#: products/templates/products/product_list.html:443
-msgid "For Sale"
-msgstr "Satılık"
 
 #: homepage/templates/homepage/homepage.html:329
 #: products/templates/products/product_detail.html:474
@@ -603,9 +599,7 @@ msgstr "Takas edilebilir:"
 msgid "Not specified"
 msgstr "Belirtilmemiş"
 
-#: homepage/templates/homepage/homepage.html:359
-#: products/templates/products/product_detail.html:505
-#: products/templates/products/product_list.html:489
+
 msgid "View Details"
 msgstr "Detayları Görüntüle"
 
@@ -991,10 +985,7 @@ msgstr "İlanlar"
 msgid "Status"
 msgstr "Durum"
 
-#: products/templates/products/product_detail.html:212
-#: products/templates/products/product_detail.html:472
-#, fuzzy
-#| msgid "For Sale"
+
 msgid "Sale"
 msgstr "Satılık"
 

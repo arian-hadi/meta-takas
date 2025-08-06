@@ -5,11 +5,10 @@ from django.db.models import Q, Count
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 from django.shortcuts import get_object_or_404, render
-from bs4 import BeautifulSoup
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
 from django.conf import settings
-
+from django.utils.translation import gettext_lazy as _ 
 
 if settings.DEBUG:
     def no_cache(view_func):
@@ -28,8 +27,8 @@ class ProductListView(ListView):
     paginate_by = 12
 
     types = [
-        {'slug': 'sale', 'label': 'Satılık'},
-        {'slug': 'exchange', 'label': 'Takas'},
+        {'slug': 'sale', 'label': _('Sale')},
+        {'slug': 'exchange', 'label': _('Exchange')},
     ]
 
 

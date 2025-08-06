@@ -31,10 +31,11 @@ INSTALLED_APPS = [
     #'django_browser_reload',
     'homepage',
     'info',
-    'products',
+    'products.apps.ProductsConfig',
     'contact',
     'nested_admin',
-    'django.contrib.humanize'
+    'django.contrib.humanize',
+    'modeltranslation',
 ]
 
 MIDDLEWARE = [
