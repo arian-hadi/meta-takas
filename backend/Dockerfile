@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
     libpq-dev \
     gcc \
     curl \
+    gettext \
     && apt-get clean
 
 # Install Node.js and npm

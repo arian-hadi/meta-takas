@@ -2,6 +2,7 @@ from django.db import models
 from .utils.cities import TURKISH_CITIES
 from .utils.city_data import CITY_CHOICES, PROVINCE_MAP
 from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -50,15 +51,15 @@ class Product(models.Model):
     accept_full_cash = models.BooleanField(default=False)
 
     EXCHANGE_PREFERENCES = [
-        ('will_give_extra_cash', "Üste Para Verilir"),
-        ('will_receive_extra_cash', "Üste Para Alınır"),
-        ('cannot_give_extra_cash', "Üste Para Veremem"),
-        ('accept_half_cash', "%50 Nakit Talep Edilebilir"),
-        ('accept_half_barter', "%50 Takas Talep Edilir"),
-        ('accept_full_barter', "Tamamı Takas Olur"),
-        ('accept_full_cash', "Tamamı Nakit Olur"),
+        ('will_give_extra_cash', _("Will give extra cash")),
+        ('will_receive_extra_cash', _("Will receive extra cash")),
+        ('cannot_give_extra_cash', _("Cannot give extra cash")),
+        ('accept_half_cash', _("50% cash can be requested")),
+        ('accept_half_barter', _("50% barter can be requested")),
+        ('accept_full_barter', _("Full barter accepted")),
+        ('accept_full_cash', _("Full cash accepted")),
     ]
-
+    
     def has_exchange_preferences(self):
         return any([
             self.will_give_extra_cash,
@@ -76,19 +77,19 @@ class Product(models.Model):
     def get_exchange_preference_labels(self):
         labels = []
         if self.will_give_extra_cash:
-            labels.append("Will give extra cash")
+            labels.append(_("Will give extra cash"))
         if self.will_receive_extra_cash:
-            labels.append("Will receive extra cash")
+            labels.append(_("Will receive extra cash"))
         if self.cannot_give_extra_cash:
-            labels.append("Cannot give extra cash")
+            labels.append(_("Cannot give extra cash"))
         if self.accept_half_cash:
-            labels.append("50% cash can be requested")
+            labels.append(_("50% cash can be requested"))
         if self.accept_half_barter:
-            labels.append("50% barter can be requested")
+            labels.append(_("50% barter can be requested"))
         if self.accept_full_barter:
-            labels.append("Full barter accepted")
+            labels.append(_("Full barter accepted"))
         if self.accept_full_cash:
-            labels.append("Full cash accepted")
+            labels.append(_("Full cash accepted"))
         return labels
 
     # ✅ 3. Clean method to validate logic

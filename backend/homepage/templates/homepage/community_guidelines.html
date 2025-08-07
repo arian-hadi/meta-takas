@@ -1,57 +1,62 @@
 {% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}{% trans "Community Guidelines" %}{% endblock %}
 {% block content %}
+
+
 <section class="py-12 bg-gray-50">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h1 class="text-4xl font-extrabold text-center text-blue-600 mb-8">Topluluk Kuralları</h1>
+    <h1 class="text-4xl font-extrabold text-center text-blue-600 mb-8">{% trans "Community Guidelines" %}</h1>
     <p class="text-gray-700 text-lg mb-10 text-center">
-      MetaTakas platformunda güvenli, saygılı ve destekleyici bir ortam oluşturmak için lütfen aşağıdaki kurallara dikkat ediniz.
+      {% blocktrans %}Please review the following rules to help maintain a safe, respectful, and supportive environment on the MetaTakas platform.{% endblocktrans %}
     </p>
 
     <div class="space-y-8">
       <!-- Rule 1 -->
       <div class="bg-white p-6 rounded-lg shadow">
-        <h2 class="text-xl font-semibold text-blue-600 mb-2">1. Saygılı ve Nazik Olun</h2>
+        <h2 class="text-xl font-semibold text-blue-600 mb-2">{% trans "1. Be Respectful and Kind" %}</h2>
         <p class="text-gray-600">
-          Diğer kullanıcılarla iletişim kurarken her zaman saygılı ve anlayışlı olun. Hakaret, ayrımcılık, tehdit veya nefret söylemi kabul edilmez.
+         {% blocktrans %}Always be respectful and understanding when communicating with other users. Insults, discrimination, threats, or hate speech are not allowed.{% endblocktrans %}
         </p>
       </div>
 
       <!-- Rule 2 -->
       <div class="bg-white p-6 rounded-lg shadow">
-        <h2 class="text-xl font-semibold text-blue-600 mb-2">2. Gerçek ve Doğru Bilgi Paylaşın</h2>
+        <h2 class="text-xl font-semibold text-blue-600 mb-2">{% trans "2. Share Accurate and Truthful Information" %}</h2>
         <p class="text-gray-600">
-          Paylaştığınız ilanlarda ürün hakkında doğru, eksiksiz ve yanıltıcı olmayan bilgiler verin. Sahte veya çalıntı ürün paylaşımı yasaktır.
+          {% blocktrans %}Provide accurate, complete, and honest information about your product in listings. Sharing fake or stolen products is prohibited.{% endblocktrans %}
         </p>
       </div>
 
       <!-- Rule 3 -->
       <div class="bg-white p-6 rounded-lg shadow">
-        <h2 class="text-xl font-semibold text-blue-600 mb-2">3. Yasalara Uygun Hareket Edin</h2>
+        <h2 class="text-xl font-semibold text-blue-600 mb-2">{% trans "3. Follow the Law" %}</h2>
         <p class="text-gray-600">
-          Tüm işlemler yasalara uygun şekilde yapılmalıdır. Yasa dışı ürünlerin ilanı veya takası platformda yasaktır.
+          {% blocktrans %}All transactions must comply with the law. Listing or bartering illegal items is not allowed on the platform.{% endblocktrans %}
         </p>
       </div>
 
       <!-- Rule 4 -->
       <div class="bg-white p-6 rounded-lg shadow">
-        <h2 class="text-xl font-semibold text-blue-600 mb-2">4. Spam ve Reklam Yasaktır</h2>
+        <h2 class="text-xl font-semibold text-blue-600 mb-2">{% trans "4. No Spam or Ads" %}</h2>
         <p class="text-gray-600">
-          İstenmeyen mesajlar, kopya içerikler veya ticari amaçlı reklamlar topluluk kurallarına aykırıdır.
+          {% blocktrans %}Unsolicited messages, duplicate content, or commercial advertising are against community rules.{% endblocktrans %}
         </p>
       </div>
 
       <!-- Rule 5 -->
       <div class="bg-white p-6 rounded-lg shadow">
-        <h2 class="text-xl font-semibold text-blue-600 mb-2">5. Güvenli Alım-Satım</h2>
+        <h2 class="text-xl font-semibold text-blue-600 mb-2">{% trans "5. Safe Trading Practices" %}</h2>
         <p class="text-gray-600">
-          Takas işlemlerinde dolandırıcılığa karşı dikkatli olun. Platform aracılığıyla paylaşılan bilgiler dışında özel bilgiler vermekten kaçının.
+          {% blocktrans %}Be cautious of fraud during trades. Avoid sharing personal details beyond the information shared through the platform.{% endblocktrans %}
         </p>
       </div>
 
       <!-- Reminder -->
       <div class="mt-10 bg-yellow-50 border-l-4 border-yellow-400 p-4">
         <p class="text-yellow-800">
-          Bu kurallara uymayan kullanıcılar uyarılabilir, ilanları kaldırılabilir veya hesapları askıya alınabilir.
+          {% trans "Users who do not follow these rules may be warned, have their listings removed, or have their accounts suspended." %}
         </p>
       </div>
     </div>

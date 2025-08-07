@@ -31,15 +31,20 @@ INSTALLED_APPS = [
     #'django_browser_reload',
     'homepage',
     'info',
-    'products',
+    'products.apps.ProductsConfig',
     'contact',
     'nested_admin',
-    'django.contrib.humanize'
+    'django.contrib.humanize',
+    'modeltranslation',
 ]
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'meta_core.middleware.ForceDefaultLanguageMiddleware',
+    'django.middleware.locale.LocaleMiddleware',  # Enable locale middleware for i18n
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -100,7 +105,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'tr'  # Default language, change to 'en' if you prefer English by default
 
 TIME_ZONE = 'UTC'
 
@@ -108,6 +113,16 @@ USE_I18N = True
 
 USE_TZ = True
 
+from django.utils.translation import gettext_lazy as _
+
+LANGUAGES = [
+    ('tr', _('Turkish')),
+    ('en', _('English')),
+]
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale',
+]
 
 
 STATIC_URL = 'static/'

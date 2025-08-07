@@ -1,0 +1,1282 @@
+# Meta Takas - Turkish Translations
+# Copyright (C) 2025 Meta Takas
+# This file is distributed under the same license as the Meta Takas package.
+# Meta Takas Team <info@metatakas.com>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Meta Takas 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-05 14:04+0000\n"
+"PO-Revision-Date: 2025-08-01 08:24+0000\n"
+"Last-Translator: Meta Takas Team <info@metatakas.com>\n"
+"Language-Team: Turkish <tr@metatakas.com>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: accounts/manager.py:14
+msgid "Please enter a valid email address"
+msgstr "Lütfen geçerli bir e-posta adresi girin"
+
+#: accounts/manager.py:19
+msgid "An email address is required"
+msgstr "E-posta adresi gereklidir"
+
+
+msgid "Please select a category"
+msgstr "Lütfen önce bir kategori seçin"
+
+#: contact/forms.py:9
+msgid "Delivery"
+msgstr "Teslimat"
+
+
+msgid "Support"
+msgstr "Destek"
+
+#: contact/forms.py:11
+msgid "Profile"
+msgstr "Profil"
+
+#: contact/forms.py:12
+msgid "Careers"
+msgstr "Kariyer"
+
+
+msgid "Other category"
+msgstr "Diğer kategori"
+
+#: contact/templates/contact/contact.html:5
+#: homepage/templates/homepage/terms_of_use.html:84
+msgid "Contact Us"
+msgstr "Bize Ulaşın"
+
+#: contact/templates/contact/contact.html:39
+msgid "Full Name"
+msgstr "Ad ve Soyad"
+
+#: contact/templates/contact/contact.html:49
+msgid "Email address"
+msgstr "E-posta adresi"
+
+#: contact/templates/contact/contact.html:59
+msgid "Message"
+msgstr "Mesaj"
+
+#: contact/templates/contact/contact.html:74
+msgid "Terms and Conditions"
+msgstr "Şartlar ve Koşullar"
+
+#: contact/templates/contact/contact.html:78
+msgid "Submit"
+msgstr "Gönder"
+
+#: contact/templates/contact/contact.html:102
+msgid "Technical Support"
+msgstr "Teknik Destek"
+
+#: contact/templates/contact/contact.html:122
+msgid "Address"
+msgstr "Adres"
+
+#: contact/templates/contact/contact.html:146
+msgid "Landline"
+msgstr "Sabit Hat"
+
+#: contact/templates/contact/contact.html:165
+msgid "Mobile"
+msgstr "Mobil"
+
+#: homepage/templates/homepage/aboutus.html:19 theme/templates/footer.html:75
+#: theme/templates/header.html:146 theme/templates/header.html:163
+msgid "About Us"
+msgstr "Hakkımızda"
+
+#: homepage/templates/homepage/aboutus.html:21
+#: homepage/templates/homepage/aboutus.html:46
+msgid ""
+"Metatakas is an innovative solution that brings the traditional barter "
+"system into the digital age. It enables people and businesses to trade "
+"unused goods, services, or value without using cash, supporting economic and "
+"environmental sustainability."
+msgstr ""
+"Metatakas, modern dünyada geleneksel takas sistemini dijital bir platforma "
+"taşıyan yenilikçi bir çözümdür. İnsanların ve işletmelerin ellerindeki "
+"kullanılmayan ürünleri, hizmetleri veya değerleri nakit kullanmadan takas "
+"etmesine olanak tanır ve bu sayede ekonomik ve çevresel sürdürülebilirliği "
+"destekler."
+
+#: homepage/templates/homepage/aboutus.html:38
+msgid "Since 2024"
+msgstr "2024'den beri"
+
+#: homepage/templates/homepage/aboutus.html:44
+msgid "About MetaTakas"
+msgstr "MetaTakas Hakkında"
+
+#: homepage/templates/homepage/aboutus.html:74
+msgid "Why MetaTakas?"
+msgstr "Neden MetaTakas?"
+
+#: homepage/templates/homepage/aboutus.html:76
+#, fuzzy
+#| msgid ""
+#| "- Save Money: Meet your needs without cash and protect your budget.  \n"
+#| "- Eco-Friendly: Prevent waste and support sustainability by reusing "
+#| "unused items.  \n"
+#| "- Easy and Secure: Make fast transactions on a transparent and "
+#| "trustworthy platform.  \n"
+#| "- Diversity: Barter in different categories such as products, services, "
+#| "knowledge, or digital assets.  \n"
+#| "Metatakas is not just a barter platform — it's a movement that empowers "
+#| "communities and encourages more efficient use of resources as part of the "
+#| "sharing economy. Join Metatakas and step into the future of trade."
+msgid ""
+"- Save Money: Meet your needs without cash and protect your budget. - Eco-"
+"Friendly: Prevent waste and support sustainability by reusing unused items. "
+"- Easy and Secure: Make fast transactions on a transparent and trustworthy "
+"platform. - Diversity: Barter in different categories such as products, "
+"services, knowledge, or digital assets. Metatakas is not just a barter "
+"platform — it's a movement that empowers communities and encourages more "
+"efficient use of resources as part of the sharing economy. Join Metatakas "
+"and step into the future of trade."
+msgstr ""
+"- Tasarruf: Nakit kullanmadan ihtiyaçlarınızı karşılayarak bütçenizi "
+"koruyun.  \n"
+"- Çevre Dostu: Kullanılmayan ürünleri yeniden değerlendirerek israfı önleyin "
+"ve sürdürülebilirliği destekleyin.  \n"
+"- Kolay ve Güvenli: Şeffaf ve güvenilir bir platformda hızlı işlemler "
+"gerçekleştirin.  \n"
+"- Çeşitlilik: Ürün, hizmet, bilgi veya dijital varlık gibi farklı "
+"kategorilerde takas yapma imkanı.  \n"
+"Metatakas yalnızca bir takas platformu değil; aynı zamanda toplulukları "
+"güçlendiren ve kaynakları daha verimli kullanmayı teşvik eden bir paylaşım "
+"ekonomisi hareketidir. Geleceğin ticaretine Metatakas ile adım atın."
+
+#: homepage/templates/homepage/aboutus.html:85
+msgid "Our Values"
+msgstr "Değerlerimiz"
+
+#: homepage/templates/homepage/aboutus.html:87
+#, fuzzy
+#| msgid ""
+#| "Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum placeat "
+#| "odit, est eum dolorem esse totam iusto necessitatibus eligendi illo "
+#| "doloribus vero aperiam atque tempora repudiandae molestiae nemo "
+#| "distinctio quisquam!"
+msgid ""
+"\n"
+"            Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum\n"
+"            placeat odit, est eum dolorem esse totam iusto necessitatibus\n"
+"            eligendi illo doloribus vero aperiam atque tempora repudiandae\n"
+"            molestiae nemo distinctio quisquam!\n"
+"          "
+msgstr ""
+"Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum placeat odit, "
+"est eum dolorem esse totam iusto necessitatibus eligendi illo doloribus vero "
+"aperiam atque tempora repudiandae molestiae nemo distinctio quisquam!"
+
+#: homepage/templates/homepage/community_guidelines.html:4
+#: homepage/templates/homepage/community_guidelines.html:10
+#: theme/templates/footer.html:67
+msgid "Community Guidelines"
+msgstr "Topluluk Kuralları"
+
+#: homepage/templates/homepage/community_guidelines.html:12
+msgid ""
+"Please review the following rules to help maintain a safe, respectful, and "
+"supportive environment on the MetaTakas platform."
+msgstr ""
+"MetaTakas platformunda güvenli, saygılı ve destekleyici bir ortam oluşturmak "
+"için lütfen aşağıdaki kurallara dikkat ediniz."
+
+#: homepage/templates/homepage/community_guidelines.html:18
+msgid "1. Be Respectful and Kind"
+msgstr "1. Saygılı ve Nazik Olun"
+
+#: homepage/templates/homepage/community_guidelines.html:20
+msgid ""
+"Always be respectful and understanding when communicating with other users. "
+"Insults, discrimination, threats, or hate speech are not allowed."
+msgstr ""
+"Diğer kullanıcılarla iletişim kurarken her zaman saygılı ve anlayışlı olun. "
+"Hakaret, ayrımcılık, tehdit veya nefret söylemi kabul edilmez."
+
+#: homepage/templates/homepage/community_guidelines.html:26
+msgid "2. Share Accurate and Truthful Information"
+msgstr "2. Gerçek ve Doğru Bilgi Paylaşın"
+
+#: homepage/templates/homepage/community_guidelines.html:28
+msgid ""
+"Provide accurate, complete, and honest information about your product in "
+"listings. Sharing fake or stolen products is prohibited."
+msgstr ""
+"Paylaştığınız ilanlarda ürün hakkında doğru, eksiksiz ve yanıltıcı olmayan "
+"bilgiler verin. Sahte veya çalıntı ürün paylaşımı yasaktır."
+
+#: homepage/templates/homepage/community_guidelines.html:34
+msgid "3. Follow the Law"
+msgstr "3. Yasalara Uygun Hareket Edin"
+
+#: homepage/templates/homepage/community_guidelines.html:36
+msgid ""
+"All transactions must comply with the law. Listing or bartering illegal "
+"items is not allowed on the platform."
+msgstr ""
+"Tüm işlemler yasalara uygun şekilde yapılmalıdır. Yasa dışı ürünlerin ilanı "
+"veya takası platformda yasaktır."
+
+#: homepage/templates/homepage/community_guidelines.html:42
+msgid "4. No Spam or Ads"
+msgstr "4. Spam ve Reklam Yasaktır"
+
+#: homepage/templates/homepage/community_guidelines.html:44
+msgid ""
+"Unsolicited messages, duplicate content, or commercial advertising are "
+"against community rules."
+msgstr ""
+"İstenmeyen mesajlar, kopya içerikler veya ticari amaçlı reklamlar topluluk "
+"kurallarına aykırıdır."
+
+#: homepage/templates/homepage/community_guidelines.html:50
+msgid "5. Safe Trading Practices"
+msgstr "5. Güvenli Alım-Satım"
+
+#: homepage/templates/homepage/community_guidelines.html:52
+msgid ""
+"Be cautious of fraud during trades. Avoid sharing personal details beyond "
+"the information shared through the platform."
+msgstr ""
+"Takas işlemlerinde dolandırıcılığa karşı dikkatli olun. Platform "
+"aracılığıyla paylaşılan bilgiler dışında özel bilgiler vermekten kaçının."
+
+#: homepage/templates/homepage/community_guidelines.html:59
+msgid ""
+"Users who do not follow these rules may be warned, have their listings "
+"removed, or have their accounts suspended."
+msgstr ""
+"Bu kurallara uymayan kullanıcılar uyarılabilir, ilanları kaldırılabilir veya "
+"hesapları askıya alınabilir."
+
+#: homepage/templates/homepage/create_listing.html:4
+#: homepage/templates/homepage/create_listing.html:55
+msgid "Listing Creation Guide"
+msgstr "İlan Oluşturma Rehberi"
+
+#: homepage/templates/homepage/create_listing.html:67
+#: homepage/templates/homepage/howitworks.html:67
+msgid "Step 1"
+msgstr "1. Adım"
+
+#: homepage/templates/homepage/create_listing.html:69
+msgid "Contact via WhatsApp"
+msgstr "WhatsApp Üzerinden İletişime Geçin"
+
+#: homepage/templates/homepage/create_listing.html:71
+msgid ""
+"To create a listing, simply reach out to us via WhatsApp. Use the \"Contact "
+"via WhatsApp\" button on the homepage to connect easily."
+msgstr ""
+"İlan eklemek için doğrudan WhatsApp'tan bizimle iletişim kurmanız yeterli. "
+"Anasayfadaki \"WhatsApp ile İletişime Geç\" butonunu kullanarak kolayca "
+"ulaşabilirsiniz."
+
+#: homepage/templates/homepage/create_listing.html:82
+#: homepage/templates/homepage/howitworks.html:80
+msgid "Step 2"
+msgstr "2. Adım"
+
+#: homepage/templates/homepage/create_listing.html:84
+msgid "Send Us Product Info"
+msgstr "Ürün Bilgilerini Bize Gönderin"
+
+#: homepage/templates/homepage/create_listing.html:86
+msgid ""
+"Share the product name, description, price (if any), desired barter "
+"categories, city/district, and clear photos."
+msgstr ""
+"Ürününüzün adı, açıklaması, fiyat bilgisi (varsa), takas edilmek istenen "
+"ürün kategorileri, şehir/ilçe ve net fotoğrafları iletmeniz yeterlidir."
+
+#: homepage/templates/homepage/create_listing.html:97
+#: homepage/templates/homepage/howitworks.html:93
+msgid "Step 3"
+msgstr "3. Adım"
+
+#: homepage/templates/homepage/create_listing.html:99
+msgid "Your Listing Goes Live"
+msgstr "İlanınız Yayınlanıyor"
+
+#: homepage/templates/homepage/create_listing.html:101
+msgid ""
+"Once we receive your info, we review it and publish the listing on "
+"MetaTakas. Visitors can now view your product!"
+msgstr ""
+"Bilgileri aldıktan sonra ilanınız kontrol edilip MetaTakas’ta yayınlanır. "
+"Artık ziyaretçiler ürününüzü görebilir!"
+
+#: homepage/templates/homepage/create_listing.html:112
+#: homepage/templates/homepage/howitworks.html:106
+msgid "Step 4"
+msgstr "4. Adım"
+
+#: homepage/templates/homepage/create_listing.html:114
+#: homepage/templates/homepage/howitworks.html:108
+msgid "Barter or Sale Process"
+msgstr "Takas veya Satış Süreci"
+
+#: homepage/templates/homepage/create_listing.html:116
+msgid ""
+"Interested users contact us. We connect you with the buyer and ensure a "
+"smooth transaction."
+msgstr ""
+"Ürününüzle ilgilenen kişiler bize ulaşır. Biz de alıcı ile sizi buluşturur "
+"ve işlemin sorunsuz ilerlemesini sağlarız."
+
+#: homepage/templates/homepage/exchange_rules.html:4
+msgid "Exchange Rules"
+msgstr "Takas Kuralları"
+
+#: homepage/templates/homepage/exchange_rules.html:13
+msgid "Rules"
+msgstr "Kurallar"
+
+#: homepage/templates/homepage/exchange_rules.html:14
+msgid "Exchange System Rules"
+msgstr "Takas Sistemi Kuralları"
+
+#: homepage/templates/homepage/exchange_rules.html:29
+msgid "Accurate Information"
+msgstr "Doğru Bilgi"
+
+#: homepage/templates/homepage/exchange_rules.html:32
+msgid ""
+"Product details must be complete, accurate, and up-to-date. Listings with "
+"misleading information will be rejected."
+msgstr ""
+"Ürün bilgileri eksiksiz, doğru ve güncel olmalıdır. Yanıltıcı bilgilerle "
+"oluşturulan ilanlar reddedilir."
+
+#: homepage/templates/homepage/exchange_rules.html:46
+msgid "Prohibited Content"
+msgstr "Yasaklı İçerikler"
+
+#: homepage/templates/homepage/exchange_rules.html:49
+msgid ""
+"Listings that include illegal, counterfeit, violent, or inappropriate items "
+"are prohibited."
+msgstr ""
+"Yasa dışı, sahte, şiddet içerikli ya da uygunsuz ürünlerin ilanı yasaktır."
+
+#: homepage/templates/homepage/exchange_rules.html:63
+msgid "Barter Expectation"
+msgstr "Takas Beklentisi"
+
+#: homepage/templates/homepage/exchange_rules.html:66
+msgid "Barter listings must clearly state which items are desired in exchange."
+msgstr ""
+"Takas ilanlarında, hangi ürünlerle takas yapılmak istendiği açıkça "
+"belirtilmelidir."
+
+#: homepage/templates/homepage/exchange_rules.html:80
+msgid "Listing Approval"
+msgstr "İlan Onayı"
+
+#: homepage/templates/homepage/exchange_rules.html:83
+msgid ""
+"All listings are reviewed by the MetaTakas team. If not suitable, they will "
+"not be published."
+msgstr ""
+"Tüm ilanlar önce MetaTakas ekibi tarafından incelenir. Uygun bulunmazsa "
+"yayınlanmaz."
+
+#: homepage/templates/homepage/exchange_rules.html:97
+msgid "Barter Responsibility"
+msgstr "Takas Sorumluluğu"
+
+#: homepage/templates/homepage/exchange_rules.html:100
+msgid ""
+"MetaTakas is only a facilitator. Responsibility for the transaction lies "
+"with the parties involved."
+msgstr ""
+"MetaTakas yalnızca aracıdır. Takas işlemleri tarafların sorumluluğundadır."
+
+#: homepage/templates/homepage/exchange_rules.html:114
+msgid "Photos and Location"
+msgstr "Fotoğraf ve Konum"
+
+#: homepage/templates/homepage/exchange_rules.html:117
+msgid ""
+"Product images must be clear, and the location (city & district) must be "
+"accurate."
+msgstr "Ürün görselleri net olmalı ve konum (şehir & ilçe) doğru girilmelidir."
+
+#: homepage/templates/homepage/help_center.html:4
+#: homepage/templates/homepage/help_center.html:10
+#: theme/templates/footer.html:56
+msgid "Help Center"
+msgstr "Yardım Merkezi"
+
+#: homepage/templates/homepage/help_center.html:15
+msgid "What is MetaTakas and how does it work?"
+msgstr "MetaTakas nedir ve nasıl çalışır?"
+
+#: homepage/templates/homepage/help_center.html:20
+msgid ""
+"MetaTakas is a platform where you can submit your listings via WhatsApp to "
+"sell or barter your products."
+msgstr ""
+"MetaTakas, ürünlerinizi satmak ya da takas etmek için ilanlarınızı WhatsApp "
+"üzerinden bize ulaştırarak yayınlayabileceğiniz bir platformdur."
+
+#: homepage/templates/homepage/help_center.html:25
+msgid "How can I create a listing?"
+msgstr "İlanımı nasıl oluşturabilirim?"
+
+#: homepage/templates/homepage/help_center.html:30
+msgid ""
+"Click the WhatsApp button on the homepage and send us your product info. "
+"We'll create the listing for you."
+msgstr ""
+"Ana sayfadaki WhatsApp ile iletişim butonuna tıklayarak ürün bilgilerinizi "
+"bize iletin, biz sizin adınıza ilanı oluşturalım."
+
+#: homepage/templates/homepage/help_center.html:35
+msgid "What items can I barter?"
+msgstr "Hangi ürünleri takas edebilirim?"
+
+#: homepage/templates/homepage/help_center.html:40
+msgid ""
+"You can barter cars, real estate, electronics, furniture, and many other "
+"categories."
+msgstr ""
+"Araçlar, emlak, elektronik, mobilya ve daha fazlası gibi birçok ürün "
+"kategorisinde takas yapabilirsiniz."
+
+#: homepage/templates/homepage/help_center.html:45
+msgid "How should I determine my product's value?"
+msgstr "Ürünümün değerini nasıl belirlemeliyim?"
+
+#: homepage/templates/homepage/help_center.html:50
+msgid ""
+"Check similar listings, consider condition and demand, and optionally ask us "
+"for advice."
+msgstr ""
+"Benzer ilanlara göz atarak, ürün durumu ve piyasadaki talebe göre değer "
+"belirleyebilirsiniz. Gerekirse bizden öneri alabilirsiniz."
+
+#: homepage/templates/homepage/help_center.html:55
+msgid "Is the MetaTakas listing process safe?"
+msgstr "MetaTakas ilan süreci güvenli mi?"
+
+#: homepage/templates/homepage/help_center.html:60
+msgid ""
+"Listings are moderated by MetaTakas. Transactions occur via WhatsApp — "
+"always stay cautious of fraud."
+msgstr ""
+"İlanlar MetaTakas moderasyonu ile paylaşılır. Tüm alım/satım işlemleriniz "
+"WhatsApp üzerinden yürütülür, dolandırıcılık riskine karşı dikkatli olunuz."
+
+#: homepage/templates/homepage/help_center.html:65
+msgid "Is WhatsApp communication safe?"
+msgstr "WhatsApp üzerinden iletişime geçmek güvenli mi?"
+
+#: homepage/templates/homepage/help_center.html:70
+msgid ""
+"Yes, communication is handled only through our official WhatsApp number, and "
+"your data is kept confidential."
+msgstr ""
+"Evet, iletişim yalnızca resmi WhatsApp hattımız üzerinden sağlanır ve "
+"paylaştığınız bilgiler gizli tutulur."
+
+#: homepage/templates/homepage/homepage.html:23
+msgid "Sell or Barter Your Product"
+msgstr "Ürününü Sat veya Takas Et"
+
+#: homepage/templates/homepage/homepage.html:26
+msgid "Create your listing now, meet with buyers or barter partners."
+msgstr "İlanını hemen oluştur, alıcılarla veya takas yapacaklarla buluş."
+
+#: homepage/templates/homepage/homepage.html:31
+msgid "Get Started"
+msgstr "Hemen Başla"
+
+#: homepage/templates/homepage/homepage.html:66
+msgid "Secure Barter & Sale Support"
+msgstr "Güvenli Takas & Satış Desteği"
+
+#: homepage/templates/homepage/homepage.html:68
+msgid "We support you in your buying, selling, and barter transactions."
+msgstr "Ürün alım-satım ve takas işlemlerinizde yanınızdayız"
+
+#: homepage/templates/homepage/homepage.html:96
+msgid "Verified Listings"
+msgstr "Doğrulanmış İlanlar"
+
+#: homepage/templates/homepage/homepage.html:98
+msgid "Each listing is reviewed for category and intent before publishing."
+msgstr "Her ilan kategorisi ve amacı kontrol edilerek yayınlanır"
+
+#: homepage/templates/homepage/homepage.html:126
+msgid "24/7 Support"
+msgstr "7/24 Destek"
+
+#: homepage/templates/homepage/homepage.html:128
+msgid "You can contact us anytime, from anywhere."
+msgstr "Her zaman, her yerden bizimle iletişim kurabilirsiniz"
+
+#: homepage/templates/homepage/homepage.html:136
+#, fuzzy
+#| msgid "CATEGORIES"
+msgid "EXPLORE CATEGORIES"
+msgstr "KATEGORİLER"
+
+#: homepage/templates/homepage/homepage.html:155
+msgid "BOATS"
+msgstr "GEMİLER"
+
+#: homepage/templates/homepage/homepage.html:173
+msgid "VEHICLES"
+msgstr "ARAÇLAR"
+
+#: homepage/templates/homepage/homepage.html:191
+msgid "REAL ESTATE"
+msgstr "EMLAK"
+
+#: homepage/templates/homepage/homepage.html:209
+msgid "ELECTRONICS"
+msgstr "ELEKTRONİK"
+
+#: homepage/templates/homepage/homepage.html:227
+msgid "HOME GOODS"
+msgstr "EV EŞYALARI"
+
+#: homepage/templates/homepage/homepage.html:245
+msgid "ACCESSORIES"
+msgstr "AKSESUAR"
+
+#: homepage/templates/homepage/homepage.html:268
+msgid "POST YOUR LISTING NOW"
+msgstr "HEMEN İLAN VERİN"
+
+#: homepage/templates/homepage/homepage.html:269
+msgid "SELL AND BARTER"
+msgstr "SAT VE TAKAS"
+
+#: homepage/templates/homepage/homepage.html:271
+msgid "ÜRÜNÜNÜZÜ SATMAK <br /> VEYA TAKAS ETMEK İSTEYENLERLE BULUŞUN"
+msgstr ""
+
+#: homepage/templates/homepage/homepage.html:279
+msgid "Post Ad"
+msgstr "İlan ver"
+
+#: homepage/templates/homepage/homepage.html:293
+msgid "NEW ARRIVALS"
+msgstr "YENİLER"
+
+
+#: homepage/templates/homepage/homepage.html:329
+#: products/templates/products/product_detail.html:474
+#: products/templates/products/product_list.html:445
+msgid "Exchange"
+msgstr "Takas"
+
+#: homepage/templates/homepage/homepage.html:340
+#: products/templates/products/product_detail.html:486
+#: products/templates/products/product_list.html:462
+msgid "Exchangeable for:"
+msgstr "Takas edilebilir:"
+
+#: homepage/templates/homepage/homepage.html:350
+#: products/templates/products/product_detail.html:496
+#: products/templates/products/product_list.html:474
+#: products/templates/products/product_list.html:477
+msgid "Not specified"
+msgstr "Belirtilmemiş"
+
+
+msgid "View Details"
+msgstr "Detayları Görüntüle"
+
+#: homepage/templates/homepage/howitworks.html:4
+msgid "How it works"
+msgstr "Nasıl çalışır"
+
+#: homepage/templates/homepage/howitworks.html:56
+msgid "How MetaTakas Works"
+msgstr "MetaTakas Nasıl Çalışır?"
+
+#: homepage/templates/homepage/howitworks.html:69
+msgid "Contact Us via WhatsApp"
+msgstr "WhatsApp Üzerinden Bize Ulaşın"
+
+#: homepage/templates/homepage/howitworks.html:71
+msgid ""
+"If you want to sell or barter your product, contact us via WhatsApp. You can "
+"quickly reach us using the 'Contact via WhatsApp' button on the page."
+msgstr ""
+"Ürününüzü satmak ya da takas etmek istiyorsanız, WhatsApp üzerinden bizimle "
+"iletişime geçin. Sayfada bulunan 'WhatsApp ile İletişime Geç' butonunu "
+"kullanarak hızlıca ulaşabilirsiniz."
+
+#: homepage/templates/homepage/howitworks.html:82
+msgid "Share Product Information"
+msgstr "Ürün Bilgilerini Paylaşın"
+
+#: homepage/templates/homepage/howitworks.html:84
+msgid ""
+"Share the product name, description, price (if any), desired barter "
+"categories, location (city/district), and clear images with us."
+msgstr ""
+"Ürün adı, açıklaması, fiyat bilgisi (varsa), takas etmek istediğiniz ürün "
+"kategorileri, konum bilgisi (şehir/ilçe) ve net görselleri bizimle paylaşın."
+
+#: homepage/templates/homepage/howitworks.html:95
+msgid "Product is Published"
+msgstr "Ürün Yayına Alınıyor"
+
+#: homepage/templates/homepage/howitworks.html:97
+msgid ""
+"Once we receive your info, we list the product on MetaTakas on your behalf. "
+"Visitors can view your item and submit offers."
+msgstr ""
+"Bilgilerinizi aldıktan sonra ürünü MetaTakas platformunda sizin adınıza "
+"listeliyoruz. Ziyaretçiler ürününüzü görebilir ve teklif verebilir."
+
+#: homepage/templates/homepage/howitworks.html:110
+msgid ""
+"Interested users contact us via WhatsApp. We connect them with you and "
+"securely manage the process."
+msgstr ""
+"Ürünle ilgilenen kullanıcılar yine WhatsApp üzerinden bize ulaşır. İlgili "
+"alıcıyı sizinle buluştururuz ve süreci güvenli bir şekilde yönetiriz."
+
+#: homepage/templates/homepage/mission.html:4
+#: homepage/templates/homepage/mission.html:8 theme/templates/footer.html:76
+msgid "Our Mission"
+msgstr "Misyonumuz"
+
+#: homepage/templates/homepage/mission.html:22
+msgid "Building Connections"
+msgstr "Bağlantılar Kurmak"
+
+#: homepage/templates/homepage/mission.html:23
+msgid ""
+"We aim to build a reliable bridge by connecting our users with the best "
+"barter and sale opportunities."
+msgstr ""
+"Kullanıcılarımızı en uygun takas ve satış fırsatlarıyla buluşturarak "
+"güvenilir bir köprü kurmayı hedefliyoruz."
+
+#: homepage/templates/homepage/mission.html:33
+msgid "Providing a Secure Platform"
+msgstr "Güvenli Platform Sunmak"
+
+#: homepage/templates/homepage/mission.html:34
+msgid ""
+"We've created a modern digital platform where you can safely publish "
+"listings and evaluate products."
+msgstr ""
+"İlanlarınızı güvenle yayınlayabileceğiniz ve ürünlerinizi "
+"değerlendirebileceğiniz modern bir dijital platform oluşturduk."
+
+#: homepage/templates/homepage/mission.html:43
+msgid "Flexibility in Trading"
+msgstr "Ticarette Esneklik"
+
+#: homepage/templates/homepage/mission.html:44
+msgid ""
+"Whether it’s a sale or a trade, we offer flexible options tailored to user "
+"needs to make transactions easier."
+msgstr ""
+"İster satış ister takas; kullanıcılarımızın ihtiyaçlarına uygun "
+"alternatifler sunarak alışverişi daha esnek hale getiriyoruz."
+
+#: homepage/templates/homepage/privacy_policy.html:4
+#: homepage/templates/homepage/privacy_policy.html:13
+msgid "Privacy & Cookie Policy"
+msgstr "Gizlilik ve Çerez Politikası"
+
+#: homepage/templates/homepage/privacy_policy.html:19
+msgid ""
+"<span class='font-semibold text-blue-bg-blue-600'>MetaTakas</span> values "
+"your privacy. This document explains how we collect, use, and protect user "
+"data."
+msgstr ""
+"<span class='font-semibold text-blue-bg-blue-600'>MetaTakas</span> olarak "
+"gizliliğiniz bizim için önemlidir. Bu belge, kullanıcı bilgilerinin nasıl "
+"toplandığını, kullanıldığını ve korunduğunu açıklar."
+
+#: homepage/templates/homepage/privacy_policy.html:21
+msgid "By using our services, you agree to this policy."
+msgstr "Hizmetlerimizi kullanarak bu politikayı kabul etmiş sayılırsınız."
+
+#: homepage/templates/homepage/privacy_policy.html:31
+msgid "Information Collected"
+msgstr "Toplanan Bilgiler"
+
+#: homepage/templates/homepage/privacy_policy.html:36
+msgid ""
+"<strong>Contact Information:</strong> Name, phone number, email address."
+msgstr ""
+"<strong>İletişim Bilgileri:</strong> Ad, telefon numarası, e-posta adresi."
+
+#: homepage/templates/homepage/privacy_policy.html:39
+msgid "<strong>Listing Content:</strong> Product descriptions, photos, videos."
+msgstr ""
+"<strong>İlan İçeriği:</strong> Ürün açıklamaları, fotoğraflar, videolar."
+
+#: homepage/templates/homepage/privacy_policy.html:42
+msgid ""
+"<strong>Technical Data:</strong> IP address, device and browser information."
+msgstr ""
+"<strong>Teknik Veriler:</strong> IP adresi, cihaz ve tarayıcı bilgileri."
+
+#: homepage/templates/homepage/privacy_policy.html:52
+msgid "Purpose of Data Use"
+msgstr "Bilgilerin Kullanım Amaçları"
+
+#: homepage/templates/homepage/privacy_policy.html:55
+msgid ""
+"Collected data is used to publish listings, improve user experience, ensure "
+"security, and fulfill legal obligations."
+msgstr ""
+"Toplanan bilgiler ilan yayınlama, kullanıcı deneyimini geliştirme, güvenliği "
+"sağlama ve yasal yükümlülükleri yerine getirme amacıyla kullanılmaktadır."
+
+#: homepage/templates/homepage/privacy_policy.html:63
+msgid "Data Sharing"
+msgstr "Veri Paylaşımı"
+
+#: homepage/templates/homepage/privacy_policy.html:66
+msgid "Your data is shared with third parties only in the following cases:"
+msgstr ""
+"Verileriniz üçüncü taraflarla yalnızca aşağıdaki durumlarda paylaşılır:"
+
+#: homepage/templates/homepage/privacy_policy.html:69
+msgid "With hosting or technical support providers."
+msgstr "Teknik destek veya barındırma hizmeti sağlayıcılarıyla."
+
+#: homepage/templates/homepage/privacy_policy.html:70
+msgid "When legally required by authorities."
+msgstr "Yasal merciler tarafından zorunlu kılındığında."
+
+#: homepage/templates/homepage/privacy_policy.html:78
+msgid "Cookie Usage"
+msgstr "Çerez Kullanımı"
+
+#: homepage/templates/homepage/privacy_policy.html:81
+msgid ""
+"Our site uses cookies to enhance your experience. You may disable them via "
+"your browser settings."
+msgstr ""
+"Sitemiz, kullanıcı deneyimini geliştirmek için çerezler (cookies) "
+"kullanmaktadır. Tarayıcı ayarlarınızdan çerez kullanımını "
+"engelleyebilirsiniz."
+
+#: homepage/templates/homepage/privacy_policy.html:89
+msgid "Account and Data Deletion"
+msgstr "Hesap ve Veri Silme"
+
+#: homepage/templates/homepage/privacy_policy.html:92
+msgid "If you wish to delete your account:"
+msgstr "Hesabınızı silmek isterseniz:"
+
+#: homepage/templates/homepage/privacy_policy.html:95
+msgid "Contact us via the contact section."
+msgstr "İletişim bölümünden bize ulaşabilirsiniz."
+
+#: homepage/templates/homepage/privacy_policy.html:96
+msgid "Your request will be reviewed and processed."
+msgstr "Talebiniz değerlendirilerek sistemden kaldırma işlemi yapılır."
+
+#: homepage/templates/homepage/privacy_policy.html:104
+#: theme/templates/footer.html:57 theme/templates/header.html:147
+#: theme/templates/header.html:166
+msgid "Contact"
+msgstr "İletişim"
+
+#: homepage/templates/homepage/privacy_policy.html:107
+msgid "Email:"
+msgstr "E-posta:"
+
+#: homepage/templates/homepage/privacy_policy.html:108
+msgid "Address:"
+msgstr "Adres:"
+
+#: homepage/templates/homepage/terms_of_use.html:4
+#: homepage/templates/homepage/terms_of_use.html:10
+msgid "MetaTakas Terms of Use"
+msgstr "MetaTakas Kullanım Şartları"
+
+#: homepage/templates/homepage/terms_of_use.html:13
+msgid "1. Acceptance of Terms"
+msgstr "1. Şartların Kabulü"
+
+#: homepage/templates/homepage/terms_of_use.html:15
+msgid ""
+"By accessing or using the MetaTakas platform, you agree to these terms of "
+"use and our privacy policy. If you do not agree, please do not use the "
+"service."
+msgstr ""
+"MetaTakas platformuna erişerek veya kullanarak, bu kullanım şartlarını ve "
+"gizlilik politikamızı kabul etmiş sayılırsınız. Şartları kabul etmiyorsanız, "
+"lütfen hizmeti kullanmayınız."
+
+#: homepage/templates/homepage/terms_of_use.html:20
+msgid "2. Usage License"
+msgstr "2. Kullanım Lisansı"
+
+#: homepage/templates/homepage/terms_of_use.html:27
+msgid ""
+"Shared listing content is for personal use only. It may not be copied or "
+"used for commercial purposes."
+msgstr ""
+"Paylaşılan ilan içerikleri yalnızca kişisel kullanım içindir. İçerikler "
+"kopyalanamaz veya ticari amaçla kullanılamaz."
+
+#: homepage/templates/homepage/terms_of_use.html:33
+msgid ""
+"MetaTakas does not claim ownership or guarantee the accuracy of the content."
+msgstr ""
+"MetaTakas, içeriklerin doğruluğuna dair herhangi bir mülkiyet iddiasında "
+"bulunmaz."
+
+#: homepage/templates/homepage/terms_of_use.html:40
+msgid "3. Disclaimer of Liability"
+msgstr "3. Sorumluluk Reddi"
+
+#: homepage/templates/homepage/terms_of_use.html:49
+msgid ""
+"MetaTakas does not guarantee the content, accuracy, or security of user-"
+"submitted listings. Responsibility lies with the user who created the "
+"listing."
+msgstr ""
+"MetaTakas, kullanıcıların sunduğu ilanların içeriği, doğruluğu ve güvenliği "
+"konusunda herhangi bir garanti vermez. Ürünle ilgili tüm sorumluluk ilan "
+"veren kullanıcıya aittir."
+
+#: homepage/templates/homepage/terms_of_use.html:56
+msgid "4. Restrictions"
+msgstr "4. Kısıtlamalar"
+
+#: homepage/templates/homepage/terms_of_use.html:59
+msgid "Time Limits"
+msgstr "Süre Sınırlamaları"
+
+#: homepage/templates/homepage/terms_of_use.html:60
+msgid "Reports of violations must be submitted within 30 days."
+msgstr "İhlallerle ilgili bildirimler 30 gün içinde yapılmalıdır."
+
+#: homepage/templates/homepage/terms_of_use.html:63
+msgid "Liability"
+msgstr "Sorumluluk"
+
+#: homepage/templates/homepage/terms_of_use.html:64
+msgid ""
+"MetaTakas is not responsible for any losses resulting from transactions "
+"between users."
+msgstr ""
+"MetaTakas, kullanıcılar arasında gerçekleşen alışveriş ve takaslardan "
+"doğabilecek zararlardan sorumlu tutulamaz."
+
+#: homepage/templates/homepage/terms_of_use.html:70
+msgid "5. Updates"
+msgstr "5. Güncellemeler"
+
+#: homepage/templates/homepage/terms_of_use.html:72
+msgid ""
+"MetaTakas reserves the right to update these terms. Updates become effective "
+"once published on the site."
+msgstr ""
+"MetaTakas, bu kullanım şartlarını zaman zaman güncelleme hakkını saklı "
+"tutar. Güncellenmiş sürümler sitede yayınlandığı anda geçerlilik kazanır."
+
+#: homepage/templates/homepage/terms_of_use.html:77
+msgid "6. Contact"
+msgstr "6. İletişim"
+
+#: homepage/templates/homepage/terms_of_use.html:79
+msgid "If you have questions about the terms, feel free to contact us."
+msgstr "Kullanım şartlarıyla ilgili sorularınız için bizimle iletişime geçin."
+
+#: homepage/templates/homepage/valuation.html:4
+msgid "Valuation Tips"
+msgstr "Değerleme İpuçları"
+
+#: homepage/templates/homepage/valuation.html:21
+msgid "Product Valuation Tips"
+msgstr "Ürün Değerleme İpuçları"
+
+#: homepage/templates/homepage/valuation.html:24
+msgid ""
+"Evaluate your listing accurately to create faster sale or barter "
+"opportunities."
+msgstr ""
+"İlanınızı doğru değerlendirin, hızlı takas veya satış fırsatları yaratın."
+
+#: homepage/templates/homepage/valuation.html:38
+msgid "Do Market Research"
+msgstr "Piyasa Araştırması Yapın"
+
+#: homepage/templates/homepage/valuation.html:40
+msgid ""
+"Check second-hand prices of similar items to determine a realistic value."
+msgstr ""
+"Benzer ürünlerin ikinci el fiyatlarını kontrol ederek gerçekçi bir fiyat "
+"belirleyin."
+
+#: homepage/templates/homepage/valuation.html:48
+msgid "Product Condition"
+msgstr "Ürün Durumu"
+
+#: homepage/templates/homepage/valuation.html:50
+msgid ""
+"Whether the item is functional, undamaged, and gently used affects its price."
+msgstr ""
+"Ürünün çalışır durumda olması, hasarsız olması ve kullanım izleri fiyatı "
+"etkiler."
+
+#: homepage/templates/homepage/valuation.html:60
+msgid "Model and Year"
+msgstr "Model ve Yıl"
+
+#: homepage/templates/homepage/valuation.html:62
+msgid ""
+"The item's year, model, and technical details are crucial in determining its "
+"market value."
+msgstr ""
+"Ürünün yılı, modeli ve teknik detayları, piyasa değerinin belirlenmesinde "
+"çok önemlidir."
+
+#: homepage/templates/homepage/valuation.html:70
+msgid "Barter Balance"
+msgstr "Takas Dengesi"
+
+#: homepage/templates/homepage/valuation.html:72
+msgid ""
+"Consider value alignment with barter items. Balanced value makes bartering "
+"easier."
+msgstr ""
+"Takas yapılacak ürünlerle değer uyumunu göz önünde bulundurun. Denk değerli "
+"ürünler takasta daha kolay anlaşılır."
+
+#: meta_core/settings.py:115
+msgid "English"
+msgstr "İngilizce"
+
+#: meta_core/settings.py:116
+msgid "Turkish"
+msgstr "Türkçe"
+
+
+
+#: products/templates/products/product_detail.html:50
+#: theme/templates/header.html:145 theme/templates/header.html:160
+msgid "Listings"
+msgstr "İlanlar"
+
+#: products/templates/products/product_detail.html:207
+msgid "Status"
+msgstr "Durum"
+
+
+msgid "Sale"
+msgstr "Satılık"
+
+
+#: products/templates/products/product_detail.html:218
+msgid "Announcement Date"
+msgstr "İlan Tarihi"
+
+#: products/templates/products/product_detail.html:224
+msgid "Category"
+msgstr "Kategori"
+
+#: products/templates/products/product_detail.html:231
+msgid "Province / District"
+msgstr "İl / İlçe"
+
+#: products/templates/products/product_detail.html:299
+msgid "Contact via Whatsapp"
+msgstr "WhatsApp ile iletişime geçin"
+
+#: products/templates/products/product_detail.html:313
+msgid "Description"
+msgstr "Açıklama"
+
+#: products/templates/products/product_detail.html:361
+msgid "Listing Exchange Options"
+msgstr "İlana Ait Takas Seçenekleri"
+
+#: products/templates/products/product_detail.html:362
+msgid "Exchange options for this ad are available below."
+msgstr "Bu ilanın takas seçenekleri aşağıda mevcuttur."
+
+#: products/templates/products/product_detail.html:391
+msgid "Budget"
+msgstr "Bütçe"
+
+#: products/templates/products/product_detail.html:438
+msgid "Recommended Products"
+msgstr "Önerilen Ürünler"
+
+#: products/templates/products/product_list.html:8
+msgid "Product list"
+msgstr "Ürün listesi"
+
+#: products/templates/products/product_list.html:49
+msgid "Catalog"
+msgstr "Katalog"
+
+#: products/templates/products/product_list.html:75
+#: products/templates/products/product_list.html:194
+msgid "Apply"
+msgstr "Uygula"
+
+#: products/templates/products/product_list.html:81
+#: products/templates/products/product_list.html:401
+msgid "Newest"
+msgstr "En Yeniler"
+
+#: products/templates/products/product_list.html:82
+#: products/templates/products/product_list.html:402
+msgid "Oldest"
+msgstr "En Eskiler"
+
+#: products/templates/products/product_list.html:83
+#: products/templates/products/product_list.html:403
+msgid "Price: High to Low"
+msgstr "Fiyat: Yüksekten Düşüğe"
+
+#: products/templates/products/product_list.html:84
+#: products/templates/products/product_list.html:404
+msgid "Price: Low to High"
+msgstr "Fiyat: Düşükten Yükseğe"
+
+#: products/templates/products/product_list.html:107
+#: products/templates/products/product_list.html:263
+msgid "Listing Type"
+msgstr "İlan Türü"
+
+#: products/templates/products/product_list.html:123
+#: products/templates/products/product_list.html:213
+msgid "Categories"
+msgstr "Kategoriler"
+
+#: products/templates/products/product_list.html:139
+msgid "Exchange Requested Categories"
+msgstr "Takas İstenen Kategoriler"
+
+#: products/templates/products/product_list.html:156
+msgid "Location"
+msgstr "Konum"
+
+#: products/templates/products/product_list.html:161
+#: products/templates/products/product_list.html:233
+msgid "Province"
+msgstr "İl"
+
+#: products/templates/products/product_list.html:163
+#: products/templates/products/product_list.html:235
+msgid "All Provinces"
+msgstr "Tüm İller"
+
+#: products/templates/products/product_list.html:171
+#: products/templates/products/product_list.html:244
+msgid "District"
+msgstr "İlçe"
+
+#: products/templates/products/product_list.html:173
+msgid "Please select province first"
+msgstr "Lütfen önce il seçin"
+
+#: products/templates/products/product_list.html:183
+msgid "Price Range"
+msgstr "Fiyat Aralığı"
+
+#: products/templates/products/product_list.html:187
+#: products/templates/products/product_list.html:226
+#: products/templates/products/product_list.html:316
+msgid "Min"
+msgstr "Min"
+
+#: products/templates/products/product_list.html:188
+#: products/templates/products/product_list.html:227
+#: products/templates/products/product_list.html:318
+msgid "Max"
+msgstr "Max"
+
+#: products/templates/products/product_list.html:224
+msgid "Price"
+msgstr "Fiyat"
+
+#: products/templates/products/product_list.html:252
+msgid "Exchange Requested"
+msgstr "Takas İstenen"
+
+#: products/templates/products/product_list.html:274
+msgid "Filter"
+msgstr "Filtrele"
+
+#: products/templates/products/product_list.html:292
+msgid "CATEGORIES"
+msgstr "KATEGORİLER"
+
+#: products/templates/products/product_list.html:314
+msgid "PRICE"
+msgstr "FİYAT"
+
+#: products/templates/products/product_list.html:324
+msgid "PROVINCE"
+msgstr "İL"
+
+#: products/templates/products/product_list.html:326
+msgid "All provinces"
+msgstr "Tüm İller"
+
+#: products/templates/products/product_list.html:335
+msgid "DISTRICT"
+msgstr "İLÇE"
+
+#: products/templates/products/product_list.html:337
+msgid "Please select the province first"
+msgstr "Lütfen önce il seçin"
+
+#: products/templates/products/product_list.html:343
+msgid "EXCHANGE REQUESTED"
+msgstr "TAKAS İSTENEN"
+
+#: products/templates/products/product_list.html:362
+msgid "LISTING TYPE"
+msgstr "İLAN TÜRÜ"
+
+#: products/templates/products/product_list.html:382
+msgid "Apply Filters"
+msgstr "Filtreleri Uygula"
+
+#: products/templates/products/product_list.html:399
+msgid "Sort:"
+msgstr "Sırala:"
+
+#: products/templates/products/product_list.html:495
+msgid "No products available."
+msgstr "Ürün bulunamadı."
+
+#: products/templates/products/product_list.html:604
+msgid "All Districts"
+msgstr "Tüm İlçeler"
+
+#: products/templates/products/product_list.html:617
+msgid "Please select a city first"
+msgstr "Lütfen önce bir şehir seçin"
+
+#: theme/templates/footer.html:43
+msgid "ABOUT TAKAS"
+msgstr "TAKAS HAKKINDA"
+
+#: theme/templates/footer.html:45
+msgid "How the Barter System Work?"
+msgstr "Takas Sistemi Nasıl Çalışır?"
+
+#: theme/templates/footer.html:46
+msgid "Ad Creation Guide"
+msgstr "İlan Oluşturma Rehberi"
+
+#: theme/templates/footer.html:47
+msgid "Barter Rules"
+msgstr "Takas Kuralları"
+
+#: theme/templates/footer.html:48
+msgid "Product Evaluation Tips"
+msgstr "Ürün Değerlendirme İpuçları"
+
+
+#: theme/templates/footer.html:63
+msgid "LEGAL"
+msgstr "YASAL"
+
+#: theme/templates/footer.html:65
+msgid "Terms of Use"
+msgstr "Kullanım Şartları"
+
+#: theme/templates/footer.html:66
+msgid "Privacy Policy"
+msgstr "Gizlilik Politikası"
+
+#: theme/templates/footer.html:73
+msgid "ABOUT US"
+msgstr "BİZİ TANIYIN"
+
+#: theme/templates/header.html:48 theme/templates/header.html:117
+msgid "Search listings..."
+msgstr "İlanları ara..."
+
+#: theme/templates/header.html:51 theme/templates/header.html:121
+msgid "Search"
+msgstr "Ara"
+
+#: theme/templates/header.html:144 theme/templates/header.html:157
+msgid "Home"
+msgstr "Ana Sayfa"
+
+#: theme/templates/header.html:172
+msgid "Welcome"
+msgstr "Hoş geldiniz"
+
+msgid "Will give extra cash"
+msgstr "Üste para verilir"
+
+msgid "Will receive extra cash"
+msgstr "Üste para alınır"
+
+msgid "Cannot give extra cash"
+msgstr "Üste para veremem"
+
+msgid "50% cash can be requested"
+msgstr "%50 nakit talep edilebilir"
+
+msgid "50% barter can be requested"
+msgstr "%50 takas talep edilebilir"
+
+msgid "Full barter accepted"
+msgstr "Tamamı takas olur"
+
+msgid "Full cash accepted"
+msgstr "Tamamı nakit olur"
+
+#~ msgid "All rights reserved."
+#~ msgstr "Tüm hakları saklıdır."
+
+#~ msgid "Made by Arian Hadi & Selçuk"
+#~ msgstr "Arian Hadi & Selçuk tarafından yapılmıştır"
+
+#~ msgid "Turkey Flag"
+#~ msgstr "Türkiye Bayrağı"
+
+#~ msgid "company logo"
+#~ msgstr "şirket logosu"
+
+#~ msgid "Explore Categories"
+#~ msgstr "KATEGORİLERİ KEŞFET"
+
+#~ msgid "MEET PEOPLE WHO WANT TO SELL OR BARTER PRODUCTS"
+#~ msgstr "ÜRÜNÜNÜZÜ SATMAK VEYA TAKAS ETMEK İSTEYENLERLE BULUŞUN"
+
+#~ msgid "I accept"
+#~ msgstr "Kabul ediyorum"
+
+#~ msgid "Partnership"
+#~ msgstr "Ortaklık"
+
+#~ msgid "Feedback / Suggestion"
+#~ msgstr "Geri Bildirim / Öneri"
+
+
+msgid "Exchangeable with %(category)s"
+msgstr "%(category)s ile takaslı"

@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Gizlilik ve Çerez Politikası{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Privacy & Cookie Policy" %}{% endblock %}
+
 
 {% block content %}
 <div class="bg-gradient-to-r from-gray-50 to-gray-100 min-h-screen py-12">
@@ -8,16 +10,17 @@
     <div class="p-8">
       <!-- Header -->
       <h1 class="text-4xl font-extrabold text-gray-800 text-center mb-10">
-        <span class="text-blue-bg-blue-600">Gizlilik ve Çerez Politikası</span>
+        <span class="text-blue-bg-blue-600">{% trans "Privacy & Cookie Policy" %}</span>
       </h1>
 
       <!-- Giriş -->
       <section class="text-lg text-gray-600 mb-8 leading-relaxed">
         <p class="mb-4">
-          <span class="font-semibold text-blue-bg-blue-600">MetaTakas</span> olarak gizliliğiniz bizim için önemlidir. Bu belge, kullanıcı bilgilerinin nasıl toplandığını, kullanıldığını ve korunduğunu açıklar.
+          {% blocktrans %}<span class='font-semibold text-blue-bg-blue-600'>MetaTakas</span> values your privacy. This document explains how we collect, use, and protect user data.{% endblocktrans %}
         </p>
-        <p>Hizmetlerimizi kullanarak bu politikayı kabul etmiş sayılırsınız.</p>
+        <p>{% trans "By using our services, you agree to this policy." %}</p>
       </section>
+
 
       <div class="border-b border-gray-300 my-6"></div>
 
@@ -25,23 +28,31 @@
       <section class="mb-8">
         <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
           <span class="bg-blue-600 text-white w-8 h-8 flex justify-center items-center rounded-full mr-3">1</span>
-          Toplanan Bilgiler
+          {% trans "Information Collected" %}
         </h2>
+
         <ul class="list-inside list-disc text-gray-600 pl-4 space-y-2">
-          <li><strong>İletişim Bilgileri:</strong> Ad, telefon numarası, e-posta adresi.</li>
-          <li><strong>İlan İçeriği:</strong> Ürün açıklamaları, fotoğraflar, videolar.</li>
-          <li><strong>Teknik Veriler:</strong> IP adresi, cihaz ve tarayıcı bilgileri.</li>
+          <li>
+            {% blocktrans %}<strong>Contact Information:</strong> Name, phone number, email address.{% endblocktrans %}
+          </li>
+          <li>
+            {% blocktrans %}<strong>Listing Content:</strong> Product descriptions, photos, videos.{% endblocktrans %}
+          </li>
+          <li>
+            {% blocktrans %}<strong>Technical Data:</strong> IP address, device and browser information.{% endblocktrans %}
+          </li>
         </ul>
       </section>
+
 
       <!-- Kullanım Amacı -->
       <section class="mb-8">
         <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
           <span class="bg-blue-600 text-white w-8 h-8 flex justify-center items-center rounded-full mr-3">2</span>
-          Bilgilerin Kullanım Amaçları
+          {% trans "Purpose of Data Use" %}
         </h2>
         <p class="text-gray-600 leading-relaxed">
-          Toplanan bilgiler ilan yayınlama, kullanıcı deneyimini geliştirme, güvenliği sağlama ve yasal yükümlülükleri yerine getirme amacıyla kullanılmaktadır.
+          {% trans "Collected data is used to publish listings, improve user experience, ensure security, and fulfill legal obligations." %}
         </p>
       </section>
 
@@ -49,14 +60,14 @@
       <section class="mb-8">
         <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
           <span class="bg-blue-600 text-white w-8 h-8 flex justify-center items-center rounded-full mr-3">3</span>
-          Veri Paylaşımı
+          {% trans "Data Sharing" %}
         </h2>
         <p class="text-gray-600 mb-4">
-          Verileriniz üçüncü taraflarla yalnızca aşağıdaki durumlarda paylaşılır:
+          {% trans "Your data is shared with third parties only in the following cases:" %}
         </p>
         <ul class="list-disc list-inside pl-4 text-gray-600 space-y-2">
-          <li>Teknik destek veya barındırma hizmeti sağlayıcılarıyla.</li>
-          <li>Yasal merciler tarafından zorunlu kılındığında.</li>
+          <li>{% trans "With hosting or technical support providers." %}</li>
+          <li>{% trans "When legally required by authorities." %}</li>
         </ul>
       </section>
 
@@ -64,37 +75,37 @@
       <section class="mb-8">
         <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
           <span class="bg-blue-600 text-white w-8 h-8 flex justify-center items-center rounded-full mr-3">4</span>
-          Çerez Kullanımı
+          {% trans "Cookie Usage" %}
         </h2>
         <p class="text-gray-600">
-          Sitemiz, kullanıcı deneyimini geliştirmek için çerezler (cookies) kullanmaktadır. Tarayıcı ayarlarınızdan çerez kullanımını engelleyebilirsiniz.
+          {% trans "Our site uses cookies to enhance your experience. You may disable them via your browser settings." %}
         </p>
       </section>
 
       <!-- Hesap Silme -->
-      <section class="mb-8">
+      <!-- <section class="mb-8">
         <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
           <span class="bg-blue-600 text-white w-8 h-8 flex justify-center items-center rounded-full mr-3">5</span>
-          Hesap ve Veri Silme
+          {% trans "Account and Data Deletion" %}
         </h2>
         <p class="text-gray-600 mb-4">
-          Hesabınızı silmek isterseniz:
+          {% trans "If you wish to delete your account:" %}
         </p>
         <ol class="list-decimal list-inside pl-4 text-gray-600 space-y-2">
-          <li>İletişim bölümünden bize ulaşabilirsiniz.</li>
-          <li>Talebiniz değerlendirilerek sistemden kaldırma işlemi yapılır.</li>
+          <li>{% trans "Contact us via the contact section." %}</li>
+          <li>{% trans "Your request will be reviewed and processed." %}</li>
         </ol>
-      </section>
+      </section> -->
 
       <!-- İletişim -->
       <section class="mb-8">
         <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
           <span class="bg-blue-600 text-white w-8 h-8 flex justify-center items-center rounded-full mr-3">6</span>
-          İletişim
+          {% trans "Contact" %}
         </h2>
         <ul class="list-none pl-0 text-gray-600 space-y-2">
-          <li><strong>E-posta:</strong> <a href="mailto:info@metatakas.com" class="text-blue-bg-blue-600 hover:underline">info@metatakas.com</a></li>
-          <li><strong>Adres:</strong> Mehmet Akif, Papatya Sk. No:55 D:1, 34150 Çekmeköy/İstanbul</li>
+          <li><strong>{% trans "Email:" %}</strong> <a href="mailto:info@metatakas.com" class="text-blue-bg-blue-600 hover:underline">info@metatakas.com</a></li>
+          <li><strong>{% trans "Address:" %}</strong> Mehmet Akif, Papatya Sk. No:55 D:1, 34150 Çekmeköy/İstanbul</li>
         </ul>
       </section>
     </div>

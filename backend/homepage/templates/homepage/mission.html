@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Misyonumuz{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Our Mission" %}{% endblock %}
 
 {% block content %}
 <div class="w-full bg-gray-50 py-10 px-4">
-  <h2 class="text-4xl font-bold text-center text-[#1E3A8A] mb-10">Misyonumuz</h2>
+  <h2 class="text-4xl font-bold text-center text-[#1E3A8A] mb-10">{% trans "Our Mission" %}</h2>
   <div class="grid gap-10 md:grid-cols-3 md:gap-6 max-w-7xl mx-auto">
     <div class="rounded-xl bg-white p-6 text-center shadow-md hover:shadow-lg transition">
       <div class="mx-auto flex h-16 w-16 -translate-y-10 transform items-center justify-center rounded-full bg-blue-400 shadow-md">
@@ -18,8 +19,8 @@
 
 
       </div>
-      <h3 class="text-xl font-semibold text-gray-800 mb-3">Bağlantılar Kurmak</h3>
-      <p class="text-gray-600 px-4">Müşterilerimizi en uygun takas ve satış fırsatlarıyla buluşturarak güvenilir bir köprü kurmayı hedefliyoruz.</p>
+      <h3 class="text-xl font-semibold text-gray-800 mb-3">{% trans "Building Connections" %}</h3>
+      <p class="text-gray-600 px-4">{% blocktrans %}We aim to build a reliable bridge by connecting our users with the best barter and sale opportunities.{% endblocktrans %}</p>
     </div>
 
     <div class="rounded-xl bg-white p-6 text-center shadow-md hover:shadow-lg transition">
@@ -29,8 +30,8 @@
         </svg>
 
       </div>
-      <h3 class="text-xl font-semibold text-gray-800 mb-3">Güvenli Platform Sunmak</h3>
-      <p class="text-gray-600 px-4">İlanlarınızı güvenle yayınlayabileceğiniz ve ürünlerinizi değerlendirebileceğiniz modern bir dijital platform oluşturduk.</p>
+      <h3 class="text-xl font-semibold text-gray-800 mb-3">{% trans "Providing a Secure Platform" %}</h3>
+      <p class="text-gray-600 px-4"> {% blocktrans %}We've created a modern digital platform where you can safely publish listings and evaluate products.{% endblocktrans %}</p>
     </div>
 
     <div class="rounded-xl bg-white p-6 text-center shadow-md hover:shadow-lg transition">
@@ -39,8 +40,8 @@
         <path d="M7 7h10V5l3 3-3 3V9H7V7zm10 10H7v2l-3-3 3-3v2h10v2z" fill="currentColor"/>
         </svg>
       </div>
-      <h3 class="text-xl font-semibold text-gray-800 mb-3">Ticarette Esneklik</h3>
-      <p class="text-gray-600 px-4">İster satış ister takas; kullanıcılarımızın ihtiyaçlarına uygun alternatifleri sunarak alışverişi daha esnek hale getiriyoruz.</p>
+      <h3 class="text-xl font-semibold text-gray-800 mb-3">{% trans "Flexibility in Trading" %}</h3>
+      <p class="text-gray-600 px-4"> {% blocktrans %}Whether it’s a sale or a trade, we offer flexible options tailored to user needs to make transactions easier.{% endblocktrans %}</p>
     </div>
   </div>
 </div>

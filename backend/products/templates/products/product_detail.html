@@ -2,6 +2,8 @@
 {% load static %}
 {% load product_extras %}
 {% load humanize %}
+{% load cache %}
+{% load i18n %}
 
 {% block title %}Product Detail{% endblock %}
 
@@ -34,6 +36,7 @@
 
 </style>
 <!-- Breadcrumb -->
+
 <nav class="mx-auto w-full mt-4 max-w-[1200px] px-5">
     <ul class="flex items-center">
         <li class="cursor-pointer">
@@ -45,7 +48,7 @@
             </a>
         </li>
         <li><span class="mx-2 text-gray-500">&gt;</span></li>
-        <li class = "text-gray-500"><a href="{% url 'product_list' %}?{{ filters_query }}">İlanlar &gt;</a>
+        <li class = "text-gray-500"><a href="{% url 'product_list' %}?{{ filters_query }}">{% trans 'Listings' %} &gt;</a>
         <li class="text-gray-500">{{ product.name }}</li>
     </ul>
 </nav>
@@ -202,31 +205,31 @@
 
             <!-- Fixed: Condition -->
             <tr class="border-b">
-              <td class="px-2 py-2 font-semibold text-gray-700">Durum</td>
+              <td class="px-2 py-2 font-semibold text-gray-700">{% trans 'Status' %}</td>
               <td class="px-2 py-2 font-bold 
                   {% if product.listing_type == 'sale' %}text-green-600
                   {% elif product.listing_type == 'exchange' %}text-amber-500
                   {% endif %}">
-                {% if product.listing_type == 'sale' %}Satılık{% else %}Takaslık{% endif %}
+                {% if product.listing_type == 'sale' %}{% trans 'Sale' %}{% else %}{% trans 'Exchange' %}{% endif %}
               </td>
             </tr>
 
             <!-- date -->
             <tr class="border-b">
-              <td class="px-2 py-2 font-semibold text-gray-700">İlan Tarihi</td>
+              <td class="px-2 py-2 font-semibold text-gray-700">{% trans 'Announcement Date' %}</td>
               <td class="px-2 py-2 text-gray-900">{{ product.created_at|date:"d/m/Y" }}</td>
             </tr>
 
             <!-- Fixed: Category -->
             <tr class="border-b">
-              <td class="px-2 py-2 font-semibold text-gray-700 w-1/3">Kategori</td>
+              <td class="px-2 py-2 font-semibold text-gray-700 w-1/3">{% trans 'Category' %}</td>
               <td class="px-2 py-2 text-gray-900">{{ product.category.name }}</td>
             </tr>
 
             
             <!-- Optional: Location -->
             <tr class="border-b">
-              <td class="px-2 py-2 font-semibold text-gray-700">İl / İlçe</td>
+              <td class="px-2 py-2 font-semibold text-gray-700">{% trans 'Province / District' %}</td>
               <td class="px-2 py-2 text-gray-900">{{ product.city }} / {{ product.province }}</td>
             </tr>
 
@@ -294,7 +297,7 @@
                     />
                 </g>
                 </svg>
-                WhatsApp ile iletişime geçin
+                {% trans 'Contact via Whatsapp' %}
             </a>
         </div>
 
@@ -308,7 +311,7 @@
 
 <!-- Product Details Section -->
 <section class="container mx-auto max-w-[1200px] px-5 py-5 lg:py-10">
-    <h2 class="text-xl">Açıklama</h2>
+    <h2 class="text-xl">{% trans 'Description' %}</h2>
     <p class="mt-4 lg:w-3/4">
         {{ product.description }}
     </p>
@@ -356,15 +359,17 @@
 {% if product.listing_type == 'exchange' and product.exchange_notes.exists %}
 <section class="container mx-auto max-w-[1200px] px-5 py-6">
     <div class="bg-gray-50 rounded-lg shadow-sm p-5">
-      <h3 class="text-lg font-semibold text-gray-800">İlana Ait Takas Seçenekleri</h3>
-      <p class="text-sm text-gray-600 mt-1">Bu ilanın takas seçenekleri aşağıda mevcuttur.</p>
+      <h3 class="text-lg font-semibold text-gray-800">{% trans 'Listing Exchange Options' %}</h3>
+      <p class="text-sm text-gray-600 mt-1">{% trans 'Exchange options for this ad are available below.' %}</p>
         
       <div class="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-5 gap-x-6">
         {% for note in product.exchange_notes.all %}
           <div>
             <div class="flex items-center gap-2">
               <span class="w-2 h-2 bg-blue-400 rounded-full inline-block mt-0.5"></span>
-              <span class="font-medium text-gray-900">{{ note.category.name }} ile Takaslı</span>
+              <span class="font-medium text-gray-900">
+                {% blocktrans with category=note.category.name %}Exchangeable with {{ category }}{% endblocktrans %}
+              </span>
             </div>
             {% if note.items.exists %}
             <ul class="pl-5 mt-1 list-disc text-sm text-gray-700">
@@ -386,7 +391,7 @@
 
 {% if product.listing_type == 'exchange' %}
 <section class="container mx-auto max-w-[1200px] px-5 py-10">
-  <h2 class="text-xl font-bold mb-4 text-amber-700">Bütçe</h2>
+  <h2 class="text-xl font-bold mb-4 text-amber-700">{% trans 'Budget' %}</h2>
 
   <div class="border border-yellow-300 bg-yellow-50 rounded-lg p-6">
     <!-- Budget Inputs -->
@@ -410,19 +415,19 @@
 
     <!-- Exchange Preference Checkboxes -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-3 gap-x-6 text-sm">
-    {% for field, label in EXCHANGE_PREFERENCES %}
-    <div class="flex items-center gap-2">
-        <input
-        type="checkbox"
-        class="text-blue-600 rounded border-gray-300"
-        {% if product|get_attr:field %} checked {% endif %}
-        disabled
-        >
-        <span class="{% if product|get_attr:field %}font-semibold text-gray-800{% else %}text-gray-400{% endif %}">
-        {{ label }}
-        </span>
-    </div>
-    {% endfor %}
+      {% for field, label in EXCHANGE_PREFERENCES %}
+        <div class="flex items-center gap-2">
+            <input
+              type="checkbox"
+              class="text-blue-600 rounded border-gray-300"
+              {% if product|get_attr:field %} checked {% endif %}
+              disabled
+            >
+            <span class="{% if product|get_attr:field %}font-semibold text-gray-800{% else %}text-gray-400{% endif %}">
+              {{ label }}
+            </span>
+        </div>
+      {% endfor %}
     </div>
 
   </div>
@@ -433,7 +438,7 @@
 
 <!-- Related Products Section -->
 <div class="mx-auto max-w-[1200px] px-5 py-10">
-  <h2 class="text-xl font-bold mb-6">Önerilen Ürünler</h2>
+  <h2 class="text-xl font-bold mb-6">{% trans 'Recommended Products' %}</h2>
 
   <div class="swiper suggested-swiper">
     <div class="swiper-wrapper">
@@ -467,9 +472,9 @@
                   bg-green-500
                 {% endif %}">
                 {% if product.listing_type == 'sale' %}
-                  Satılık
+                  {% trans 'Sale' %}
                 {% else %}
-                  Takas
+                  {% trans 'Exchange' %}
                 {% endif %}
               </div>
             </div>
@@ -481,7 +486,7 @@
 
               <div class="min-h-[48px] mt-1">
                 {% if product.listing_type == 'exchange' %}
-                  <p class="text-sm text-gray-500 italic">Takas edilebilir:</p>
+                  <p class="text-sm text-gray-500 italic">{% trans 'Exchangeable for:' %}</p>
                   {% with categories=product.exchange_for.all %}
                     {% if categories and categories|length > 0 %}
                       <p class="text-sm text-gray-800">
@@ -491,7 +496,7 @@
                         {% if categories|length > 2 %}...{% endif %}
                       </p>
                     {% else %}
-                      <p class="text-sm text-gray-400">Belirtilmemiş</p>
+                      <p class="text-sm text-gray-400">{% trans 'Not specified' %}</p>
                     {% endif %}
                   {% endwith %}
                 {% endif %}
@@ -500,7 +505,7 @@
 
             <div class="my-5 px-2">
               <a href="{% url 'product_detail' product.slug %}">
-                <button class="h-10 w-full bg-purple-500 text-white hover:bg-pink-500 transition">Detayları Görüntüle</button>
+                <button class="h-10 w-full bg-purple-500 text-white hover:bg-pink-500 transition">{% trans 'View Details' %}</button>
               </a>
             </div>
           </div>

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}about us{% endblock %}
+{% load i18n %}
 
 {% block content %}
         <!-- BG Image  -->
@@ -15,9 +16,11 @@
           <div
             class="absolute top-1/2 left-1/2 mx-auto flex w-11/12 max-w-[1200px] -translate-x-1/2 -translate-y-1/2 flex-col text-center text-white lg:ml-5"
           >
-            <h1 class="text-4xl font-bold sm:text-5xl">Hakkımızda</h1>
+            <h1 class="text-4xl font-bold sm:text-5xl">{% trans "About Us" %}</h1>
             <p class="mx-auto pt-3 text-xs lg:w-3/5 lg:pt-5 lg:text-base">
-              Metatakas, modern dünyada geleneksel takas sistemini dijital bir platforma taşıyan yenilikçi bir çözüm sunmaktadır. İnsanların ve işletmelerin ellerindeki kullanılmayan ürünleri, hizmetleri veya değerleri nakit kullanmadan takas etmesine olanak tanıyan bu sistem, ekonomik ve çevresel sürdürülebilirliği destekler.
+              {% blocktrans trimmed %}
+                Metatakas is an innovative solution that brings the traditional barter system into the digital age. It enables people and businesses to trade unused goods, services, or value without using cash, supporting economic and environmental sustainability.
+              {% endblocktrans %}
             </p>
           </div>
         </div>
@@ -32,16 +35,17 @@
             src="{% static 'images/metatakas.png' %}"
             alt="Maybell Logo"
           />
-          <p class="text-center text-sm">2024dan beri</p>
+          <p class="text-center text-sm">{% trans "Since 2024" %}</p>
         </div>
 
         <div
           class="mx-auto my-10 flex max-w-[600px] flex-col items-center justify-center px-5"
         >
-          <h2 class="w-full text-left text-xl font-bold">Meta Takas Hakkında</h2>
+          <h2 class="w-full text-left text-xl font-bold"> {% trans "About MetaTakas" %}</h2>
           <p class="py-3">
-            Metatakas, modern dünyada geleneksel takas sistemini dijital bir platforma taşıyan yenilikçi bir çözüm sunmaktadır. İnsanların ve işletmelerin ellerindeki kullanılmayan ürünleri, hizmetleri veya değerleri nakit kullanmadan takas etmesine olanak tanıyan bu sistem, ekonomik ve çevresel sürdürülebilirliği destekler.
-
+              {% blocktrans trimmed %}
+                Metatakas is an innovative solution that brings the traditional barter system into the digital age. It enables people and businesses to trade unused goods, services, or value without using cash, supporting economic and environmental sustainability.
+              {% endblocktrans %}
           </p>
           <div class="grid grid-cols-1 gap-3 lg:grid-cols-3">
             <img
@@ -67,21 +71,25 @@
             molestiae nemo distinctio quisquam!
           </p>
 
-          <h2 class="mt-3 w-full text-left text-xl font-bold">Neden Metatakas?</h2>
+          <h2 class="mt-3 w-full text-left text-xl font-bold">  {% trans "Why MetaTakas?" %}</h2>
           <p class="py-3">
-            Tasarruf: Nakit kullanmadan ihtiyaçlarınızı karşılayarak bütçenizi koruyabilirsiniz.
-            Çevre Dostu: Kullanılmayan ürünleri yeniden değerlendirerek israfı önler ve sürdürülebilirliği destekler.
-            Kolay ve Güvenli Kullanım: Şeffaf ve güvenilir bir platform ile hızlı işlemler yapabilirsiniz.
-            Çeşitlilik: Ürün, hizmet, bilgi veya dijital varlık gibi farklı kategorilerde takas yapma imkanı.
-            Metatakas, yalnızca bir takas platformu değil, aynı zamanda paylaşım ekonomisinin bir parçası olarak toplulukları güçlendiren ve kaynakları daha verimli kullanmayı teşvik eden bir hareketin öncüsüdür. Geleceğin ticaret anlayışına adım atmak için Metatakas ile tanışın.
+            {% blocktrans trimmed %}
+            - Save Money: Meet your needs without cash and protect your budget.  
+            - Eco-Friendly: Prevent waste and support sustainability by reusing unused items.  
+            - Easy and Secure: Make fast transactions on a transparent and trustworthy platform.  
+            - Diversity: Barter in different categories such as products, services, knowledge, or digital assets.  
+            Metatakas is not just a barter platform — it's a movement that empowers communities and encourages more efficient use of resources as part of the sharing economy. Join Metatakas and step into the future of trade.
+            {% endblocktrans %}
           </p>
 
-          <h2 class="mt-3 w-full text-left text-xl font-bold">Our Values:</h2>
+          <h2 class="mt-3 w-full text-left text-xl font-bold">  {% trans "Our Values" %}</h2>
           <p class="py-3">
+          {% blocktrans %}
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
             placeat odit, est eum dolorem esse totam iusto necessitatibus
             eligendi illo doloribus vero aperiam atque tempora repudiandae
             molestiae nemo distinctio quisquam!
+          {% endblocktrans %}
           </p>
           <div class="grid grid-cols-1 gap-3 lg:grid-cols-3">
             <img

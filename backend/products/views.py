@@ -5,12 +5,21 @@ from django.db.models import Q, Count
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 from django.shortcuts import get_object_or_404, render
-from bs4 import BeautifulSoup
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
+from django.conf import settings
+from django.utils.translation import gettext_lazy as _ 
+
+if settings.DEBUG:
+    def no_cache(view_func):
+        return view_func
+    cache_decorator = no_cache
+else:
+    from django.views.decorators.cache import cache_page
+    cache_decorator = cache_page(60 * 10)
 
 
-@method_decorator(cache_page(60 * 5), name='dispatch')
+@method_decorator(cache_decorator, name='dispatch')
 class ProductListView(ListView):
     model = Product
     template_name = 'products/product_list.html'
@@ -18,8 +27,8 @@ class ProductListView(ListView):
     paginate_by = 12
 
     types = [
-        {'slug': 'sale', 'label': 'Satılık'},
-        {'slug': 'exchange', 'label': 'Takas'},
+        {'slug': 'sale', 'label': _('Sale')},
+        {'slug': 'exchange', 'label': _('Exchange')},
     ]
 
 
@@ -147,7 +156,7 @@ class ProductListView(ListView):
 
         return context
 
-@method_decorator(cache_page(60 * 10), name='dispatch')
+@method_decorator(cache_decorator, name='dispatch')
 class ProductDetailView(DetailView):
     model = Product
     template_name = 'products/product_detail.html'
@@ -155,7 +164,7 @@ class ProductDetailView(DetailView):
     slug_field = 'slug'
     slug_url_arg = 'slug'
 
-@cache_page(60 * 10)
+@cache_decorator
 def product_detail(request, slug):
     product = get_object_or_404(Product, slug=slug)
     related_products = Product.objects.filter(

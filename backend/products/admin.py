@@ -4,9 +4,11 @@ from django import forms
 from .models import Category, Product, ProductImage, ProductVideo, ExchangeNote, ExchangeNoteItem, ProductDetailRow
 from .utils.city_data import CITY_CHOICES, PROVINCE_MAP
 from django import forms
+import products.translation 
+from modeltranslation.admin import TranslationAdmin
 
 @admin.register(Category)
-class CategoryAdmin(nested_admin.NestedModelAdmin):
+class CategoryAdmin(TranslationAdmin, nested_admin.NestedModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
     list_display = ['name', 'slug']
 
@@ -58,10 +60,10 @@ class ProductDetailRowInline(nested_admin.NestedTabularInline):
     model = ProductDetailRow
     extra = 1
     max_num = 9  # ⛔ limit to 9
-
+    exclude = ('label', 'value') 
 
 @admin.register(Product)
-class ProductAdmin(nested_admin.NestedModelAdmin):
+class ProductAdmin(TranslationAdmin, nested_admin.NestedModelAdmin):
     form = ProductAdminForm 
     
     class Media:
