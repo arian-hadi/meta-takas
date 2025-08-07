@@ -61,9 +61,10 @@
       <!-- Language Switcher -->
       <form action="{% url 'set_language' %}" method="post" class="relative">
         {% csrf_token %}
+        <input type="hidden" name="next" value="/{{ LANGUAGE_CODE }}/">
         <div class="relative">
-          <select name="language" onchange="this.form.submit()"
-            class="appearance-none w-36 text-sm border border-gray-300 rounded-md  py-2 pr-10 bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-medium">
+          <select name="language" onchange="updateLanguageAndSubmit(this.form)"
+            class="appearance-none w-36 text-sm border border-gray-300 rounded-md py-2 pr-10 bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-medium">
             {% get_current_language as LANGUAGE_CODE %}
             {% get_available_languages as LANGUAGES %}
             {% for lang in LANGUAGES %}
@@ -74,20 +75,14 @@
               {% elif lang.0 == "de" %}
                 <option value="de" {% if lang.0 == LANGUAGE_CODE %} selected{% endif %}>🇩🇪 Deutsch</option>
               {% else %}
-                <option value="{{ lang.0 }}" {% if lang.0 == LANGUAGE_CODE %} selected{% endif %}>
-                  🌐 {{ lang.1 }}
-                </option>
+                <option value="{{ lang.0 }}" {% if lang.0 == LANGUAGE_CODE %} selected{% endif %}>🌐 {{ lang.1 }}</option>
               {% endif %}
             {% endfor %}
           </select>
-
         </div>
       </form>
-
-      
-
-      
     </div>
+
   </header>
 
   <!-- Mobile Menu -->
@@ -128,6 +123,7 @@
       <div class="w-full max-w-[600px] mx-auto mb-4">
         <form action="{% url 'set_language' %}" method="post" class="flex justify-center">
           {% csrf_token %}
+          <input type="hidden" name="next" value="{{ request.get_full_path }}">
           <select name="language" onchange="this.form.submit()"
             class="w-40 text-sm border border-gray-300 rounded-lg px-3 py-2 focus:ring-blue-500 focus:border-blue-500 bg-white shadow-sm font-medium">
             {% get_current_language as LANGUAGE_CODE %}
@@ -184,3 +180,11 @@
     </div>
   </nav>
 </div>
+
+<script>
+function updateLanguageAndSubmit(form) {
+  const lang = form.language.value;
+  form.next.value = '/' + lang + '/';
+  form.submit();
+}
+</script>

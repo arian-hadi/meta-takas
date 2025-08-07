@@ -38,9 +38,12 @@ INSTALLED_APPS = [
     'modeltranslation',
 ]
 
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'meta_core.middleware.ForceDefaultLanguageMiddleware',
     'django.middleware.locale.LocaleMiddleware',  # Enable locale middleware for i18n
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -113,8 +116,8 @@ USE_TZ = True
 from django.utils.translation import gettext_lazy as _
 
 LANGUAGES = [
-    ('en', _('English')),
     ('tr', _('Turkish')),
+    ('en', _('English')),
 ]
 
 LOCALE_PATHS = [
