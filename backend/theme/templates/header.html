@@ -61,7 +61,7 @@
       <!-- Language Switcher -->
       <form action="{% url 'set_language' %}" method="post" class="relative">
         {% csrf_token %}
-        <input type="hidden" name="next" value="/{{ LANGUAGE_CODE }}/">
+        <input type="hidden" name="next" value="{{ request.path }}">
         <div class="relative">
           <select name="language" onchange="updateLanguageAndSubmit(this.form)"
             class="appearance-none w-36 text-sm border border-gray-300 rounded-md py-2 pr-10 bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-medium">
@@ -184,7 +184,13 @@
 <script>
 function updateLanguageAndSubmit(form) {
   const lang = form.language.value;
-  form.next.value = '/' + lang + '/';
+  const currentPath = form.next.value;
+
+  // Strip existing language code from path if it exists
+  const newPath = currentPath.replace(/^\/(en|tr|de)(\/|$)/, '/');
+
+  // Rebuild path with new language prefix
+  form.next.value = '/' + lang + newPath;
   form.submit();
 }
 </script>
