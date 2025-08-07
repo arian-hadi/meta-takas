@@ -1304,5 +1304,5 @@ msgstr "Full cash accepted"
 #~ msgstr "Feedback / Suggestion"
 
 
-msgid "Exchangeable with {{ category }}"
-msgstr "Exchangeable with {{ category }}"
+msgid "Exchangeable with %(category)s"
+msgstr "Exchangeable with %(category)s"
