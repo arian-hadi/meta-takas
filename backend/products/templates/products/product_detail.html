@@ -34,6 +34,34 @@
     padding-left: 10px;
   }
 
+  #lightboxOverlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.9);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  }
+
+  #lightboxOverlay.active {
+  display: flex; /* Flex layout only when active */
+  }
+
+  #lightboxOverlay .lightbox-swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  #lightboxOverlay .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
 </style>
 <!-- Breadcrumb -->
 
@@ -77,6 +105,15 @@
               ]
             }"
           >
+          <button type="button"
+                class="absolute top-2 right-2 z-10 inline-flex items-center justify-center w-9 h-9 rounded-full bg-black/60 text-white hover:bg-black/80"
+                onclick="openFullscreenFromMain()"
+                title="{% trans 'View fullscreen' %}">
+            <!-- expand icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M7 3h4v2H9v2H7V3zm10 0v4h-2V5h-2V3h4zM7 17h2v2h2v2H7v-4zm10 4h-4v-2h2v-2h2v4z"/>
+            </svg>
+          </button>
             <div class="swiper-wrapper">
               {% if product.image %}
               <!-- Wrap each slide in an `<a>` that opens the lightbox at its index -->
@@ -303,6 +340,50 @@
 
 
     </div>
+    <!-- Fullscreen Lightbox Overlay -->
+    <div id="lightboxOverlay" class="fixed inset-0 bg-black/90 z-[1000]">
+      <!-- Close button -->
+      <button type="button"
+              class="absolute top-4 right-4 z-10 inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/80 hover:bg-white"
+              onclick="closeLightbox()"
+              aria-label="{% trans 'Close' %}">
+        <span class="text-black text-2xl leading-none">&times;</span>
+      </button>
+
+      <!-- Lightbox Swiper -->
+      <div class="lightbox-swiper w-full h-full">
+        <div class="swiper-wrapper">
+
+          {% if product.image %}
+          <div class="swiper-slide flex items-center justify-center">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="max-w-[95vw] max-h-[85vh] object-contain"/>
+          </div>
+          {% endif %}
+
+          {% for image in product.images.all %}
+            {% if not product.image or image.image.url != product.image.url %}
+            <div class="swiper-slide flex items-center justify-center">
+              <img src="{{ image.image.url }}" alt="Product Image" class="max-w-[95vw] max-h-[85vh] object-contain"/>
+            </div>
+            {% endif %}
+          {% endfor %}
+
+          {% for video in product.videos.all %}
+          <div class="swiper-slide flex items-center justify-center">
+            <video controls class="max-w-[95vw] max-h-[85vh] object-contain">
+              <source src="{{ video.video.url }}" type="video/mp4">
+            </video>
+          </div>
+          {% endfor %}
+
+        </div>
+
+        <!-- Lightbox navigation -->
+        <div class="swiper-button-next !text-white"></div>
+        <div class="swiper-button-prev !text-white"></div>
+      </div>
+    </div>
+
 </section>
 
 <!-- Fullscreen images-->
@@ -523,71 +604,94 @@
 
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  // 1) Initialize the main gallery Swiper
-  var mainSwiper = new Swiper('.main-swiper', {
-    spaceBetween: 10,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-  });
+  // Make swipers accessible across functions
+  let mainSwiper, lightboxSwiper, thumbSwiper;
+  const overlay = document.getElementById('lightboxOverlay');
 
-  // 2) Initialize the lightbox Swiper (hidden overlay)
-  var lightboxSwiper = new Swiper('.lightbox-swiper', {
-    spaceBetween: 10,
-    navigation: {
-      nextEl: '.lightbox-swiper .swiper-button-next',
-      prevEl: '.lightbox-swiper .swiper-button-prev',
-    },
-    keyboard: { enabled: true },
-  });
-
-  var thumbSwiper = new Swiper('.thumb-swiper', {
-    slidesPerView: 'auto', // <- allow dynamic width slides
-    spaceBetween: 5,
-    watchOverflow: true,
-    navigation: {
-      nextEl: '.thumb-swiper-next',
-      prevEl: '.thumb-swiper-prev'
-    }
-  });
-
-
-  new Swiper('.suggested-swiper', {
-    slidesPerView: 1,
-    spaceBetween: 20,
-    breakpoints: {
-      640: { slidesPerView: 2 },
-      1024: { slidesPerView: 4 }
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev'
-    }
-  });
-
-  // 3) Thumbnail click handler for main gallery
-  document.querySelectorAll('.thumbnail').forEach(function(thumb, idx) {
-    thumb.addEventListener('click', function() {
-      // slide main gallery
-      mainSwiper.slideTo(idx);
-      // open lightbox at same slide
-      overlay.classList.remove('hidden');
-      lightboxSwiper.slideTo(idx, 0);
-      // thumbnail active ring
-      document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('ring-2','ring-violet-500'));
-      thumb.classList.add('ring-2','ring-violet-500');
+  document.addEventListener('DOMContentLoaded', function () {
+    // MAIN gallery
+    mainSwiper = new Swiper('.main-swiper', {
+      spaceBetween: 10,
+      navigation: {
+        // limit navigation to the main-swiper buttons
+        nextEl: '.main-swiper .swiper-button-next',
+        prevEl: '.main-swiper .swiper-button-prev',
+      },
     });
+
+    // LIGHTBOX gallery
+    lightboxSwiper = new Swiper('.lightbox-swiper', {
+      spaceBetween: 10,
+      navigation: {
+        nextEl: '.lightbox-swiper .swiper-button-next',
+        prevEl: '.lightbox-swiper .swiper-button-prev',
+      },
+      keyboard: { enabled: true },
+    });
+
+    // THUMBS
+    thumbSwiper = new Swiper('.thumb-swiper', {
+      slidesPerView: 'auto',
+      spaceBetween: 5,
+      watchOverflow: true,
+      navigation: {
+        nextEl: '.thumb-swiper-next',
+        prevEl: '.thumb-swiper-prev'
+      }
+    });
+
+    // Click any big slide to open fullscreen at that index
+    document.querySelectorAll('.main-swiper .swiper-slide').forEach((slide, i) => {
+      slide.addEventListener('click', () => openLightbox(i));
+    });
+
+    // Thumbnail click already slides main and opens overlay in your code,
+    // but if you want to be safe, keep them in sync here too:
+    document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+      thumb.addEventListener('click', () => {
+        mainSwiper.slideTo(i);
+
+      });
+    });
+
+    // Close on ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !overlay.classList.contains('hidden')) {
+        closeLightbox();
+      }
+    });
+
+    // (Optional) click dark background to close
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeLightbox();
+    });
+
+    // Prevent layout jump after load
+    setTimeout(() => thumbSwiper && thumbSwiper.update(), 100);
   });
 
+  function openLightbox(index = 0) {
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    lightboxSwiper.slideTo(index, 0);
+  }
 
-});
+  function closeLightbox() {
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
 
-setTimeout(() => {
-  thumbSwiper.update();
-}, 100);
+  // Called by your top-right button
+  function openFullscreenFromMain() {
+    const idx = mainSwiper ? mainSwiper.activeIndex : 0;
+    openLightbox(idx);
+  }
+
+  // Expose close for the ✕ button
+  window.closeLightbox = closeLightbox;
+  window.openFullscreenFromMain = openFullscreenFromMain;
 </script>
+
 
 
 {% endblock %}
