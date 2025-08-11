@@ -35,22 +35,25 @@
   }
 
   #lightboxOverlay {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0,0,0,0.9);
-  z-index: 9999;
-  display: none;
-  align-items: center;
-  justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.9);
+    z-index: 9999;
+    display: none;
   }
 
+
   #lightboxOverlay.active {
-  display: flex; /* Flex layout only when active */
+  display: block; 
   }
 
   #lightboxOverlay .lightbox-swiper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100%;
   }
@@ -341,12 +344,14 @@
 
     </div>
     <!-- Fullscreen Lightbox Overlay -->
+
     <div id="lightboxOverlay" class="fixed inset-0 bg-black/90 z-[1000]">
-      <!-- Close button -->
-      <button type="button"
-              class="absolute top-4 right-4 z-10 inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/80 hover:bg-white"
-              onclick="closeLightbox()"
-              aria-label="{% trans 'Close' %}">
+      <!-- Close button is now a direct child of overlay -->
+      <button
+        type="button"
+        class="fixed top-4 right-4 z-[1100] inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/80 hover:bg-white"
+        onclick="closeLightbox()"
+        aria-label="{% trans 'Close' %}">
         <span class="text-black text-2xl leading-none">&times;</span>
       </button>
 
@@ -383,6 +388,7 @@
         <div class="swiper-button-prev !text-white"></div>
       </div>
     </div>
+
 
 </section>
 
@@ -608,6 +614,22 @@
   let mainSwiper, lightboxSwiper, thumbSwiper;
   const overlay = document.getElementById('lightboxOverlay');
 
+  // SUGGESTED / RELATED PRODUCTS
+  const suggestedSwiper = new Swiper('.suggested-swiper', {
+    slidesPerView: 2,
+    spaceBetween: 12,
+    navigation: {
+      nextEl: '.suggested-swiper .swiper-button-next',
+      prevEl: '.suggested-swiper .swiper-button-prev',
+    },
+    breakpoints: {
+      640: { slidesPerView: 2 },
+      768: { slidesPerView: 3 },
+      1024:{ slidesPerView: 4 }
+    }
+  });
+
+
   document.addEventListener('DOMContentLoaded', function () {
     // MAIN gallery
     mainSwiper = new Swiper('.main-swiper', {
@@ -647,21 +669,22 @@
 
     // Thumbnail click already slides main and opens overlay in your code,
     // but if you want to be safe, keep them in sync here too:
+    // Thumbnails only change the main swiper image now
     document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
       thumb.addEventListener('click', () => {
         mainSwiper.slideTo(i);
-
       });
     });
 
-    // Close on ESC
+
+    // ESC should check for 'active', not 'hidden'
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !overlay.classList.contains('hidden')) {
+      if (e.key === 'Escape' && overlay.classList.contains('active')) {
         closeLightbox();
       }
     });
 
-    // (Optional) click dark background to close
+    // Optional: clicking the dark backdrop should close
     overlay.addEventListener('click', (e) => {
       if (e.target === overlay) closeLightbox();
     });
