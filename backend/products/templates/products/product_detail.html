@@ -12,6 +12,13 @@
   /* Fix Swiper height override to allow image centering */
   .main-swiper .swiper-slide {
     height: auto !important;
+    cursor: pointer;
+  }
+
+  .main-swiper .fullscreen-btn{
+    left: auto !important;
+    right: .75rem !important; /* same as right-3 */
+    top: .75rem !important;   /* same as top-3 */
   }
 
   .thumb-swiper .swiper-button-next,
@@ -34,37 +41,77 @@
     padding-left: 10px;
   }
 
+  /* Lightbox Overlay Styles */
   #lightboxOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0,0,0,0.9);
-    z-index: 9999;
-    display: none;
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 9999;
+      display: none;
   }
 
-
-  #lightboxOverlay.active {
-  display: block; 
+  /* Show overlay */
+  #lightboxOverlay.active { 
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
   }
 
-  #lightboxOverlay .lightbox-swiper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
+  /* Swiper inside overlay */
+  #lightboxOverlay .lightbox-swiper { 
+      width: 100%; 
+      height: 100%; 
+  }
+
+  #lightboxOverlay .swiper-wrapper { 
+      height: 100%; 
   }
 
   #lightboxOverlay .swiper-slide {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+      height: 100%; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
   }
 
+  /* Navigation arrows - make sure they're visible */
+  #lightboxOverlay .swiper-button-next,
+  #lightboxOverlay .swiper-button-prev { 
+      z-index: 10000;
+      color: white !important;
+  }
 
+  /* Close button - CRITICAL FIXES */
+  #lightboxOverlay .lightbox-close {
+      position: fixed !important;
+      top: 20px !important;
+      right: 20px !important;
+      z-index: 10100 !important; /* Higher than everything */
+      width: 44px !important;
+      height: 44px !important;
+      background: rgba(255, 255, 255, 0.95) !important;
+      border-radius: 50% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      cursor: pointer !important;
+      transition: all 0.2s ease !important;
+      border: 2px solid rgba(0, 0, 0, 0.1) !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  #lightboxOverlay .lightbox-close:hover {
+      background: white !important;
+      transform: scale(1.1) !important;
+  }
+
+  .demo-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
 </style>
 <!-- Breadcrumb -->
 
@@ -93,7 +140,7 @@
             <!-- Main Swiper (big image, swipeable) -->
                       
           <div
-            class="swiper main-swiper w-full max-h-96 rounded border mb-4"
+            class="swiper main-swiper relative w-full max-h-96 rounded border mb-4"
             x-data="{
               items: [
                 {% if product.image %}
@@ -108,13 +155,15 @@
               ]
             }"
           >
-          <button type="button"
-                class="absolute top-2 right-2 z-10 inline-flex items-center justify-center w-9 h-9 rounded-full bg-black/60 text-white hover:bg-black/80"
-                onclick="openFullscreenFromMain()"
-                title="{% trans 'View fullscreen' %}">
-            <!-- expand icon -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M7 3h4v2H9v2H7V3zm10 0v4h-2V5h-2V3h4zM7 17h2v2h2v2H7v-4zm10 4h-4v-2h2v-2h2v4z"/>
+          <button
+            type="button"
+            class="fullscreen-btn absolute top-3 right-3 left-auto z-10 inline-flex items-center justify-center
+                  w-12 h-12 rounded-full text-white hover:bg-black transition-all duration-200 shadow-lg hover:scale-110"
+            style="background-color: rgba(0,0,0,0.7);"
+            onclick="openFullscreenFromMain()"
+            title="{% trans 'View fullscreen' %}">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
             </svg>
           </button>
             <div class="swiper-wrapper">
@@ -344,27 +393,32 @@
 
     </div>
     <!-- Fullscreen Lightbox Overlay -->
-
-    <div id="lightboxOverlay" class="fixed inset-0 bg-black/90 z-[1000]">
-      <!-- Close button is now a direct child of overlay -->
-      <button
-        type="button"
-        class="fixed top-4 right-4 z-[1100] inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/80 hover:bg-white"
+    <div id="lightboxOverlay" class="fixed inset-0 bg-black/90 z-[1000]" role="dialog" aria-modal="true">
+    <!-- Close button with improved styling -->
+    <button
+        type="button" 
+        class="lightbox-close"
         onclick="closeLightbox()"
-        aria-label="{% trans 'Close' %}">
-        <span class="text-black text-2xl leading-none">&times;</span>
-      </button>
+        aria-label="Close fullscreen view"
+        title="Close (Press Esc)"
+        style="position: fixed !important; top: 20px !important; right: 20px !important; 
+              z-index: 10100 !important; width: 44px !important; height: 44px !important;
+              background: rgba(255, 255, 255, 0.95) !important; border-radius: 50% !important;
+              display: flex !important; align-items: center !important; 
+              justify-content: center !important; cursor: pointer !important;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none">
+            <path d="M18 6L6 18M6 6L18 18" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
 
-      <!-- Lightbox Swiper -->
       <div class="lightbox-swiper w-full h-full">
         <div class="swiper-wrapper">
-
           {% if product.image %}
           <div class="swiper-slide flex items-center justify-center">
             <img src="{{ product.image.url }}" alt="{{ product.name }}" class="max-w-[95vw] max-h-[85vh] object-contain"/>
           </div>
           {% endif %}
-
           {% for image in product.images.all %}
             {% if not product.image or image.image.url != product.image.url %}
             <div class="swiper-slide flex items-center justify-center">
@@ -372,7 +426,6 @@
             </div>
             {% endif %}
           {% endfor %}
-
           {% for video in product.videos.all %}
           <div class="swiper-slide flex items-center justify-center">
             <video controls class="max-w-[95vw] max-h-[85vh] object-contain">
@@ -380,10 +433,8 @@
             </video>
           </div>
           {% endfor %}
-
         </div>
 
-        <!-- Lightbox navigation -->
         <div class="swiper-button-next !text-white"></div>
         <div class="swiper-button-prev !text-white"></div>
       </div>
@@ -611,10 +662,8 @@
 
 <script>
   // Make swipers accessible across functions
-  let mainSwiper, lightboxSwiper, thumbSwiper;
-  const overlay = document.getElementById('lightboxOverlay');
+  let mainSwiper, lightboxSwiper, thumbSwiper, overlay;  // <-- overlay is global
 
-  // SUGGESTED / RELATED PRODUCTS
   const suggestedSwiper = new Swiper('.suggested-swiper', {
     slidesPerView: 2,
     spaceBetween: 12,
@@ -622,26 +671,25 @@
       nextEl: '.suggested-swiper .swiper-button-next',
       prevEl: '.suggested-swiper .swiper-button-prev',
     },
-    breakpoints: {
-      640: { slidesPerView: 2 },
-      768: { slidesPerView: 3 },
-      1024:{ slidesPerView: 4 }
-    }
+    breakpoints: { 640:{slidesPerView:2}, 768:{slidesPerView:3}, 1024:{slidesPerView:4} }
   });
 
-
   document.addEventListener('DOMContentLoaded', function () {
-    // MAIN gallery
+    // 1) Grab overlay and move it to <body> so 'fixed' is truly viewport-fixed
+    overlay = document.getElementById('lightboxOverlay');      // <-- assign global
+    if (overlay && overlay.parentElement !== document.body) {
+      document.body.appendChild(overlay);
+    }
+
+    // 2) Init SWIPERS
     mainSwiper = new Swiper('.main-swiper', {
       spaceBetween: 10,
       navigation: {
-        // limit navigation to the main-swiper buttons
         nextEl: '.main-swiper .swiper-button-next',
         prevEl: '.main-swiper .swiper-button-prev',
       },
     });
 
-    // LIGHTBOX gallery
     lightboxSwiper = new Swiper('.lightbox-swiper', {
       spaceBetween: 10,
       navigation: {
@@ -651,69 +699,55 @@
       keyboard: { enabled: true },
     });
 
-    // THUMBS
     thumbSwiper = new Swiper('.thumb-swiper', {
       slidesPerView: 'auto',
       spaceBetween: 5,
       watchOverflow: true,
-      navigation: {
-        nextEl: '.thumb-swiper-next',
-        prevEl: '.thumb-swiper-prev'
-      }
+      navigation: { nextEl: '.thumb-swiper-next', prevEl: '.thumb-swiper-prev' }
     });
 
-    // Click any big slide to open fullscreen at that index
+    // 3) Events
     document.querySelectorAll('.main-swiper .swiper-slide').forEach((slide, i) => {
       slide.addEventListener('click', () => openLightbox(i));
     });
 
-    // Thumbnail click already slides main and opens overlay in your code,
-    // but if you want to be safe, keep them in sync here too:
-    // Thumbnails only change the main swiper image now
     document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
-      thumb.addEventListener('click', () => {
-        mainSwiper.slideTo(i);
-      });
+      thumb.addEventListener('click', () => { mainSwiper.slideTo(i); });
     });
 
-
-    // ESC should check for 'active', not 'hidden'
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && overlay.classList.contains('active')) {
-        closeLightbox();
-      }
+      if (e.key === 'Escape' && overlay.classList.contains('active')) closeLightbox();
     });
 
-    // Optional: clicking the dark backdrop should close
     overlay.addEventListener('click', (e) => {
       if (e.target === overlay) closeLightbox();
     });
 
-    // Prevent layout jump after load
     setTimeout(() => thumbSwiper && thumbSwiper.update(), 100);
   });
 
   function openLightbox(index = 0) {
+    if (!overlay) return;
     overlay.classList.add('active');
     document.body.style.overflow = 'hidden';
-    lightboxSwiper.slideTo(index, 0);
+    lightboxSwiper && lightboxSwiper.slideTo(index, 0);
   }
 
   function closeLightbox() {
+    if (!overlay) return;
     overlay.classList.remove('active');
     document.body.style.overflow = '';
   }
 
-  // Called by your top-right button
   function openFullscreenFromMain() {
     const idx = mainSwiper ? mainSwiper.activeIndex : 0;
     openLightbox(idx);
   }
 
-  // Expose close for the ✕ button
   window.closeLightbox = closeLightbox;
   window.openFullscreenFromMain = openFullscreenFromMain;
 </script>
+
 
 
 
