@@ -12,6 +12,13 @@
   /* Fix Swiper height override to allow image centering */
   .main-swiper .swiper-slide {
     height: auto !important;
+    cursor: pointer;
+  }
+
+  .main-swiper .fullscreen-btn{
+    left: auto !important;
+    right: .75rem !important; /* same as right-3 */
+    top: .75rem !important;   /* same as top-3 */
   }
 
   .thumb-swiper .swiper-button-next,
@@ -34,6 +41,77 @@
     padding-left: 10px;
   }
 
+  /* Lightbox Overlay Styles */
+  #lightboxOverlay {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 9999;
+      display: none;
+  }
+
+  /* Show overlay */
+  #lightboxOverlay.active { 
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+  }
+
+  /* Swiper inside overlay */
+  #lightboxOverlay .lightbox-swiper { 
+      width: 100%; 
+      height: 100%; 
+  }
+
+  #lightboxOverlay .swiper-wrapper { 
+      height: 100%; 
+  }
+
+  #lightboxOverlay .swiper-slide {
+      height: 100%; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+  }
+
+  /* Navigation arrows - make sure they're visible */
+  #lightboxOverlay .swiper-button-next,
+  #lightboxOverlay .swiper-button-prev { 
+      z-index: 10000;
+      color: white !important;
+  }
+
+  /* Close button - CRITICAL FIXES */
+  #lightboxOverlay .lightbox-close {
+      position: fixed !important;
+      top: 20px !important;
+      right: 20px !important;
+      z-index: 10100 !important; /* Higher than everything */
+      width: 44px !important;
+      height: 44px !important;
+      background: rgba(255, 255, 255, 0.95) !important;
+      border-radius: 50% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      cursor: pointer !important;
+      transition: all 0.2s ease !important;
+      border: 2px solid rgba(0, 0, 0, 0.1) !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  #lightboxOverlay .lightbox-close:hover {
+      background: white !important;
+      transform: scale(1.1) !important;
+  }
+
+  .demo-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
 </style>
 <!-- Breadcrumb -->
 
@@ -62,7 +140,7 @@
             <!-- Main Swiper (big image, swipeable) -->
                       
           <div
-            class="swiper main-swiper w-full max-h-96 rounded border mb-4"
+            class="swiper main-swiper relative w-full max-h-96 rounded border mb-4"
             x-data="{
               items: [
                 {% if product.image %}
@@ -77,6 +155,17 @@
               ]
             }"
           >
+          <button
+            type="button"
+            class="fullscreen-btn absolute top-3 right-3 left-auto z-10 inline-flex items-center justify-center
+                  w-12 h-12 rounded-full text-white hover:bg-black transition-all duration-200 shadow-lg hover:scale-110"
+            style="background-color: rgba(0,0,0,0.7);"
+            onclick="openFullscreenFromMain()"
+            title="{% trans 'View fullscreen' %}">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+            </svg>
+          </button>
             <div class="swiper-wrapper">
               {% if product.image %}
               <!-- Wrap each slide in an `<a>` that opens the lightbox at its index -->
@@ -303,6 +392,55 @@
 
 
     </div>
+    <!-- Fullscreen Lightbox Overlay -->
+    <div id="lightboxOverlay" class="fixed inset-0 bg-black/90 z-[1000]" role="dialog" aria-modal="true">
+    <!-- Close button with improved styling -->
+    <button
+        type="button" 
+        class="lightbox-close"
+        onclick="closeLightbox()"
+        aria-label="Close fullscreen view"
+        title="Close (Press Esc)"
+        style="position: fixed !important; top: 20px !important; right: 20px !important; 
+              z-index: 10100 !important; width: 44px !important; height: 44px !important;
+              background: rgba(255, 255, 255, 0.95) !important; border-radius: 50% !important;
+              display: flex !important; align-items: center !important; 
+              justify-content: center !important; cursor: pointer !important;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" stroke="currentColor" stroke-width="2" fill="none">
+            <path d="M18 6L6 18M6 6L18 18" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+
+      <div class="lightbox-swiper w-full h-full">
+        <div class="swiper-wrapper">
+          {% if product.image %}
+          <div class="swiper-slide flex items-center justify-center">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="max-w-[95vw] max-h-[85vh] object-contain"/>
+          </div>
+          {% endif %}
+          {% for image in product.images.all %}
+            {% if not product.image or image.image.url != product.image.url %}
+            <div class="swiper-slide flex items-center justify-center">
+              <img src="{{ image.image.url }}" alt="Product Image" class="max-w-[95vw] max-h-[85vh] object-contain"/>
+            </div>
+            {% endif %}
+          {% endfor %}
+          {% for video in product.videos.all %}
+          <div class="swiper-slide flex items-center justify-center">
+            <video controls class="max-w-[95vw] max-h-[85vh] object-contain">
+              <source src="{{ video.video.url }}" type="video/mp4">
+            </video>
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="swiper-button-next !text-white"></div>
+        <div class="swiper-button-prev !text-white"></div>
+      </div>
+    </div>
+
+
 </section>
 
 <!-- Fullscreen images-->
@@ -444,69 +582,55 @@
     <div class="swiper-wrapper">
       {% for product in related_products %}
         <div class="swiper-slide p-2">
-          <div class="flex flex-col h-full bg-white border rounded-lg shadow-sm">
+          <div class="card flex flex-col h-full"><!-- no border/shadow to match list -->
             <!-- Image and overlay -->
             <div class="relative w-full">
               <div class="aspect-[4/3] w-full bg-gray-100 overflow-hidden">
-                <img 
-                  src="{{ product.image.url }}" 
-                  alt="{{ product.name }}" 
-                  class="w-full h-full object-contain bg-white"
-                >
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full h-full object-contain bg-white">
               </div>
 
-              <!-- Hover overlay -->
               <div class="absolute inset-0 flex items-center justify-center gap-3 opacity-0 duration-150 hover:opacity-100 bg-black bg-opacity-30">
-                <a href="{% url 'product_detail' product.slug %}" class="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-blue-400">
+                <a href="{% url 'product_detail' product.slug %}" class="flex h-8 w-8 items-center justify-center rounded-full bg-purple-400">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
                   </svg>
                 </a>
               </div>
 
-              <!-- Badge -->
-              <div class="absolute top-2 right-2 rounded-full px-3 py-1 text-[0.7rem] font-bold text-white uppercase tracking-wide shadow 
-                {% if product.listing_type == 'exchange' %}
-                  bg-amber-500
-                {% else %}
-                  bg-green-500
-                {% endif %}">
-                {% if product.listing_type == 'sale' %}
-                  {% trans 'Sale' %}
-                {% else %}
-                  {% trans 'Exchange' %}
-                {% endif %}
+              <div class="absolute top-2 right-2 rounded-full px-3 py-1 text-[0.7rem] font-bold text-white uppercase tracking-wide shadow
+                {% if product.listing_type == 'exchange' %} bg-amber-500 {% else %} bg-green-500 {% endif %}">
+                {% if product.listing_type == 'sale' %}{% trans 'For Sale' %}{% else %}{% trans 'Exchange' %}{% endif %}
               </div>
             </div>
 
             <!-- Product content -->
-            <div class="flex flex-col justify-between flex-grow mt-4 px-2">
+            <div class="flex flex-col justify-between flex-grow mt-4">
               <p class="mt-2 font-semibold text-gray-800">{{ product.name }}</p>
-              <p class="font-medium text-violet-900">{{ product.price }} TL</p>
 
-              <div class="min-h-[48px] mt-1">
-                {% if product.listing_type == 'exchange' %}
-                  <p class="text-sm text-gray-500 italic">{% trans 'Exchangeable for:' %}</p>
-                  {% with categories=product.exchange_for.all %}
-                    {% if categories and categories|length > 0 %}
-                      <p class="text-sm text-gray-800">
-                        {% for category in categories|slice:":2" %}
-                          {{ category.name }}{% if not forloop.last %}, {% endif %}
-                        {% endfor %}
-                        {% if categories|length > 2 %}...{% endif %}
-                      </p>
-                    {% else %}
-                      <p class="text-sm text-gray-400">{% trans 'Not specified' %}</p>
-                    {% endif %}
-                  {% endwith %}
-                {% endif %}
+              {% if product.listing_type == 'sale' %}
+                <p class="font-medium text-violet-900">{{ product.price|floatformat:0|intcomma }} TL</p>
+              {% elif product.listing_type == 'exchange' %}
+                <p class="font-medium text-violet-900">{{ product.price|floatformat:0|intcomma }} TL</p>
+                <p class="text-sm text-gray-500 italic">{% trans 'Exchangeable for:' %}</p>
+                {% with categories=product.exchange_for.all %}
+                  {% if categories and categories|length > 0 %}
+                    <p class="text-sm text-gray-800">
+                      {% for category in categories|slice:":2" %}{{ category.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
+                      {% if categories|length > 2 %}...{% endif %}
+                    </p>
+                  {% else %}
+                    <p class="text-sm text-gray-400">{% trans 'Not specified' %}</p>
+                  {% endif %}
+                {% endwith %}
+              {% endif %}
+
+              <p class="text-sm text-gray-500 mt-2">{{ product.created_at|date:"d/m/Y" }}</p>
+
+              <div class="my-5">
+                <a href="{% url 'product_detail' product.slug %}">
+                  <button class="h-10 w-full bg-purple-500 text-white hover:bg-pink-400 transition">{% trans 'View Details' %}</button>
+                </a>
               </div>
-            </div>
-
-            <div class="my-5 px-2">
-              <a href="{% url 'product_detail' product.slug %}">
-                <button class="h-10 w-full bg-purple-500 text-white hover:bg-pink-500 transition">{% trans 'View Details' %}</button>
-              </a>
             </div>
           </div>
         </div>
@@ -523,71 +647,94 @@
 
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  // 1) Initialize the main gallery Swiper
-  var mainSwiper = new Swiper('.main-swiper', {
-    spaceBetween: 10,
+  // Make swipers accessible across functions
+  let mainSwiper, lightboxSwiper, thumbSwiper, overlay;  // <-- overlay is global
+
+  const suggestedSwiper = new Swiper('.suggested-swiper', {
+    slidesPerView: 2,
+    spaceBetween: 12,
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      nextEl: '.suggested-swiper .swiper-button-next',
+      prevEl: '.suggested-swiper .swiper-button-prev',
     },
+    breakpoints: { 640:{slidesPerView:2}, 768:{slidesPerView:3}, 1024:{slidesPerView:4} }
   });
 
-  // 2) Initialize the lightbox Swiper (hidden overlay)
-  var lightboxSwiper = new Swiper('.lightbox-swiper', {
-    spaceBetween: 10,
-    navigation: {
-      nextEl: '.lightbox-swiper .swiper-button-next',
-      prevEl: '.lightbox-swiper .swiper-button-prev',
-    },
-    keyboard: { enabled: true },
-  });
-
-  var thumbSwiper = new Swiper('.thumb-swiper', {
-    slidesPerView: 'auto', // <- allow dynamic width slides
-    spaceBetween: 5,
-    watchOverflow: true,
-    navigation: {
-      nextEl: '.thumb-swiper-next',
-      prevEl: '.thumb-swiper-prev'
+  document.addEventListener('DOMContentLoaded', function () {
+    // 1) Grab overlay and move it to <body> so 'fixed' is truly viewport-fixed
+    overlay = document.getElementById('lightboxOverlay');      // <-- assign global
+    if (overlay && overlay.parentElement !== document.body) {
+      document.body.appendChild(overlay);
     }
-  });
 
-
-  new Swiper('.suggested-swiper', {
-    slidesPerView: 1,
-    spaceBetween: 20,
-    breakpoints: {
-      640: { slidesPerView: 2 },
-      1024: { slidesPerView: 4 }
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev'
-    }
-  });
-
-  // 3) Thumbnail click handler for main gallery
-  document.querySelectorAll('.thumbnail').forEach(function(thumb, idx) {
-    thumb.addEventListener('click', function() {
-      // slide main gallery
-      mainSwiper.slideTo(idx);
-      // open lightbox at same slide
-      overlay.classList.remove('hidden');
-      lightboxSwiper.slideTo(idx, 0);
-      // thumbnail active ring
-      document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('ring-2','ring-violet-500'));
-      thumb.classList.add('ring-2','ring-violet-500');
+    // 2) Init SWIPERS
+    mainSwiper = new Swiper('.main-swiper', {
+      spaceBetween: 10,
+      navigation: {
+        nextEl: '.main-swiper .swiper-button-next',
+        prevEl: '.main-swiper .swiper-button-prev',
+      },
     });
+
+    lightboxSwiper = new Swiper('.lightbox-swiper', {
+      spaceBetween: 10,
+      navigation: {
+        nextEl: '.lightbox-swiper .swiper-button-next',
+        prevEl: '.lightbox-swiper .swiper-button-prev',
+      },
+      keyboard: { enabled: true },
+    });
+
+    thumbSwiper = new Swiper('.thumb-swiper', {
+      slidesPerView: 'auto',
+      spaceBetween: 5,
+      watchOverflow: true,
+      navigation: { nextEl: '.thumb-swiper-next', prevEl: '.thumb-swiper-prev' }
+    });
+
+    // 3) Events
+    document.querySelectorAll('.main-swiper .swiper-slide').forEach((slide, i) => {
+      slide.addEventListener('click', () => openLightbox(i));
+    });
+
+    document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+      thumb.addEventListener('click', () => { mainSwiper.slideTo(i); });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && overlay.classList.contains('active')) closeLightbox();
+    });
+
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeLightbox();
+    });
+
+    setTimeout(() => thumbSwiper && thumbSwiper.update(), 100);
   });
 
+  function openLightbox(index = 0) {
+    if (!overlay) return;
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    lightboxSwiper && lightboxSwiper.slideTo(index, 0);
+  }
 
-});
+  function closeLightbox() {
+    if (!overlay) return;
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
 
-setTimeout(() => {
-  thumbSwiper.update();
-}, 100);
+  function openFullscreenFromMain() {
+    const idx = mainSwiper ? mainSwiper.activeIndex : 0;
+    openLightbox(idx);
+  }
+
+  window.closeLightbox = closeLightbox;
+  window.openFullscreenFromMain = openFullscreenFromMain;
 </script>
+
+
 
 
 {% endblock %}
